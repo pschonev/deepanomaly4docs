@@ -4,12 +4,11 @@ import pandas as pd
 from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-feat_folder_p = Path("/home/philipp/projects/dad4td/data/processed/")
 
-
-def get_feat_path(data_path, suffix=""):
-    data_name = Path(data_path)
-    return feat_folder_p / f'{data_name.stem}{suffix}.npy'
+def get_new_path(file_path, new_folder, file_ext, suffix="", proj_folder="/home/philipp/projects/dad4td/"):
+    proj_folder = Path(proj_folder)
+    file_path = Path(file_path)
+    return proj_folder / new_folder / f'{file_path.stem}{suffix}.{file_ext}'
 
 
 def load_data(path, dropna=True):

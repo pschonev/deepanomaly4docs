@@ -3,10 +3,13 @@ Deep Anomaly Detection for Text Documents
 
 Plan
 =====
+- using test data (20 newsgroups)
 - ☑ UMAP simple TF-idf embeddings and density estimation (visual)
-- ☐ UMAP outlier detection?
+- ☑ UMAP outlier detection
 - ☐ UMAP maker's topic modelling
-- ☐ using test data (20 newsgroups)
+
+|
+
 - ☐ DocBERT embeddings
 - ☐ Autoencoder embeddings
 - ☐ Autoencoder loss

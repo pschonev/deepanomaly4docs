@@ -1,4 +1,4 @@
-from features.feat_utils import loadcreate_umap_emb, load_data, get_tf_idf, get_feat_path
+from features.feat_utils import loadcreate_umap_emb, load_data, get_tf_idf, get_new_path
 from visualization.visualize import create_show_graph
 
 # add logging
@@ -6,9 +6,10 @@ from visualization.visualize import create_show_graph
 # size = length of doc?
 
 
-data_path = "/home/philipp/projects/dad4td/data/external/20_newsgroup/20_newsgroup.csv"
 text_col = 'text'
-emb_path = get_feat_path(data_path, suffix="_umap")
+data_path = "/home/philipp/projects/dad4td/data/external/20_newsgroup/20_newsgroup.csv"
+emb_path = get_new_path(file_path=data_path, new_folder="data/processed", 
+                        suffix="_umap", file_ext="npy")
 
 df = load_data(data_path, dropna=True)
 tfidf_word_doc_matrix = get_tf_idf(df, text_col)
