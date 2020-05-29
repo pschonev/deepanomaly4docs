@@ -1,7 +1,8 @@
 # %%
-from features.feat_utils import loadcreate_umap_emb, load_data, get_tf_idf, get_new_path
+from features.feat_utils import loadcreate, load_data, get_tf_idf, get_new_path
 from visualization.visualize import create_show_graph
 from sklearn.neighbors import LocalOutlierFactor
+import umap
 
 text_col = 'text'
 data_path = "/home/philipp/projects/dad4td/data/external/20_newsgroup/20_newsgroup.csv"
@@ -13,8 +14,8 @@ out_text_path = get_new_path(
 # %%
 df = load_data(data_path, dropna=True)
 tfidf_word_doc_matrix = get_tf_idf(df, text_col)
-tfidf_2d_emb = loadcreate_umap_emb(
-    tfidf_word_doc_matrix, emb_path, umap_kwargs={'set_op_mix_ratio': 0.25})
+tfidf_2d_emb = loadcreate(
+    tfidf_word_doc_matrix, emb_path, umap.UMAP(set_op_mix_ratio=0.25))
 
 # %%
 outlier_scores = LocalOutlierFactor().fit_predict(tfidf_2d_emb)

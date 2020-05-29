@@ -6,7 +6,11 @@ Plan
 - using test data (20 newsgroups)
 - ☑ UMAP simple TF-idf embeddings and density estimation (visual)
 - ☑ UMAP outlier detection
-- ☐ UMAP maker's topic modelling
+- ☑ UMAP maker's topic modelling
+- ☐ sklearn outlier on topic vectors (with visualization)
+- ☐ HDBSCAN outlier detection (GLOSH) https://hdbscan.readthedocs.io/en/latest/outlier_detection.html
+- ☐ evaluate sklearn
+- ☐ fastText oder andere sentence/doc embeddings
 
 |
 

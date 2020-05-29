@@ -36,15 +36,16 @@ def get_tf_idf(df, col):
     return tfidf_vectorizer.fit_transform(df[col])
 
 
-def loadcreate_umap_emb(tfidf_word_doc_matrix, path, load=True, umap_kwargs={}):
+def loadcreate(input_embeddings, path, model, load=True, save=True):
     if Path(path).is_file() and load:
-        print("Loading UMAP embeddings ...")
-        tfidf_embedding = np.load(path)
+        print(f"Loading embeddings from {path} ...")
+        output_embeddings = np.load(path)
     else:
         np.save(path, [])
-        print("Create UMAP embeddings ...")
-        tfidf_embedding = umap.UMAP(
-            **umap_kwargs).fit_transform(tfidf_word_doc_matrix)
-        np.save(path, tfidf_embedding)
+        print(f"Creating embeddings using {model}...")
+        output_embeddings = model.fit_transform(input_embeddings)
+        if save:
+            np.save(path, output_embeddings)
+        print("Embeddings created")
 
-    return tfidf_embedding
+    return output_embeddings
