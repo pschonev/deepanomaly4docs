@@ -22,7 +22,7 @@ tfidf_word_doc_matrix = get_tf_idf(df, text_col)
 
 # %%
 topic_embeddings = loadcreate(tfidf_word_doc_matrix, topics_path, EnsembleTopics(
-    n_components=20, parallelism='none'))
+    n_components=20)) #, parallelism='none'))
 
 
 # %%
@@ -30,3 +30,6 @@ embeddings_2d = loadcreate(
     topic_embeddings, emb_path, umap.UMAP(metric='hellinger'))
 # %%
 create_show_graph(df, text_col, coords_2d=embeddings_2d)
+
+
+# %%
