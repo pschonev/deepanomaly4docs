@@ -1,0 +1,938 @@
+reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.903, total= 7.0min
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.000, total= 7.0min
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.895, total= 7.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.001, total= 7.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.903, total= 5.8min
+[Parallel(n_jobs=-1)]: Done   5 tasks      | elapsed: 12.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.895, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.901, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.901, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.193, total= 5.7min
+[Parallel(n_jobs=-1)]: Done  10 tasks      | elapsed: 18.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.000, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.894, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.000, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.903, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.900, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.902, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.903, total= 5.1min
+[Parallel(n_jobs=-1)]: Done  17 tasks      | elapsed: 29.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.895, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.898, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.000, total= 5.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.901, total= 6.4min
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.891, total= 6.4min
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.895, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.903, total= 6.4min
+[Parallel(n_jobs=-1)]: Done  24 tasks      | elapsed: 35.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.895, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.901, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.903, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.866, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.901, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.896, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.000, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.892, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.902, total= 5.5min
+[Parallel(n_jobs=-1)]: Done  33 tasks      | elapsed: 52.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.881, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.901, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.902, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.895, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.445, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.903, total= 5.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.902, total= 5.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.109, total= 7.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.895, total= 7.7min
+[Parallel(n_jobs=-1)]: Done  42 tasks      | elapsed: 65.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.903, total= 7.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.000, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.901, total= 7.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.628, total= 7.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.903, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 7.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.902, total= 7.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.901, total= 7.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.902, total= 7.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.341, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.845, total= 6.9min
+[Parallel(n_jobs=-1)]: Done  53 tasks      | elapsed: 86.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.901, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.902, total= 6.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.902, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.879, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.903, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.902, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.902, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.000, total= 7.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.000, total= 7.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.903, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.000, total= 7.7min
+[Parallel(n_jobs=-1)]: Done  64 tasks      | elapsed: 101.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.901, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.759, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.903, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.902, total= 7.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.903, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.901, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.902, total= 7.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.066, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.796, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.903, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.901, total= 6.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.902, total= 6.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.895, total= 6.6min
+[Parallel(n_jobs=-1)]: Done  77 tasks      | elapsed: 128.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.903, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.902, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.902, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.901, total= 9.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.894, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.000, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.875, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.895, total= 8.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.901, total= 8.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.903, total= 8.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.901, total= 8.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.903, total= 9.0min
+[Parallel(n_jobs=-1)]: Done  90 tasks      | elapsed: 155.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.902, total= 8.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.895, total= 8.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.901, total= 8.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.903, total= 8.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.903, total= 8.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.902, total= 8.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.895, total= 8.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.903, total= 8.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.903, total= 8.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.901, total= 8.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.901, total= 9.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.895, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.430, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.862, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.895, total= 8.9min
+[Parallel(n_jobs=-1)]: Done 105 tasks      | elapsed: 190.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.901, total= 8.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.903, total= 8.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.902, total= 9.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.901, total= 8.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.832, total= 8.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.902, total= 8.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.895, total= 8.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.903, total= 8.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.901, total= 8.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.903, total= 8.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.902, total= 8.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.895, total= 8.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.903, total= 8.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.903, total= 8.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=manhattan, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.900, total= 8.1min
+[Parallel(n_jobs=-1)]: Done 120 tasks      | elapsed: 215.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.483, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.475, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.484, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.493, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.482, total= 2.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.497, total= 2.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.485, total= 2.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.492, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.476, total= 2.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.446, total= 2.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.484, total= 2.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.495, total= 2.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.481, total= 2.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.492, total= 2.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.488, total= 2.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.493, total= 2.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.483, total= 2.1min
+[Parallel(n_jobs=-1)]: Done 137 tasks      | elapsed: 227.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.462, total= 2.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.509, total= 2.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.469, total= 2.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.459, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.457, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.455, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.468, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.455, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.473, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.458, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.478, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.457, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.419, total= 2.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.452, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.471, total= 2.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.439, total= 2.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.463, total= 2.3min
+[Parallel(n_jobs=-1)]: Done 154 tasks      | elapsed: 238.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.459, total= 2.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.449, total= 2.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.451, total= 2.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.448, total= 2.3min
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.476, total= 2.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.446, total= 2.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.479, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.484, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.477, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.484, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.493, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.483, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.481, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.497, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.441, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.480, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.479, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.506, total= 2.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.479, total= 2.7min
+[Parallel(n_jobs=-1)]: Done 173 tasks      | elapsed: 252.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.495, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.476, total= 2.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.481, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.487, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.483, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.502, total= 2.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.473, total= 2.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.447, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.456, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.453, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.456, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.455, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.469, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.457, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.477, total= 3.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.428, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.451, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.448, total= 3.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.481, total= 2.8min
+[Parallel(n_jobs=-1)]: Done 192 tasks      | elapsed: 264.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.446, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.462, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.446, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.462, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.448, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.446, total= 2.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.480, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.444, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.489, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.476, total= 5.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.490, total= 5.3min
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.471, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.487, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.493, total= 5.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.490, total= 6.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.493, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.482, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.474, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.444, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.503, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.471, total= 3.4min
+[Parallel(n_jobs=-1)]: Done 213 tasks      | elapsed: 288.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.490, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.483, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.486, total= 3.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.473, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.475, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.507, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.467, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.443, total= 4.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.452, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.448, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.456, total= 4.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.456, total= 3.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.462, total= 3.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.470, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.456, total= 3.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.451, total= 3.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.448, total= 3.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.421, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.481, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.445, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.456, total= 3.6min
+[Parallel(n_jobs=-1)]: Done 234 tasks      | elapsed: 307.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.453, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.448, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.451, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.441, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.472, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=cosine, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.455, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.901, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.003, total= 6.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.903, total= 6.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.891, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.000, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.012, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.892, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.005, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.900, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.888, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.898, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.896, total= 5.0min
+[Parallel(n_jobs=-1)]: Done 257 tasks      | elapsed: 338.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.890, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.893, total= 4.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.894, total= 5.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.001, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.885, total= 6.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.003, total= 6.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.903, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.900, total= 5.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.892, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.047, total= 5.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.902, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.899, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.009, total= 5.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.891, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.900, total= 5.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.899, total= 5.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.892, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.054, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.891, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.888, total= 5.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.893, total= 5.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.895, total= 5.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.888, total= 5.0min
+[Parallel(n_jobs=-1)]: Done 280 tasks      | elapsed: 367.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.003, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.901, total= 7.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 7.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.903, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.901, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.189, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.893, total= 7.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.900, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.898, total= 6.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.751, total= 7.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.562, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.894, total= 6.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 6.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.897, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 6.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.888, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.896, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.893, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.895, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.012, total= 7.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.003, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.903, total= 7.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.903, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.900, total= 7.2min
+[Parallel(n_jobs=-1)]: Done 305 tasks      | elapsed: 417.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.893, total= 7.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.001, total= 7.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.001, total= 7.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.891, total= 7.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.898, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.257, total= 7.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.888, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.892, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.900, total= 6.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.898, total= 6.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.899, total= 6.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.888, total= 6.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.896, total= 6.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.893, total= 6.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.895, total= 6.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.852, total= 9.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.003, total= 9.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.001, total= 9.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.898, total= 9.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.900, total= 8.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.893, total= 8.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.794, total= 8.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.902, total= 9.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.898, total= 8.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.901, total= 8.7min
+[Parallel(n_jobs=-1)]: Done 330 tasks      | elapsed: 464.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.891, total= 8.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 8.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 8.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.893, total= 8.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 8.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.899, total= 8.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.887, total= 7.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.896, total= 8.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.893, total= 7.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.895, total= 7.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.601, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.024, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.902, total= 9.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.003, total= 9.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.900, total= 8.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.893, total= 8.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.902, total= 9.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.901, total= 9.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.148, total= 8.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.900, total= 8.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.891, total= 8.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.626, total= 8.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.899, total= 8.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.894, total= 7.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.899, total= 8.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.899, total= 8.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.895, total= 8.0min
+[Parallel(n_jobs=-1)]: Done 357 tasks      | elapsed: 523.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.888, total= 8.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.893, total= 8.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=euclidean, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.894, total= 8.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.263, total= 3.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.253, total= 3.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.262, total= 3.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.253, total= 3.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.217, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.234, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.268, total= 3.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.234, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.224, total= 2.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.211, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.199, total= 2.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.210, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.197, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.207, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.184, total= 2.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.205, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.202, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.210, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.196, total= 2.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.205, total= 2.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.201, total= 3.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.192, total= 3.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.214, total= 3.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.212, total= 3.9min
+[Parallel(n_jobs=-1)]: Done 384 tasks      | elapsed: 542.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.171, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.168, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.185, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.202, total= 4.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.155, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.149, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.172, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.158, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.165, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.149, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.133, total= 2.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.162, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.151, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.157, total= 2.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.139, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=20, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.150, total= 2.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.252, total= 4.1min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.258, total= 4.2min
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.249, total= 4.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.248, total= 4.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.221, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.217, total= 3.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.231, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.267, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.199, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.221, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.205, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.208, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.200, total= 3.0min
+[Parallel(n_jobs=-1)]: Done 413 tasks      | elapsed: 568.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.200, total= 3.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.188, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.207, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.211, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.211, total= 2.9min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.193, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.202, total= 3.0min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.206, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.190, total= 4.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.224, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.209, total= 4.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.162, total= 3.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.167, total= 3.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.195, total= 3.8min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=5, score=0.206, total= 4.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.156, total= 3.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=30, score=0.176, total= 3.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.149, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.156, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.119, total= 3.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.159, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.136, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=50, score=0.152, total= 3.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.152, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.161, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.146, total= 3.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=50, reduce_dim__set_op_mix_ratio=0.18, vectorize__min_df=90, score=0.150, total= 3.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.257, total= 5.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.248, total= 5.4min
+[Parallel(n_jobs=-1)]: Done 442 tasks      | elapsed: 595.7min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.264, total= 5.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.250, total= 5.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.210, total= 4.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.227, total= 4.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.229, total= 4.6min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=5, score=0.263, total= 5.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.200, total= 4.4min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.200, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=30, score=0.218, total= 4.5min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.197, total= 4.2min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=50, score=0.209, total= 4.3min
+[CV] reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90 
+[CV]  reduce_dim=UMAP(random_state=42), reduce_dim__metric=hellinger, reduce_dim__n_components=100, reduce_dim__set_op_mix_ratio=0.1, vectorize__min_df=90, score=0.199, total= 4.1min
+
