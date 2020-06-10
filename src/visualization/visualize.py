@@ -25,10 +25,10 @@ def create_show_graph(df, col, coords_2d=None, color="title", line_chars=75, kwa
     df = load_coords_to_df(df, coords_2d)
     df = prepare_text(df, col)
 
-    default_kwargs = {'x':'X', 'y':'Y', 'color':"title", 'hover_data':["title", "htext", "char_count"],
+    default_kwargs = {'x':'X', 'y':'Y', 'color':color, 'hover_data':["title", "htext", "char_count"],
                      'color_discrete_sequence':px.colors.qualitative.Dark24, 'color_discrete_map':{"-1": "rgb(255, 255, 255)"}}
     default_kwargs.update(kwargs)
 
     print("Create graph ...")
     fig = px.scatter(df, **default_kwargs)
-    fig.show()
+    return fig

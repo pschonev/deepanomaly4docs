@@ -57,6 +57,5 @@ d = dict(data_frac=0.1,
 df = pd.read_pickle(data_path)
 df = sample_data(df, **d)
 
-print(df)
-df
+df["outlier_label"].value_counts().to_string().replace("\n", "\t")
 # %%

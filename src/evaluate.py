@@ -7,6 +7,7 @@ from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.pipeline import Pipeline
+from gensim.sklearn_api import D2VTransformer
 
 
 def next_path(path_pattern):
@@ -52,7 +53,9 @@ result_folder = "/home/philipp/projects/dad4td/reports/"
 results_path = next_path(result_folder + "%04d_dens_eval.tsv")
 results_param_path = result_folder + Path(results_path).stem + ".txt"
 
-d = dict(data_frac=0.15,
+scorer = ["f1_macro", "f1_micro"]
+
+d = dict(data_frac=0.1,
          contamination=0.1,
          seed=42)
 
@@ -66,20 +69,25 @@ y = df["outlier_label"]
 # prepare pipeline
 pipe = Pipeline([
     # the reduce_dim stage is populated by the param_grid
-    ('vectorize', TfidfVectorizer(stop_words='english')),
+    ('vectorize', 'passthrough'),
     ('reduce_dim', 'passthrough'),
     ('classify', LocalOutlierFactor(novelty=True, contamination=d["contamination"]))
 ])
 
 MIN_DF = [25] 
-MIX_RATIO = [0.0, 0.1]
-N_COMPONENTS = [2, 50, 300]
+MIX_RATIO = [0.0, 0.25]
+N_COMPONENTS = [50, 300]
 UMAP_METRICS = ['manhattan', 'euclidean']
 LOF_METRICS = ['euclidean']
 
 param_grid = [
-    {
-        'vectorize__min_df': MIN_DF,
+        {   
+        'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
+        'reduce_dim': ["passthrough"],
+        'classify__metric': LOF_METRICS
+    },
+    {   
+        'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
         'reduce_dim': [UMAP(random_state=42)],
         'reduce_dim__n_components': N_COMPONENTS,
         'reduce_dim__set_op_mix_ratio': MIX_RATIO,
@@ -90,15 +98,15 @@ param_grid = [
 
 # grid search
 cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=d["seed"])
-grid = GridSearchCV(pipe, scoring='f1', param_grid=param_grid,
-                    cv=cv, verbose=10, n_jobs=-1)
+grid = GridSearchCV(pipe, scoring=scorer, param_grid=param_grid,
+                    cv=cv, verbose=10, n_jobs=-1, refit='f1_macro')
 grid.fit(X, y)
 
 # get the results dataframe and add all parameters outside the pipeline
 out_df = pd.DataFrame.from_dict(grid.cv_results_)
 for key, val in d.items():
     out_df[key] = val
-out_df = out_df.sort_values(by=['rank_test_score'])
+out_df = out_df.sort_values(by=['rank_test_f1_macro'])
 out_df.to_csv(results_path, sep="\t")
 
 # save parameters of eval run to txt file

@@ -6,6 +6,7 @@ from umap import UMAP
 from visualization.visualize import create_show_graph
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import classification_report
 
 
 def sample_data(df, data_frac, contamination, seed):
@@ -17,6 +18,18 @@ def sample_data(df, data_frac, contamination, seed):
         df[df["outlier_label"] == -1].head(y_n))
     print(df)
     return df
+
+
+def get_result(row):
+    if row["outlier_label"] == 1 and row["predicted"] == 1:
+        return "inlier - true positive"
+    if row["outlier_label"] == -1 and row["predicted"] == -1:
+        return "outlier - true negative"
+    if row["outlier_label"] == -1 and row["predicted"] == 1:
+        return "false negative (outlier predicted as inlier)"
+    if row["outlier_label"] == 1 and row["predicted"] == -1:
+        return "false positive (inlier predicted as outlier)"
+    return "-1"
 
 
 # parameters
@@ -32,19 +45,25 @@ df = sample_data(df, **d)
 
 
 X = df["text"]
-y = df["outlier_label"]
 
 # pipeline
 print("TF-IDF ...")
 tfidf_vecs = TfidfVectorizer(min_df=25, stop_words='english').fit_transform(X)
 print("dim reduction ...")
 dim_reduced_vecs = UMAP(metric="euclidean", set_op_mix_ratio=0.0,
-                  n_components=50, random_state=42).fit_transform(tfidf_vecs)
+                        n_components=300, random_state=42).fit_transform(tfidf_vecs)
 print("dim reduction 2D ...")
-vecs_2d = UMAP(metric="euclidean", set_op_mix_ratio=0.0,
-                  n_components=2, random_state=42).fit_transform(tfidf_vecs)
+vecs_2d = UMAP(metric="euclidean", set_op_mix_ratio=1.0,
+               n_components=2, random_state=42).fit_transform(tfidf_vecs)
 print("Local outlier factor ...")
 df["predicted"] = LocalOutlierFactor(
     novelty=False, metric="euclidean", contamination=d["contamination"]).fit_predict(dim_reduced_vecs)
 
-create_show_graph(df, "text", coords_2d=vecs_2d, color="predicted")
+df["result"] = df.apply(lambda row: get_result(row), axis=1)
+
+title = df["result"].value_counts().to_string().replace("\n", "\t")
+print(classification_report(df["outlier_label"], df["predicted"]))
+
+fig = create_show_graph(df, "text", coords_2d=vecs_2d, color="result")
+fig.update_layout(title=title)
+fig.show()
