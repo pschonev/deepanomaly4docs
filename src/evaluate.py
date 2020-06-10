@@ -52,7 +52,7 @@ result_folder = "/home/philipp/projects/dad4td/reports/"
 results_path = next_path(result_folder + "%04d_dens_eval.tsv")
 results_param_path = result_folder + Path(results_path).stem + ".txt"
 
-d = dict(data_frac=0.1,
+d = dict(data_frac=0.15,
          contamination=0.1,
          seed=42)
 
@@ -72,9 +72,9 @@ pipe = Pipeline([
 ])
 
 MIN_DF = [25] 
-MIX_RATIO = [0.0]
-N_COMPONENTS = [30, 60, 90]
-UMAP_METRICS = ['euclidean']
+MIX_RATIO = [0.0, 0.1]
+N_COMPONENTS = [2, 50, 300]
+UMAP_METRICS = ['manhattan', 'euclidean']
 LOF_METRICS = ['euclidean']
 
 param_grid = [
