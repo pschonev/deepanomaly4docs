@@ -21,7 +21,7 @@ def prepare_text(df, col, line_chars=75):
     return df
 
 
-def create_show_graph(df, col, coords_2d=None, line_chars=75, kwargs={}):
+def create_show_graph(df, col, coords_2d=None, color="title", line_chars=75, kwargs={}):
     df = load_coords_to_df(df, coords_2d)
     df = prepare_text(df, col)
 

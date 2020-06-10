@@ -43,7 +43,7 @@ def sample_data(df, data_frac, contamination, seed):
 
     df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
     df = df[df["outlier_label"] == 1].head(X_n).append(
-        df[df["outlier_label"] == 0].head(y_n))
+        df[df["outlier_label"] == -1].head(y_n))
     return df
 
 # parameters

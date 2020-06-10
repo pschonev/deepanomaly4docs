@@ -35,3 +35,28 @@ y = (y * -1).clip(lower=0)
 y[y == 0] = -1
 
 # %%
+import pandas as pd
+import numpy as np
+
+def sample_data(df, data_frac, contamination, seed):
+    X_n = int(df.shape[0] * data_frac)
+    y_n = int(X_n * contamination)
+
+    df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
+    df = df[df["outlier_label"] == 1].head(X_n).append(
+        df[df["outlier_label"] == -1].head(y_n))
+    return df
+
+data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
+
+d = dict(data_frac=0.1,
+         contamination=0.1,
+         seed=42)
+
+# prepare data
+df = pd.read_pickle(data_path)
+df = sample_data(df, **d)
+
+print(df)
+df
+# %%
