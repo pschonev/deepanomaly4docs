@@ -72,9 +72,10 @@ pipe = Pipeline([
 ])
 
 MIN_DF = [25] 
-MIX_RATIO = [0.0, 0.075, 0.15, 0.30]
-N_COMPONENTS = [60, 200, 300]
-METRICS = ['minkowski','manhattan', 'euclidean']
+MIX_RATIO = [0.0]
+N_COMPONENTS = [30, 60, 90]
+UMAP_METRICS = ['euclidean']
+LOF_METRICS = ['euclidean']
 
 param_grid = [
     {
@@ -82,8 +83,8 @@ param_grid = [
         'reduce_dim': [UMAP(random_state=42)],
         'reduce_dim__n_components': N_COMPONENTS,
         'reduce_dim__set_op_mix_ratio': MIX_RATIO,
-        'reduce_dim__metric': METRICS,
-        'classify__metric': METRICS
+        'reduce_dim__metric': UMAP_METRICS,
+        'classify__metric': LOF_METRICS
     }
 ]
 
@@ -103,6 +104,8 @@ out_df.to_csv(results_path, sep="\t")
 # save parameters of eval run to txt file
 with open(results_param_path, 'w') as res_params:
     res_params.write(f""" {Path(results_param_path).stem}
+
+    {data_path}
 
     {d}
 
