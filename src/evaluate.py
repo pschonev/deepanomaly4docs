@@ -45,9 +45,11 @@ def sample_data(df, data_frac, contamination, seed):
     df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
     df = df[df["outlier_label"] == 1].head(X_n).append(
         df[df["outlier_label"] == -1].head(y_n))
+    df = df.reset_index(drop=True)
     return df
 
-# parameters
+
+### parameters
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
 result_folder = "/home/philipp/projects/dad4td/reports/"
 results_path = next_path(result_folder + "%04d_dens_eval.tsv")
@@ -59,57 +61,64 @@ d = dict(data_frac=0.1,
          contamination=0.1,
          seed=42)
 
-# prepare data
+### prepare data
 df = pd.read_pickle(data_path)
 df = sample_data(df, **d)
 
 X = df["text"]
 y = df["outlier_label"]
 
-# prepare pipeline
+
+### prepare pipeline
+
 pipe = Pipeline([
     # the reduce_dim stage is populated by the param_grid
     ('vectorize', 'passthrough'),
     ('reduce_dim', 'passthrough'),
-    ('classify', LocalOutlierFactor(novelty=True, contamination=d["contamination"]))
+    ('classify', LocalOutlierFactor(
+        novelty=True, contamination=d["contamination"]))
 ])
 
-MIN_DF = [25] 
+MIN_DF = [25]
 MIX_RATIO = [0.0, 0.25]
 N_COMPONENTS = [50, 300]
 UMAP_METRICS = ['manhattan', 'euclidean']
 LOF_METRICS = ['euclidean']
 
-param_grid = [
-        {   
-        'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
-        'reduce_dim': ["passthrough"],
-        'classify__metric': LOF_METRICS
-    },
-    {   
-        'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
-        'reduce_dim': [UMAP(random_state=42)],
-        'reduce_dim__n_components': N_COMPONENTS,
-        'reduce_dim__set_op_mix_ratio': MIX_RATIO,
-        'reduce_dim__metric': UMAP_METRICS,
-        'classify__metric': LOF_METRICS
-    }
-]
+umap_pipeline = {
+    'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
+    'reduce_dim': [UMAP(random_state=42)],
+    'reduce_dim__n_components': N_COMPONENTS,
+    'reduce_dim__set_op_mix_ratio': MIX_RATIO,
+    'reduce_dim__metric': UMAP_METRICS,
+    'classify__metric': LOF_METRICS
+}
 
-# grid search
+no_reduction_pipeline = {
+    'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
+    'reduce_dim': ["passthrough"],
+    'classify__metric': LOF_METRICS
+}
+
+param_grid = [no_reduction_pipeline]
+
+
+### grid search
 cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=d["seed"])
 grid = GridSearchCV(pipe, scoring=scorer, param_grid=param_grid,
                     cv=cv, verbose=10, n_jobs=-1, refit='f1_macro')
 grid.fit(X, y)
 
-# get the results dataframe and add all parameters outside the pipeline
+
+### get the results dataframe and add all parameters outside the pipeline
 out_df = pd.DataFrame.from_dict(grid.cv_results_)
 for key, val in d.items():
     out_df[key] = val
 out_df = out_df.sort_values(by=['rank_test_f1_macro'])
 out_df.to_csv(results_path, sep="\t")
 
-# save parameters of eval run to txt file
+
+### save parameters of eval run to txt file
 with open(results_param_path, 'w') as res_params:
     res_params.write(f""" {Path(results_param_path).stem}
 

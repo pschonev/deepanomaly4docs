@@ -45,7 +45,10 @@ def sample_data(df, data_frac, contamination, seed):
     df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
     df = df[df["outlier_label"] == 1].head(X_n).append(
         df[df["outlier_label"] == -1].head(y_n))
+    df = df.reset_index(drop=True)
     return df
+
+# %%
 
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
 
@@ -58,4 +61,26 @@ df = pd.read_pickle(data_path)
 df = sample_data(df, **d)
 
 df["outlier_label"].value_counts().to_string().replace("\n", "\t")
+# %%
+import pandas as pd
+from gensim.models.doc2vec import TaggedDocument
+from gensim.sklearn_api import D2VTransformer
+
+data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
+
+d = dict(data_frac=0.1,
+         contamination=0.1,
+         seed=42)
+
+# prepare data
+df = pd.read_pickle(data_path)
+df = sample_data(df, **d)
+
+X_tagged = [TaggedDocument(doc, str(i)) for i, doc in df["text"].items()]
+
+doc_vecs = D2VTransformer(seed=d["seed"], min_count=25).fit_transform(X_tagged)
+
+print(doc_vecs)
+print(doc_vecs.shape)
+
 # %%
