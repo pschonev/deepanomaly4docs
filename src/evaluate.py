@@ -1,130 +1,50 @@
-# %%
 import pandas as pd
-import numpy as np
 from pathlib import Path
-from umap import UMAP
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
-from sklearn.neighbors import LocalOutlierFactor
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from sklearn.pipeline import Pipeline
-from gensim.sklearn_api import D2VTransformer
+from eval_utils import sample_data, save_data
+from eval_config import eval_runs
+from sklearn.metrics import make_scorer, f1_score
 
-
-def next_path(path_pattern):
-    """
-    Finds the next free path in an sequentially named list of files
-
-    e.g. path_pattern = '%03d-results.tsv':
-
-    001-results.tsv
-    001-results.tsv
-    001-results.tsv
-
-    Runs in log(n) time where n is the number of existing files in sequence
-    """
-    i = 1
-
-    # First do an exponential search
-    while Path(path_pattern % i).exists():
-        i = i * 2
-
-    # Result lies somewhere in the interval (i/2..i]
-    # We call this interval (a..b] and narrow it down until a + 1 = b
-    a, b = (i // 2, i)
-    while a + 1 < b:
-        c = (a + b) // 2  # interval midpoint
-        a, b = (c, b) if Path(path_pattern % c).exists() else (a, c)
-
-    return path_pattern % b
-
-
-def sample_data(df, data_frac, contamination, seed):
-    X_n = int(df.shape[0] * data_frac)
-    y_n = int(X_n * contamination)
-
-    df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
-    df = df[df["outlier_label"] == 1].head(X_n).append(
-        df[df["outlier_label"] == -1].head(y_n))
-    df = df.reset_index(drop=True)
-    return df
-
-
-### parameters
+# parameters
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
-result_folder = "/home/philipp/projects/dad4td/reports/"
-results_path = next_path(result_folder + "%04d_dens_eval.tsv")
-results_param_path = result_folder + Path(results_path).stem + ".txt"
 
-scorer = ["f1_macro", "f1_micro"]
+data_params = dict(data_frac=0.1,
+                   contamination=0.1,
+                   seed=42)
 
-d = dict(data_frac=0.1,
-         contamination=0.1,
-         seed=42)
-
-### prepare data
+# prepare data
+# ! creation of datasets should probably be handled seperately all within a class/function
 df = pd.read_pickle(data_path)
-df = sample_data(df, **d)
+# class for imdb_20news that lets me choose 20 news categories?
+df = sample_data(df, **data_params)
 
 X = df["text"]
 y = df["outlier_label"]
 
+tot_str = ""
+for pipe_and_grid in eval_runs["test"]:
+    # prepare pipeline
+    pipe, param_grid = pipe_and_grid[0], pipe_and_grid[1]
 
-### prepare pipeline
+    # grid search
+    scorer = {"f1_macro": "f1_macro",
+              "f1_micro": "f1_micro",
+              "in_f1": make_scorer(f1_score, pos_label=-1),
+              "out_f1": make_scorer(f1_score, pos_label=1)}
 
-pipe = Pipeline([
-    # the reduce_dim stage is populated by the param_grid
-    ('vectorize', 'passthrough'),
-    ('reduce_dim', 'passthrough'),
-    ('classify', LocalOutlierFactor(
-        novelty=True, contamination=d["contamination"]))
-])
+    cv = StratifiedKFold(n_splits=3, shuffle=True,
+                         random_state=data_params["seed"])
 
-MIN_DF = [25]
-MIX_RATIO = [0.0, 0.25]
-N_COMPONENTS = [50, 300]
-UMAP_METRICS = ['manhattan', 'euclidean']
-LOF_METRICS = ['euclidean']
+    grid = GridSearchCV(pipe, scoring=scorer, param_grid=param_grid,
+                        cv=cv, verbose=10, n_jobs=-1, refit='f1_macro')
+    grid.fit(X, y)
 
-umap_pipeline = {
-    'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
-    'reduce_dim': [UMAP(random_state=42)],
-    'reduce_dim__n_components': N_COMPONENTS,
-    'reduce_dim__set_op_mix_ratio': MIX_RATIO,
-    'reduce_dim__metric': UMAP_METRICS,
-    'classify__metric': LOF_METRICS
-}
+    # save results and params to file
+    param_str = "\n".join(str(x) for x in [data_path, data_params, param_grid]) # !!! when combining results, remove most rows for better overview
+    save_data(results_df=grid.cv_results_,
+              data_params=data_params, param_str=param_str)
 
-no_reduction_pipeline = {
-    'vectorize': [D2VTransformer(seed=d["seed"], min_count=25), TfidfVectorizer(stop_words='english', min_df=25)],
-    'reduce_dim': ["passthrough"],
-    'classify__metric': LOF_METRICS
-}
+    tot_str = param_str if tot_str == "" else tot_str + \
+        f"\n\n---------------------------\n\n{param_str}"
 
-param_grid = [no_reduction_pipeline]
-
-
-### grid search
-cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=d["seed"])
-grid = GridSearchCV(pipe, scoring=scorer, param_grid=param_grid,
-                    cv=cv, verbose=10, n_jobs=-1, refit='f1_macro')
-grid.fit(X, y)
-
-
-### get the results dataframe and add all parameters outside the pipeline
-out_df = pd.DataFrame.from_dict(grid.cv_results_)
-for key, val in d.items():
-    out_df[key] = val
-out_df = out_df.sort_values(by=['rank_test_f1_macro'])
-out_df.to_csv(results_path, sep="\t")
-
-
-### save parameters of eval run to txt file
-with open(results_param_path, 'w') as res_params:
-    res_params.write(f""" {Path(results_param_path).stem}
-
-    {data_path}
-
-    {d}
-
-    {grid}
-    """)
+print(tot_str)
