@@ -4,6 +4,7 @@ from sklearn.pipeline import Pipeline
 from gensim.sklearn_api import D2VTransformer
 from sklearn.neighbors import LocalOutlierFactor
 from eval_utils import TaggedDocsTransformer
+from sklearn.metrics import make_scorer, f1_score
 
 
 pipes = {
@@ -68,3 +69,8 @@ pipe_and_grid = {
 eval_runs = {
     "test": [pipe_and_grid["d2v"], pipe_and_grid["basic"]]
 }
+
+scorers = {"f1_macro": "f1_macro",
+            "f1_micro": "f1_micro",
+            "in_f1": make_scorer(f1_score, pos_label=-1),
+            "out_f1": make_scorer(f1_score, pos_label=1)}

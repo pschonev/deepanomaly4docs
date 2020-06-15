@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 def sample_data(df, data_frac, contamination, seed=42):
