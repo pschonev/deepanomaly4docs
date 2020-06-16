@@ -34,7 +34,7 @@ def next_path(path_pattern):
 
 
 def save_data(results_df, data_params, param_str):
-    result_folder = "/home/philipp/projects/dad4td/reports/"
+    result_folder = "/home/philipp/projects/dad4td/reports/density_estimation/"
     results_path = next_path(result_folder + "%04d_dens_eval.tsv")
     results_param_path = result_folder + Path(results_path).stem + ".txt"
 

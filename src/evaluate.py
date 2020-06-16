@@ -11,7 +11,7 @@ data_params = dict(dataset_name="imdb_20news",
 X, y = get_out_data(**data_params)
 
 tot_str = ""
-for pipe_and_grid in eval_runs["test"]:
+for pipe_and_grid in eval_runs["eval_01"]:
     # prepare pipeline
     pipe, param_grid = pipe_and_grid[0], pipe_and_grid[1]
 
