@@ -11,6 +11,9 @@ df = pd.read_pickle(data_path)
 for i in range(1,10):
     df[f"test_{i}"] = 0.1
 df.info()
+
+# %%
+df["outlier_label"].value_counts()
 # %%
 X_n = int(df.shape[0] * data_frac)
 y_n = int(X_n * outlier_balance)

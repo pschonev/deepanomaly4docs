@@ -13,7 +13,7 @@ def sample_data(df, data_frac, contamination, seed=42):
     return df
 
 
-def get_out_data(dataset_name, data_frac, contamination, seed=42):
+def get_out_data(dataset_name, data_frac, contamination, subset="", seed=42):
     datasets = {
         "imdb_20news": "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"}
 
