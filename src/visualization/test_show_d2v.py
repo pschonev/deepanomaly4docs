@@ -44,13 +44,15 @@ def get_result(row):
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
 model_path = "/home/philipp/projects/dad4td/models/enwiki_dbow/doc2vec.bin"
 
-d = dict(data_frac=0.1,
+d = dict(data_frac=0.4,
          contamination=0.1,
          seed=42)
 
 showclusters = True
 allow_noise = False
 min_doc_length = 5
+n_comps = 10
+min_cluster_size = 8
 
 # prepare data
 print("Get data...")
@@ -85,7 +87,6 @@ docvecs = list(docvecs)
 
 #docvecs = docvecs.to_numpy()
 #print("dim reduction ...")
-n_comps = 5
 dim_reduced_vecs = UMAP(metric="cosine", set_op_mix_ratio=0,
                         n_components=n_comps, random_state=42).fit_transform(docvecs)
 
@@ -94,12 +95,12 @@ vecs_2d = UMAP(metric="cosine", set_op_mix_ratio=0,
                n_components=2, random_state=42).fit_transform(docvecs)
 
 #print("Local outlier factor ...")
-# df["predicted"] = LocalOutlierFactor(
-#    novelty=False, metric="euclidean", contamination=d["contamination"]).fit_predict(tfidf_vecs)
+#df["predicted"] = LocalOutlierFactor(
+#    novelty=False, metric="euclidean", contamination=d["contamination"]).fit_predict(dim_reduced_vecs)
 
 print("HDBSCAN ...")
 #dim_reduced_vecs = normalize(dim_reduced_vecs, norm="l2")
-clusterer = HDBSCAN(min_cluster_size=10, prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
+clusterer = HDBSCAN(min_cluster_size=min_cluster_size, prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
 threshold = pd.Series(clusterer.outlier_scores_).quantile(0.9)
 df["predicted"] = np.where(clusterer.outlier_scores_ > threshold, -1, 1)
 
