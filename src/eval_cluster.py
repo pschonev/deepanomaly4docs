@@ -5,17 +5,26 @@ from pathlib import Path
 from umap import UMAP
 from hdbscan import HDBSCAN, all_points_membership_vectors
 from sklearn.neighbors import LocalOutlierFactor
-from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score
+from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
+from flair.embeddings import TransformerDocumentEmbeddings
+from flair.data import Sentence
 from gensim.sklearn_api import D2VTransformer
 from gensim.models.doc2vec import TaggedDocument, Doc2Vec
 from gensim.utils import simple_preprocess
 from sklearn.preprocessing import normalize
 from itertools import product
+from functools import reduce
+from operator import mul
 from collections import defaultdict, OrderedDict
 from tqdm import tqdm
+from timeit import default_timer as timer
 from eval_utils import next_path
 
-tqdm.pandas(desc="my bar!")
+tqdm.pandas(desc="prog: ")
+
+
+def prod(iterable):
+    return reduce(mul, iterable, 1)
 
 
 def sample_data(df, data_frac, contamination, seed):
@@ -41,90 +50,164 @@ def get_result(row):
     return "-1"
 
 
+def doc2vec_vectors(model_path, X):
+    # text lowered and split into list of tokens
+    print("Pre-process data...")
+    X = X.progress_apply(lambda x: simple_preprocess(x))
+
+    # load model
+    print("Load Doc2Vec model...")
+    model = Doc2Vec.load(model_path)
+
+    #print("TaggedDocuments being prepared...")
+    #tagged_docs = [TaggedDocument(doc, [i]) for i, doc in X.items()]
+
+    # model = Doc2Vec(vector_size=50, min_count=2, epochs=40)
+    # model.build_vocab(all_docs_tagged)
+
+    print("Infer doc vectors...")
+    docvecs = X.progress_apply(lambda x: model.infer_vector(x))
+    return list(docvecs)
+
+
+def bert_doc_embeddings(X, bert_model="bert-base-uncased"):
+    # init embedding model
+    print("Load BERT model ...")
+    model = TransformerDocumentEmbeddings('bert-base-uncased', fine_tune=False)
+
+    # convert to Sentence objects
+    print("Convert to Sentence objects ...")
+    sentences = X.progress_apply(lambda x: Sentence(x))
+
+    # get vectors from BERT
+    print("Get BERT embeddings ...")
+    docvecs = sentences.progress_apply(lambda x: model.embed(x))
+    docvecs = sentences.progress_apply(lambda x: x.embedding.cpu().numpy())
+    return list(docvecs)
+
+
 # parameters
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
-model_path = "/home/philipp/projects/dad4td/models/enwiki_dbow/doc2vec.bin"
+model_path = "/home/philipp/projects/dad4td/models/apnews_dbow/doc2vec.bin"
 result_folder = "/home/philipp/projects/dad4td/reports/clustering/"
-res_pattern = "%04d_cluster_eval_new.tsv"
+res_pattern = "%04d_cluster_bert.tsv"
 result_path = next_path(result_folder + res_pattern)
 
-data_params = dict(data_frac=0.3,
-                   contamination=0.1,
-                   seed=42)
-
-allow_noise = False
+data_params = OrderedDict(data_frac=[0.015],
+                          contamination=[0.1],
+                          seed=[42, 43, 44])
 min_doc_length = 5
 
-iter_params = OrderedDict(n_comps_=[10, 20], mix_ratios_=[0.0, 0.5],
-                          umap_metrics_=["cosine"], min_cluster_sizes_=[8])
+allow_noise = False
+iter_params = OrderedDict(n_comps_=[3, 5, 10], mix_ratios_=[0.3, 0.4, 0.5, 0.6, 1.0],
+                          umap_metrics_=["cosine"], min_cluster_sizes_=[30, 60, 90, 120])
 
 # load data and remove empty texts
 print("Get data...")
-df = pd.read_pickle(data_path)
-n_before = df.shape[0]
-df = df[df['text'].map(len) > min_doc_length]
+df_all = pd.read_pickle(data_path)
+n_before = df_all.shape[0]
+df_all = df_all[df_all['text'].map(len) > min_doc_length]
 print(
-    f"Removed {n_before - df.shape[0]} rows with doc length below {min_doc_length}.")
+    f"Removed {n_before - df_all.shape[0]} rows with doc length below {min_doc_length}.")
 
-# sample
-df = sample_data(df, **data_params)
-X = df["text"]
-
-# text lowered and split into list of tokens
-print("Pre-process data...")
-X = X.progress_apply(lambda x: simple_preprocess(x))
-
-print("TaggedDocuments being prepared...")
-tagged_docs = [TaggedDocument(doc, [i]) for i, doc in X.items()]
-
-
-#model = Doc2Vec(vector_size=50, min_count=2, epochs=40)
-# model.build_vocab(all_docs_tagged)
-print("Load Doc2Vec model...")
-model = Doc2Vec.load(model_path)
-
-print("Infer doc vectors...")
-docvecs = X.progress_apply(lambda x: model.infer_vector(x))
-docvecs = list(docvecs)
-
+# initialize variables
 scores = defaultdict(list)
 result_df = pd.DataFrame()
-for params in tqdm(product(*iter_params.values())):
-    n_comp, mix_ratio, umap_metric, min_cluster_size = params
-    print(f"n_comp {n_comp}, mix_ratio: {mix_ratio}, umap_metric: {umap_metric}, min_cluster_size: {min_cluster_size}")
-    dim_reduced_vecs = UMAP(metric=umap_metric, set_op_mix_ratio=mix_ratio,
-                            n_components=n_comp, random_state=42).fit_transform(docvecs)
 
-    clusterer = HDBSCAN(min_cluster_size=min_cluster_size,
-                        prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
+total_i = prod(len(x) for x in iter_params.values())
+total_ij = prod(len(x) for x in data_params.values()) * total_i
 
-    # GLOSH
-    threshold = pd.Series(clusterer.outlier_scores_).quantile(0.9)
-    df["predicted"] = np.where(clusterer.outlier_scores_ > threshold, -1, 1)
+for j, data_params_ in enumerate(product(*data_params.values())):
+    data_frac, contamination, seed = data_params_
+    data_param_str = ", ".join(
+        [f"{key}: {value}" for key, value in zip(data_params, data_params_)])
 
-    # cluster scoring
-    outlier_labels = df["outlier_label"]
-    outlier_pred = df["predicted"]
-    cluster_pred = clusterer.labels_ if allow_noise else np.argmax(
-        all_points_membership_vectors(clusterer)[:, 1:], axis=1)
+    # sample
+    df = sample_data(df_all, data_frac=data_frac,
+                     contamination=contamination, seed=seed)
+    X = df["text"]
 
-    # adding param values to results dict
-    for key, value in zip(iter_params, params):
-        scores[key] = value
+    docvecs = bert_doc_embeddings(X, bert_model="bert-base-uncased")
 
-    scores["homogeneity"] = homogeneity_score(outlier_labels, cluster_pred)
-    scores["completeness"] = completeness_score(outlier_labels, cluster_pred)
-    scores["v_measure"] = v_measure_score(outlier_labels, cluster_pred)
-    scores["f1_macro"] = f1_score(
-        outlier_labels, outlier_pred, average='macro')
+    for i, iter_params_ in enumerate(product(*iter_params.values())):
+        start = timer()
+        n_comp, mix_ratio, umap_metric, min_cluster_size = iter_params_
 
-    result_df = result_df.append(scores, ignore_index=True)
-    results_df = result_df.sort_values(by=["homogeneity"]).reset_index(drop=True)
-    results_df.to_csv(result_path, sep="\t")
+        # displaying parameters should be handled more general
+        param_str = ", ".join(
+            [f"{key}: {value}" for key, value in zip(iter_params, iter_params_)])
+        print(
+            f"run {j*total_i + i+1} out of {total_ij} --- {data_param_str} | {param_str}")
+
+        # pipeline
+        if n_comp != -1:
+            dim_reduced_vecs = UMAP(metric=umap_metric, set_op_mix_ratio=mix_ratio,
+                                    n_components=n_comp, random_state=42).fit_transform(docvecs)
+        else:
+            dim_reduced_vecs = docvecs
+
+        print("Clustering ...")
+        clusterer = HDBSCAN(min_cluster_size=min_cluster_size,
+                            prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
+        print("Get prediction data ...")
+        clusterer.generate_prediction_data()
+
+        # scoring
+        print("Get scores ...")
+
+        # GLOSH
+        threshold = pd.Series(clusterer.outlier_scores_).quantile(0.9)
+        df["predicted"] = np.where(
+            clusterer.outlier_scores_ > threshold, -1, 1)
+
+        # cluster scoring
+        outlier_labels = df["outlier_label"]
+        outlier_pred = df["predicted"]
+        try:
+            cluster_pred = clusterer.labels_ if allow_noise else np.argmax(
+                all_points_membership_vectors(clusterer)[:, 1:], axis=1)
+        except IndexError:
+            print("Got IndexError and will not enforce cluster membership (allow noise) ...")
+            cluster_pred = clusterer.labels_
+
+        # adding param values to results dict
+        for key, value in zip(iter_params, iter_params_):
+            scores[key] = value
+        for key, value in zip(data_params, data_params_):
+            scores[key] = value
+
+        # scores
+        scores["homogeneity"] = homogeneity_score(outlier_labels, cluster_pred)
+        scores["completeness"] = completeness_score(
+            outlier_labels, cluster_pred)
+        scores["v_measure"] = v_measure_score(outlier_labels, cluster_pred)
+        scores["f1_macro"] = f1_score(
+            outlier_labels, outlier_pred, average='macro')
+        scores["in_f1"] = f1_score(outlier_labels, outlier_pred, pos_label=1)
+        scores["out_f1"] = f1_score(outlier_labels, outlier_pred, pos_label=-1)
+        scores["out_rec"] = recall_score(
+            outlier_labels, outlier_pred, pos_label=-1)
+        scores["out_prec"] = precision_score(
+            outlier_labels, outlier_pred, pos_label=-1)
+
+        # time
+        end = timer()
+        scores["time"] = end-start
+
+        # unique hash for params (without data params)
+        scores["hash"] = "|".join([str(x) for x in iter_params_])
+
+        scores["cluster_n"] = len(np.unique(clusterer.labels_))
+
+        # save results and print output
+        result_df = result_df.append(scores, ignore_index=True)
+        results_df = result_df.sort_values(
+            by=["homogeneity"]).reset_index(drop=True)
+        results_df.to_csv(result_path, sep="\t")
+
+        print(f"Homogeneity - {homogeneity_score(outlier_labels, cluster_pred)*100:.1f}  \
+                f1_macro - {f1_score(outlier_labels, outlier_pred, average='macro')*100:.1f}  \
+                out_f1 - {f1_score(outlier_labels, outlier_pred, pos_label=-1)*100:.1f}   \
+                time - {end-start:.1f} \n\n -------------------\n")
 
 print(result_df)
-# crosstabs
-#crosstab = pd.crosstab(cluster_labels, outlier_labels, normalize='index')
-#print(f"\n\n {crosstab}")
-#crosstab_abs = pd.crosstab(cluster_labels, outlier_labels)
-#print(f"\n\n {crosstab_abs}")
