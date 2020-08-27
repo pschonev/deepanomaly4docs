@@ -1,0 +1,20 @@
+{'dataset_name': 'imdb_20news', 'data_frac': 0.1, 'contamination': 0.1, 'subset': '', 'seed': 42}
+GridSearchCV(cv=StratifiedKFold(n_splits=3, random_state=42, shuffle=True),
+             estimator=Pipeline(steps=[('tagged_docs', 'passthrough'),
+                                       ('vectorize', 'passthrough'),
+                                       ('reduce_dim', 'passthrough'),
+                                       ('classify', 'passthrough')]),
+             n_jobs=-1,
+             param_grid=[{'classify': [IsolationForest(contamination=0.1,
+                                                       random_state=42)],
+                          'reduce_dim': [UMAP(n_components=50, random_state=...
+                          'vectorize__min_count': [25],
+                          'vectorize__size': [50, 100, 300],
+                          'vectorize__window': [5, 10]}],
+             refit='f1_macro',
+             scoring={'f1_macro': 'f1_macro', 'f1_micro': 'f1_micro',
+                      'in_f1': make_scorer(f1_score, pos_label=1),
+                      'out_f1': make_scorer(f1_score, pos_label=-1),
+                      'out_prec': make_scorer(precision_score, pos_label=-1),
+                      'out_rec': make_scorer(recall_score, pos_label=-1)},
+             verbose=10)

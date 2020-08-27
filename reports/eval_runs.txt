@@ -1,2 +1,0 @@
-eval_8 = 0.1 data , cv=3
-eval_9 = 0.1 data , cv=3, shuffle=True, random_state=42

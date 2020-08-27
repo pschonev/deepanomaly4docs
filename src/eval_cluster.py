@@ -16,11 +16,11 @@ from itertools import product
 from functools import reduce
 from operator import mul
 from collections import defaultdict, OrderedDict
-from tqdm import tqdm
 from timeit import default_timer as timer
 from eval_utils import next_path
+from tqdm import tqdm
 
-tqdm.pandas(desc="prog: ")
+tqdm.pandas(desc="progess: ")
 
 
 def prod(iterable):
@@ -50,7 +50,7 @@ def get_result(row):
     return "-1"
 
 
-def doc2vec_vectors(model_path, X):
+def doc2vec_vectors(X, model_path):
     # text lowered and split into list of tokens
     print("Pre-process data...")
     X = X.progress_apply(lambda x: simple_preprocess(x))
@@ -70,13 +70,14 @@ def doc2vec_vectors(model_path, X):
     return list(docvecs)
 
 
-def bert_doc_embeddings(X, bert_model="bert-base-uncased"):
+def bert_doc_embeddings(X, bert_model="allenai/longformer-base-4096"):
     # init embedding model
     print("Load BERT model ...")
-    model = TransformerDocumentEmbeddings('bert-base-uncased', fine_tune=False)
+    model = TransformerDocumentEmbeddings('albert-xxlarge-v2', fine_tune=False)
 
     # convert to Sentence objects
     print("Convert to Sentence objects ...")
+    X = X.str.lower()
     sentences = X.progress_apply(lambda x: Sentence(x))
 
     # get vectors from BERT
@@ -88,19 +89,19 @@ def bert_doc_embeddings(X, bert_model="bert-base-uncased"):
 
 # parameters
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
-model_path = "/home/philipp/projects/dad4td/models/apnews_dbow/doc2vec.bin"
+model_path = "/home/philipp/projects/dad4td/models/doc2vec_01/doc2vec_wiki.bin"
 result_folder = "/home/philipp/projects/dad4td/reports/clustering/"
-res_pattern = "%04d_cluster_bert.tsv"
+res_pattern = "%04d_cluster_doc2vec_01.tsv"
 result_path = next_path(result_folder + res_pattern)
 
-data_params = OrderedDict(data_frac=[0.015],
+data_params = OrderedDict(data_frac=[0.15],
                           contamination=[0.1],
                           seed=[42, 43, 44])
 min_doc_length = 5
 
 allow_noise = False
-iter_params = OrderedDict(n_comps_=[3, 5, 10], mix_ratios_=[0.3, 0.4, 0.5, 0.6, 1.0],
-                          umap_metrics_=["cosine"], min_cluster_sizes_=[30, 60, 90, 120])
+iter_params = OrderedDict(n_comps_=[3, 15, 45, 200], mix_ratios_=[0.0, 0.3, 0.15, 0.4],
+                          umap_metrics_=["cosine"], min_cluster_sizes_=[15, 45, 90])
 
 # load data and remove empty texts
 print("Get data...")
@@ -127,7 +128,8 @@ for j, data_params_ in enumerate(product(*data_params.values())):
                      contamination=contamination, seed=seed)
     X = df["text"]
 
-    docvecs = bert_doc_embeddings(X, bert_model="bert-base-uncased")
+    #docvecs = bert_doc_embeddings(X, bert_model="bert-base-cased")
+    docvecs = doc2vec_vectors(X, model_path)
 
     for i, iter_params_ in enumerate(product(*iter_params.values())):
         start = timer()
@@ -208,6 +210,7 @@ for j, data_params_ in enumerate(product(*data_params.values())):
         print(f"Homogeneity - {homogeneity_score(outlier_labels, cluster_pred)*100:.1f}  \
                 f1_macro - {f1_score(outlier_labels, outlier_pred, average='macro')*100:.1f}  \
                 out_f1 - {f1_score(outlier_labels, outlier_pred, pos_label=-1)*100:.1f}   \
+                cluster_n - {len(np.unique(clusterer.labels_))}   \
                 time - {end-start:.1f} \n\n -------------------\n")
 
 print(result_df)

@@ -1,0 +1,26 @@
+ 0003_dens_eval
+
+    /home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl
+
+    {'data_frac': 0.1, 'contamination': 0.1, 'seed': 42}
+
+    GridSearchCV(cv=StratifiedKFold(n_splits=3, random_state=42, shuffle=True),
+             estimator=Pipeline(steps=[('vectorize', 'passthrough'),
+                                       ('reduce_dim', 'passthrough'),
+                                       ('classify',
+                                        LocalOutlierFactor(contamination=0.1,
+                                                           novelty=True))]),
+             n_jobs=-1,
+             param_grid=[{'classify__metric': ['euclidean'],
+                          'reduce_dim': ['passthrough'],
+                          'vectorize': [D2VTransformer(min_count=25, se...
+                          'reduce_dim': [UMAP(n_components=300, random_state=42,
+                                              set_op_mix_ratio=0.0)],
+                          'reduce_dim__metric': ['manhattan', 'euclidean'],
+                          'reduce_dim__n_components': [50, 300],
+                          'reduce_dim__set_op_mix_ratio': [0.0, 0.25],
+                          'vectorize': [D2VTransformer(min_count=25, seed=42),
+                                        TfidfVectorizer(min_df=25,
+                                                        stop_words='english')]}],
+             refit='f1_macro', scoring=['f1_macro', 'f1_micro'], verbose=10)
+    

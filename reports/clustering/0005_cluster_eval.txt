@@ -1,0 +1,21 @@
+{'dataset_name': 'imdb_20news', 'data_frac': 0.2, 'contamination': 0.1, 'subset': '', 'seed': 42}
+GridSearchCV(cv=StratifiedKFold(n_splits=2, random_state=42, shuffle=True),
+             estimator=Pipeline(steps=[('tagged_docs', 'passthrough'),
+                                       ('vectorize', 'passthrough'),
+                                       ('reduce_dim', 'passthrough'),
+                                       ('cluster', 'passthrough')]),
+             n_jobs=1,
+             param_grid=[{'cluster': [HDBSCANPredictor(min_cluster_size=10,
+                                                       no_noise=True)],
+                          'cluster__metric': ['euclidean'],
+                          'cluster__min_clus...
+                          'cluster__no_noise': [True],
+                          'tagged_docs': [TaggedDocsTransformer()],
+                          'vectorize': [D2VTransformer(min_count=25, seed=42)],
+                          'vectorize__min_count': [25],
+                          'vectorize__size': [100], 'vectorize__window': [5]}],
+             refit='homogeneity_score',
+             scoring={'completeness_score': 'completeness_score',
+                      'homogeneity_score': 'homogeneity_score',
+                      'v_measure_score': 'v_measure_score'},
+             verbose=10)

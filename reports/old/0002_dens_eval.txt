@@ -1,0 +1,17 @@
+ 0002_dens_eval
+
+    /home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl
+
+    {'data_frac': 0.15, 'contamination': 0.1, 'seed': 42}
+
+    GridSearchCV(cv=StratifiedKFold(n_splits=3, random_state=42, shuffle=True),
+             estimator=Pipeline(steps=[('vectorize',
+                                        TfidfVectorizer(stop_words='english')),
+                                       ('classify',
+                                        LocalOutlierFactor(contamination=0.1,
+                                                           novelty=True))]),
+             n_jobs=-1,
+             param_grid=[{'classify__metric': ['euclidean'],
+                          'vectorize__min_df': [25]}],
+             scoring='f1', verbose=10)
+    

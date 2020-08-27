@@ -1,0 +1,2 @@
+	mean_fit_time	std_fit_time	mean_score_time	std_score_time	param_classify__metric	param_vectorize__min_df	params	split0_test_score	split1_test_score	split2_test_score	mean_test_score	std_test_score	rank_test_score	data_frac	contamination	seed
+0	3.639027754465739	0.007670402589435117	1.7368330160776775	0.010988940771477726	euclidean	25	{'classify__metric': 'euclidean', 'vectorize__min_df': 25}	0.8877855014895728	0.8990494919698458	0.8960078856579595	0.8942809597057927	0.0047578759489307725	1	0.15	0.1	42
