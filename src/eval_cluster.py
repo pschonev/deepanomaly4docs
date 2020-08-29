@@ -60,8 +60,8 @@ def doc2vec_vectors(X, model_path):
     print("Load Doc2Vec model...")
     model = Doc2Vec.load(model_path)
 
-    #print("TaggedDocuments being prepared...")
-    #tagged_docs = [TaggedDocument(doc, [i]) for i, doc in X.items()]
+    # print("TaggedDocuments being prepared...")
+    # tagged_docs = [TaggedDocument(doc, [i]) for i, doc in X.items()]
 
     # model = Doc2Vec(vector_size=50, min_count=2, epochs=40)
     # model.build_vocab(all_docs_tagged)
@@ -89,7 +89,9 @@ def bert_doc_embeddings(X, bert_model):
 
 
 # parameters
-eval_run = eval_runs["test_doc2vec"]
+eval_run = eval_runs["full_doc2vec"]
+result_path = next_path(eval_run.res_folder + "%04d_" + eval_run.name + ".tsv")
+print(f"Saving results to {result_path}")
 
 # load data and remove empty texts
 print("Get data...")
@@ -139,7 +141,7 @@ for j, data_params_ in enumerate(product(*data_params.values())):
             test_param_str = ", ".join(
                 [f"{key}: {value}" for key, value in zip(test_params, test_params_)])
             print(
-                f"run {j*total_i + i+1} out of {total_ikj} --- {model_param_str}  {data_param_str} | {test_param_str}")
+                f"run {j*total_ik + k*total_i + i+1} out of {total_ikj} --- {model_param_str}  {data_param_str} | {test_param_str}")
 
             # pipeline
             if n_comp != -1:
@@ -148,10 +150,12 @@ for j, data_params_ in enumerate(product(*data_params.values())):
             else:
                 dim_reduced_vecs = docvecs
 
-            #LocalOutlierFactor
+            # LocalOutlierFactor
+            print("Get LocalOutlierFactor...")
+            df["predicted_LOF"] = LocalOutlierFactor(
+                novelty=False, metric=umap_metric, contamination=contamination).fit_predict(dim_reduced_vecs)
 
-
-            #clustering
+            # clustering
             print("Clustering ...")
             clusterer = HDBSCAN(min_cluster_size=min_cluster_size,
                                 prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
@@ -169,6 +173,7 @@ for j, data_params_ in enumerate(product(*data_params.values())):
             # cluster scoring
             outlier_labels = df["outlier_label"]
             outlier_pred = df["predicted"]
+            outlier_pred_LOF = df["predicted_LOF"]
             try:
                 cluster_pred = clusterer.labels_ if allow_noise else np.argmax(
                     all_points_membership_vectors(clusterer)[:, 1:], axis=1)
@@ -201,6 +206,16 @@ for j, data_params_ in enumerate(product(*data_params.values())):
                 outlier_labels, outlier_pred, pos_label=-1)
             scores["out_prec"] = precision_score(
                 outlier_labels, outlier_pred, pos_label=-1)
+            scores["f1_macro_LOF"] = f1_score(
+                outlier_labels, outlier_pred_LOF, average='macro')
+            scores["in_f1_LOF"] = f1_score(
+                outlier_labels, outlier_pred_LOF, pos_label=1)
+            scores["out_f1_LOF"] = f1_score(
+                outlier_labels, outlier_pred_LOF, pos_label=-1)
+            scores["out_rec_LOF"] = recall_score(
+                outlier_labels, outlier_pred_LOF, pos_label=-1)
+            scores["out_prec_LOF"] = precision_score(
+                outlier_labels, outlier_pred_LOF, pos_label=-1)
 
             # time
             end = timer()
@@ -220,7 +235,9 @@ for j, data_params_ in enumerate(product(*data_params.values())):
             print(f"Homogeneity - {homogeneity_score(outlier_labels, cluster_pred)*100:.1f}  \
                     f1_macro - {f1_score(outlier_labels, outlier_pred, average='macro')*100:.1f}  \
                     out_f1 - {f1_score(outlier_labels, outlier_pred, pos_label=-1)*100:.1f}   \
-                    cluster_n - {len(np.unique(clusterer.labels_))}   \
-                    time - {end-start:.1f} \n\n -------------------\n")
+                    out_f1_LOF {f1_score(outlier_labels, outlier_pred_LOF, pos_label=-1)*100:.1f} \
+                    cluster_n - {len(np.unique(clusterer.labels_))} \
+                    time - {end-start: .1f} \n\n - ------------------\n")
 
 print(result_df)
+print(f"Saved results to {result_path}")
