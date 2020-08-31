@@ -89,7 +89,7 @@ def bert_doc_embeddings(X, bert_model):
 
 
 # parameters
-eval_run = eval_runs["full_doc2vec"]
+eval_run = eval_runs["doc2vecwikiimdb20news013030"]
 result_path = next_path(eval_run.res_folder + "%04d_" + eval_run.name + ".tsv")
 print(f"Saving results to {result_path}")
 

@@ -6,10 +6,10 @@ import logging
 # doc2vec parameters
 vector_size = 300
 window_size = 15
-min_count = 1
+min_count = 30
 sampling_threshold = 1e-5
 negative_size = 5
-train_epoch = 100
+train_epoch = 30
 dm = 0  # 0 = dbow; 1 = dmpv
 worker_count = 4  # number of parallel processes
 
@@ -18,13 +18,13 @@ pretrained_emb = "/home/philipp/projects/dad4td/models/en_wiki_w2vec/word2vec.bi
 #pretrained_emb = None
 
 # input corpus
-train_corpus = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_sf.txt"
+train_corpus = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_wiki_01.txt"
 
 # output model
-saved_path = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_100_min1/doc2vec_wiki.bin"
+saved_path = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_30_min30/doc2vec_wiki.bin"
 
 # mapfile
-mapfile = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_100_min1/doc2vec_mapfile.txt"
+mapfile = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_30_min30/doc2vec_mapfile.txt"
 
 # enable logging
 logging.basicConfig(
