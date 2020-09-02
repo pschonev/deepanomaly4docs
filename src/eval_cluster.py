@@ -71,10 +71,10 @@ def doc2vec_vectors(X, model_path):
     return list(docvecs)
 
 
-def bert_doc_embeddings(X, bert_model):
+def bert_doc_embeddings(X, transformer_model):
     # init embedding model
-    print("Load BERT model ...")
-    model = TransformerDocumentEmbeddings(bert_model, fine_tune=False)
+    print(f"Load {transformer_model} model ...")
+    model = TransformerDocumentEmbeddings(transformer_model, fine_tune=False)
 
     # convert to Sentence objects
     print("Convert to Sentence objects ...")
@@ -89,7 +89,8 @@ def bert_doc_embeddings(X, bert_model):
 
 
 # parameters
-eval_run = eval_runs["doc2vecwikiimdb20news013030"]
+eval_run = eval_runs["roberta_LOF_eval"]
+
 result_path = next_path(eval_run.res_folder + "%04d_" + eval_run.name + ".tsv")
 print(f"Saving results to {result_path}")
 
@@ -127,7 +128,7 @@ for j, data_params_ in enumerate(product(*data_params.values())):
         if model.model_type.lower() == "doc2vec":
             docvecs = doc2vec_vectors(X, model.model_path)
         elif model.model_type.lower() == "transformer":
-            docvecs = bert_doc_embeddings(X, bert_model=model.model_name)
+            docvecs = bert_doc_embeddings(X, transformer_model=model.model_name)
 
         for i, test_params_ in enumerate(product(*test_params.values())):
             start = timer()
@@ -153,7 +154,7 @@ for j, data_params_ in enumerate(product(*data_params.values())):
             # LocalOutlierFactor
             print("Get LocalOutlierFactor...")
             df["predicted_LOF"] = LocalOutlierFactor(
-                novelty=False, metric=umap_metric, contamination=contamination).fit_predict(dim_reduced_vecs)
+                novelty=False, metric=umap_metric, contamination=contamination, n_jobs=-1).fit_predict(dim_reduced_vecs)
 
             # clustering
             print("Clustering ...")
