@@ -3,23 +3,18 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 from umap import UMAP
-from hdbscan import HDBSCAN, all_points_membership_vectors
-from sklearn.neighbors import LocalOutlierFactor
 from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
-from flair.embeddings import TransformerDocumentEmbeddings
-from flair.data import Sentence
-from gensim.sklearn_api import D2VTransformer
-from gensim.models.doc2vec import TaggedDocument, Doc2Vec
-from gensim.utils import simple_preprocess
-from sklearn.preprocessing import normalize
+from sklearn.neighbors import LocalOutlierFactor
+from hdbscan import HDBSCAN, all_points_membership_vectors
 from itertools import product
 from functools import reduce
 from operator import mul
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
 from timeit import default_timer as timer
 from eval_utils import next_path
-from eval_cluster_config import eval_runs
 from tqdm import tqdm
+from eval_cluster_config import eval_runs
+from eval_cluster_utils import sample_data, get_result, doc2vec_vectors, bert_doc_embeddings, remove_short_texts
 
 tqdm.pandas(desc="progess: ")
 
@@ -27,69 +22,9 @@ tqdm.pandas(desc="progess: ")
 def prod(iterable):
     return reduce(mul, iterable, 1)
 
-
-def sample_data(df, data_frac, contamination, seed):
-    X_n = int(df.shape[0] * data_frac)
-    y_n = int(X_n * contamination)
-
-    df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
-    df = df[df["outlier_label"] == 1].head(X_n).append(
-        df[df["outlier_label"] == -1].head(y_n))
-    df = df.reset_index(drop=True)
-    return df
-
-
-def get_result(row):
-    if row["outlier_label"] == 1 and row["predicted"] == 1:
-        return "inlier - true positive"
-    if row["outlier_label"] == -1 and row["predicted"] == -1:
-        return "outlier - true negative"
-    if row["outlier_label"] == -1 and row["predicted"] == 1:
-        return "false negative (outlier predicted as inlier)"
-    if row["outlier_label"] == 1 and row["predicted"] == -1:
-        return "false positive (inlier predicted as outlier)"
-    return "-1"
-
-
-def doc2vec_vectors(X, model_path):
-    # text lowered and split into list of tokens
-    print("Pre-process data...")
-    X = X.progress_apply(lambda x: simple_preprocess(x))
-
-    # load model
-    print("Load Doc2Vec model...")
-    model = Doc2Vec.load(model_path)
-
-    # print("TaggedDocuments being prepared...")
-    # tagged_docs = [TaggedDocument(doc, [i]) for i, doc in X.items()]
-
-    # model = Doc2Vec(vector_size=50, min_count=2, epochs=40)
-    # model.build_vocab(all_docs_tagged)
-
-    print("Infer doc vectors...")
-    docvecs = X.progress_apply(lambda x: model.infer_vector(x))
-    return list(docvecs)
-
-
-def bert_doc_embeddings(X, transformer_model):
-    # init embedding model
-    print(f"Load {transformer_model} model ...")
-    model = TransformerDocumentEmbeddings(transformer_model, fine_tune=False)
-
-    # convert to Sentence objects
-    print("Convert to Sentence objects ...")
-    X = X.str.lower()
-    sentences = X.progress_apply(lambda x: Sentence(x))
-
-    # get vectors from BERT
-    print("Get BERT embeddings ...")
-    docvecs = sentences.progress_apply(lambda x: model.embed(x))
-    docvecs = sentences.progress_apply(lambda x: x.embedding.cpu().numpy())
-    return list(docvecs)
-
-
 # parameters
-eval_run = eval_runs["roberta_LOF_eval"]
+eval_run = eval_runs["new_test"]
+print(eval_run)
 
 result_path = next_path(eval_run.res_folder + "%04d_" + eval_run.name + ".tsv")
 print(f"Saving results to {result_path}")
@@ -97,10 +32,7 @@ print(f"Saving results to {result_path}")
 # load data and remove empty texts
 print("Get data...")
 df_all = pd.read_pickle(eval_run.test_data.test_data_path[0])
-n_before = df_all.shape[0]
-df_all = df_all[df_all['text'].map(len) > eval_run.min_doc_length]
-print(
-    f"Removed {n_before - df_all.shape[0]} rows with doc length below {eval_run.min_doc_length}.")
+df_all = remove_short_texts(df_all, eval_run.min_doc_length)
 
 # initialize variables
 scores = defaultdict(list)
@@ -124,11 +56,8 @@ for j, data_params_ in enumerate(product(*data_params.values())):
 
     for k, model in enumerate(models):
 
-        # load model
-        if model.model_type.lower() == "doc2vec":
-            docvecs = doc2vec_vectors(X, model.model_path)
-        elif model.model_type.lower() == "transformer":
-            docvecs = bert_doc_embeddings(X, transformer_model=model.model_name)
+        # get document vectors from model
+        docvecs = model.vectorize(X)
 
         for i, test_params_ in enumerate(product(*test_params.values())):
             start = timer()
@@ -144,7 +73,7 @@ for j, data_params_ in enumerate(product(*data_params.values())):
             print(
                 f"run {j*total_ik + k*total_i + i+1} out of {total_ikj} --- {model_param_str}  {data_param_str} | {test_param_str}")
 
-            # pipeline
+            # dimension reduction with umap
             if n_comp != -1:
                 dim_reduced_vecs = UMAP(metric=umap_metric, set_op_mix_ratio=mix_ratio,
                                         n_components=n_comp, random_state=42).fit_transform(docvecs)
