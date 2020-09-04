@@ -1,28 +1,84 @@
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import List
-from gensim.utils import simple_preprocess
+from itertools import product
+from typing import List, Any
+import pandas as pd
+import numpy as np
+from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
 from flair.embeddings import TransformerDocumentEmbeddings
-from flair.data import Sentence
+from hdbscan import HDBSCAN, all_points_membership_vectors
+from sklearn.neighbors import LocalOutlierFactor
+from gensim.utils import simple_preprocess
 from gensim.models.doc2vec import Doc2Vec
+from flair.data import Sentence
+from umap import UMAP
 
-# data for testing (do not actually provide a list with multiple paths and names)
+
+def product_dict(**kwargs):
+    return (dict(zip(kwargs.keys(), x)) for x in product(kwargs.values()))
+
+def get_scores(scores, outlier_labels, outlier_pred, desc, sep="_"):
+    scores[f"f1_macro{sep}{desc}"] = f1_score(
+        outlier_labels, outlier_pred, average='macro')
+    scores[f"in_f1{sep}{desc}"] = f1_score(
+        outlier_labels, outlier_pred, pos_label=1)
+    scores[f"out_f1{sep}{desc}"] = f1_score(
+        outlier_labels, outlier_pred, pos_label=-1)
+    scores[f"out_rec{sep}{desc}"] = recall_score(
+        outlier_labels, outlier_pred, pos_label=-1)
+    scores[f"out_prec{sep}{desc}"] = precision_score(
+        outlier_labels, outlier_pred, pos_label=-1)
+    return scores
 
 
 @dataclass
 class TestData:
-    test_data_path: List[str]
-    test_data_name: List[str]
-    test_data_fraction: List[float]
-    test_data_contamination: List[float]
-    test_data_seed: List[int]
+    path: str
+    name: str
+    min_len: int = 10
+    fraction: List[float]
+    contamination: List[float]
+    seed: List[int]
+
+    df: pd.DataFrame = None
+
+    def load_data(self):
+        print(f"Loading data from {self.path} to DataFrame...")
+        self.df = pd.read_pickle(self.path)
+        return self
+
+    def remove_short_texts(self):
+        n_before = self.df.shape[0]
+        self.df = self.df[self.df['text'].map(len) > self.min_len]
+        print(
+            f"Removed {n_before - self.df.shape[0]} rows with doc length below {self.min_len}.")
+        return self
+
+    def cartesian_params(self):
+        return product_dict(fraction=self.fraction, contamination=self.contamination, seed=self.seed)
+
+    def sample_data(self, fraction, contamination, seed):
+        df = self.df
+        X_n = int(df.shape[0] * fraction)
+        y_n = int(X_n * contamination)
+
+        df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
+        df = df[df["outlier_label"] == 1].head(X_n).append(
+            df[df["outlier_label"] == -1].head(y_n))
+        df = df.reset_index(drop=True)
+        return self
 
 
 # model for conversion from text to vectors
 @dataclass
-class EmbeddingModel:
+class EmbeddingModel(ABC):
     # doc2vec, or huggingface transformer specifier (e.g. bert-uncased)
     model_name: str
     model_train_data: str
+
+    @abstractmethod
+    def vectorize(self, X):
+        pass
 
 
 @dataclass
@@ -85,27 +141,106 @@ class DimensionReducer:
 
 @dataclass
 class UMAP(DimensionReducer):
-    umap_n_comps: List[int]
-    umap_mix_ratio: List[float]
-    umap_metric: List[str]
+    set_op_mix_ratio: List[float]
+    metric: List[str]
+    n_components: List[int]
+    random_state: List[int] = [42]
+
+    def cartesian_params(self):
+        return product_dict(n_components=self.n_components, set_op_mix_ratio=self.set_op_mix_ratio,
+                            metric=self.metric, random_state=self.random_state)
+
+    def reduce_dims(self, docvecs, metric, set_op_mix_ratio, n_components, random_state):
+        return UMAP(metric=metric, set_op_mix_ratio=set_op_mix_ratio,
+                    n_components=n_components, random_state=42).fit_transform(docvecs)
 
 
-class OutlierDetector:
-    pass
+class OutlierDetector(ABC):
+    @abstractmethod
+    def predict(self, X):
+        pass
+
+
+@dataclass
+class LOF(OutlierDetector):
+    metric: List[str]
+
+    def predict(self, dim_reduced_vecs, scores, outlier_labels, contamination, metric):
+        print("Get LocalOutlierFactor...")
+        outlier_pred_LOF = LocalOutlierFactor(
+            novelty=False, metric=metric, contamination=contamination, n_jobs=-1).fit_predict(dim_reduced_vecs)
+
+        scores = get_scores(scores, outlier_labels, outlier_pred_LOF, "LOF") 
+        out_f1 = scores["out_f1_LOF"]
+
+        print(f"out_f1_LOF {out_f1*100:.1f}")
+
+        return scores
+
+    
+    def cartesian_params(self):
+        return product_dict(metric=self.metric)
 
 
 @dataclass
 class HDBSCAN_GLOSH(OutlierDetector):
-    HDBSCAN_min_cluster_size: List[int]
-    HDBSCAN_allow_noise: List[bool]
+    min_cluster_size: List[int]
+    allow_noise: List[bool]
+
+    def predict(self, dim_reduced_vecs, scores, outlier_labels, min_cluster_size, allow_noise):
+        print("Clustering ...")
+        clusterer = HDBSCAN(min_cluster_size=min_cluster_size,
+                            prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
+        print("Get prediction data ...")
+        clusterer.generate_prediction_data()
+
+        try:
+            cluster_pred = clusterer.labels_ if allow_noise else np.argmax(
+                all_points_membership_vectors(clusterer)[:, 1:], axis=1)
+        except IndexError:
+            print(
+                "Got IndexError and will not enforce cluster membership (allow noise) ...")
+            cluster_pred = clusterer.labels_
+
+        # scoring
+        print("Get scores ...")
+
+        # GLOSH
+        threshold = pd.Series(clusterer.outlier_scores_).quantile(0.9)
+        outlier_pred = np.where(
+            clusterer.outlier_scores_ > threshold, -1, 1)
+
+        scores["cluster_n"] = len(np.unique(clusterer.labels_))
+
+        scores["homogeneity"] = homogeneity_score(
+            outlier_labels, cluster_pred)
+        scores["completeness"] = completeness_score(
+            outlier_labels, cluster_pred)
+        scores["v_measure"] = v_measure_score(outlier_labels, cluster_pred)
+
+        scores = get_scores(scores, outlier_labels, outlier_pred, "", sep="")
+
+        print(f"Homogeneity - {homogeneity_score(outlier_labels, cluster_pred)*100:.1f}  \
+                f1_macro - {f1_score(outlier_labels, outlier_pred, average='macro')*100:.1f}  \
+                out_f1 - {f1_score(outlier_labels, outlier_pred, pos_label=-1)*100:.1f}   \
+                cluster_n - {len(np.unique(clusterer.labels_))}")
+
+        return scores
+    
+
+    def cartesian_params(self):
+        return product_dict(min_cluster_size=self.min_cluster_size, allow_noise=self.allow_noise)
+
+
 
 
 @dataclass
 class EvalRun:
     name: str
-    model: List[EmbeddingModel]
-    test_data: TestData
-    test_settings: TestSettings
+    models: List[EmbeddingModel]
+    test_datasets: List[TestData]
+    dim_reductions: List[DimensionReducer]
+    outlier_detectors: List[OutlierDetector]
     res_folder: str = "/home/philipp/projects/dad4td/reports/clustering/"
     min_doc_length: int = 5
 

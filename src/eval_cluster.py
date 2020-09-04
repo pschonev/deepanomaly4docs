@@ -1,173 +1,91 @@
-# %%
-import pandas as pd
-import numpy as np
-from pathlib import Path
-from umap import UMAP
-from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
-from sklearn.neighbors import LocalOutlierFactor
-from hdbscan import HDBSCAN, all_points_membership_vectors
-from itertools import product
+from timeit import default_timer as timer
+from collections import defaultdict
+from eval_utils import next_path
 from functools import reduce
 from operator import mul
-from collections import defaultdict
-from timeit import default_timer as timer
-from eval_utils import next_path
 from tqdm import tqdm
+import pandas as pd
 from eval_cluster_config import eval_runs
-from eval_cluster_utils import sample_data, get_result, doc2vec_vectors, bert_doc_embeddings, remove_short_texts
 
 tqdm.pandas(desc="progess: ")
-
 
 def prod(iterable):
     return reduce(mul, iterable, 1)
 
+
 # parameters
 eval_run = eval_runs["new_test"]
-print(eval_run)
 
+# !!! MOVE THIS INTO THE CLASS !!!
 result_path = next_path(eval_run.res_folder + "%04d_" + eval_run.name + ".tsv")
 print(f"Saving results to {result_path}")
-
-# load data and remove empty texts
-print("Get data...")
-df_all = pd.read_pickle(eval_run.test_data.test_data_path[0])
-df_all = remove_short_texts(df_all, eval_run.min_doc_length)
 
 # initialize variables
 scores = defaultdict(list)
 result_df = pd.DataFrame()
 
+
+# !!!! FIX THIS !!!!!
 data_params = eval_run.test_data.__dict__
-models = eval_run.model
 test_params = eval_run.test_settings.__dict__
 
 total_i = prod(len(x) for x in test_params.values())
-total_ik = len(eval_run.model) * total_i
+total_ik = len(eval_run.models) * total_i
 total_ikj = prod(len(x) for x in data_params.values()) * total_ik
 
-for j, data_params_ in enumerate(product(*data_params.values())):
-    _, _, data_frac, contamination, seed = data_params_
+for i, test_data in enumerate(eval_run.test_datasets):
+    # load the test data from provided path and remove texts that are too short
+    test_data.load_data().remove_short_texts()
 
-    # sample
-    df = sample_data(df_all, data_frac=data_frac,
-                     contamination=contamination, seed=seed)
-    X = df["text"]
+    for j, data_params_ in enumerate(test_data.cartesian_params()):
+        # sample with given parameters
+        test_data.sample_data(test_data.df, **data_params_)
 
-    for k, model in enumerate(models):
+        for k, model in enumerate(eval_run.models):
 
-        # get document vectors from model
-        docvecs = model.vectorize(X)
+            # get document vectors from model
+            docvecs = model.vectorize(test_data.df["text"])
 
-        for i, test_params_ in enumerate(product(*test_params.values())):
-            start = timer()
-            n_comp, mix_ratio, umap_metric, min_cluster_size, allow_noise = test_params_
+            for l, dim_reduction in enumerate(eval_run.dim_reductions):
+                for m, dim_reduction_params_ in enumerate(test_data.cartesian_params()):
+                    start = timer()
 
-            # displaying parameters
-            data_param_str = ", ".join(
-                [f"{key}: {value}" for key, value in zip(data_params, data_params_)])
-            model_param_str = ", ".join(
-                [f"{key}: {value}" for key, value in zip(model.__dict__, model.__dict__.values())])
-            test_param_str = ", ".join(
-                [f"{key}: {value}" for key, value in zip(test_params, test_params_)])
-            print(
-                f"run {j*total_ik + k*total_i + i+1} out of {total_ikj} --- {model_param_str}  {data_param_str} | {test_param_str}")
+                    # dimension reduction on the vectors, if dim_reduction object is not None
+                    if dim_reduction:
+                        dim_reduced_vecs = dim_reduction.reduce_dims()
+                    else:
+                        dim_reduced_vecs = docvecs
 
-            # dimension reduction with umap
-            if n_comp != -1:
-                dim_reduced_vecs = UMAP(metric=umap_metric, set_op_mix_ratio=mix_ratio,
-                                        n_components=n_comp, random_state=42).fit_transform(docvecs)
-            else:
-                dim_reduced_vecs = docvecs
+                    for n, outlier_predictor in enumerate(eval_run.outlier_detectors):
+                        for o, outlier_predictor_params in enumerate(outlier_predictor.cartesian_params()):
+                            
+                            # !!!!!!! DO THIS !!!
+                            # displaying parameters
+                            data_param_str = ", ".join(
+                                [f"{key}: {value}" for key, value in zip(data_params, data_params_)])
+                            model_param_str = ", ".join(
+                                [f"{key}: {value}" for key, value in zip(model.__dict__, model.__dict__.values())])
+                            test_param_str = ", ".join(
+                                [f"{key}: {value}" for key, value in zip(test_params, test_params_)])
+                            print(
+                                f"run {j*total_ik + k*total_i + i+1} out of {total_ikj} --- {model_param_str}  {data_param_str} | {test_param_str}")
 
-            # LocalOutlierFactor
-            print("Get LocalOutlierFactor...")
-            df["predicted_LOF"] = LocalOutlierFactor(
-                novelty=False, metric=umap_metric, contamination=contamination, n_jobs=-1).fit_predict(dim_reduced_vecs)
+                            # !! LOOK AT THIS AT LEAST !!
+                            # adding param values to results dict
+                            for key, value in zip(test_params, test_params_):
+                                scores[key] = value
+                            for key, value in zip(model.__dict__, model.__dict__.values()):
+                                scores[key] = value
+                            for key, value in zip(data_params, data_params_):
+                                scores[key] = value
 
-            # clustering
-            print("Clustering ...")
-            clusterer = HDBSCAN(min_cluster_size=min_cluster_size,
-                                prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
-            print("Get prediction data ...")
-            clusterer.generate_prediction_data()
+                            # time
+                            end = timer()
+                            scores["time"] = end-start
 
-            # scoring
-            print("Get scores ...")
-
-            # GLOSH
-            threshold = pd.Series(clusterer.outlier_scores_).quantile(0.9)
-            df["predicted"] = np.where(
-                clusterer.outlier_scores_ > threshold, -1, 1)
-
-            # cluster scoring
-            outlier_labels = df["outlier_label"]
-            outlier_pred = df["predicted"]
-            outlier_pred_LOF = df["predicted_LOF"]
-            try:
-                cluster_pred = clusterer.labels_ if allow_noise else np.argmax(
-                    all_points_membership_vectors(clusterer)[:, 1:], axis=1)
-            except IndexError:
-                print(
-                    "Got IndexError and will not enforce cluster membership (allow noise) ...")
-                cluster_pred = clusterer.labels_
-
-            # adding param values to results dict
-            for key, value in zip(test_params, test_params_):
-                scores[key] = value
-            for key, value in zip(model.__dict__, model.__dict__.values()):
-                scores[key] = value
-            for key, value in zip(data_params, data_params_):
-                scores[key] = value
-
-            # scores
-            scores["homogeneity"] = homogeneity_score(
-                outlier_labels, cluster_pred)
-            scores["completeness"] = completeness_score(
-                outlier_labels, cluster_pred)
-            scores["v_measure"] = v_measure_score(outlier_labels, cluster_pred)
-            scores["f1_macro"] = f1_score(
-                outlier_labels, outlier_pred, average='macro')
-            scores["in_f1"] = f1_score(
-                outlier_labels, outlier_pred, pos_label=1)
-            scores["out_f1"] = f1_score(
-                outlier_labels, outlier_pred, pos_label=-1)
-            scores["out_rec"] = recall_score(
-                outlier_labels, outlier_pred, pos_label=-1)
-            scores["out_prec"] = precision_score(
-                outlier_labels, outlier_pred, pos_label=-1)
-            scores["f1_macro_LOF"] = f1_score(
-                outlier_labels, outlier_pred_LOF, average='macro')
-            scores["in_f1_LOF"] = f1_score(
-                outlier_labels, outlier_pred_LOF, pos_label=1)
-            scores["out_f1_LOF"] = f1_score(
-                outlier_labels, outlier_pred_LOF, pos_label=-1)
-            scores["out_rec_LOF"] = recall_score(
-                outlier_labels, outlier_pred_LOF, pos_label=-1)
-            scores["out_prec_LOF"] = precision_score(
-                outlier_labels, outlier_pred_LOF, pos_label=-1)
-
-            # time
-            end = timer()
-            scores["time"] = end-start
-
-            # unique hash for params (without data params)
-            scores["hash"] = "|".join([str(x) for x in test_params_])
-
-            scores["cluster_n"] = len(np.unique(clusterer.labels_))
-
-            # save results and print output
-            result_df = result_df.append(scores, ignore_index=True)
-            results_df = result_df.sort_values(
-                by=["homogeneity"]).reset_index(drop=True)
-            results_df.to_csv(result_path, sep="\t")
-
-            print(f"Homogeneity - {homogeneity_score(outlier_labels, cluster_pred)*100:.1f}  \
-                    f1_macro - {f1_score(outlier_labels, outlier_pred, average='macro')*100:.1f}  \
-                    out_f1 - {f1_score(outlier_labels, outlier_pred, pos_label=-1)*100:.1f}   \
-                    out_f1_LOF {f1_score(outlier_labels, outlier_pred_LOF, pos_label=-1)*100:.1f} \
-                    cluster_n - {len(np.unique(clusterer.labels_))} \
-                    time - {end-start: .1f} \n\n - ------------------\n")
+                            # save results and print output
+                            result_df = result_df.append(scores, ignore_index=True)
+                            results_df.to_csv(result_path, sep="\t")
 
 print(result_df)
 print(f"Saved results to {result_path}")

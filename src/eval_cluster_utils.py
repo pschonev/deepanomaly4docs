@@ -11,15 +11,7 @@ def remove_short_texts(df, min_len):
         f"Removed {n_before - df.shape[0]} rows with doc length below {min_len}.")
     return df
 
-def sample_data(df, data_frac, contamination, seed):
-    X_n = int(df.shape[0] * data_frac)
-    y_n = int(X_n * contamination)
 
-    df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
-    df = df[df["outlier_label"] == 1].head(X_n).append(
-        df[df["outlier_label"] == -1].head(y_n))
-    df = df.reset_index(drop=True)
-    return df
 
 
 def get_result(row):
