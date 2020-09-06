@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from itertools import product
 from typing import List, Any
+from pathlib import Path
 import pandas as pd
 import numpy as np
 from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
@@ -13,9 +14,33 @@ from gensim.models.doc2vec import Doc2Vec
 from flair.data import Sentence
 from umap import UMAP
 
+def next_path(path_pattern):
+    """
+    Finds the next free path in an sequentially named list of files
+
+    e.g. path_pattern = '%03d-results.tsv':
+
+    001-results.tsv
+    001-results.tsv
+    """
+    i = 1
+
+    # First do an exponential search
+    while Path(path_pattern % i).exists():
+        i = i * 2
+
+    # Result lies somewhere in the interval (i/2..i]
+    # We call this interval (a..b] and narrow it down until a + 1 = b
+    a, b = (i // 2, i)
+    while a + 1 < b:
+        c = (a + b) // 2  # interval midpoint
+        a, b = (c, b) if Path(path_pattern % c).exists() else (a, c)
+
+    return path_pattern % b
+
 
 def product_dict(**kwargs):
-    return (dict(zip(kwargs.keys(), x)) for x in product(kwargs.values()))
+    return [dict(zip(kwargs.keys(), x)) for x in product(*kwargs.values())]
 
 def get_scores(scores, outlier_labels, outlier_pred, desc, sep="_"):
     scores[f"f1_macro{sep}{desc}"] = f1_score(
@@ -35,10 +60,10 @@ def get_scores(scores, outlier_labels, outlier_pred, desc, sep="_"):
 class TestData:
     path: str
     name: str
-    min_len: int = 10
     fraction: List[float]
     contamination: List[float]
     seed: List[int]
+    min_len: int = 10
 
     df: pd.DataFrame = None
 
@@ -55,7 +80,7 @@ class TestData:
         return self
 
     def cartesian_params(self):
-        return product_dict(fraction=self.fraction, contamination=self.contamination, seed=self.seed)
+        return list(product_dict(fraction=self.fraction, contamination=self.contamination, seed=self.seed))
 
     def sample_data(self, fraction, contamination, seed):
         df = self.df
@@ -65,8 +90,10 @@ class TestData:
         df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
         df = df[df["outlier_label"] == 1].head(X_n).append(
             df[df["outlier_label"] == -1].head(y_n))
-        df = df.reset_index(drop=True)
+        self.df = df.reset_index(drop=True)
         return self
+
+    
 
 
 # model for conversion from text to vectors
@@ -126,40 +153,45 @@ class TransformerModel(EmbeddingModel):
         return list(docvecs)
 
 
+class DimensionReducer(ABC):
+    @abstractmethod
+    def reduce_dims(self, docvecs):
+        pass
+
+dataclass
+class NoReduction(DimensionReducer):
+
+    def cartesian_params(self):
+        return [dict()]
+
+    def reduce_dims(self, docvecs):
+        return docvecs
+
+
 @dataclass
-class TestSettings:
-    n_comps: List[int]
-    mix_ratio: List[float]
-    umap_metric: List[str]
-    min_cluster_size: List[int]
-    allow_noise: List[bool]
-
-
-class DimensionReducer:
-    pass
-
-
-@dataclass
-class UMAP(DimensionReducer):
+class UMAPModel(DimensionReducer):
     set_op_mix_ratio: List[float]
     metric: List[str]
     n_components: List[int]
-    random_state: List[int] = [42]
 
     def cartesian_params(self):
         return product_dict(n_components=self.n_components, set_op_mix_ratio=self.set_op_mix_ratio,
-                            metric=self.metric, random_state=self.random_state)
+                            metric=self.metric)
 
-    def reduce_dims(self, docvecs, metric, set_op_mix_ratio, n_components, random_state):
+    def reduce_dims(self, docvecs, metric, set_op_mix_ratio, n_components):
         return UMAP(metric=metric, set_op_mix_ratio=set_op_mix_ratio,
                     n_components=n_components, random_state=42).fit_transform(docvecs)
 
 
 class OutlierDetector(ABC):
     @abstractmethod
-    def predict(self, X):
+    def predict(self, dim_reduced_vecs, scores, outlier_labels, contamination):
         pass
 
+class PyodDetector(OutlierDetector):
+    pyod_model: Any
+    def predict(self):
+        pass
 
 @dataclass
 class LOF(OutlierDetector):
@@ -187,7 +219,8 @@ class HDBSCAN_GLOSH(OutlierDetector):
     min_cluster_size: List[int]
     allow_noise: List[bool]
 
-    def predict(self, dim_reduced_vecs, scores, outlier_labels, min_cluster_size, allow_noise):
+
+    def predict(self, dim_reduced_vecs, scores, outlier_labels, contamination, min_cluster_size, allow_noise):
         print("Clustering ...")
         clusterer = HDBSCAN(min_cluster_size=min_cluster_size,
                             prediction_data=True, metric="euclidean").fit(dim_reduced_vecs)
@@ -200,6 +233,7 @@ class HDBSCAN_GLOSH(OutlierDetector):
         except IndexError:
             print(
                 "Got IndexError and will not enforce cluster membership (allow noise) ...")
+            print(all_points_membership_vectors(clusterer))
             cluster_pred = clusterer.labels_
 
         # scoring
@@ -242,124 +276,48 @@ class EvalRun:
     dim_reductions: List[DimensionReducer]
     outlier_detectors: List[OutlierDetector]
     res_folder: str = "/home/philipp/projects/dad4td/reports/clustering/"
-    min_doc_length: int = 5
+    res_path: str = ""
+    min_doc_length: int = 10
+    total_iter: int = 0
+    current_iter: int = 1
 
+    def init_iter_counter(self):
+        model_perm = len(self.models)
+        test_data_perm = sum(len(x.cartesian_params()) for x in self.test_datasets)
+        dim_red_perm = sum(len(x.cartesian_params()) for x in self.dim_reductions)
+        out_detect_perm = sum(len(x.cartesian_params()) for x in self.outlier_detectors)
+        self.total_iter = model_perm*test_data_perm*dim_red_perm*out_detect_perm
 
-# model definitions
+        print(f"Evaluating {self.total_iter} parameter permutations.")
+        return self
 
-# doc2vec
-# doc2vecwiki011030 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwiki011030", "/home/philipp/projects/dad4td/models/doc2vec_01_10/doc2vec_wiki.bin", "wikiEN", 0.1, 10, 30, None)
-# doc2vecwiki013030 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwiki013030", "/home/philipp/projects/dad4td/models/doc2vec_01_30/doc2vec_wiki.bin", "wikiEN", 0.1, 30, 30, None)
-# doc2vecwiki013001 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwiki013001", "/home/philipp/projects/dad4td/models/doc2vec_01_30_min1/doc2vec_wiki.bin", "wikiEN", 0.1, 30, 1, None)
-# doc2vecwiki031030 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwiki031030", "/home/philipp/projects/dad4td/models/doc2vec_03_10/doc2vec_wiki.bin", "wikiEN", 0.3, 10, 30, None)
-# doc2vecimdb20news101001 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecimdb20news101001", "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_10_min1/doc2vec_wiki.bin", "imdb_20news", 1.0, 10, 1, None)
-# doc2vecimdb20news1010001 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecimdb20news1010001", "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_100_min1/doc2vec_wiki.bin", "imdb_20news", 1.0, 100, 1, None)
-# doc2vecwikiimdb20news011001 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwikiimdb20news011001", "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_10_min1/doc2vec_wiki.bin", "wiki_imdb_20news", 0.1, 10, 1, None)
-# doc2vecwikiimdb20news011030 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwikiimdb20news011030", "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_10_min30/doc2vec_wiki.bin", "wiki_imdb_20news", 0.1, 10, 30, None)
-# doc2vecwikiimdb20news013030 = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwikiimdb20news013030", "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_10_min30/doc2vec_wiki.bin", "wiki_imdb_20news", 0.1, 30, 30, None)
-# doc2vecapnews = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecapnews", "/home/philipp/projects/dad4td/models/apnews_dbow/doc2vec.bin", "apnews", 1.0, 100, 1, None)
-# doc2vecwikiall = EmbeddingModel(
-#     "doc2vec", "doc2vec", "doc2vecwikiall", "/home/philipp/projects/dad4td/models/enwiki_dbow/doc2vec.bin", "wikiEN", 1.0, 100, 1, None)
+    def init_result_path(self):
+        self.res_path = next_path(self.res_folder + "%04d_" + self.name + ".tsv")
+        print(f"Saving results to {self.res_path}")
+        return self
 
-doc2vecwikiall_new = Doc2VecModel("doc2vec_wiki_all", "wiki_EN", 1.0,
+# vectorize model
+doc2vecwikiall = Doc2VecModel("doc2vec_wiki_all", "wiki_EN", 1.0,
                                   100, 1, "/home/philipp/projects/dad4td/models/enwiki_dbow/doc2vec.bin")
 
-# # transformer flair
-# bert_base_uncased = EmbeddingModel(
-#     "transformer", "bert-base-uncased", "bert-base-uncased", None, "EN_lower", None, None, None, 110)
-# bert_large_uncased = EmbeddingModel(
-#     "transformer", "bert-large-uncased", "bert-large-uncased", None, "EN_lower", None, None, None, 340)
-# longformer_base = EmbeddingModel(
-#     "transformer", "allenai/longformer-base-4096", "allenai/longformer-base-4096", None, "EN_lower", None, None, None, 149)
-# longformer_large = EmbeddingModel(
-#     "transformer", "allenai/longformer-large-4096", "allenai/longformer-large-4096", None, "EN_lower", None, None, None, 435)
-# gpt2_large = EmbeddingModel(
-#     "transformer", "gpt2-large", "gpt2-large", None, "EN_lower", None, None, None, 774)
-# gpt2_medium = EmbeddingModel(
-#     "transformer", "gpt2-medium", "gpt2-medium", None, "EN_lower", None, None, None, 345)
-# roberta_large = EmbeddingModel(
-#     "transformer", "roberta-large", "roberta-large", None, "EN_lower", None, None, None, 355)
-# t5_large = EmbeddingModel(
-#     "transformer", "t5-large", "t5-large", None, "EN_lower", None, None, None, 770)
-# t5_base = EmbeddingModel(
-#     "transformer", "t5-base", "t5-base", None, "EN_lower", None, None, None, 220)
+bert_base_uncased = TransformerModel("bert-base-uncased", "wiki_book", 110)
 
-bert_base_uncased_new = TransformerModel("bert-base-uncased", "wiki_book", 110)
-
-# test data settings
+# test data
 imdb_20news_3splits = TestData(
-    ["/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"], ["imdb_20news"], [0.15], [0.1], [42, 43, 44])
+    "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl", "imdb_20news", fraction=[0.15], contamination=[0.1], seed=[42, 43, 44])
 
 
-# evaluation settings
-# standard_test = TestSettings([3, 6, 15, 45, 200], [0.0, 0.15, 0.3, 0.4, 1.0], [
-#                              "cosine"], [15, 45, 90], [False])
+# dimension reduction
+umap_test = UMAPModel([0.15], ["cosine"], [3])
 
-# no_red_test = TestSettings([-1], [0.0, 0.15, 0.3, 0.4, 1.0], [
-#     "cosine"], [15, 45, 90], [False])
+# outlier detectors
+lof_test = LOF(["cosine"])
 
-# standard_and_no_red_test = TestSettings([-1, 3, 6, 15, 45, 200], [0.0, 0.15, 0.3, 0.4, 1.0], [
-#     "cosine"], [15, 45, 90], [False])
+glosh_test = HDBSCAN_GLOSH([45], [False])
 
-# standard_big_clusters_test = TestSettings([3, 6, 15, 45, 200], [0.0, 0.15, 0.3, 0.4, 1.0], [
-#     "cosine"], [120], [False])
-
-# standard_bigger_clusters_test = TestSettings([3, 6, 15, 45, 200, -1], [0.15, 0.3, 0.4, 1.0], [
-#     "euclidean", "cosine"], [250, 500], [False])
-
-# small_transformer_test = TestSettings([-1], [0.15], ["cosine"], [250], [False])
-
-small_test_new = TestSettings([3], [0.15], ["cosine"], [50], [False])
-
-# evaluation run definition
-# test_doc2vec = EvalRun("test_doc2vec", [
-#                        doc2vecwiki011030, doc2vecwiki013030], imdb_20news_3splits, standard_test)
-
-# full_doc2vec = EvalRun("full_doc2vec", [
-#                        doc2vecwiki011030, doc2vecwiki013030, doc2vecwiki013001, doc2vecwiki031030, doc2vecimdb20news101001,
-#                        doc2vecimdb20news1010001, doc2vecwikiimdb20news011001, doc2vecwikiimdb20news011030, doc2vecapnews, doc2vecwikiall
-#                        ], imdb_20news_3splits, standard_test)
-
-# doc2vecwikiimdb20news013030 = EvalRun("doc2vecwikiimdb20news013030", [
-#     doc2vecwikiimdb20news013030], imdb_20news_3splits, standard_test)
-
-# test_transformer = EvalRun("test_transformer", [
-#                            bert_base_uncased, bert_large_uncased], imdb_20news_3splits, standard_test)
-
-# transformer_no_red = EvalRun("transformer_no_red", [
-#     bert_base_uncased, bert_large_uncased], imdb_20news_3splits, no_red_test)
-
-# longformer_eval = EvalRun("longformer_eval", [
-#     longformer_base, longformer_large], imdb_20news_3splits, standard_test)
-
-# longformer_eval_big_clusters = EvalRun("longformer_eval_big_clusters", [
-#     longformer_base, longformer_large], imdb_20news_3splits, standard_big_clusters_test)
-
-# longformer_large_bigger_clusters = EvalRun("longformer_large_bigger_clusters", [
-#     longformer_large], imdb_20news_3splits, standard_bigger_clusters_test)
-
-# roberta_LOF_eval = EvalRun("roberta_LOF_eval", [
-#     roberta_large], imdb_20news_3splits, small_transformer_test)
-
-new_test = EvalRun("new_test", [
-                   doc2vecwikiall_new, bert_base_uncased_new], imdb_20news_3splits, small_test_new)
+# eval run
+new_test_complete= EvalRun("new_test_complete", [doc2vecwikiall, bert_base_uncased], [imdb_20news_3splits], [NoReduction(), umap_test], [glosh_test, lof_test])
 
 # dictionary containing all the settings
 eval_runs = {
-    # "test_doc2vec": test_doc2vec, "full_doc2vec": full_doc2vec,
-    #              "doc2vecwikiimdb20news013030": doc2vecwikiimdb20news013030, "test_transformer": test_transformer,
-    #              "transformer_no_red": transformer_no_red, "longformer_eval": longformer_eval,
-    #              "longformer_eval_big_clusters": longformer_eval_big_clusters,
-    #              "longformer_large_bigger_clusters": longformer_large_bigger_clusters,
-    #              "roberta_LOF_eval": roberta_LOF_eval,
-    "new_test": new_test}
+    "new_test_complete": new_test_complete}
