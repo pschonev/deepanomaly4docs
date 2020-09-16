@@ -63,21 +63,22 @@ def create_show_graph(df, col, coords_2d=None, color="title", line_chars=75, kwa
 
 # parameters
 set_op_mix_ratio = 1.0
+n_components = 256
 test_data = TestData(
     "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl", "imdb_20news", fraction=[], contamination=[], seed=[])
 doc2vec_model = Doc2VecModel("doc2vecapnews", "wiki_EN", 1.0,
                              100, 1, "/home/philipp/projects/dad4td/models/enwiki_dbow/doc2vec.bin")
 dim_reducer = UMAP(metric="cosine", set_op_mix_ratio=set_op_mix_ratio,
-               n_components=100, random_state=42)
+               n_components=n_components, random_state=42)
 
 # get test data
 
 test_data.load_data().remove_short_texts()
-test_data.sample_data(fraction=1.0, contamination=0.1, seed=1)
+df = test_data.sample_data(fraction=1.0, contamination=0.1, seed=1)
 
 # vectorize
 
-docvecs = doc2vec_model.vectorize(test_data.df["text"])
+docvecs = doc2vec_model.vectorize(df["text"])
 
 # dim reduce
 dim_reduced_vecs = dim_reducer.fit_transform(docvecs)
