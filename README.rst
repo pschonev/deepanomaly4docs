@@ -7,22 +7,21 @@ Plan
 - ☑ UMAP simple TF-idf embeddings and density estimation (visual)
 - ☑ UMAP outlier detection
 - ☑ UMAP maker's topic modelling
-- ☐ sklearn outlier on topic vectors (with visualization)
-- ☐ HDBSCAN outlier detection (GLOSH) https://hdbscan.readthedocs.io/en/latest/outlier_detection.html
-- ☐ evaluate sklearn
-- ☐ fastText oder andere sentence/doc embeddings
+- ☑ HDBSCAN outlier detection (GLOSH) https://hdbscan.readthedocs.io/en/latest/outlier_detection.html
+- ☑ test outlier detection algorithms from PyOD
+- ☑ fastText or other sentence/doc embeddings
 
 |
 
-- ☐ DocBERT embeddings
+- ☑ Transformer embeddings
 - ☐ Autoencoder embeddings
-- ☐ Autoencoder loss
-- ☐ Density estimation for these new embeddings
+- ☑ Autoencoder loss
+- ☑ Density estimation for these new embeddings
 
 |
 
 - ☐ Everything above but on real data
-- ☐ Test Siamese Network approach
+- ☑ Test Siamese Network approach
  
  |
 
