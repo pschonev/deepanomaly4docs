@@ -14,18 +14,18 @@ tqdm.pandas(desc="progess: ")
 
 # parameters
 set_op_mix_ratio = 1.0
-n_components = 1
+n_components = 256
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_vec.pkl"
 test_data = TestData(
     data_path, "imdb_20news", fraction=[], contamination=[], seed=[])
-doc2vec_model = Doc2VecModel("doc2vec", "apnews", 1.0,
-                             100, 1, "/home/philipp/projects/dad4td/models/apnews_dbow/doc2vec.bin")
+doc2vec_model = Doc2VecModel("doc2vecwikiimdb20news013030", "wiki_EN_imdb_20news", 0.1,
+                                           30, 30, "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_30_min30/doc2vec_wiki.bin")
 dim_reducer = UMAP(metric="cosine", set_op_mix_ratio=set_op_mix_ratio,
                    n_components=n_components, random_state=42)
 
 
 # %% save vectors
-vector_name = "vecs_apnews"
+vector_name = "doc2vecwikiimdb20news013030"
 save_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_vec.pkl"
 
 test_data.load_data()
@@ -43,13 +43,13 @@ df
 # %%
 test_data.load_data()
 df = test_data.df
-vector_name = "vecs_apnews"
+vector_name = "doc2vecwikiimdb20news013030"
 docvecs = df[vector_name]
 docvecs
 # %%
 # dim reduce
-dim_reduced_vecs = dim_reducer.fit_transform(docvecs)
-df["apnews_256"] = list(dim_reduced_vecs)
+dim_reduced_vecs = dim_reducer.fit_transform(list(docvecs))
+df["doc2vecwikiimdb20news013030_256"] = list(dim_reduced_vecs)
 df
 # %%
 df.to_pickle(data_path)

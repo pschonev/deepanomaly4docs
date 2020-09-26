@@ -18,13 +18,13 @@ pretrained_emb = "/home/philipp/projects/dad4td/models/en_wiki_w2vec/word2vec.bi
 #pretrained_emb = None
 
 # input corpus
-train_corpus = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_wiki_01.txt"
+train_corpus = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_apnews_01.txt"
 
 # output model
-saved_path = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_30_min30/doc2vec_wiki.bin"
+saved_path = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_apnews_01_30_min30/doc2vec_apnews.bin"
 
 # mapfile
-mapfile = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_30_min30/doc2vec_mapfile.txt"
+mapfile = "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_apnews_01_30_min30/doc2vec_apnews_mapfile.txt"
 
 # enable logging
 logging.basicConfig(
