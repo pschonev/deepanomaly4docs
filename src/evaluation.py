@@ -313,7 +313,7 @@ class PyodDetector(OutlierDetector):
         return scores, out_pred
 
     def cartesian_params(self):
-        return product_dict(outlier_detector=[self.outlier_detector])
+        return product_dict(**self.kwargs)
 
 
 @dataclass

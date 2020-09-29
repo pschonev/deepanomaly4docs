@@ -14,7 +14,7 @@ def add_scores(scores, list_of_param_dicts):
     return scores
 
 # parameters
-eval_run = eval_runs["dimred_dimred_longf"]
+eval_run = eval_runs["invis_params"]
 
 # initialize variables
 eval_run.init_result_path()

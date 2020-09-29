@@ -41,6 +41,10 @@ doc2vecwikiimdb20news011030 = Doc2VecModel("doc2vecwikiimdb20news011030", "wiki_
 doc2vecwikiimdb20news013030 = Doc2VecModel("doc2vecwikiimdb20news013030", "wiki_EN_imdb_20news", 0.1,
                                            30, 30, "/home/philipp/projects/dad4td/models/doc2vec_20_news_imdb_wiki_01_30_min30/doc2vec_wiki.bin")
 
+allnews_05_15_30 = Doc2VecModel("allnews_05_15_30", "all_news", 0.5,
+                                15, 30, "/home/philipp/projects/dad4td/models/all_news_05_30_30/all_news.bin")
+
+
 all_doc2vec = [doc2vecwikiall, doc2vecapnews, doc2vecwiki011030, doc2vecwiki013030, doc2vecwiki013001, doc2vecwiki031030,
                doc2vecimdb20news101001, doc2vecimdb20news1010001, doc2vecwikiimdb20news011001, doc2vecwikiimdb20news011030, doc2vecwikiimdb20news013030]
 
@@ -60,7 +64,7 @@ fasttext_amazon = RNNEmbedding(
 
 # test data
 imdb_20news_3splits = TestData(
-    "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl", "imdb_20news", fraction=[0.15], contamination=[0.1], seed=[42, 43, 44])
+    "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl", "imdb_20news", fraction=[0.15], contamination=[0.1], seed=[43, 44, 42])
 imdb_20news_3splits_small = TestData(
     "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl", "imdb_20news", fraction=[0.05], contamination=[0.1], seed=[42, 43, 44])
 imdb_20news_3splits_verysmall = TestData(
@@ -464,17 +468,49 @@ dimred_dimred_big_2 = EvalRun("dimred_dimred_big_2",
                               )
 
 dimred_dimred_longf = EvalRun("dimred_dimred_longf",
-                            [
-                                longformer_large
-                            ],
-                            [imdb_20news_3splits_verysmall],
-                            [SklearnReducer(UMAP, "UMAP", False, dict(
-                                n_components=[256], set_op_mix_ratio=[1.0], metric=["cosine"])),
-                                NoReduction()],
-                            [DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[15],
-                                                                            n_epochs_without_progress=[20], model=["maaten"], distance=["pn"])),
-                             ]
-                            )
+                              [
+                                  longformer_large
+                              ],
+                              [imdb_20news_3splits_verysmall],
+                              [SklearnReducer(UMAP, "UMAP", False, dict(
+                                  n_components=[256], set_op_mix_ratio=[1.0], metric=["cosine"])),
+                                  NoReduction()],
+                              [DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[15],
+                                                                              n_epochs_without_progress=[20], model=["maaten"], distance=["pn"])),
+                               ]
+                              )
+
+all_news_test = EvalRun("all_news_test",
+                        [allnews_05_15_30],
+                        [imdb_20news_3splits],
+                        [SklearnReducer(UMAP, "UMAP", False, dict(
+                            n_components=[2, 8, 64, 128, 256, 300], set_op_mix_ratio=[1.0], metric=["cosine"])),
+                         NoReduction()],
+                        [PyodDetector(AutoEncoder, "AE", dict(
+                            hidden_neurons=[[2, 1, 2]], epochs=[1])),
+                         PyodDetector(HBOS, "HBOS"),
+                         PyodDetector(OCSVM, "OCSVM"),
+                         DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[15],
+                                                                        n_epochs_without_progress=[20], model=["maaten"], distance=["pn"]))
+                         ])
+
+invis_params = EvalRun("invis_params",
+                       [allnews_05_15_30],
+                       [imdb_20news_3splits],
+                       [SklearnReducer(UMAP, "UMAP", False, dict(
+                           n_components=[300, 8], set_op_mix_ratio=[1.0], metric=["cosine"]))],
+                       [DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[5, 15, 50, 150, 300],
+                                                                       n_epochs_without_progress=[2, 5, 15, 25, 50], model=["maaten", "szubert", "hinton"], distance=["pn"]))
+                        ])
+
+all_new_mono = EvalRun("all_new_mono",
+                       [allnews_05_15_30],
+                       [imdb_20news_3splits],
+                       [SklearnReducer(UMAP, "UMAP", False, dict(
+                           n_components=[1], set_op_mix_ratio=[1.0], metric=["cosine"]))],
+                       [PyodDetector(AutoEncoder, "AE", dict(
+                           hidden_neurons=[[1]], epochs=[1]))
+                        ])
 
 # dictionary containing all the settings
 eval_runs = {
@@ -502,4 +538,6 @@ eval_runs = {
     "dimred_dimred": dimred_dimred,
     "dimred_dimred_big": dimred_dimred_big,
     "dimred_dimred_big_2": dimred_dimred_big_2,
-    "dimred_dimred_longf": dimred_dimred_longf}
+    "dimred_dimred_longf": dimred_dimred_longf,
+    "all_news_test": all_news_test,
+    "invis_params": invis_params}

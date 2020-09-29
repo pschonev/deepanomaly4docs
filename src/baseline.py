@@ -5,6 +5,7 @@ from umap import UMAP
 from ivis import Ivis
 from numpy import percentile
 from collections import defaultdict
+from eval_cluster_config import Doc2VecModel
 from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
 
 
@@ -42,12 +43,18 @@ df = pd.read_pickle(data_path)
 df = sample_data(df, fraction, contamination, seed)
 
 df.columns
+
+#%%
+doc2vec_path = "/home/philipp/projects/dad4td/models/all_news_05_30_30/all_news.bin"
+doc2vec_model = Doc2VecModel("all_news_05_30_30", "all_news", 0.5,
+                                           30, 30, doc2vec_path)
+docvecs = doc2vec_model.vectorize(df["text"])
 #%%
 # UMAP
 dim_reducer = UMAP(metric="cosine", set_op_mix_ratio=1.0,
                    n_components=1, random_state=42)
 
-docvecs = list(df["doc2vecwikiimdb20news013030"])
+docvecs = list(docvecs)
 dim_reduced_vecs = dim_reducer.fit_transform(docvecs)
 
 decision_scores = dim_reduced_vecs.astype(float)
