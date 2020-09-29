@@ -28,7 +28,7 @@ for test_data in eval_run.test_datasets:
 
     for data_params_ in test_data.cartesian_params():
         # sample with given parameters
-        df = test_data.sample_data(**data_params_)
+        df = test_data.sample_data(df, **data_params_)
 
         for model in eval_run.models:
 

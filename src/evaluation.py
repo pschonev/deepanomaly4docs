@@ -26,6 +26,7 @@ from sklearn.manifold import TSNE
 from flair.data import Sentence
 from umap import UMAP
 
+
 def next_path(path_pattern):
     """
     Finds the next free path in an sequentially named list of files
@@ -69,6 +70,24 @@ def get_scores(scores, outlier_labels, outlier_pred):
     return scores
 
 
+def reject_outliers(sr, iq_range=0.5):
+    pcnt = (1 - iq_range) / 2
+    qlow, median, qhigh = np.quantile(sr, [pcnt, 0.50, 1-pcnt])
+    iqr = qhigh - qlow
+    return ((np.abs(sr - median)) >= iqr/2)
+
+
+def sample_data(df, fraction, contamination, seed):
+    X_n = int(df.shape[0] * fraction)
+    y_n = int(X_n * contamination)
+
+    df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
+    df = df[df["outlier_label"] == 1].head(X_n).append(
+        df[df["outlier_label"] == -1].head(y_n))
+    df = df.reset_index(drop=True)
+    return df
+
+
 @dataclass
 class TestData:
     path: str
@@ -96,15 +115,7 @@ class TestData:
         return list(product_dict(fraction=self.fraction, contamination=self.contamination, seed=self.seed))
 
     def sample_data(self, fraction, contamination, seed):
-        df = self.df
-        X_n = int(df.shape[0] * fraction)
-        y_n = int(X_n * contamination)
-
-        df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
-        df = df[df["outlier_label"] == 1].head(X_n).append(
-            df[df["outlier_label"] == -1].head(y_n))
-        df = df.reset_index(drop=True)
-        return df
+        return sample_data(self.df, fraction, contamination, seed)
 
 
 # model for conversion from text to vectors

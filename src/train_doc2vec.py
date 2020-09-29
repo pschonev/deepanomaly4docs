@@ -12,6 +12,7 @@ from gensim.models.callbacks import CallbackAny2Vec
 from gensim.utils import simple_preprocess
 from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
 from tqdm import tqdm
+from evaluation import get_scores
 
 tqdm.pandas(desc="progess: ")
 
@@ -25,19 +26,6 @@ def sample_data(df, fraction, contamination, seed):
     df = df.reset_index(drop=True)
     return df
 
-
-def get_scores(scores, outlier_labels, outlier_pred):
-    scores[f"f1_macro"] = f1_score(
-        outlier_labels, outlier_pred, average='macro')
-    scores[f"in_f1"] = f1_score(
-        outlier_labels, outlier_pred, pos_label=1)
-    scores[f"out_f1"] = f1_score(
-        outlier_labels, outlier_pred, pos_label=-1)
-    scores[f"out_rec"] = recall_score(
-        outlier_labels, outlier_pred, pos_label=-1)
-    scores[f"out_prec"] = precision_score(
-        outlier_labels, outlier_pred, pos_label=-1)
-    return scores
 
 def reject_outliers(sr, iq_range=0.5):
     pcnt = (1 - iq_range) / 2
