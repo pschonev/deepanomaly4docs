@@ -35,6 +35,9 @@ Plan
 |
 
 Currently: 
+
+|
+
 - monitoring progress on doc2vec training
 - test if ivis unstable over runs 
 
