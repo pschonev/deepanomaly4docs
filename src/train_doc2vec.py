@@ -12,27 +12,9 @@ from gensim.models.callbacks import CallbackAny2Vec
 from gensim.utils import simple_preprocess
 from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score
 from tqdm import tqdm
-from evaluation import get_scores
+from evaluation import get_scores, reject_outliers, sample_data
 
 tqdm.pandas(desc="progess: ")
-
-def sample_data(df, fraction, contamination, seed):
-    X_n = int(df.shape[0] * fraction)
-    y_n = int(X_n * contamination)
-
-    df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
-    df = df[df["outlier_label"] == 1].head(X_n).append(
-        df[df["outlier_label"] == -1].head(y_n))
-    df = df.reset_index(drop=True)
-    return df
-
-
-def reject_outliers(sr, iq_range=0.5):
-    pcnt = (1 - iq_range) / 2
-    qlow, median, qhigh = np.quantile(sr, [pcnt, 0.50, 1-pcnt])
-    iqr = qhigh - qlow
-    return ((np.abs(sr - median)) >= iqr/2)
-
 
 class EpochSaver(CallbackAny2Vec):
     '''Callback to save model after each epoch.'''
@@ -57,9 +39,6 @@ class EpochResult(CallbackAny2Vec):
         self.epoch = 0
 
     def on_epoch_begin(self, model):
-        print("Epoch #{} start".format(self.epoch))
-
-    def on_epoch_end(self, model):
         print(
             f"\n----------------\n\nEnd of epoch {self.epoch}. Getting scores...")
         scores = defaultdict(list)
@@ -105,7 +84,7 @@ contamination = 0.1
 test_data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
 df = pd.read_pickle(test_data_path)
 test_data = [(sample_data(df, fraction, contamination, seed), seed) for seed in seeds]
-test_data = test_data + [sample_data(df, fraction=1.0, contamination=contamination, seed=1)]
+test_data = test_data + [(sample_data(df, fraction=1.0, contamination=contamination, seed=1), 1)]
 
 # doc2vec parameters
 vector_size = 300
@@ -129,13 +108,13 @@ train_corpus = "/home/philipp/projects/dad4td/data/raw/all-the-news-2_1_05_sf.tx
 save_folder = "/home/philipp/projects/dad4td/models/all_news_05_50_30_big_test"
 
 # output model
-save_path = save_folder + "all_news.bin"
+save_path = save_folder + "/all_news.bin"
 
 # mapfile
-mapfile = save_folder + "all_news_mapfile.txt"
+mapfile = save_folder + "/all_news_mapfile.txt"
 
 # log_path
-log_path = save_folder + "all_news_results.tsv"
+log_path = save_folder + "/all_news_results.tsv"
 
 # enable logging
 logging.basicConfig(
