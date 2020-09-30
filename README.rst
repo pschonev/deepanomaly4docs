@@ -3,29 +3,40 @@ Deep Anomaly Detection for Text Documents
 
 Plan
 =====
-- using test data (20 newsgroups)
-- ☑ UMAP simple TF-idf embeddings and density estimation (visual)
-- ☑ UMAP outlier detection
-- ☑ UMAP maker's topic modelling
-- ☑ HDBSCAN outlier detection (GLOSH) https://hdbscan.readthedocs.io/en/latest/outlier_detection.html
-- ☑ test outlier detection algorithms from PyOD
-- ☑ fastText or other sentence/doc embeddings
+- using test data (IMDB / 20 Newsgroup)
+- ☑ TF-IDF Embeddings with UMAP and LOF
+- ☑ Visualization
+- ☑ enstop topic modelling
+- ☑ HDBSCAN cluster analysis and outlier detection (GLOSH) https://hdbscan.readthedocs.io/en/latest/outlier_detection.html
+- ☑ outlier detection algorithms from PyOD (LOF, HBOS, PCA, IForest) https://github.com/yzhao062/pyod
+
+- ☑ test flair https://github.com/flairNLP/flair
+- ☑ Transformer embeddings
+- ☑ word embedding pooling - word2vec, glove, fasttext
+- ☑ word embedding RNN/LSTM
+- ☐ Autoencoder embeddings
 
 |
 
-- ☑ Transformer embeddings
-- ☐ Autoencoder embeddings
-- ☑ Autoencoder loss
-- ☑ Density estimation for these new embeddings
+- ☑ Autoencoder loss (with progress on outlier f1)
+- ☑ Siamese Network (ivis)
+- ☐ other new DL approaches
 
 |
 
 - ☐ Everything above but on real data
-- ☑ Test Siamese Network approach
  
- |
+|
 
-- ☐ Compare with computer vision approach?
+- ☐ unsupervised vs weakly supervised
+- ☐ ensembles
+- ☐ Compare with computer vision approach
+
+|
+
+Currently: 
+- monitoring progress on doc2vec training
+- test if ivis unstable over runs 
 
 
 Detect outliers in text document datasets.
