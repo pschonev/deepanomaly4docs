@@ -42,8 +42,6 @@ Currently:
 - test if ivis unstable over runs 
 
 
-Detect outliers in text document datasets.
-
 Project Organization
 =====================
 
