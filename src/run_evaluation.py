@@ -1,6 +1,6 @@
 from timeit import default_timer as timer
 from collections import defaultdict
-from eval_utils import next_path
+from evaluation import next_path
 from tqdm import tqdm
 import pandas as pd
 from evaluation_config import eval_runs
@@ -28,7 +28,7 @@ for test_data in eval_run.test_datasets:
 
     for data_params_ in test_data.cartesian_params():
         # sample with given parameters
-        df = test_data.sample_data(df, **data_params_)
+        df = test_data.sample_data(**data_params_)
 
         for model in eval_run.models:
 

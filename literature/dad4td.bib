@@ -1,0 +1,1628 @@
+
+@article{reimers_sentence-bert_2019,
+	title = {Sentence-{BERT}: {Sentence} {Embeddings} using {Siamese} {BERT}-{Networks}},
+	shorttitle = {Sentence-{BERT}},
+	url = {http://arxiv.org/abs/1908.10084},
+	abstract = {BERT (Devlin et al., 2018) and RoBERTa (Liu et al., 2019) has set a new state-of-the-art performance on sentence-pair regression tasks like semantic textual similarity (STS). However, it requires that both sentences are fed into the network, which causes a massive computational overhead: Finding the most similar pair in a collection of 10,000 sentences requires about 50 million inference computations ({\textasciitilde}65 hours) with BERT. The construction of BERT makes it unsuitable for semantic similarity search as well as for unsupervised tasks like clustering. In this publication, we present Sentence-BERT (SBERT), a modification of the pretrained BERT network that use siamese and triplet network structures to derive semantically meaningful sentence embeddings that can be compared using cosine-similarity. This reduces the effort for finding the most similar pair from 65 hours with BERT / RoBERTa to about 5 seconds with SBERT, while maintaining the accuracy from BERT. We evaluate SBERT and SRoBERTa on common STS tasks and transfer learning tasks, where it outperforms other state-of-the-art sentence embeddings methods.},
+	urldate = {2020-05-21},
+	journal = {arXiv:1908.10084 [cs]},
+	author = {Reimers, Nils and Gurevych, Iryna},
+	month = aug,
+	year = {2019},
+	note = {arXiv: 1908.10084},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/3E3TXAX7/1908.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/UGRP5PTN/Reimers and Gurevych - 2019 - Sentence-BERT Sentence Embeddings using Siamese B.pdf:application/pdf}
+}
+
+@article{beltagy_longformer_2020,
+	title = {Longformer: {The} {Long}-{Document} {Transformer}},
+	shorttitle = {Longformer},
+	url = {http://arxiv.org/abs/2004.05150},
+	abstract = {Transformer-based models are unable to process long sequences due to their self-attention operation, which scales quadratically with the sequence length. To address this limitation, we introduce the Longformer with an attention mechanism that scales linearly with sequence length, making it easy to process documents of thousands of tokens or longer. Longformer's attention mechanism is a drop-in replacement for the standard self-attention and combines a local windowed attention with a task motivated global attention. Following prior work on long-sequence transformers, we evaluate Longformer on character-level language modeling and achieve state-of-the-art results on text8 and enwik8. In contrast to most prior work, we also pretrain Longformer and finetune it on a variety of downstream tasks. Our pretrained Longformer consistently outperforms RoBERTa on long document tasks and sets new state-of-the-art results on WikiHop and TriviaQA.},
+	urldate = {2020-05-21},
+	journal = {arXiv:2004.05150 [cs]},
+	author = {Beltagy, Iz and Peters, Matthew E. and Cohan, Arman},
+	month = apr,
+	year = {2020},
+	note = {arXiv: 2004.05150},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/E3VFTQBU/2004.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/HQI6A9HP/Beltagy et al. - 2020 - Longformer The Long-Document Transformer.pdf:application/pdf}
+}
+
+@inproceedings{schlegl_unsupervised_2017,
+	address = {Cham},
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {Unsupervised {Anomaly} {Detection} with {Generative} {Adversarial} {Networks} to {Guide} {Marker} {Discovery}},
+	isbn = {978-3-319-59050-9},
+	doi = {10.1007/978-3-319-59050-9_12},
+	abstract = {Obtaining models that capture imaging markers relevant for disease progression and treatment monitoring is challenging. Models are typically based on large amounts of data with annotated examples of known markers aiming at automating detection. High annotation effort and the limitation to a vocabulary of known markers limit the power of such approaches. Here, we perform unsupervised learning to identify anomalies in imaging data as candidates for markers. We propose AnoGAN, a deep convolutional generative adversarial network to learn a manifold of normal anatomical variability, accompanying a novel anomaly scoring scheme based on the mapping from image space to a latent space. Applied to new data, the model labels anomalies, and scores image patches indicating their fit into the learned distribution. Results on optical coherence tomography images of the retina demonstrate that the approach correctly identifies anomalous images, such as images containing retinal fluid or hyperreflective foci.},
+	language = {en},
+	booktitle = {Information {Processing} in {Medical} {Imaging}},
+	publisher = {Springer International Publishing},
+	author = {Schlegl, Thomas and Seeböck, Philipp and Waldstein, Sebastian M. and Schmidt-Erfurth, Ursula and Langs, Georg},
+	editor = {Niethammer, Marc and Styner, Martin and Aylward, Stephen and Zhu, Hongtu and Oguz, Ipek and Yap, Pew-Thian and Shen, Dinggang},
+	year = {2017},
+	keywords = {Anomaly Detection, Image Patch, Latent Space, Optical Coherence Tomography, Query Image},
+	pages = {146--157},
+	file = {Submitted Version:/home/philipp/snap/zotero-snap/common/Zotero/storage/N6QFFYDH/Schlegl et al. - 2017 - Unsupervised Anomaly Detection with Generative Adv.pdf:application/pdf}
+}
+
+@inproceedings{chen_outlier_2017,
+	title = {Outlier {Detection} with {Autoencoder} {Ensembles}},
+	doi = {10.1137/1.9781611974973.11},
+	abstract = {In this paper, we introduce autoencoder ensembles for unsupervised outlier detection. One problem with neural networks is that they are sensitive to noise and often require large data sets to work robustly, while increasing data size makes them slow. As a result, there are only a few existing works in the literature on the use of neural networks in outlier detection. This paper shows that neural networks can be a very competitive technique to other existing methods. The basic idea is to randomly vary on the connectivity architecture of the autoencoder to obtain significantly better performance. Furthermore, we combine this technique with an adaptive sampling method to make our approach more efficient and effective. Experimental results comparing the proposed approach with state-of-theart detectors are presented on several benchmark data sets showing the accuracy of our approach.},
+	booktitle = {{SDM}},
+	author = {Chen, Jinghui and Sathe, Saket and Aggarwal, Charu C. and Turaga, Deepak S.},
+	year = {2017},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/4PG529WD/Chen et al. - 2017 - Outlier Detection with Autoencoder Ensembles.pdf:application/pdf}
+}
+
+@article{manevitz_one-class_2002,
+	title = {One-class svms for document classification},
+	volume = {2},
+	issn = {1532-4435},
+	abstract = {We implemented versions of the SVM appropriate for one-class classification in the context of information retrieval. The experiments were conducted on the standard Reuters data set. For the SVM implementation we used both a version of Schoelkopf et al. and a somewhat different version of one-class SVM based on identifying "outlier" data as representative of the second-class. We report on experiments with different kernels for both of these implementations and with different representations of the data, including binary vectors, tf-idf representation and a modification called "Hadamard" representation. Then we compared it with one-class versions of the algorithms prototype (Rocchio), nearest neighbor, naive Bayes, and finally a natural one-class neural network classification method based on "bottleneck" compression generated filters.The SVM approach as represented by Schoelkopf was superior to all the methods except the neural network one, where it was, although occasionally worse, essentially comparable. However, the SVM methods turned out to be quite sensitive to the choice of representation and kernel in ways which are not well understood; therefore, for the time being leaving the neural network approach as the most robust.},
+	journal = {The Journal of Machine Learning Research},
+	author = {Manevitz, Larry M. and Yousef, Malik},
+	month = mar,
+	year = {2002},
+	pages = {139--154},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/KQ25LNUK/Manevitz and Yousef - 2002 - One-class svms for document classification.pdf:application/pdf}
+}
+
+@article{scholkopf_support_2001,
+	title = {Support {Vector} {Method} for {Novelty} {Detection}},
+	abstract = {Suppose you are given some dataset drawn from an underlying probability distribution P and you want to estimate a "simple" subset S of input space such that the probability that a test point drawn from P lies outside of S equals some a priori specified l/ between 0 and 1.},
+	language = {en},
+	journal = {Neural Computation},
+	author = {Schölkopf, Bernhard and Williamson, Robert C and Smola, Alex J and Shawe-Taylor, John and Platt, John C},
+	year = {2001},
+	pages = {1443--1471},
+	file = {Schölkopf et al. - Support Vector Method for Novelty Detection.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/IRG2PZ6D/Schölkopf et al. - Support Vector Method for Novelty Detection.pdf:application/pdf}
+}
+
+@book{chawla_proceedings_2017,
+	address = {Philadelphia, PA},
+	title = {Proceedings of the 2017 {SIAM} {International} {Conference} on {Data} {Mining}},
+	isbn = {978-1-61197-497-3},
+	url = {https://epubs.siam.org/doi/book/10.1137/1.9781611974973},
+	abstract = {In this paper, we introduce autoencoder ensembles for unsupervised outlier detection. One problem with neural networks is that they are sensitive to noise and often require large data sets to work robustly, while increasing data size makes them slow. As a result, there are only a few existing works in the literature on the use of neural networks in outlier detection. This paper shows that neural networks can be a very competitive technique to other existing methods. The basic idea is to randomly vary on the connectivity architecture of the autoencoder to obtain signiﬁcantly better performance. Furthermore, we combine this technique with an adaptive sampling method to make our approach more eﬃcient and eﬀective. Experimental results comparing the proposed approach with state-of-theart detectors are presented on several benchmark data sets showing the accuracy of our approach.},
+	language = {en},
+	urldate = {2020-03-04},
+	publisher = {Society for Industrial and Applied Mathematics},
+	editor = {Chawla, Nitesh and Wang, Wei},
+	month = jun,
+	year = {2017},
+	doi = {10.1137/1.9781611974973},
+	file = {Chawla and Wang - 2017 - Proceedings of the 2017 SIAM International Confere.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/RLF6264C/Chawla and Wang - 2017 - Proceedings of the 2017 SIAM International Confere.pdf:application/pdf}
+}
+
+@article{tax_support_2004,
+	title = {Support {Vector} {Data} {Description}},
+	volume = {54},
+	issn = {0885-6125},
+	url = {http://link.springer.com/10.1023/B:MACH.0000008084.60811.49},
+	doi = {10.1023/B:MACH.0000008084.60811.49},
+	abstract = {Data domain description concerns the characterization of a data set. A good description covers all target data but includes no superﬂuous space. The boundary of a dataset can be used to detect novel data or outliers. We will present the Support Vector Data Description (SVDD) which is inspired by the Support Vector Classiﬁer. It obtains a spherically shaped boundary around a dataset and analogous to the Support Vector Classiﬁer it can be made ﬂexible by using other kernel functions. The method is made robust against outliers in the training set and is capable of tightening the description by using negative examples. We show characteristics of the Support Vector Data Descriptions using artiﬁcial and real data.},
+	language = {en},
+	number = {1},
+	urldate = {2020-03-04},
+	journal = {Machine Learning},
+	author = {Tax, David M.J. and Duin, Robert P.W.},
+	month = jan,
+	year = {2004},
+	pages = {45--66},
+	file = {Tax and Duin - 2004 - Support Vector Data Description.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/MM8MU555/Tax and Duin - 2004 - Support Vector Data Description.pdf:application/pdf}
+}
+
+@article{joulin_bag_2016,
+	title = {Bag of {Tricks} for {Efficient} {Text} {Classification}},
+	url = {http://arxiv.org/abs/1607.01759},
+	abstract = {This paper explores a simple and efficient baseline for text classification. Our experiments show that our fast text classifier fastText is often on par with deep learning classifiers in terms of accuracy, and many orders of magnitude faster for training and evaluation. We can train fastText on more than one billion words in less than ten minutes using a standard multicore{\textasciitilde}CPU, and classify half a million sentences among{\textasciitilde}312K classes in less than a minute.},
+	urldate = {2020-03-04},
+	journal = {arXiv:1607.01759 [cs]},
+	author = {Joulin, Armand and Grave, Edouard and Bojanowski, Piotr and Mikolov, Tomas},
+	month = aug,
+	year = {2016},
+	note = {arXiv: 1607.01759},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/WEVDNUV7/1607.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/95X8QD2Z/Joulin et al. - 2016 - Bag of Tricks for Efficient Text Classification.pdf:application/pdf}
+}
+
+@article{reimers_sentence-bert_2019-1,
+	title = {Sentence-{BERT}: {Sentence} {Embeddings} using {Siamese} {BERT}-{Networks}},
+	shorttitle = {Sentence-{BERT}},
+	url = {http://arxiv.org/abs/1908.10084},
+	abstract = {BERT (Devlin et al., 2018) and RoBERTa (Liu et al., 2019) has set a new state-of-the-art performance on sentence-pair regression tasks like semantic textual similarity (STS). However, it requires that both sentences are fed into the network, which causes a massive computational overhead: Finding the most similar pair in a collection of 10,000 sentences requires about 50 million inference computations ({\textasciitilde}65 hours) with BERT. The construction of BERT makes it unsuitable for semantic similarity search as well as for unsupervised tasks like clustering. In this publication, we present Sentence-BERT (SBERT), a modification of the pretrained BERT network that use siamese and triplet network structures to derive semantically meaningful sentence embeddings that can be compared using cosine-similarity. This reduces the effort for finding the most similar pair from 65 hours with BERT / RoBERTa to about 5 seconds with SBERT, while maintaining the accuracy from BERT. We evaluate SBERT and SRoBERTa on common STS tasks and transfer learning tasks, where it outperforms other state-of-the-art sentence embeddings methods.},
+	urldate = {2020-03-04},
+	journal = {arXiv:1908.10084 [cs]},
+	author = {Reimers, Nils and Gurevych, Iryna},
+	month = aug,
+	year = {2019},
+	note = {arXiv: 1908.10084},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/R8RRJ9SP/1908.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/CUFIBFIX/Reimers and Gurevych - 2019 - Sentence-BERT Sentence Embeddings using Siamese B.pdf:application/pdf}
+}
+
+@article{zong_deep_2018,
+	title = {Deep {Autoencoding} {Gaussian} {Mixture} {Model} for {Unsupervised} {Anomaly} {Detection}},
+	abstract = {Unsupervised anomaly detection on multi- or high-dimensional data is of great importance in both fundamental machine learning research and industrial applications, for which density estimation lies at the core. Although previous approaches based on dimensionality reduction followed by density estimation have made fruitful progress, they mainly suffer from decoupled model learning with inconsistent optimization goals and incapability of preserving essential information in the low-dimensional space. In this paper, we present a Deep Autoencoding Gaussian Mixture Model (DAGMM) for unsupervised anomaly detection. Our model utilizes a deep autoencoder to generate a low-dimensional representation and reconstruction error for each input data point, which is further fed into a Gaussian Mixture Model (GMM). Instead of using decoupled two-stage training and the standard Expectation-Maximization (EM) algorithm, DAGMM jointly optimizes the parameters of the deep autoencoder and the mixture model simultaneously in an end-to-end fashion, leveraging a separate estimation network to facilitate the parameter learning of the mixture model. The joint optimization, which well balances autoencoding reconstruction, density estimation of latent representation, and regularization, helps the autoencoder escape from less attractive local optima and further reduce reconstruction errors, avoiding the need of pre-training. Experimental results on several public benchmark datasets show that, DAGMM signiﬁcantly outperforms state-of-the-art anomaly detection techniques, and achieves up to 14\% improvement based on the standard F1 score.},
+	language = {en},
+	author = {Zong, Bo and Song, Qi and Min, Martin Renqiang and Cheng, Wei and Lumezanu, Cristian and Cho, Daeki and Chen, Haifeng},
+	year = {2018},
+	pages = {19},
+	file = {Zong et al. - 2018 - DEEP AUTOENCODING GAUSSIAN MIXTURE MODEL FOR UNSUP.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/XVTYJCF3/Zong et al. - 2018 - DEEP AUTOENCODING GAUSSIAN MIXTURE MODEL FOR UNSUP.pdf:application/pdf}
+}
+
+@article{qin_nearest-neighbour-induced_2019,
+	title = {Nearest-{Neighbour}-{Induced} {Isolation} {Similarity} and its {Impact} on {Density}-{Based} {Clustering}},
+	url = {http://arxiv.org/abs/1907.00378},
+	abstract = {A recent proposal of data dependent similarity called Isolation Kernel/Similarity has enabled SVM to produce better classiﬁcation accuracy. We identify shortcomings of using a tree method to implement Isolation Similarity; and propose a nearest neighbour method instead. We formally prove the characteristic of Isolation Similarity with the use of the proposed method. The impact of Isolation Similarity on densitybased clustering is studied here. We show for the ﬁrst time that the clustering performance of the classic density-based clustering algorithm DBSCAN can be signiﬁcantly uplifted to surpass that of the recent density-peak clustering algorithm DP. This is achieved by simply replacing the distance measure with the proposed nearest-neighbour-induced Isolation Similarity in DBSCAN, leaving the rest of the procedure unchanged. A new type of clusters called mass-connected clusters is formally deﬁned. We show that DBSCAN, which detects density-connected clusters, becomes one which detects mass-connected clusters, when the distance measure is replaced with the proposed similarity. We also provide the condition under which mass-connected clusters can be detected, while density-connected clusters cannot.},
+	language = {en},
+	urldate = {2020-03-03},
+	journal = {arXiv:1907.00378 [cs, stat]},
+	author = {Qin, Xiaoyu and Ting, Kai Ming and Zhu, Ye and Lee, Vincent CS},
+	month = jun,
+	year = {2019},
+	note = {arXiv: 1907.00378},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {Qin et al. - 2019 - Nearest-Neighbour-Induced Isolation Similarity and.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/I8BVTEFP/Qin et al. - 2019 - Nearest-Neighbour-Induced Isolation Similarity and.pdf:application/pdf}
+}
+
+@article{liu_isolation-based_2012,
+	title = {Isolation-{Based} {Anomaly} {Detection}},
+	volume = {6},
+	issn = {15564681},
+	url = {http://dl.acm.org/citation.cfm?doid=2133360.2133363},
+	doi = {10.1145/2133360.2133363},
+	language = {en},
+	number = {1},
+	urldate = {2020-03-03},
+	journal = {ACM Transactions on Knowledge Discovery from Data},
+	author = {Liu, Fei Tony and Ting, Kai Ming and Zhou, Zhi-Hua},
+	month = mar,
+	year = {2012},
+	pages = {1--39},
+	file = {Liu et al. - 2012 - Isolation-Based Anomaly Detection.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/X4TIKWNY/Liu et al. - 2012 - Isolation-Based Anomaly Detection.pdf:application/pdf}
+}
+
+@inproceedings{perera_ocgan_2019,
+	address = {Long Beach, CA, USA},
+	title = {{OCGAN}: {One}-{Class} {Novelty} {Detection} {Using} {GANs} {With} {Constrained} {Latent} {Representations}},
+	isbn = {978-1-72813-293-8},
+	shorttitle = {{OCGAN}},
+	url = {https://ieeexplore.ieee.org/document/8953440/},
+	doi = {10.1109/CVPR.2019.00301},
+	abstract = {We present a novel model called OCGAN for the classical problem of one-class novelty detection, where, given a set of examples from a particular class, the goal is to determine if a query example is from the same class. Our solution is based on learning latent representations of in-class examples using a denoising auto-encoder network. The key contribution of our work is our proposal to explicitly constrain the latent space to exclusively represent the given class. In order to accomplish this goal, ﬁrstly, we force the latent space to have bounded support by introducing a tanh activation in the encoder’s output layer. Secondly, using a discriminator in the latent space that is trained adversarially, we ensure that encoded representations of in-class examples resemble uniform random samples drawn from the same bounded space. Thirdly, using a second adversarial discriminator in the input space, we ensure all randomly drawn latent samples generate examples that look real. Finally, we introduce a gradient-descent based sampling technique that explores points in the latent space that generate potential out-of-class examples, which are fed back to the network to further train it to generate in-class examples from those points. The effectiveness of the proposed method is measured across four publicly available datasets using two one-class novelty detection protocols where we achieve state-of-the-art results.},
+	language = {en},
+	urldate = {2020-03-03},
+	booktitle = {2019 {IEEE}/{CVF} {Conference} on {Computer} {Vision} and {Pattern} {Recognition} ({CVPR})},
+	publisher = {IEEE},
+	author = {Perera, Pramuditha and Nallapati, Ramesh and Xiang, Bing},
+	month = jun,
+	year = {2019},
+	pages = {2893--2901},
+	file = {Perera et al. - 2019 - OCGAN One-Class Novelty Detection Using GANs With.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/9W5DERBR/Perera et al. - 2019 - OCGAN One-Class Novelty Detection Using GANs With.pdf:application/pdf}
+}
+
+@article{perera_learning_2019,
+	title = {Learning {Deep} {Features} for {One}-{Class} {Classification}},
+	volume = {28},
+	issn = {1057-7149, 1941-0042},
+	url = {http://arxiv.org/abs/1801.05365},
+	doi = {10.1109/TIP.2019.2917862},
+	abstract = {We present a novel deep-learning based approach for one-class transfer learning in which labeled data from an unrelated task is used for feature learning in one-class classiﬁcation. The proposed method operates on top of a Convolutional Neural Network (CNN) of choice and produces descriptive features while maintaining a low intra-class variance in the feature space for the given class. For this purpose two loss functions, compactness loss and descriptiveness loss are proposed along with a parallel CNN architecture. A template matching-based framework is introduced to facilitate the testing process. Extensive experiments on publicly available anomaly detection, novelty detection and mobile active authentication datasets show that the proposed Deep One-Class (DOC) classiﬁcation method achieves signiﬁcant improvements over the state-of-the-art.},
+	language = {en},
+	number = {11},
+	urldate = {2020-03-03},
+	journal = {IEEE Transactions on Image Processing},
+	author = {Perera, Pramuditha and Patel, Vishal M.},
+	month = nov,
+	year = {2019},
+	note = {arXiv: 1801.05365},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	pages = {5450--5463},
+	file = {Perera and Patel - 2019 - Learning Deep Features for One-Class Classificatio.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/7DFT7YGQ/Perera and Patel - 2019 - Learning Deep Features for One-Class Classificatio.pdf:application/pdf}
+}
+
+@article{zenati_adversarially_2018,
+	title = {Adversarially {Learned} {Anomaly} {Detection}},
+	url = {http://arxiv.org/abs/1812.02288},
+	abstract = {Anomaly detection is a signiﬁcant and hence wellstudied problem. However, developing effective anomaly detection methods for complex and high-dimensional data remains a challenge. As Generative Adversarial Networks (GANs) are able to model the complex high-dimensional distributions of real-world data, they offer a promising approach to address this challenge. In this work, we propose an anomaly detection method, Adversarially Learned Anomaly Detection (ALAD) based on bi-directional GANs, that derives adversarially learned features for the anomaly detection task. ALAD then uses reconstruction errors based on these adversarially learned features to determine if a data sample is anomalous. ALAD builds on recent advances to ensure data-space and latent-space cycle-consistencies and stabilize GAN training, which results in signiﬁcantly improved anomaly detection performance. ALAD achieves state-of-the-art performance on a range of image and tabular datasets while being several hundred-fold faster at test time than the only published GAN-based method.},
+	language = {en},
+	urldate = {2020-03-03},
+	journal = {arXiv:1812.02288 [cs, stat]},
+	author = {Zenati, Houssam and Romain, Manon and Foo, Chuan Sheng and Lecouat, Bruno and Chandrasekhar, Vijay Ramaseshan},
+	month = dec,
+	year = {2018},
+	note = {arXiv: 1812.02288},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {Zenati et al. - 2018 - Adversarially Learned Anomaly Detection.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/92447MLA/Zenati et al. - 2018 - Adversarially Learned Anomaly Detection.pdf:application/pdf}
+}
+
+@inproceedings{zhou_anomaly_2017,
+	address = {Halifax, NS, Canada},
+	title = {Anomaly {Detection} with {Robust} {Deep} {Autoencoders}},
+	isbn = {978-1-4503-4887-4},
+	url = {http://dl.acm.org/citation.cfm?doid=3097983.3098052},
+	doi = {10.1145/3097983.3098052},
+	abstract = {Deep autoencoders, and other deep neural networks, have demonstrated their e ectiveness in discovering non-linear features across many problem domains. However, in many real-world problems, large outliers and pervasive noise are commonplace, and one may not have access to clean training data as required by standard deep denoising autoencoders. Herein, we demonstrate novel extensions to deep autoencoders which not only maintain a deep autoencoders’ ability to discover high quality, non-linear features but can also eliminate outliers and noise without access to any clean training data. Our model is inspired by Robust Principal Component Analysis, and we split the input data X into two parts, X = LD + S, where LD can be e ectively reconstructed by a deep autoencoder and S contains the outliers and noise in the original data X . Since such spli ing increases the robustness of standard deep autoencoders, we name our model a “Robust Deep Autoencoder (RDA)”. Further, we present generalizations of our results to grouped sparsity norms which allow one to distinguish random anomalies from other types of structured corruptions, such as a collection of features being corrupted across many instances or a collection of instances having more corruptions than their fellows. Such “Group Robust Deep Autoencoders (GRDA)” give rise to novel anomaly detection approaches whose superior performance we demonstrate on a selection of benchmark problems.},
+	language = {en},
+	urldate = {2020-03-03},
+	booktitle = {Proceedings of the 23rd {ACM} {SIGKDD} {International} {Conference} on {Knowledge} {Discovery} and {Data} {Mining} - {KDD} '17},
+	publisher = {ACM Press},
+	author = {Zhou, Chong and Paffenroth, Randy C.},
+	year = {2017},
+	pages = {665--674},
+	file = {Zhou and Paffenroth - 2017 - Anomaly Detection with Robust Deep Autoencoders.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/VG3XWNLW/Zhou and Paffenroth - 2017 - Anomaly Detection with Robust Deep Autoencoders.pdf:application/pdf}
+}
+
+@inproceedings{trittenbach_one-class_2019,
+	address = {Beijing, China},
+	title = {One-{Class} {Active} {Learning} for {Outlier} {Detection} with {Multiple} {Subspaces}},
+	isbn = {978-1-4503-6976-3},
+	url = {http://dl.acm.org/citation.cfm?doid=3357384.3357873},
+	doi = {10.1145/3357384.3357873},
+	abstract = {Active learning for outlier detection involves users in the process, by asking them for annotations of observations, in the form of class labels. The usual assumption is that users can provide such feedback, regardless of the nature and the presentation of the results. This is a simplification, which may not hold in practice. To overcome it, we propose SubSVDD, a semi-supervised classifier, that learns decision boundaries in low-dimensional projections of the data. SubSVDD de-constructs the outlier classification so that users can comprehend and interpret results more easily. For active learning, SubSVDD features a new update mechanism that adjusts decision boundaries based on user feedback. In particular, it considers that outliers may only occur in some of the low-dimensional projections. We conduct systematic experiments to show the effectiveness of our approach. In a comprehensive benchmark, SubSVDD outperforms alternative approaches on several data sets.},
+	language = {en},
+	urldate = {2020-03-03},
+	booktitle = {Proceedings of the 28th {ACM} {International} {Conference} on {Information} and {Knowledge} {Management}  - {CIKM} '19},
+	publisher = {ACM Press},
+	author = {Trittenbach, Holger and Böhm, Klemens},
+	year = {2019},
+	pages = {811--820},
+	file = {Trittenbach and Böhm - 2019 - One-Class Active Learning for Outlier Detection wi.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/H2TH9UTY/Trittenbach and Böhm - 2019 - One-Class Active Learning for Outlier Detection wi.pdf:application/pdf}
+}
+
+@article{goernitz_toward_2013,
+	title = {Toward {Supervised} {Anomaly} {Detection}},
+	volume = {46},
+	issn = {1076-9757},
+	url = {https://jair.org/index.php/jair/article/view/10802},
+	doi = {10.1613/jair.3623},
+	abstract = {Anomaly detection is being regarded as an unsupervised learning task as anomalies stem from adversarial or unlikely events with unknown distributions. However, the predictive performance of purely unsupervised anomaly detection often fails to match the required detection rates in many tasks and there exists a need for labeled data to guide the model generation. Our ﬁrst contribution shows that classical semi-supervised approaches, originating from a supervised classiﬁer, are inappropriate and hardly detect new and unknown anomalies. We argue that semi-supervised anomaly detection needs to ground on the unsupervised learning paradigm and devise a novel algorithm that meets this requirement. Although being intrinsically non-convex, we further show that the optimization problem has a convex equivalent under relatively mild assumptions. Additionally, we propose an active learning strategy to automatically ﬁlter candidates for labeling. In an empirical study on network intrusion detection data, we observe that the proposed learning methodology requires much less labeled data than the state-of-the-art, while achieving higher detection accuracies.},
+	language = {en},
+	urldate = {2020-03-03},
+	journal = {Journal of Artificial Intelligence Research},
+	author = {Goernitz, N. and Kloft, M. and Rieck, K. and Brefeld, U.},
+	month = feb,
+	year = {2013},
+	pages = {235--262},
+	file = {Goernitz et al. - 2013 - Toward Supervised Anomaly Detection.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/9KXL4JZU/Goernitz et al. - 2013 - Toward Supervised Anomaly Detection.pdf:application/pdf}
+}
+
+@article{pang_deep_2019,
+	title = {Deep {Anomaly} {Detection} with {Deviation} {Networks}},
+	url = {http://arxiv.org/abs/1911.08623},
+	abstract = {Although deep learning has been applied to successfully address many data mining problems, relatively limited work has been done on deep learning for anomaly detection. Existing deep anomaly detection methods, which focus on learning new feature representations to enable downstream anomaly detection methods, perform indirect optimization of anomaly scores, leading to data-inefficient learning and suboptimal anomaly scoring. Also, they are typically designed as unsupervised learning due to the lack of large-scale labeled anomaly data. As a result, they are difficult to leverage prior knowledge (e.g., a few labeled anomalies) when such information is available as in many real-world anomaly detection applications. This paper introduces a novel anomaly detection framework and its instantiation to address these problems. Instead of representation learning, our method fulfills an end-to-end learning of anomaly scores by a neural deviation learning, in which we leverage a few (e.g., multiple to dozens) labeled anomalies and a prior probability to enforce statistically significant deviations of the anomaly scores of anomalies from that of normal data objects in the upper tail. Extensive results show that our method can be trained substantially more data-efficiently and achieves significantly better anomaly scoring than state-of-the-art competing methods.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1911.08623 [cs, stat]},
+	author = {Pang, Guansong and Shen, Chunhua and Hengel, Anton van den},
+	month = nov,
+	year = {2019},
+	note = {arXiv: 1911.08623},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, hiprio, read},
+	file = {Pang et al. - 2019 - Deep Anomaly Detection with Deviation Networks.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/E2QBUL9T/Pang et al. - 2019 - Deep Anomaly Detection with Deviation Networks.pdf:application/pdf}
+}
+
+@inproceedings{ruff_deep_2018,
+	title = {Deep {One}-{Class} {Classification}},
+	url = {http://proceedings.mlr.press/v80/ruff18a.html},
+	abstract = {Despite the great advances made by deep learning in many machine learning problems, there is a relative dearth of deep learning approaches for anomaly detection. Those approaches which do exist inv...},
+	language = {en},
+	urldate = {2020-02-28},
+	booktitle = {International {Conference} on {Machine} {Learning}},
+	author = {Ruff, Lukas and Vandermeulen, Robert and Goernitz, Nico and Deecke, Lucas and Siddiqui, Shoaib Ahmed and Binder, Alexander and Müller, Emmanuel and Kloft, Marius},
+	month = jul,
+	year = {2018},
+	note = {ISSN: 1938-7228
+Section: Machine Learning},
+	pages = {4393--4402},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/NM828E2Y/ruff18a.html:text/html;Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/QXSIXSDM/Ruff et al. - 2018 - Deep One-Class Classification.pdf:application/pdf}
+}
+
+@incollection{handl_hybrid_2016,
+	address = {Cham},
+	title = {A {Hybrid} {Autoencoder} and {Density} {Estimation} {Model} for {Anomaly} {Detection}},
+	volume = {9921},
+	isbn = {978-3-319-45822-9 978-3-319-45823-6},
+	url = {http://link.springer.com/10.1007/978-3-319-45823-6_67},
+	abstract = {A novel one-class learning approach is proposed for network anomaly detection based on combining autoencoders and density estimation. An autoencoder attempts to reproduce the input data in the output layer. The smaller hidden layer becomes a bottleneck, forming a compressed representation of the data. It is now proposed to take low density in the hidden layer as indicating an anomaly. We study two possibilities for modelling density: a single Gaussian, and a full kernel density estimation. The methods are tested on the NSL-KDD dataset, and experiments show that the proposed methods out-perform best-known results on three out of four sub-datasets.},
+	language = {en},
+	urldate = {2020-02-26},
+	booktitle = {Parallel {Problem} {Solving} from {Nature} – {PPSN} {XIV}},
+	publisher = {Springer International Publishing},
+	author = {Cao, Van Loi and Nicolau, Miguel and McDermott, James},
+	editor = {Handl, Julia and Hart, Emma and Lewis, Peter R. and López-Ibáñez, Manuel and Ochoa, Gabriela and Paechter, Ben},
+	year = {2016},
+	doi = {10.1007/978-3-319-45823-6_67},
+	pages = {717--726},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/PWQYBXAA/307507734_A_Hybrid_Autoencoder_and_Density_Estimation_Model_for_Anomaly_Detection.html:text/html;Cao et al. - 2016 - A Hybrid Autoencoder and Density Estimation Model .pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/GIXNTP7P/Cao et al. - 2016 - A Hybrid Autoencoder and Density Estimation Model .pdf:application/pdf}
+}
+
+@article{chalapathy_anomaly_2019,
+	title = {Anomaly {Detection} using {One}-{Class} {Neural} {Networks}},
+	url = {http://arxiv.org/abs/1802.06360},
+	abstract = {We propose a one-class neural network (OC-NN) model to detect anomalies in complex data sets. OC-NN combines the ability of deep networks to extract a progressively rich representation of data with the one-class objective of creating a tight envelope around normal data. The OC-NN approach breaks new ground for the following crucial reason: data representation in the hidden layer is driven by the OC-NN objective and is thus customized for anomaly detection. This is a departure from other approaches which use a hybrid approach of learning deep features using an autoencoder and then feeding the features into a separate anomaly detection method like one-class SVM (OC-SVM). The hybrid OC-SVM approach is sub-optimal because it is unable to influence representational learning in the hidden layers. A comprehensive set of experiments demonstrate that on complex data sets (like CIFAR and GTSRB), OC-NN performs on par with state-of-the-art methods and outperformed conventional shallow methods in some scenarios.},
+	urldate = {2020-02-26},
+	journal = {arXiv:1802.06360 [cs, stat]},
+	author = {Chalapathy, Raghavendra and Menon, Aditya Krishna and Chawla, Sanjay},
+	month = jan,
+	year = {2019},
+	note = {arXiv: 1802.06360},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Neural and Evolutionary Computing},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/966ZNHS5/1802.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/MSJHU2LJ/Chalapathy et al. - 2019 - Anomaly Detection using One-Class Neural Networks.pdf:application/pdf}
+}
+
+@misc{noauthor_1_nodate,
+	title = {(1) ({PDF}) {A} {Hybrid} {Autoencoder} and {Density} {Estimation} {Model} for {Anomaly} {Detection}},
+	url = {https://www.researchgate.net/publication/307507734_A_Hybrid_Autoencoder_and_Density_Estimation_Model_for_Anomaly_Detection},
+	abstract = {ResearchGate is a network dedicated to science and research. Connect, collaborate and discover scientific publications, jobs and conferences. All for free.},
+	language = {en},
+	urldate = {2020-02-26},
+	journal = {ResearchGate},
+	file = {(1) (PDF) A Hybrid Autoencoder and Density Estimat.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/C78ZKIJR/(1) (PDF) A Hybrid Autoencoder and Density Estimat.pdf:application/pdf}
+}
+
+@misc{zhao_yzhao062anomaly-detection-resources_2020,
+	title = {yzhao062/anomaly-detection-resources},
+	copyright = {AGPL-3.0},
+	url = {https://github.com/yzhao062/anomaly-detection-resources},
+	abstract = {Anomaly detection related books, papers, videos, and toolboxes},
+	urldate = {2020-02-19},
+	author = {Zhao, Yue},
+	month = feb,
+	year = {2020},
+	note = {original-date: 2018-05-16T20:02:54Z},
+	keywords = {hiprio, anomaly-detection, awesome, awesome-list, data-mining, outlier, outlier-detection, outlier-ensembles, time-series-analysis}
+}
+
+@misc{lukasruff_lukasruffcvdd-pytorch_2020,
+	title = {lukasruff/{CVDD}-{PyTorch}},
+	copyright = {MIT},
+	url = {https://github.com/lukasruff/CVDD-PyTorch},
+	abstract = {A PyTorch implementation of Context Vector Data Description (CVDD), a method for Anomaly Detection on text.},
+	urldate = {2020-02-19},
+	author = {lukasruff},
+	month = feb,
+	year = {2020},
+	note = {original-date: 2019-07-08T09:30:28Z},
+	keywords = {hiprio, anomaly-detection, attention-mechanism, deep-anomaly-detection, deep-learning, machine-learning, nlp, one-class-learning, python, python3, pytorch, self-attention}
+}
+
+@inproceedings{ruff_self-attentive_2019,
+	address = {Florence, Italy},
+	title = {Self-{Attentive}, {Multi}-{Context} {One}-{Class} {Classification} for {Unsupervised} {Anomaly} {Detection} on {Text}},
+	url = {https://www.aclweb.org/anthology/P19-1398},
+	doi = {10.18653/v1/P19-1398},
+	abstract = {There exist few text-speciﬁc methods for unsupervised anomaly detection, and for those that do exist, none utilize pre-trained models for distributed vector representations of words. In this paper we introduce a new anomaly detection method—Context Vector Data Description (CVDD)—which builds upon word embedding models to learn multiple sentence representations that capture multiple semantic contexts via the self-attention mechanism. Modeling multiple contexts enables us to perform contextual anomaly detection of sentences and phrases with respect to the multiple themes and concepts present in an unlabeled text corpus. These contexts in combination with the self-attention weights make our method highly interpretable. We demonstrate the effectiveness of CVDD quantitatively as well as qualitatively on the wellknown Reuters, 20 Newsgroups, and IMDB Movie Reviews datasets.},
+	language = {en},
+	urldate = {2020-02-19},
+	booktitle = {Proceedings of the 57th {Annual} {Meeting} of the {Association} for {Computational} {Linguistics}},
+	publisher = {Association for Computational Linguistics},
+	author = {Ruff, Lukas and Zemlyanskiy, Yury and Vandermeulen, Robert and Schnake, Thomas and Kloft, Marius},
+	year = {2019},
+	keywords = {hiprio},
+	pages = {4061--4071},
+	file = {Ruff et al. - 2019 - Self-Attentive, Multi-Context One-Class Classifica.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/GYVWUSG4/Ruff et al. - 2019 - Self-Attentive, Multi-Context One-Class Classifica.pdf:application/pdf}
+}
+
+@article{fadhel_gan_2019,
+	title = {{GAN} {Augmented} {Text} {Anomaly} {Detection} with {Sequences} of {Deep} {Statistics}},
+	url = {http://arxiv.org/abs/1904.11094},
+	doi = {10.1109/CISS.2019.8693024},
+	abstract = {Anomaly detection is the process of ﬁnding data points that deviate from a baseline. In a real-life setting, anomalies are usually unknown or extremely rare. Moreover, the detection must be accomplished in a timely manner or the risk of corrupting the system might grow exponentially. In this work, we propose a two level framework for detecting anomalies in sequences of discrete elements. First, we assess whether we can obtain enough information from the statistics collected from the discriminator’s layers to discriminate between out of distribution and in distribution samples. We then build an unsupervised anomaly detection module based on these statistics. As to augment the data and keep track of classes of known data, we lean toward a semi-supervised adversarial learning applied to discrete elements.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {2019 53rd Annual Conference on Information Sciences and Systems (CISS)},
+	author = {Fadhel, Mariem Ben and Nyarko, Kofi},
+	month = mar,
+	year = {2019},
+	note = {arXiv: 1904.11094},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Cryptography and Security},
+	pages = {1--5},
+	file = {Fadhel and Nyarko - 2019 - GAN Augmented Text Anomaly Detection with Sequence.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/BGXT64GH/Fadhel and Nyarko - 2019 - GAN Augmented Text Anomaly Detection with Sequence.pdf:application/pdf}
+}
+
+@article{asim_robust_2019,
+	title = {A {Robust} {Hybrid} {Approach} for {Textual} {Document} {Classification}},
+	url = {http://arxiv.org/abs/1909.05478},
+	abstract = {Text document classification is an important task for diverse natural language processing based applications. Traditional machine learning approaches mainly focused on reducing dimensionality of textual data to perform classification. This although improved the overall classification accuracy, the classifiers still faced sparsity problem due to lack of better data representation techniques. Deep learning based text document classification, on the other hand, benefitted greatly from the invention of word embeddings that have solved the sparsity problem and researchers focus mainly remained on the development of deep architectures. Deeper architectures, however, learn some redundant features that limit the performance of deep learning based solutions. In this paper, we propose a two stage text document classification methodology which combines traditional feature engineering with automatic feature engineering (using deep learning). The proposed methodology comprises a filter based feature selection (FSE) algorithm followed by a deep convolutional neural network. This methodology is evaluated on the two most commonly used public datasets, i.e., 20 Newsgroups data and BBC news data. Evaluation results reveal that the proposed methodology outperforms the state-of-the-art of both the (traditional) machine learning and deep learning based text document classification methodologies with a significant margin of 7.7\% on 20 Newsgroups and 6.6\% on BBC news datasets.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1909.05478 [cs]},
+	author = {Asim, Muhammad Nabeel and Khan, Muhammad Usman Ghani and Malik, Muhammad Imran and Dengel, Andreas and Ahmed, Sheraz},
+	month = sep,
+	year = {2019},
+	note = {arXiv: 1909.05478},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Computer Science - Information Retrieval},
+	file = {Asim et al. - 2019 - A Robust Hybrid Approach for Textual Document Clas.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/PUTH32QK/Asim et al. - 2019 - A Robust Hybrid Approach for Textual Document Clas.pdf:application/pdf}
+}
+
+@article{du_explicit_2018,
+	title = {Explicit {Interaction} {Model} towards {Text} {Classification}},
+	url = {http://arxiv.org/abs/1811.09386},
+	abstract = {Text classification is one of the fundamental tasks in natural language processing. Recently, deep neural networks have achieved promising performance in the text classification task compared to shallow models. Despite of the significance of deep models, they ignore the fine-grained (matching signals between words and classes) classification clues since their classifications mainly rely on the text-level representations. To address this problem, we introduce the interaction mechanism to incorporate word-level matching signals into the text classification task. In particular, we design a novel framework, EXplicit interAction Model (dubbed as EXAM), equipped with the interaction mechanism. We justified the proposed approach on several benchmark datasets including both multi-label and multi-class text classification tasks. Extensive experimental results demonstrate the superiority of the proposed method. As a byproduct, we have released the codes and parameter settings to facilitate other researches.},
+	urldate = {2020-02-19},
+	journal = {arXiv:1811.09386 [cs]},
+	author = {Du, Cunxiao and Chin, Zhaozheng and Feng, Fuli and Zhu, Lei and Gan, Tian and Nie, Liqiang},
+	month = nov,
+	year = {2018},
+	note = {arXiv: 1811.09386},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/HMQHGTGW/1811.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/Q4CDG6YL/Du et al. - 2018 - Explicit Interaction Model towards Text Classifica.pdf:application/pdf}
+}
+
+@article{adhikari_docbert_2019,
+	title = {{DocBERT}: {BERT} for {Document} {Classification}},
+	shorttitle = {{DocBERT}},
+	url = {http://arxiv.org/abs/1904.08398},
+	abstract = {We present, to our knowledge, the first application of BERT to document classification. A few characteristics of the task might lead one to think that BERT is not the most appropriate model: syntactic structures matter less for content categories, documents can often be longer than typical BERT input, and documents often have multiple labels. Nevertheless, we show that a straightforward classification model using BERT is able to achieve the state of the art across four popular datasets. To address the computational expense associated with BERT inference, we distill knowledge from BERT-large to small bidirectional LSTMs, reaching BERT-base parity on multiple datasets using 30x fewer parameters. The primary contribution of our paper is improved baselines that can provide the foundation for future work.},
+	urldate = {2020-02-19},
+	journal = {arXiv:1904.08398 [cs]},
+	author = {Adhikari, Ashutosh and Ram, Achyudh and Tang, Raphael and Lin, Jimmy},
+	month = aug,
+	year = {2019},
+	note = {arXiv: 1904.08398},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/X7AWFP3C/1904.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/648JUNVW/Adhikari et al. - 2019 - DocBERT BERT for Document Classification.pdf:application/pdf}
+}
+
+@inproceedings{larson_outlier_2019,
+	address = {Minneapolis, Minnesota},
+	title = {Outlier {Detection} for {Improved} {Data} {Quality} and {Diversity} in {Dialog} {Systems}},
+	url = {http://aclweb.org/anthology/N19-1051},
+	doi = {10.18653/v1/N19-1051},
+	abstract = {In a corpus of data, outliers are either errors: mistakes in the data that are counterproductive, or are unique: informative samples that improve model robustness. Identifying outliers can lead to better datasets by (1) removing noise in datasets and (2) guiding collection of additional data to ﬁll gaps. However, the problem of detecting both outlier types has received relatively little attention in NLP, particularly for dialog systems. We introduce a simple and effective technique for detecting both erroneous and unique samples in a corpus of short texts using neural sentence embeddings combined with distance-based outlier detection. We also present a novel data collection pipeline built atop our detection technique to automatically and iteratively mine unique data samples while discarding erroneous samples. Experiments show that our outlier detection technique is effective at ﬁnding errors while our data collection pipeline yields highly diverse corpora that in turn produce more robust intent classiﬁcation and slot-ﬁlling models.},
+	language = {en},
+	urldate = {2020-02-19},
+	booktitle = {Proceedings of the 2019 {Conference} of the {North}},
+	publisher = {Association for Computational Linguistics},
+	author = {Larson, Stefan and Mahendran, Anish and Lee, Andrew and Kummerfeld, Jonathan K. and Hill, Parker and Laurenzano, Michael A. and Hauswald, Johann and Tang, Lingjia and Mars, Jason},
+	year = {2019},
+	pages = {517--527},
+	file = {Larson et al. - 2019 - Outlier Detection for Improved Data Quality and Di.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/9659CWKU/Larson et al. - 2019 - Outlier Detection for Improved Data Quality and Di.pdf:application/pdf}
+}
+
+@article{lee_training_2018,
+	title = {Training {Confidence}-calibrated {Classifiers} for {Detecting} {Out}-of-{Distribution} {Samples}},
+	url = {http://arxiv.org/abs/1711.09325},
+	abstract = {The problem of detecting whether a test sample is from in-distribution (i.e., training distribution by a classifier) or out-of-distribution sufficiently different from it arises in many real-world machine learning applications. However, the state-of-art deep neural networks are known to be highly overconfident in their predictions, i.e., do not distinguish in- and out-of-distributions. Recently, to handle this issue, several threshold-based detectors have been proposed given pre-trained neural classifiers. However, the performance of prior works highly depends on how to train the classifiers since they only focus on improving inference procedures. In this paper, we develop a novel training method for classifiers so that such inference algorithms can work better. In particular, we suggest two additional terms added to the original loss (e.g., cross entropy). The first one forces samples from out-of-distribution less confident by the classifier and the second one is for (implicitly) generating most effective training samples for the first one. In essence, our method jointly trains both classification and generative neural networks for out-of-distribution. We demonstrate its effectiveness using deep convolutional neural networks on various popular image datasets.},
+	urldate = {2020-02-19},
+	journal = {arXiv:1711.09325 [cs, stat]},
+	author = {Lee, Kimin and Lee, Honglak and Lee, Kibok and Shin, Jinwoo},
+	month = feb,
+	year = {2018},
+	note = {arXiv: 1711.09325},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/WX25H48D/1711.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/V8RGHI7P/Lee et al. - 2018 - Training Confidence-calibrated Classifiers for Det.pdf:application/pdf}
+}
+
+@article{liu_generative_2019,
+	title = {Generative {Adversarial} {Active} {Learning} for {Unsupervised} {Outlier} {Detection}},
+	url = {http://arxiv.org/abs/1809.10816},
+	abstract = {Outlier detection is an important topic in machine learning and has been used in a wide range of applications. In this paper, we approach outlier detection as a binary-classification issue by sampling potential outliers from a uniform reference distribution. However, due to the sparsity of data in high-dimensional space, a limited number of potential outliers may fail to provide sufficient information to assist the classifier in describing a boundary that can separate outliers from normal data effectively. To address this, we propose a novel Single-Objective Generative Adversarial Active Learning (SO-GAAL) method for outlier detection, which can directly generate informative potential outliers based on the mini-max game between a generator and a discriminator. Moreover, to prevent the generator from falling into the mode collapsing problem, the stop node of training should be determined when SO-GAAL is able to provide sufficient information. But without any prior information, it is extremely difficult for SO-GAAL. Therefore, we expand the network structure of SO-GAAL from a single generator to multiple generators with different objectives (MO-GAAL), which can generate a reasonable reference distribution for the whole dataset. We empirically compare the proposed approach with several state-of-the-art outlier detection methods on both synthetic and real-world datasets. The results show that MO-GAAL outperforms its competitors in the majority of cases, especially for datasets with various cluster types or high irrelevant variable ratio.},
+	urldate = {2020-02-19},
+	journal = {arXiv:1809.10816 [cs, stat]},
+	author = {Liu, Yezheng and Li, Zhe and Zhou, Chong and Jiang, Yuanchun and Sun, Jianshan and Wang, Meng and He, Xiangnan},
+	month = mar,
+	year = {2019},
+	note = {arXiv: 1809.10816},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/T5Z6LBFM/1809.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/S9VL5QUP/Liu et al. - 2019 - Generative Adversarial Active Learning for Unsuper.pdf:application/pdf}
+}
+
+@article{jwa_exbake_2019,
+	title = {{exBAKE}: {Automatic} {Fake} {News} {Detection} {Model} {Based} on {Bidirectional} {Encoder} {Representations} from {Transformers} ({BERT})},
+	volume = {9},
+	issn = {2076-3417},
+	shorttitle = {{exBAKE}},
+	url = {https://www.mdpi.com/2076-3417/9/19/4062},
+	doi = {10.3390/app9194062},
+	abstract = {News currently spreads rapidly through the internet. Because fake news stories are designed to attract readers, they tend to spread faster. For most readers, detecting fake news can be challenging and such readers usually end up believing that the fake news story is fact. Because fake news can be socially problematic, a model that automatically detects such fake news is required. In this paper, we focus on data-driven automatic fake news detection methods. We ﬁrst apply the Bidirectional Encoder Representations from Transformers model (BERT) model to detect fake news by analyzing the relationship between the headline and the body text of news. To further improve performance, additional news data are gathered and used to pre-train this model. We determine that the deep-contextualizing nature of BERT is best suited for this task and improves the 0.14 F-score over older state-of-the-art models.},
+	language = {en},
+	number = {19},
+	urldate = {2020-02-19},
+	journal = {Applied Sciences},
+	author = {Jwa, Heejung and Oh, Dongsuk and Park, Kinam and Kang, Jang and Lim, Hueiseok},
+	month = sep,
+	year = {2019},
+	pages = {4062},
+	file = {Jwa et al. - 2019 - exBAKE Automatic Fake News Detection Model Based .pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/EZT4A6VE/Jwa et al. - 2019 - exBAKE Automatic Fake News Detection Model Based .pdf:application/pdf}
+}
+
+@article{nakamura_rfakeddit_2019,
+	title = {r/{Fakeddit}: {A} {New} {Multimodal} {Benchmark} {Dataset} for {Fine}-grained {Fake} {News} {Detection}},
+	shorttitle = {r/{Fakeddit}},
+	url = {http://arxiv.org/abs/1911.03854},
+	abstract = {Fake news has altered society in negative ways as evidenced in politics and culture. It has adversely affected both online social network systems as well as ofﬂine communities and conversations. Using automatic fake news detection algorithms is an efﬁcient way to combat the rampant dissemination of fake news. However, using an effective dataset has been a problem for fake news research and detection model development. In this paper, we present Fakeddit, a novel dataset consisting of about 800,000 samples from multiple categories of fake news. Each sample is labeled according to 2-way, 3-way, and 5-way classiﬁcation categories. Prior fake news datasets do not provide multimodal text and image data, metadata, comment data, and ﬁne-grained fake news categorization at this scale and breadth. We construct hybrid text+image models and perform extensive experiments for multiple variations of classiﬁcation.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1911.03854 [cs]},
+	author = {Nakamura, Kai and Levy, Sharon and Wang, William Yang},
+	month = nov,
+	year = {2019},
+	note = {arXiv: 1911.03854},
+	keywords = {Computer Science - Computation and Language, Computer Science - Information Retrieval, Computer Science - Computers and Society},
+	file = {Nakamura et al. - 2019 - rFakeddit A New Multimodal Benchmark Dataset for.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/IGJEWK5F/Nakamura et al. - 2019 - rFakeddit A New Multimodal Benchmark Dataset for.pdf:application/pdf}
+}
+
+@article{rodriguez_fake_2019,
+	title = {Fake news detection using {Deep} {Learning}},
+	url = {http://arxiv.org/abs/1910.03496},
+	abstract = {The evolution of the information and communication technologies has dramatically increased the number of people with access to the Internet, which has changed the way the information is consumed.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1910.03496 [cs]},
+	author = {Rodríguez, Álvaro Ibrain and Iglesias, Lara Lloret},
+	month = oct,
+	year = {2019},
+	note = {arXiv: 1910.03496},
+	keywords = {Computer Science - Computation and Language, Computer Science - Computers and Society},
+	file = {Rodríguez and Iglesias - 2019 - Fake news detection using Deep Learning.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/QECYW94R/Rodríguez and Iglesias - 2019 - Fake news detection using Deep Learning.pdf:application/pdf}
+}
+
+@misc{noauthor_pdf_nodate,
+	title = {({PDF}) {Fake} news detection using {Deep} {Learning}},
+	url = {https://www.researchgate.net/publication/336361285_Fake_news_detection_using_Deep_Learning},
+	abstract = {ResearchGate is a network dedicated to science and research. Connect, collaborate and discover scientific publications, jobs and conferences. All for free.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {ResearchGate},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/WMPU2YFJ/336361285_Fake_news_detection_using_Deep_Learning.html:text/html}
+}
+
+@misc{nag_unsupervised_2019,
+	title = {Unsupervised outlier detection in text corpus using {Deep} {Learning}},
+	url = {https://medium.com/datadriveninvestor/unsupervised-outlier-detection-in-text-corpus-using-deep-learning-41d4284a04c8},
+	abstract = {Auto-encoder based approach of finding most unique movie plot in Wikipedia movie database.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {Medium},
+	author = {Nag, Avishek},
+	month = may,
+	year = {2019},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/DXED892Y/unsupervised-outlier-detection-in-text-corpus-using-deep-learning-41d4284a04c8.html:text/html}
+}
+
+@article{nourbakhsh_framework_2019,
+	title = {A framework for anomaly detection using language modeling, and its applications to finance},
+	url = {http://arxiv.org/abs/1908.09156},
+	abstract = {In the finance sector, studies focused on anomaly detection are often associated with time-series and transactional data analytics. In this paper, we lay out the opportunities for applying anomaly and deviation detection methods to text corpora and challenges associated with them. We argue that language models that use distributional semantics can play a significant role in advancing these studies in novel directions, with new applications in risk identification, predictive modeling, and trend analysis.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1908.09156 [cs]},
+	author = {Nourbakhsh, Armineh and Bang, Grace},
+	month = aug,
+	year = {2019},
+	note = {arXiv: 1908.09156},
+	keywords = {Computer Science - Computation and Language, Computer Science - Artificial Intelligence},
+	file = {Nourbakhsh and Bang - 2019 - A framework for anomaly detection using language m.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/Z38LWQTE/Nourbakhsh and Bang - 2019 - A framework for anomaly detection using language m.pdf:application/pdf}
+}
+
+@article{shu_doc_2017,
+	title = {{DOC}: {Deep} {Open} {Classification} of {Text} {Documents}},
+	shorttitle = {{DOC}},
+	url = {http://arxiv.org/abs/1709.08716},
+	abstract = {Traditional supervised learning makes the closed-world assumption that the classes appeared in the test data must have appeared in training. This also applies to text learning or text classification. As learning is used increasingly in dynamic open environments where some new/test documents may not belong to any of the training classes, identifying these novel documents during classification presents an important problem. This problem is called open-world classification or open classification. This paper proposes a novel deep learning based approach. It outperforms existing state-of-the-art techniques dramatically.},
+	urldate = {2020-02-19},
+	journal = {arXiv:1709.08716 [cs]},
+	author = {Shu, Lei and Xu, Hu and Liu, Bing},
+	month = sep,
+	year = {2017},
+	note = {arXiv: 1709.08716},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/KUX8474U/1709.html:text/html;arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/L6GQMEKR/Shu et al. - 2017 - DOC Deep Open Classification of Text Documents.pdf:application/pdf}
+}
+
+@article{adewumi_survey_2016,
+	title = {A survey of machine-learning and nature-inspired based credit card fraud detection techniques},
+	volume = {8},
+	doi = {10.1007/s13198-016-0551-y},
+	abstract = {Credit card is one of the popular modes of payment for electronic transactions in many developed and developing countries. Invention of credit cards has made online transactions seamless, easier, comfortable and convenient. However, it has also provided new fraud opportunities for criminals, and in turn, increased fraud rate. The global impact of credit card fraud is alarming, millions of US dollars have been lost by many companies and individuals. Furthermore, cybercriminals are innovating sophisticated techniques on a regular basis, hence, there is an urgent task to develop improved and dynamic techniques capable of adapting to rapidly evolving fraudulent patterns. Achieving this task is very challenging, primarily due to the dynamic nature of fraud and also due to lack of dataset for researchers. This paper presents a review of improved credit card fraud detection techniques. Precisely, this paper focused on recent Machine Learning based and Nature Inspired based credit card fraud detection techniques proposed in literature. This paper provides a picture of recent trend in credit card fraud detection. Moreover, this review outlines some limitations and contributions of existing credit card fraud detection techniques, it also provides necessary background information for researchers in this domain. Additionally, this review serves as a guide and stepping stone for financial institutions and individuals seeking for new and effective credit card fraud detection techniques.},
+	journal = {International Journal of System Assurance Engineering and Management},
+	author = {Adewumi, Aderemi and Akinyelu, Ayo},
+	month = dec,
+	year = {2016}
+}
+
+@article{maya_dlstm_2019,
+	title = {{dLSTM}: a new approach for anomaly detection using deep learning with delayed prediction},
+	volume = {8},
+	issn = {2364-415X, 2364-4168},
+	shorttitle = {{dLSTM}},
+	url = {http://link.springer.com/10.1007/s41060-019-00186-0},
+	doi = {10.1007/s41060-019-00186-0},
+	abstract = {In this paper, we propose delayed Long Short-Term Memory (dLSTM), an anomaly detection method for time-series data. We ﬁrst build a predictive model from normal (non-anomalous) training data, then perform anomaly detection based on the prediction error for observed data. However, there are multiple states in the waveforms of normal data, which may lower prediction accuracy. To deal with this problem, we utilize multiple prediction models based on LSTM for anomaly detection. In this scheme, the prediction accuracy strongly depends on the method of selecting a proper predictive model from multiple possible models. We propose a novel method to determine the proper predictive model for anomaly detection. Our approach provides multiple predicted value candidates in advance and selects the one that is closest to the measured value. We delay the model selection until the corresponding measured values are acquired. Using this concept for anomaly detection, dLSTM selects the proper predictive model to enhance prediction accuracy. In our experimental evaluation using real and artiﬁcial data, dLSTM detects anomalies more accurately than methods in comparison.},
+	language = {en},
+	number = {2},
+	urldate = {2020-02-19},
+	journal = {International Journal of Data Science and Analytics},
+	author = {Maya, Shigeru and Ueno, Ken and Nishikawa, Takeichiro},
+	month = sep,
+	year = {2019},
+	pages = {137--164},
+	file = {Maya et al. - 2019 - dLSTM a new approach for anomaly detection using .pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/NF7CKMH3/Maya et al. - 2019 - dLSTM a new approach for anomaly detection using .pdf:application/pdf}
+}
+
+@article{schreyer_detection_2018,
+	title = {Detection of {Anomalies} in {Large} {Scale} {Accounting} {Data} using {Deep} {Autoencoder} {Networks}},
+	url = {http://arxiv.org/abs/1709.05254},
+	abstract = {Learning to detect fraud in large-scale accounting data is one of the long-standing challenges in ﬁnancial statement audits or fraud investigations. Nowadays, the majority of applied techniques refer to handcrafted rules derived from known fraud scenarios. While fairly successful, these rules exhibit the drawback that they often fail to generalize beyond known fraud scenarios and fraudsters gradually ﬁnd ways to circumvent them. To overcome this disadvantage and inspired by the recent success of deep learning we propose the application of deep autoencoder neural networks to detect anomalous journal entries. We demonstrate that the trained network’s reconstruction error obtainable for a journal entry and regularized by the entry’s individual attribute probabilities can be interpreted as a highly adaptive anomaly assessment. Experiments on two real-world datasets of journal entries, show the eﬀectiveness of the approach resulting in high f1-scores of 32.93 (dataset A) and 16.95 (dataset B) and less false positive alerts compared to state of the art baseline methods. Initial feedback received by chartered accountants and fraud examiners underpinned the quality of the approach in capturing highly relevant accounting anomalies.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1709.05254 [cs]},
+	author = {Schreyer, Marco and Sattarov, Timur and Borth, Damian and Dengel, Andreas and Reimer, Bernd},
+	month = aug,
+	year = {2018},
+	note = {arXiv: 1709.05254},
+	keywords = {Computer Science - Machine Learning, Computer Science - Computational Engineering, Finance, and Science, I.2.1},
+	file = {Schreyer et al. - 2018 - Detection of Anomalies in Large Scale Accounting D.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/3336WRRF/Schreyer et al. - 2018 - Detection of Anomalies in Large Scale Accounting D.pdf:application/pdf}
+}
+
+@article{pang_deep_2020,
+	title = {Deep {Weakly}-supervised {Anomaly} {Detection}},
+	url = {http://arxiv.org/abs/1910.13601},
+	abstract = {Anomaly detection is typically posited as an unsupervised learning task in the literature due to the prohibitive cost and difﬁculty to obtain large-scale labeled anomaly data, but this ignores the fact that a very small number (e.g., a few dozens) of labeled anomalies can often be made available with small/trivial cost in many real-world anomaly detection applications. To leverage such labeled anomaly data, we study an important anomaly detection problem termed weakly-supervised anomaly detection, in which, in addition to a large amount of unlabeled data, a limited number of labeled anomalies are available during modeling. Learning with the small labeled anomaly data enables anomaly-informed modeling, which helps identify anomalies of interest and address the notorious high false positives in unsupervised anomaly detection. However, the problem is especially challenging, since (i) the limited amount of labeled anomaly data often, if not always, cannot cover all types of anomalies and (ii) the unlabeled data is often dominated by normal instances but has anomaly contamination. We address the problem by formulating it as a pairwise relation prediction task. Particularly, our approach deﬁnes a two-stream ordinal regression neural network to learn the relation of randomly sampled instance pairs, i.e., whether the instance pair contains two labeled anomalies, one labeled anomaly, or just unlabeled data instances. The resulting model effectively leverages both the labeled and unlabeled data to substantially augment the training data and learn well-generalized representations of normality and abnormality. Comprehensive empirical results on 40 real-world datasets show that our approach (i) signiﬁcantly outperforms four state-of-the-art methods in detecting both of the known and previously unseen anomalies and (ii) is substantially more data-efﬁcient.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1910.13601 [cs, stat]},
+	author = {Pang, Guansong and Shen, Chunhua and Jin, Huidong and Hengel, Anton van den},
+	month = jan,
+	year = {2020},
+	note = {arXiv: 1910.13601},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {Pang et al. - 2020 - Deep Weakly-supervised Anomaly Detection.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/HYNLCFLP/Pang et al. - 2020 - Deep Weakly-supervised Anomaly Detection.pdf:application/pdf}
+}
+
+@article{chalapathy_deep_2019,
+	title = {Deep {Learning} for {Anomaly} {Detection}: {A} {Survey}},
+	shorttitle = {Deep {Learning} for {Anomaly} {Detection}},
+	url = {http://arxiv.org/abs/1901.03407},
+	abstract = {Anomaly detection is an important problem that has been well-studied within diverse research areas and application domains. The aim of this survey is two-fold, ﬁrstly we present a structured and comprehensive overview of research methods in deep learning-based anomaly detection. Furthermore, we review the adoption of these methods for anomaly across various application domains and assess their effectiveness. We have grouped state-of-the-art deep anomaly detection research techniques into different categories based on the underlying assumptions and approach adopted. Within each category, we outline the basic anomaly detection technique, along with its variants and present key assumptions, to differentiate between normal and anomalous behavior. Besides, for each category, we also present the advantages and limitations and discuss the computational complexity of the techniques in real application domains. Finally, we outline open issues in research and challenges faced while adopting deep anomaly detection techniques for real-world problems.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1901.03407 [cs, stat]},
+	author = {Chalapathy, Raghavendra and Chawla, Sanjay},
+	month = jan,
+	year = {2019},
+	note = {arXiv: 1901.03407},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {Chalapathy and Chawla - 2019 - Deep Learning for Anomaly Detection A Survey.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/VZ5MS8E9/Chalapathy and Chawla - 2019 - Deep Learning for Anomaly Detection A Survey.pdf:application/pdf}
+}
+
+@article{hendrycks_deep_2019,
+	title = {Deep {Anomaly} {Detection} with {Outlier} {Exposure}},
+	url = {http://arxiv.org/abs/1812.04606},
+	abstract = {It is important to detect anomalous inputs when deploying machine learning systems. The use of larger and more complex inputs in deep learning magniﬁes the difﬁculty of distinguishing between anomalous and in-distribution examples. At the same time, diverse image and text data are available in enormous quantities. We propose leveraging these data to improve deep anomaly detection by training anomaly detectors against an auxiliary dataset of outliers, an approach we call Outlier Exposure (OE). This enables anomaly detectors to generalize and detect unseen anomalies. In extensive experiments on natural language processing and small- and large-scale vision tasks, we ﬁnd that Outlier Exposure signiﬁcantly improves detection performance. We also observe that cutting-edge generative models trained on CIFAR-10 may assign higher likelihoods to SVHN images than to CIFAR-10 images; we use OE to mitigate this issue. We also analyze the ﬂexibility and robustness of Outlier Exposure, and identify characteristics of the auxiliary dataset that improve performance.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1812.04606 [cs, stat]},
+	author = {Hendrycks, Dan and Mazeika, Mantas and Dietterich, Thomas},
+	month = jan,
+	year = {2019},
+	note = {arXiv: 1812.04606},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Computer Vision and Pattern Recognition},
+	file = {Hendrycks et al. - 2019 - Deep Anomaly Detection with Outlier Exposure.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/E84C2FUT/Hendrycks et al. - 2019 - Deep Anomaly Detection with Outlier Exposure.pdf:application/pdf}
+}
+
+@article{hendrycks_baseline_2018,
+	title = {A {Baseline} for {Detecting} {Misclassified} and {Out}-of-{Distribution} {Examples} in {Neural} {Networks}},
+	url = {http://arxiv.org/abs/1610.02136},
+	abstract = {We consider the two related problems of detecting if an example is misclassiﬁed or out-of-distribution. We present a simple baseline that utilizes probabilities from softmax distributions. Correctly classiﬁed examples tend to have greater maximum softmax probabilities than erroneously classiﬁed and out-of-distribution examples, allowing for their detection. We assess performance by deﬁning several tasks in computer vision, natural language processing, and automatic speech recognition, showing the effectiveness of this baseline across all. We then show the baseline can sometimes be surpassed, demonstrating the room for future research on these underexplored detection tasks.},
+	language = {en},
+	urldate = {2020-02-19},
+	journal = {arXiv:1610.02136 [cs]},
+	author = {Hendrycks, Dan and Gimpel, Kevin},
+	month = oct,
+	year = {2018},
+	note = {arXiv: 1610.02136},
+	keywords = {Computer Science - Machine Learning, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Neural and Evolutionary Computing},
+	file = {Hendrycks and Gimpel - 2018 - A Baseline for Detecting Misclassified and Out-of-.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/NGSEU55H/Hendrycks and Gimpel - 2018 - A Baseline for Detecting Misclassified and Out-of-.pdf:application/pdf}
+}
+
+@misc{noauthor_notitle_nodate
+}
+
+@article{cohan_specter_2020,
+	title = {{SPECTER}: {Document}-level {Representation} {Learning} using {Citation}-informed {Transformers}},
+	shorttitle = {{SPECTER}},
+	url = {http://arxiv.org/abs/2004.07180},
+	abstract = {Representation learning is a critical ingredient for natural language processing systems. Recent Transformer language models like BERT learn powerful textual representations, but these models are targeted towards token- and sentence-level training objectives and do not leverage information on inter-document relatedness, which limits their document-level representation power. For applications on scientific documents, such as classification and recommendation, the embeddings power strong performance on end tasks. We propose SPECTER, a new method to generate document-level embedding of scientific documents based on pretraining a Transformer language model on a powerful signal of document-level relatedness: the citation graph. Unlike existing pretrained language models, SPECTER can be easily applied to downstream applications without task-specific fine-tuning. Additionally, to encourage further research on document-level models, we introduce SciDocs, a new evaluation benchmark consisting of seven document-level tasks ranging from citation prediction, to document classification and recommendation. We show that SPECTER outperforms a variety of competitive baselines on the benchmark.},
+	language = {en},
+	urldate = {2020-07-05},
+	journal = {arXiv:2004.07180 [cs]},
+	author = {Cohan, Arman and Feldman, Sergey and Beltagy, Iz and Downey, Doug and Weld, Daniel S.},
+	month = may,
+	year = {2020},
+	note = {arXiv: 2004.07180},
+	keywords = {Computer Science - Computation and Language},
+	file = {Cohan et al. - 2020 - SPECTER Document-level Representation Learning us.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/AX2S6K4N/Cohan et al. - 2020 - SPECTER Document-level Representation Learning us.pdf:application/pdf}
+}
+
+@article{arora_simple_2017,
+	title = {A {SIMPLE} {BUT} {TOUGH}-{TO}-{BEAT} {BASELINE} {FOR} {SEN}- {TENCE} {EMBEDDINGS}},
+	abstract = {The success of neural network methods for computing word embeddings has motivated methods for generating semantic embeddings of longer pieces of text, such as sentences and paragraphs. Surprisingly, Wieting et al (ICLR’16) showed that such complicated methods are outperformed, especially in out-of-domain (transfer learning) settings, by simpler methods involving mild retraining of word embeddings and basic linear regression. The method of Wieting et al. requires retraining with a substantial labeled dataset such as Paraphrase Database (Ganitkevitch et al., 2013).},
+	language = {en},
+	author = {Arora, Sanjeev and Liang, Yingyu and Ma, Tengyu},
+	year = {2017},
+	pages = {16},
+	file = {Arora et al. - 2017 - A SIMPLE BUT TOUGH-TO-BEAT BASELINE FOR SEN- TENCE.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/PPCWBL8N/Arora et al. - 2017 - A SIMPLE BUT TOUGH-TO-BEAT BASELINE FOR SEN- TENCE.pdf:application/pdf}
+}
+
+@inproceedings{ethayarajh_unsupervised_2018,
+	address = {Melbourne, Australia},
+	title = {Unsupervised {Random} {Walk} {Sentence} {Embeddings}: {A} {Strong} but {Simple} {Baseline}},
+	shorttitle = {Unsupervised {Random} {Walk} {Sentence} {Embeddings}},
+	url = {http://aclweb.org/anthology/W18-3012},
+	doi = {10.18653/v1/W18-3012},
+	abstract = {Using a random walk model of text generation, Arora et al. (2017) proposed a strong baseline for computing sentence embeddings: take a weighted average of word embeddings and modify with SVD. This simple method even outperforms far more complex approaches such as LSTMs on textual similarity tasks. In this paper, we ﬁrst show that word vector length has a confounding effect on the probability of a sentence being generated in Arora et al.’s model. We propose a random walk model that is robust to this confound, where the probability of word generation is inversely related to the angular distance between the word and sentence embeddings. Our approach beats Arora et al.’s by up to 44.4\% on textual similarity tasks and is competitive with state-of-the-art methods. Unlike Arora et al.’s method, ours requires no hyperparameter tuning, which means it can be used when there is no labelled data.},
+	language = {en},
+	urldate = {2020-07-05},
+	booktitle = {Proceedings of {The} {Third} {Workshop} on {Representation} {Learning} for {NLP}},
+	publisher = {Association for Computational Linguistics},
+	author = {Ethayarajh, Kawin},
+	year = {2018},
+	pages = {91--100},
+	file = {Ethayarajh - 2018 - Unsupervised Random Walk Sentence Embeddings A St.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/4Y396QND/Ethayarajh - 2018 - Unsupervised Random Walk Sentence Embeddings A St.pdf:application/pdf}
+}
+
+@article{pagliardini_unsupervised_2018,
+	title = {Unsupervised {Learning} of {Sentence} {Embeddings} using {Compositional} n-{Gram} {Features}},
+	url = {http://arxiv.org/abs/1703.02507},
+	doi = {10.18653/v1/N18-1049},
+	abstract = {The recent tremendous success of unsupervised word embeddings in a multitude of applications raises the obvious question if similar methods could be derived to improve embeddings (i.e. semantic representations) of word sequences as well. We present a simple but efficient unsupervised objective to train distributed representations of sentences. Our method outperforms the state-of-the-art unsupervised models on most benchmark tasks, highlighting the robustness of the produced general-purpose sentence embeddings.},
+	urldate = {2020-07-05},
+	journal = {Proceedings of the 2018 Conference of the North American Chapter of           the Association for Computational Linguistics: Human Language           Technologies, Volume 1 (Long Papers)},
+	author = {Pagliardini, Matteo and Gupta, Prakhar and Jaggi, Martin},
+	year = {2018},
+	note = {arXiv: 1703.02507},
+	keywords = {Computer Science - Computation and Language, Computer Science - Information Retrieval, Computer Science - Artificial Intelligence, I.2.7},
+	pages = {528--540},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/VM3XRV7A/Pagliardini et al. - 2018 - Unsupervised Learning of Sentence Embeddings using.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/98BJFFHU/1703.html:text/html}
+}
+
+@inproceedings{cer_semeval-2017_2017,
+	address = {Vancouver, Canada},
+	title = {{SemEval}-2017 {Task} 1: {Semantic} {Textual} {Similarity} {Multilingual} and {Crosslingual} {Focused} {Evaluation}},
+	shorttitle = {{SemEval}-2017 {Task} 1},
+	url = {https://www.aclweb.org/anthology/S17-2001},
+	doi = {10.18653/v1/S17-2001},
+	abstract = {Semantic Textual Similarity (STS) measures the meaning similarity of sentences. Applications include machine translation (MT), summarization, generation, question answering (QA), short answer grading, semantic search, dialog and conversational systems. The STS shared task is a venue for assessing the current state-of-the-art. The 2017 task focuses on multilingual and cross-lingual pairs with one sub-track exploring MT quality estimation (MTQE) data. The task obtained strong participation from 31 teams, with 17 participating in \textit{all language tracks}. We summarize performance and review a selection of well performing methods. Analysis highlights common errors, providing insight into the limitations of existing models. To support ongoing work on semantic representations, the \textit{STS Benchmark} is introduced as a new shared training and evaluation set carefully selected from the corpus of English STS shared task data (2012-2017).},
+	urldate = {2020-07-05},
+	booktitle = {Proceedings of the 11th {International} {Workshop} on {Semantic} {Evaluation} ({SemEval}-2017)},
+	publisher = {Association for Computational Linguistics},
+	author = {Cer, Daniel and Diab, Mona and Agirre, Eneko and Lopez-Gazpio, Iñigo and Specia, Lucia},
+	month = aug,
+	year = {2017},
+	pages = {1--14},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/P5WD75U6/Cer et al. - 2017 - SemEval-2017 Task 1 Semantic Textual Similarity M.pdf:application/pdf}
+}
+
+@inproceedings{wieting_paranmt-50m_2018,
+	address = {Melbourne, Australia},
+	title = {{ParaNMT}-{50M}: {Pushing} the {Limits} of {Paraphrastic} {Sentence} {Embeddings} with {Millions} of {Machine} {Translations}},
+	shorttitle = {{ParaNMT}-{50M}},
+	url = {https://www.aclweb.org/anthology/P18-1042},
+	doi = {10.18653/v1/P18-1042},
+	abstract = {We describe ParaNMT-50M, a dataset of more than 50 million English-English sentential paraphrase pairs. We generated the pairs automatically by using neural machine translation to translate the non-English side of a large parallel corpus, following Wieting et al. (2017). Our hope is that ParaNMT-50M can be a valuable resource for paraphrase generation and can provide a rich source of semantic knowledge to improve downstream natural language understanding tasks. To show its utility, we use ParaNMT-50M to train paraphrastic sentence embeddings that outperform all supervised systems on every SemEval semantic textual similarity competition, in addition to showing how it can be used for paraphrase generation.},
+	urldate = {2020-07-05},
+	booktitle = {Proceedings of the 56th {Annual} {Meeting} of the {Association} for {Computational} {Linguistics} ({Volume} 1: {Long} {Papers})},
+	publisher = {Association for Computational Linguistics},
+	author = {Wieting, John and Gimpel, Kevin},
+	month = jul,
+	year = {2018},
+	pages = {451--462},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/MIZGA5TJ/Wieting and Gimpel - 2018 - ParaNMT-50M Pushing the Limits of Paraphrastic Se.pdf:application/pdf}
+}
+
+@misc{mezzetti_building_2020,
+	title = {Building a sentence embedding index with {fastText} and {BM25}},
+	url = {https://towardsdatascience.com/building-a-sentence-embedding-index-with-fasttext-and-bm25-f07e7148d240},
+	abstract = {This article covers sentence embeddings and how codequestion built a fastText + BM25 embeddings search. Source code can be found on github.},
+	language = {en},
+	urldate = {2020-07-05},
+	journal = {Medium},
+	author = {Mezzetti, David},
+	month = jan,
+	year = {2020},
+	note = {Library Catalog: towardsdatascience.com},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/37NKLGFK/building-a-sentence-embedding-index-with-fasttext-and-bm25-f07e7148d240.html:text/html}
+}
+
+@article{meng_spherical_2019,
+	title = {Spherical {Text} {Embedding}},
+	url = {http://arxiv.org/abs/1911.01196},
+	abstract = {Unsupervised text embedding has shown great power in a wide range of NLP tasks. While text embeddings are typically learned in the Euclidean space, directional similarity is often more effective in tasks such as word similarity and document clustering, which creates a gap between the training stage and usage stage of text embedding. To close this gap, we propose a spherical generative model based on which unsupervised word and paragraph embeddings are jointly learned. To learn text embeddings in the spherical space, we develop an efficient optimization algorithm with convergence guarantee based on Riemannian optimization. Our model enjoys high efficiency and achieves state-of-the-art performances on various text embedding tasks including word similarity and document clustering.},
+	urldate = {2020-07-05},
+	journal = {arXiv:1911.01196 [cs, stat]},
+	author = {Meng, Yu and Huang, Jiaxin and Wang, Guangyuan and Zhang, Chao and Zhuang, Honglei and Kaplan, Lance and Han, Jiawei},
+	month = nov,
+	year = {2019},
+	note = {arXiv: 1911.01196},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/9DXAA93N/Meng et al. - 2019 - Spherical Text Embedding.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/ENEMZ2ZX/1911.html:text/html}
+}
+
+@misc{palachy_document_2019,
+	title = {Document {Embedding} {Techniques}},
+	url = {https://towardsdatascience.com/document-embedding-techniques-fed3e7a6a25d},
+	abstract = {A review of notable literature on the topic},
+	language = {en},
+	urldate = {2020-07-05},
+	journal = {Medium},
+	author = {Palachy, Shay},
+	month = oct,
+	year = {2019},
+	note = {Library Catalog: towardsdatascience.com},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/LK6WGXTA/document-embedding-techniques-fed3e7a6a25d.html:text/html}
+}
+
+@article{adhikari_docbert_2019-1,
+	title = {{DocBERT}: {BERT} for {Document} {Classification}},
+	shorttitle = {{DocBERT}},
+	url = {http://arxiv.org/abs/1904.08398},
+	abstract = {We present, to our knowledge, the first application of BERT to document classification. A few characteristics of the task might lead one to think that BERT is not the most appropriate model: syntactic structures matter less for content categories, documents can often be longer than typical BERT input, and documents often have multiple labels. Nevertheless, we show that a straightforward classification model using BERT is able to achieve the state of the art across four popular datasets. To address the computational expense associated with BERT inference, we distill knowledge from BERT-large to small bidirectional LSTMs, reaching BERT-base parity on multiple datasets using 30x fewer parameters. The primary contribution of our paper is improved baselines that can provide the foundation for future work.},
+	urldate = {2020-07-05},
+	journal = {arXiv:1904.08398 [cs]},
+	author = {Adhikari, Ashutosh and Ram, Achyudh and Tang, Raphael and Lin, Jimmy},
+	month = apr,
+	year = {2019},
+	note = {arXiv: 1904.08398
+version: 1},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/GRDMIMFT/Adhikari et al. - 2019 - DocBERT BERT for Document Classification.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/PPD6Y9IW/1904.html:text/html}
+}
+
+@article{pappagari_hierarchical_2019,
+	title = {Hierarchical {Transformers} for {Long} {Document} {Classification}},
+	url = {http://arxiv.org/abs/1910.10781},
+	abstract = {BERT, which stands for Bidirectional Encoder Representations from Transformers, is a recently introduced language representation model based upon the transfer learning paradigm. We extend its ﬁne-tuning procedure to address one of its major limitations - applicability to inputs longer than a few hundred words, such as transcripts of human call conversations. Our method is conceptually simple. We segment the input into smaller chunks and feed each of them into the base model. Then, we propagate each output through a single recurrent layer, or another transformer, followed by a softmax activation. We obtain the ﬁnal classiﬁcation decision after the last segment has been consumed. We show that both BERT extensions are quick to ﬁne-tune and converge after as little as 1 epoch of training on a small, domain-speciﬁc data set. We successfully apply them in three different tasks involving customer call satisfaction prediction and topic classiﬁcation, and obtain a signiﬁcant improvement over the baseline models in two of them.},
+	language = {en},
+	urldate = {2020-07-05},
+	journal = {arXiv:1910.10781 [cs, stat]},
+	author = {Pappagari, Raghavendra and Żelasko, Piotr and Villalba, Jesús and Carmiel, Yishay and Dehak, Najim},
+	month = oct,
+	year = {2019},
+	note = {arXiv: 1910.10781},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {Pappagari et al. - 2019 - Hierarchical Transformers for Long Document Classi.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/KA963WD5/Pappagari et al. - 2019 - Hierarchical Transformers for Long Document Classi.pdf:application/pdf}
+}
+
+@article{zhou_end--end_2019,
+	title = {An end-to-end {Neural} {Network} {Framework} for {Text} {Clustering}},
+	url = {http://arxiv.org/abs/1903.09424},
+	abstract = {The unsupervised text clustering is one of the major tasks in natural language processing (NLP) and remains a difﬁcult and complex problem. Conventional methods generally treat this task using separated steps, including text representation learning and clustering the representations. As an improvement, neural methods have also been introduced for continuous representation learning to address the sparsity problem. However, the multi-step process still deviates from the uniﬁed optimization target. Especially the second step of cluster is generally performed with conventional methods such as k-Means. We propose a pure neural framework for text clustering in an end-to-end manner. It jointly learns the text representation and the clustering model. Our model works well when the context can be obtained, which is nearly always the case in the ﬁeld of NLP. We have our method evaluated on two widely used benchmarks: IMDB movie reviews for sentiment classiﬁcation and 20-Newsgroup for topic categorization. Despite its simplicity, experiments show the model outperforms previous clustering methods by a large margin. Furthermore, the model is also veriﬁed on English wiki dataset as a large corpus.},
+	language = {en},
+	urldate = {2020-07-05},
+	journal = {arXiv:1903.09424 [cs]},
+	author = {Zhou, Jie and Cheng, Xingyi and Zhang, Jinchao},
+	month = mar,
+	year = {2019},
+	note = {arXiv: 1903.09424},
+	keywords = {Computer Science - Computation and Language},
+	file = {Zhou et al. - 2019 - An end-to-end Neural Network Framework for Text Cl.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/9MIQV7QZ/Zhou et al. - 2019 - An end-to-end Neural Network Framework for Text Cl.pdf:application/pdf}
+}
+
+@article{eger_pitfalls_2019,
+	title = {Pitfalls in the {Evaluation} of {Sentence} {Embeddings}},
+	url = {http://arxiv.org/abs/1906.01575},
+	abstract = {Deep learning models continuously break new records across different NLP tasks. At the same time, their success exposes weaknesses of model evaluation. Here, we compile several key pitfalls of evaluation of sentence embeddings, a currently very popular NLP paradigm. These pitfalls include the comparison of embeddings of different sizes, normalization of embeddings, and the low (and diverging) correlations between transfer and probing tasks. Our motivation is to challenge the current evaluation of sentence embeddings and to provide an easy-to-access reference for future research. Based on our insights, we also recommend better practices for better future evaluations of sentence embeddings.},
+	language = {en},
+	urldate = {2020-07-05},
+	journal = {arXiv:1906.01575 [cs]},
+	author = {Eger, Steffen and Rücklé, Andreas and Gurevych, Iryna},
+	month = jun,
+	year = {2019},
+	note = {arXiv: 1906.01575},
+	keywords = {Computer Science - Computation and Language},
+	file = {Eger et al. - 2019 - Pitfalls in the Evaluation of Sentence Embeddings.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/99ZMDW3D/Eger et al. - 2019 - Pitfalls in the Evaluation of Sentence Embeddings.pdf:application/pdf}
+}
+
+@article{ruckle_concatenated_2018,
+	title = {Concatenated {Power} {Mean} {Word} {Embeddings} as {Universal} {Cross}-{Lingual} {Sentence} {Representations}},
+	url = {http://arxiv.org/abs/1803.01400},
+	abstract = {Average word embeddings are a common baseline for more sophisticated sentence embedding techniques. However, they typically fall short of the performances of more complex models such as InferSent. Here, we generalize the concept of average word embeddings to power mean word embeddings. We show that the concatenation of different types of power mean word embeddings considerably closes the gap to state-of-the-art methods monolingually and substantially outperforms these more complex techniques cross-lingually. In addition, our proposed method outperforms different recently proposed baselines such as SIF and Sent2Vec by a solid margin, thus constituting a much harder-to-beat monolingual baseline. Our data and code are publicly available.},
+	urldate = {2020-07-05},
+	journal = {arXiv:1803.01400 [cs]},
+	author = {Rücklé, Andreas and Eger, Steffen and Peyrard, Maxime and Gurevych, Iryna},
+	month = sep,
+	year = {2018},
+	note = {arXiv: 1803.01400},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/NS4Q539T/Rücklé et al. - 2018 - Concatenated Power Mean Word Embeddings as Univers.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/KV7R49IX/1803.html:text/html}
+}
+
+@inproceedings{das_together_2016,
+	address = {Berlin, Germany},
+	title = {Together we stand: {Siamese} {Networks} for {Similar} {Question} {Retrieval}},
+	shorttitle = {Together we stand},
+	url = {https://www.aclweb.org/anthology/P16-1036},
+	doi = {10.18653/v1/P16-1036},
+	urldate = {2020-07-06},
+	booktitle = {Proceedings of the 54th {Annual} {Meeting} of the {Association} for {Computational} {Linguistics} ({Volume} 1: {Long} {Papers})},
+	publisher = {Association for Computational Linguistics},
+	author = {Das, Arpita and Yenala, Harish and Chinnakotla, Manoj and Shrivastava, Manish},
+	month = aug,
+	year = {2016},
+	pages = {378--387},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/3PGS962W/Das et al. - 2016 - Together we stand Siamese Networks for Similar Qu.pdf:application/pdf}
+}
+
+@article{douzi_towards_2017,
+	series = {14th {International} {Conference} on {Mobile} {Systems} and {Pervasive} {Computing} ({MobiSPC} 2017) / 12th {International} {Conference} on {Future} {Networks} and {Communications} ({FNC} 2017) / {Affiliated} {Workshops}},
+	title = {Towards {A} new {Spam} {Filter} {Based} on {PV}-{DM} ({Paragraph} {Vector}-{Distributed} {Memory} {Approach})},
+	volume = {110},
+	issn = {1877-0509},
+	url = {http://www.sciencedirect.com/science/article/pii/S1877050917313091},
+	doi = {10.1016/j.procs.2017.06.130},
+	abstract = {The increasing volume of emails has led to the emergence of problems caused by unsolicited email, commonly referred to as Spam. One of the most commonly presentation used in Spam Filter is the BoW (Bag-of-words). However, this approach has a number of weaknesses, mainly the fact that the word order is lost; hence different emails can have the same representation since the same words are used, and it ignores the relationship between words, which can lead to poor performance. This paper proposes a new Spam filter based on PV-DM (Paragraph Vector-Distributed Memory) in order to overcome the limitations of the BoW representation.},
+	language = {en},
+	urldate = {2020-07-06},
+	journal = {Procedia Computer Science},
+	author = {Douzi, Samira and Amar, Meryem and Ouahidi, Bouabid El and Laanaya, Hicham},
+	month = jan,
+	year = {2017},
+	keywords = {Paragraph Vector-Distributed Memory, spam filter, word embedding},
+	pages = {486--491},
+	file = {ScienceDirect Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/NXFJ3VJL/S1877050917313091.html:text/html;ScienceDirect Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/H8T9BJJZ/Douzi et al. - 2017 - Towards A new Spam Filter Based on PV-DM (Paragrap.pdf:application/pdf}
+}
+
+@article{logeswaran_efficient_2018,
+	title = {An efficient framework for learning sentence representations},
+	url = {http://arxiv.org/abs/1803.02893},
+	abstract = {In this work we propose a simple and efﬁcient framework for learning sentence representations from unlabelled data. Drawing inspiration from the distributional hypothesis and recent work on learning sentence representations, we reformulate the problem of predicting the context in which a sentence appears as a classiﬁcation problem. Given a sentence and its context, a classiﬁer distinguishes context sentences from other contrastive sentences based on their vector representations. This allows us to efﬁciently learn different types of encoding functions, and we show that the model learns high-quality sentence representations. We demonstrate that our sentence representations outperform state-of-the-art unsupervised and supervised representation learning methods on several downstream NLP tasks that involve understanding sentence semantics while achieving an order of magnitude speedup in training time.},
+	language = {en},
+	urldate = {2020-07-06},
+	journal = {arXiv:1803.02893 [cs]},
+	author = {Logeswaran, Lajanugen and Lee, Honglak},
+	month = mar,
+	year = {2018},
+	note = {arXiv: 1803.02893},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Computer Science - Artificial Intelligence},
+	file = {Logeswaran and Lee - 2018 - An efficient framework for learning sentence repre.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/6XNI9WHH/Logeswaran and Lee - 2018 - An efficient framework for learning sentence repre.pdf:application/pdf}
+}
+
+@article{lau_empirical_2016,
+	title = {An {Empirical} {Evaluation} of doc2vec with {Practical} {Insights} into {Document} {Embedding} {Generation}},
+	url = {http://arxiv.org/abs/1607.05368},
+	abstract = {Recently, Le and Mikolov (2014) proposed doc2vec as an extension to word2vec (Mikolov et al., 2013a) to learn document-level embeddings. Despite promising results in the original paper, others have struggled to reproduce those results. This paper presents a rigorous empirical evaluation of doc2vec over two tasks. We compare doc2vec to two baselines and two state-of-the-art document embedding methodologies. We found that doc2vec performs robustly when using models trained on large external corpora, and can be further improved by using pre-trained word embeddings. We also provide recommendations on hyper-parameter settings for general purpose applications, and release source code to induce document embeddings using our trained doc2vec models.},
+	urldate = {2020-07-06},
+	journal = {arXiv:1607.05368 [cs]},
+	author = {Lau, Jey Han and Baldwin, Timothy},
+	month = jul,
+	year = {2016},
+	note = {arXiv: 1607.05368},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/9493PM74/Lau and Baldwin - 2016 - An Empirical Evaluation of doc2vec with Practical .pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/AZCM6QHP/1607.html:text/html}
+}
+
+@article{alvarez_review_nodate,
+	title = {A review of word embedding and document similarity algorithms applied to academic text},
+	language = {en},
+	author = {Alvarez, Jon Ezeiza and Bast, Dr Hannah},
+	pages = {90},
+	file = {Alvarez and Bast - A review of word embedding and document similarity.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/WFJB4UJT/Alvarez and Bast - A review of word embedding and document similarity.pdf:application/pdf}
+}
+
+@article{chen_efficient_2017,
+	title = {{EFFICIENT} {VECTOR} {REPRESENTATION} {FOR} {DOCU}- {MENTS} {THROUGH} {CORRUPTION}},
+	abstract = {We present an efﬁcient document representation learning framework, Document Vector through Corruption (Doc2VecC). Doc2VecC represents each document as a simple average of word embeddings. It ensures a representation generated as such captures the semantic meanings of the document during learning. A corruption model is included, which introduces a data-dependent regularization that favors informative or rare words while forcing the embeddings of common and non-discriminative ones to be close to zero. Doc2VecC produces signiﬁcantly better word embeddings than Word2Vec. We compare Doc2VecC with several state-of-the-art document representation learning algorithms. The simple model architecture introduced by Doc2VecC matches or out-performs the state-of-the-art in generating high-quality document representations for sentiment analysis, document classiﬁcation as well as semantic relatedness tasks. The simplicity of the model enables training on billions of words per hour on a single machine. At the same time, the model is very efﬁcient in generating representations of unseen documents at test time.},
+	language = {en},
+	author = {Chen, Minmin},
+	year = {2017},
+	pages = {13},
+	file = {Chen - 2017 - EFFICIENT VECTOR REPRESENTATION FOR DOCU- MENTS TH.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/5F62FVGZ/Chen - 2017 - EFFICIENT VECTOR REPRESENTATION FOR DOCU- MENTS TH.pdf:application/pdf}
+}
+
+@article{kusner_word_nodate,
+	title = {From {Word} {Embeddings} {To} {Document} {Distances}},
+	abstract = {We present the Word Mover’s Distance (WMD), a novel distance function between text documents. Our work is based on recent results in word embeddings that learn semantically meaningful representations for words from local cooccurrences in sentences. The WMD distance measures the dissimilarity between two text documents as the minimum amount of distance that the embedded words of one document need to “travel” to reach the embedded words of another document. We show that this distance metric can be cast as an instance of the Earth Mover’s Distance, a well studied transportation problem for which several highly efﬁcient solvers have been developed. Our metric has no hyperparameters and is straight-forward to implement. Further, we demonstrate on eight real world document classiﬁcation data sets, in comparison with seven stateof-the-art baselines, that the WMD metric leads to unprecedented low k-nearest neighbor document classiﬁcation error rates.},
+	language = {en},
+	author = {Kusner, Matt J and Sun, Yu and Kolkin, Nicholas I and Weinberger, Kilian Q},
+	pages = {10},
+	file = {Kusner et al. - From Word Embeddings To Document Distances.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/ZVDWZJC6/Kusner et al. - From Word Embeddings To Document Distances.pdf:application/pdf}
+}
+
+@article{kusner_word_nodate-1,
+	title = {From {Word} {Embeddings} {To} {Document} {Distances}},
+	abstract = {We present the Word Mover’s Distance (WMD), a novel distance function between text documents. Our work is based on recent results in word embeddings that learn semantically meaningful representations for words from local cooccurrences in sentences. The WMD distance measures the dissimilarity between two text documents as the minimum amount of distance that the embedded words of one document need to “travel” to reach the embedded words of another document. We show that this distance metric can be cast as an instance of the Earth Mover’s Distance, a well studied transportation problem for which several highly efﬁcient solvers have been developed. Our metric has no hyperparameters and is straight-forward to implement. Further, we demonstrate on eight real world document classiﬁcation data sets, in comparison with seven stateof-the-art baselines, that the WMD metric leads to unprecedented low k-nearest neighbor document classiﬁcation error rates.},
+	language = {en},
+	author = {Kusner, Matt J and Sun, Yu and Kolkin, Nicholas I and Weinberger, Kilian Q},
+	pages = {10},
+	file = {Kusner et al. - From Word Embeddings To Document Distances.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/UVPH4NXB/Kusner et al. - From Word Embeddings To Document Distances.pdf:application/pdf}
+}
+
+@article{wu_word_2018,
+	title = {Word {Mover}'s {Embedding}: {From} {Word2Vec} to {Document} {Embedding}},
+	shorttitle = {Word {Mover}'s {Embedding}},
+	url = {http://arxiv.org/abs/1811.01713},
+	abstract = {While the celebrated Word2Vec technique yields semantically rich representations for individual words, there has been relatively less success in extending to generate unsupervised sentences or documents embeddings. Recent work has demonstrated that a distance measure between documents called Word Mover’s Distance (WMD) that aligns semantically similar words, yields unprecedented KNN classiﬁcation accuracy. However, WMD is expensive to compute, and it is hard to extend its use beyond a KNN classiﬁer. In this paper, we propose the Word Mover’s Embedding (WME), a novel approach to building an unsupervised document (sentence) embedding from pre-trained word embeddings. In our experiments on 9 benchmark text classiﬁcation datasets and 22 textual similarity tasks, the proposed technique consistently matches or outperforms state-of-the-art techniques, with signiﬁcantly higher accuracy on problems of short length.},
+	language = {en},
+	urldate = {2020-07-06},
+	journal = {arXiv:1811.01713 [cs, stat]},
+	author = {Wu, Lingfei and Yen, Ian E. H. and Xu, Kun and Xu, Fangli and Balakrishnan, Avinash and Chen, Pin-Yu and Ravikumar, Pradeep and Witbrock, Michael J.},
+	month = oct,
+	year = {2018},
+	note = {arXiv: 1811.01713},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Artificial Intelligence},
+	file = {Wu et al. - 2018 - Word Mover's Embedding From Word2Vec to Document .pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/YJLEN5Q9/Wu et al. - 2018 - Word Mover's Embedding From Word2Vec to Document .pdf:application/pdf}
+}
+
+@article{ruff_rethinking_2020,
+	title = {Rethinking {Assumptions} in {Deep} {Anomaly} {Detection}},
+	url = {http://arxiv.org/abs/2006.00339},
+	abstract = {Though anomaly detection (AD) can be viewed as a classification problem (nominal vs. anomalous) it is usually treated in an unsupervised manner since one typically does not have access to, or it is infeasible to utilize, a dataset that sufficiently characterizes what it means to be "anomalous." In this paper we present results demonstrating that this intuition surprisingly does not extend to deep AD on images. For a recent AD benchmark on ImageNet, classifiers trained to discern between normal samples and just a few (64) random natural images are able to outperform the current state of the art in deep AD. We find that this approach is also very effective at other common image AD benchmarks. Experimentally we discover that the multiscale structure of image data makes example anomalies exceptionally informative.},
+	urldate = {2020-08-18},
+	journal = {arXiv:2006.00339 [cs, stat]},
+	author = {Ruff, Lukas and Vandermeulen, Robert A. and Franks, Billy Joe and Müller, Klaus-Robert and Kloft, Marius},
+	month = may,
+	year = {2020},
+	note = {arXiv: 2006.00339},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/5R56QLKG/Ruff et al. - 2020 - Rethinking Assumptions in Deep Anomaly Detection.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/2KQDNS5H/2006.html:text/html}
+}
+
+@article{ruff_deep_2020,
+	title = {Deep {Semi}-{Supervised} {Anomaly} {Detection}},
+	url = {http://arxiv.org/abs/1906.02694},
+	abstract = {Deep approaches to anomaly detection have recently shown promising results over shallow methods on large and complex datasets. Typically anomaly detection is treated as an unsupervised learning problem. In practice however, one may have---in addition to a large set of unlabeled samples---access to a small pool of labeled samples, e.g. a subset verified by some domain expert as being normal or anomalous. Semi-supervised approaches to anomaly detection aim to utilize such labeled samples, but most proposed methods are limited to merely including labeled normal samples. Only a few methods take advantage of labeled anomalies, with existing deep approaches being domain-specific. In this work we present Deep SAD, an end-to-end deep methodology for general semi-supervised anomaly detection. We further introduce an information-theoretic framework for deep anomaly detection based on the idea that the entropy of the latent distribution for normal data should be lower than the entropy of the anomalous distribution, which can serve as a theoretical interpretation for our method. In extensive experiments on MNIST, Fashion-MNIST, and CIFAR-10, along with other anomaly detection benchmark datasets, we demonstrate that our method is on par or outperforms shallow, hybrid, and deep competitors, yielding appreciable performance improvements even when provided with only little labeled data.},
+	urldate = {2020-08-18},
+	journal = {arXiv:1906.02694 [cs, stat]},
+	author = {Ruff, Lukas and Vandermeulen, Robert A. and Görnitz, Nico and Binder, Alexander and Müller, Emmanuel and Müller, Klaus-Robert and Kloft, Marius},
+	month = feb,
+	year = {2020},
+	note = {arXiv: 1906.02694},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/MC95WA5W/Ruff et al. - 2020 - Deep Semi-Supervised Anomaly Detection.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/LSWVU25W/1906.html:text/html}
+}
+
+@misc{zhao_yzhao062suod_2020,
+	title = {yzhao062/{SUOD}},
+	copyright = {BSD-2-Clause License         ,                 BSD-2-Clause License},
+	url = {https://github.com/yzhao062/SUOD},
+	abstract = {An Acceleration System for Large-scale Outlier Detection (Anomaly Detection)},
+	urldate = {2020-08-18},
+	author = {Zhao, Yue},
+	month = aug,
+	year = {2020},
+	note = {original-date: 2019-11-20T00:23:54Z},
+	keywords = {anomaly-detection, data-mining, outlier-detection, machine-learning, python, distributed-systems, knowledge-distillation, machine-learning-algorithms, machine-learning-library}
+}
+
+@misc{zhao_yzhao062pyod_2020,
+	title = {yzhao062/pyod},
+	copyright = {BSD-2-Clause License         ,                 BSD-2-Clause License},
+	url = {https://github.com/yzhao062/pyod},
+	abstract = {A Python Toolbox for Scalable Outlier Detection (Anomaly Detection)},
+	urldate = {2020-08-18},
+	author = {Zhao, Yue},
+	month = aug,
+	year = {2020},
+	note = {original-date: 2017-10-03T20:29:04Z},
+	keywords = {anomaly-detection, data-mining, outlier-detection, outlier-ensembles, deep-learning, machine-learning, python, python3, anomaly, autoencoder, data-analysis, data-science, fraud-detection, neural-networks, outliers, python2, unsupervised-learning}
+}
+
+@inproceedings{schnabel_evaluation_2015,
+	address = {Lisbon, Portugal},
+	title = {Evaluation methods for unsupervised word embeddings},
+	url = {https://www.aclweb.org/anthology/D15-1036},
+	doi = {10.18653/v1/D15-1036},
+	urldate = {2020-08-21},
+	booktitle = {Proceedings of the 2015 {Conference} on {Empirical} {Methods} in {Natural} {Language} {Processing}},
+	publisher = {Association for Computational Linguistics},
+	author = {Schnabel, Tobias and Labutov, Igor and Mimno, David and Joachims, Thorsten},
+	month = sep,
+	year = {2015},
+	pages = {298--307},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/F2SH7LF8/Schnabel et al. - 2015 - Evaluation methods for unsupervised word embedding.pdf:application/pdf}
+}
+
+@inproceedings{li_improving_2017,
+	title = {Improving {Word} {Embeddings} for {Low} {Frequency} {Words} by {Pseudo} {Contexts}},
+	doi = {10.1007/978-3-319-69005-6_4},
+	abstract = {This paper investigates relations between word semantic density and word frequency. A distributed representations based word average similarity is defined as the measure of word semantic density. We find that the average similarities of low frequency words are always bigger than that of high frequency words, when the frequency approaches to 400 around, the average similarity tends to stable. The finding keeps correct with changes of the size of training corpus, dimension of distributed representations and number of negative samples in skip-gram model. It also keeps on 17 different languages. Basing on the finding, we propose a pseudo context skip-gram model, which makes use of context words of semantic nearest neighbors of target words. Experiment results show our model achieves significant performance improvements in both word similarity and analogy tasks.},
+	booktitle = {{CCL}},
+	author = {Li, Fang and Wang, X.},
+	year = {2017}
+}
+
+@article{altszyler_comparative_2017,
+	title = {Comparative study of {LSA} vs {Word2vec} embeddings in small corpora: a case study in dreams database},
+	volume = {56},
+	issn = {10538100},
+	shorttitle = {Comparative study of {LSA} vs {Word2vec} embeddings in small corpora},
+	url = {http://arxiv.org/abs/1610.01520},
+	doi = {10.1016/j.concog.2017.09.004},
+	abstract = {Word embeddings have been extensively studied in large text datasets. However, only a few studies analyze semantic representations of small corpora, particularly relevant in single-person text production studies. In the present paper, we compare Skip-gram and LSA capabilities in this scenario, and we test both techniques to extract relevant semantic patterns in single-series dreams reports. LSA showed better performance than Skip-gram in small size training corpus in two semantic tests. As a study case, we show that LSA can capture relevant words associations in dream reports series, even in cases of small number of dreams or low-frequency words. We propose that LSA can be used to explore words associations in dreams reports, which could bring new insight into this classic research area of psychology},
+	urldate = {2020-08-21},
+	journal = {Consciousness and Cognition},
+	author = {Altszyler, Edgar and Sigman, Mariano and Ribeiro, Sidarta and Slezak, Diego Fernández},
+	month = nov,
+	year = {2017},
+	note = {arXiv: 1610.01520},
+	keywords = {Computer Science - Computation and Language, Computer Science - Information Retrieval},
+	pages = {178--187},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/EZYAP94Q/Altszyler et al. - 2017 - Comparative study of LSA vs Word2vec embeddings in.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/IHSSX68C/1610.html:text/html}
+}
+
+@article{kannan_outlier_2017,
+	title = {Outlier {Detection} for {Text} {Data} : {An} {Extended} {Version}},
+	shorttitle = {Outlier {Detection} for {Text} {Data}},
+	url = {http://arxiv.org/abs/1701.01325},
+	abstract = {The problem of outlier detection is extremely challenging in many domains such as text, in which the attribute values are typically non-negative, and most values are zero. In such cases, it often becomes difficult to separate the outliers from the natural variations in the patterns in the underlying data. In this paper, we present a matrix factorization method, which is naturally able to distinguish the anomalies with the use of low rank approximations of the underlying data. Our iterative algorithm TONMF is based on block coordinate descent (BCD) framework. We define blocks over the term-document matrix such that the function becomes solvable. Given most recently updated values of other matrix blocks, we always update one block at a time to its optimal. Our approach has significant advantages over traditional methods for text outlier detection. Finally, we present experimental results illustrating the effectiveness of our method over competing methods.},
+	urldate = {2020-08-31},
+	journal = {arXiv:1701.01325 [cs, stat]},
+	author = {Kannan, Ramakrishnan and Woo, Hyenkyun and Aggarwal, Charu C. and Park, Haesun},
+	month = jan,
+	year = {2017},
+	note = {arXiv: 1701.01325},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Information Retrieval},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/ZL87ER6W/Kannan et al. - 2017 - Outlier Detection for Text Data  An Extended Vers.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/MMTS8WNW/1701.html:text/html}
+}
+
+@article{noauthor_outlier_2020,
+	title = {Outlier {Detection} in {Text} {Data}: {An} {Unsupervised} {Method} {Based} {On} {Text} {Similarity} and {Density} {Peak}},
+	shorttitle = {Outlier {Detection} in {Text} {Data}},
+	url = {https://www.researchsquare.com/article/rs-14740/v1},
+	doi = {10.21203/rs.2.24181/v1},
+	abstract = {Outlier detection is problematic in the text data processing. In this paper, a novel method for detecting outliers in text data is proposed. To recognize the outliers, we concentrate on the similarity between every two documents and the density of similar documents. Afterward, an algorithm, which...},
+	language = {en},
+	urldate = {2020-08-31},
+	month = feb,
+	year = {2020},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/7JKTTJRL/2020 - Outlier Detection in Text Data An Unsupervised Me.pdf:application/pdf;Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/XUJ87ZAJ/v1.html:text/html}
+}
+
+@misc{alammar_illustrated_nodate,
+	title = {The {Illustrated} {BERT}, {ELMo}, and co. ({How} {NLP} {Cracked} {Transfer} {Learning})},
+	url = {http://jalammar.github.io/illustrated-bert/},
+	abstract = {Discussions:
+Hacker News (98 points, 19 comments), Reddit r/MachineLearning (164 points, 20 comments)
+
+
+Translations: Chinese (Simplified), Japanese, Korean, Persian, Russian
+
+The year 2018 has been an inflection point for machine learning models handling text (or more accurately, Natural Language Processing or NLP for short). Our conceptual understanding of how best to represent words and sentences in a way that best captures underlying meanings and relationships is rapidly evolving. Moreover, the NLP community has been putting forward incredibly powerful components that you can freely download and use in your own models and pipelines (It’s been referred to as NLP’s ImageNet moment, referencing how years ago similar developments accelerated the development of machine learning in Computer Vision tasks).},
+	urldate = {2020-08-31},
+	author = {Alammar, Jay},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/XMKZIVCB/illustrated-bert.html:text/html}
+}
+
+@article{devlin_bert_2019,
+	title = {{BERT}: {Pre}-training of {Deep} {Bidirectional} {Transformers} for {Language} {Understanding}},
+	shorttitle = {{BERT}},
+	url = {http://arxiv.org/abs/1810.04805},
+	abstract = {We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5\% (7.7\% point absolute improvement), MultiNLI accuracy to 86.7\% (4.6\% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).},
+	urldate = {2020-08-31},
+	journal = {arXiv:1810.04805 [cs]},
+	author = {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
+	month = may,
+	year = {2019},
+	note = {arXiv: 1810.04805},
+	keywords = {Computer Science - Computation and Language},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/ACEIYUSZ/Devlin et al. - 2019 - BERT Pre-training of Deep Bidirectional Transform.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/TQX9HN8B/1810.html:text/html}
+}
+
+@misc{noauthor_comparison_nodate,
+	title = {Comparison between {BERT}, {ELMo}, and {Flair} embeddings · {Issue} \#308 · {flairNLP}/flair},
+	url = {https://github.com/flairNLP/flair/issues/308},
+	abstract = {We want to collect experiments here that compare BERT, ELMo, and Flair embeddings. So if you have any findings on which embedding type work best on what kind of task, we would be more than happy if...},
+	language = {en},
+	urldate = {2020-08-31},
+	journal = {GitHub},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/DQRZA6DK/308.html:text/html}
+}
+
+@article{domingues_comparative_2018,
+	title = {A comparative evaluation of outlier detection algorithms: {Experiments} and analyses},
+	volume = {74},
+	issn = {00313203},
+	shorttitle = {A comparative evaluation of outlier detection algorithms},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0031320317303916},
+	doi = {10.1016/j.patcog.2017.09.037},
+	abstract = {We survey unsupervised machine learning algorithms in the context of outlier detection. This task challenges state-of-the-art methods from a variety of research ﬁelds to applications including fraud detection, intrusion detection, medical diagnoses and data cleaning. The selected methods are benchmarked on publicly available datasets and novel industrial datasets. Each method is then submitted to extensive scalability, memory consumption and robustness tests in order to build a full overview of the algorithms’ characteristics.},
+	language = {en},
+	urldate = {2020-09-01},
+	journal = {Pattern Recognition},
+	author = {Domingues, Rémi and Filippone, Maurizio and Michiardi, Pietro and Zouaoui, Jihane},
+	month = feb,
+	year = {2018},
+	pages = {406--421},
+	file = {Domingues et al. - 2018 - A comparative evaluation of outlier detection algo.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/XDL8UHII/data-publi-5334_2.pdf:application/pdf}
+}
+
+@article{schubert_generalized_nodate,
+	title = {Generalized and {E} icient {Outlier} {Detection} for {Spatial}, {Temporal}, and {High}-{Dimensional} {Data} {Mining}},
+	language = {en},
+	author = {Schubert, Erich},
+	pages = {290},
+	file = {Schubert - Generalized and E icient Outlier Detection for Spa.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/KHS5IH4I/Schubert - Generalized and E icient Outlier Detection for Spa.pdf:application/pdf}
+}
+
+@misc{noauthor_pdf_nodate-1,
+	title = {({PDF}) {Histogram}-based {Outlier} {Score} ({HBOS}): {A} fast {Unsupervised} {Anomaly} {Detection} {Algorithm}},
+	shorttitle = {({PDF}) {Histogram}-based {Outlier} {Score} ({HBOS})},
+	url = {https://www.researchgate.net/publication/231614824_Histogram-based_Outlier_Score_HBOS_A_fast_Unsupervised_Anomaly_Detection_Algorithm},
+	abstract = {PDF {\textbar} Unsupervised anomaly detection is the process of finding outliers in data sets without prior training. In this paper, a histogram-based outlier... {\textbar} Find, read and cite all the research you need on ResearchGate},
+	language = {en},
+	urldate = {2020-09-01},
+	journal = {ResearchGate},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/TSGWJSR7/231614824_Histogram-based_Outlier_Score_HBOS_A_fast_Unsupervised_Anomaly_Detection_Algorithm.html:text/html}
+}
+
+@misc{noauthor_improved_nodate,
+	title = {Improved histogram-based anomaly detector with the extended principal component features},
+	url = {https://www.groundai.com/project/improved-histogram-based-anomaly-detector-with-the-extended-principal-component-features/1},
+	abstract = {In this era of big data, databases are growing rapidly in terms of the number of records. Fast automatic detection of anomalous records in these massive databases is a challenging task. Traditional distance based anomaly detectors are not applicable in these massive datasets. Recently, a simple but extremely fast anomaly detector using one-dimensional histograms has been introduced. The anomaly score of a data instance is computed as the product of the probability mass of histograms in each dimensions where it falls into. It is shown to produce competitive results compared to many state-of-the-art methods in many datasets. Because it assumes …},
+	language = {en},
+	urldate = {2020-09-01},
+	journal = {GroundAI},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/B3UN6J5Z/1.html:text/html}
+}
+
+@article{zaheer_big_2020,
+	title = {Big {Bird}: {Transformers} for {Longer} {Sequences}},
+	shorttitle = {Big {Bird}},
+	url = {http://arxiv.org/abs/2007.14062},
+	abstract = {Transformers-based models, such as BERT, have been one of the most successful deep learning models for NLP. Unfortunately, one of their core limitations is the quadratic dependency (mainly in terms of memory) on the sequence length due to their full attention mechanism. To remedy this, we propose, BigBird, a sparse attention mechanism that reduces this quadratic dependency to linear. We show that BigBird is a universal approximator of sequence functions and is Turing complete, thereby preserving these properties of the quadratic, full attention model. Along the way, our theoretical analysis reveals some of the benefits of having \$O(1)\$ global tokens (such as CLS), that attend to the entire sequence as part of the sparse attention mechanism. The proposed sparse attention can handle sequences of length up to 8x of what was previously possible using similar hardware. As a consequence of the capability to handle longer context, BigBird drastically improves performance on various NLP tasks such as question answering and summarization. We also propose novel applications to genomics data.},
+	urldate = {2020-09-01},
+	journal = {arXiv:2007.14062 [cs, stat]},
+	author = {Zaheer, Manzil and Guruganesh, Guru and Dubey, Avinava and Ainslie, Joshua and Alberti, Chris and Ontanon, Santiago and Pham, Philip and Ravula, Anirudh and Wang, Qifan and Yang, Li and Ahmed, Amr},
+	month = jul,
+	year = {2020},
+	note = {arXiv: 2007.14062},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/P5IPRBEL/Zaheer et al. - 2020 - Big Bird Transformers for Longer Sequences.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/TMZEK98W/2007.html:text/html}
+}
+
+@article{czarnewski_dimensionality_nodate,
+	title = {Dimensionality reduction},
+	language = {en},
+	author = {Czarnewski, Paulo},
+	pages = {34},
+	file = {Czarnewski - Dimensionality reduction.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/7G85HVYG/Czarnewski - Dimensionality reduction.pdf:application/pdf}
+}
+
+@article{czarnewski_dimensionality_nodate-1,
+	title = {Dimensionality reduction},
+	language = {en},
+	author = {Czarnewski, Paulo},
+	pages = {34},
+	file = {Czarnewski - Dimensionality reduction.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/KJ2VFMGQ/Czarnewski - Dimensionality reduction.pdf:application/pdf}
+}
+
+@inproceedings{allaoui_considerably_2020,
+	address = {Cham},
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {Considerably {Improving} {Clustering} {Algorithms} {Using} {UMAP} {Dimensionality} {Reduction} {Technique}: {A} {Comparative} {Study}},
+	isbn = {978-3-030-51935-3},
+	shorttitle = {Considerably {Improving} {Clustering} {Algorithms} {Using} {UMAP} {Dimensionality} {Reduction} {Technique}},
+	doi = {10.1007/978-3-030-51935-3_34},
+	abstract = {Dimensionality reduction is widely used in machine learning and big data analytics since it helps to analyze and to visualize large, high-dimensional datasets. In particular, it can considerably help to perform tasks like data clustering and classification. Recently, embedding methods have emerged as a promising direction for improving clustering accuracy. They can preserve the local structure and simultaneously reveal the global structure of data, thereby reasonably improving clustering performance. In this paper, we investigate how to improve the performance of several clustering algorithms using one of the most successful embedding techniques: Uniform Manifold Approximation and Projection or UMAP. This technique has recently been proposed as a manifold learning technique for dimensionality reduction. It is based on Riemannian geometry and algebraic topology. Our main hypothesis is that UMAP would permit to find the best clusterable embedding manifold, and therefore, we applied it as a preprocessing step before performing clustering. We compare the results of many well-known clustering algorithms such ask-means, HDBSCAN, GMM and Agglomerative Hierarchical Clustering when they operate on the low-dimension feature space yielded by UMAP. A series of experiments on several image datasets demonstrate that the proposed method allows each of the clustering algorithms studied to improve its performance on each dataset considered. Based on Accuracy measure, the improvement can reach a remarkable rate of 60\%.},
+	language = {en},
+	booktitle = {Image and {Signal} {Processing}},
+	publisher = {Springer International Publishing},
+	author = {Allaoui, Mebarka and Kherfi, Mohammed Lamine and Cheriet, Abdelhakim},
+	editor = {El Moataz, Abderrahim and Mammass, Driss and Mansouri, Alamin and Nouboud, Fathallah},
+	year = {2020},
+	keywords = {Big data analytics, Clustering, Comparative study, Dimensionality reduction, Embedding manifold, Machine learning, UMAP},
+	pages = {317--325},
+	file = {Springer Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/XIN7N9VI/Allaoui et al. - 2020 - Considerably Improving Clustering Algorithms Using.pdf:application/pdf}
+}
+
+@misc{noauthor_200800325_nodate,
+	title = {[2008.00325] {Bringing} {UMAP} {Closer} to the {Speed} of {Light} with {GPU} {Acceleration}},
+	url = {https://arxiv.org/abs/2008.00325},
+	urldate = {2020-09-13},
+	file = {[2008.00325] Bringing UMAP Closer to the Speed of Light with GPU Acceleration:/home/philipp/snap/zotero-snap/common/Zotero/storage/AYRF4JD3/2008.html:text/html}
+}
+
+@article{mcinnes_umap_2018,
+	title = {{UMAP}: {Uniform} {Manifold} {Approximation} and {Projection} for {Dimension} {Reduction}},
+	shorttitle = {{UMAP}},
+	url = {http://arxiv.org/abs/1802.03426},
+	abstract = {UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learning technique for dimension reduction. UMAP is constructed from a theoretical framework based in Riemannian geometry and algebraic topology. e result is a practical scalable algorithm that applies to real world data. e UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance. Furthermore, UMAP has no computational restrictions on embedding dimension, making it viable as a general purpose dimension reduction technique for machine learning.},
+	language = {en},
+	urldate = {2020-09-15},
+	journal = {arXiv:1802.03426 [cs, stat]},
+	author = {McInnes, Leland and Healy, John and Melville, James},
+	month = dec,
+	year = {2018},
+	note = {arXiv: 1802.03426},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Computational Geometry},
+	file = {McInnes et al. - 2018 - UMAP Uniform Manifold Approximation and Projectio.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/KUBRDHW7/McInnes et al. - 2018 - UMAP Uniform Manifold Approximation and Projectio.pdf:application/pdf}
+}
+
+@article{nolet_bringing_2020,
+	title = {Bringing {UMAP} {Closer} to the {Speed} of {Light} with {GPU} {Acceleration}},
+	url = {http://arxiv.org/abs/2008.00325},
+	abstract = {The Uniform Manifold Approximation and Projection (UMAP) algorithm has become widely popular for its ease of use, quality of results, and support for exploratory, unsupervised, supervised, and semi-supervised learning. While many algorithms can be ported to a GPU in a simple and direct fashion, such efforts have resulted in inefficent and inaccurate versions of UMAP. We show a number of techniques that can be used to make a faster and more faithful GPU version of UMAP, and obtain speedups of up to 100x in practice. Many of these design choices/lessons are general purpose and may inform the conversion of other graph and manifold learning algorithms to use GPUs. Our implementation has been made publicly available as part of the open source RAPIDS cuML library(https://github.com/rapidsai/cuml).},
+	urldate = {2020-09-15},
+	journal = {arXiv:2008.00325 [cs, stat]},
+	author = {Nolet, Corey J. and Lafargue, Victor and Raff, Edward and Nanditale, Thejaswi and Oates, Tim and Zedlewski, John and Patterson, Joshua},
+	month = aug,
+	year = {2020},
+	note = {arXiv: 2008.00325},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Data Structures and Algorithms},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/BLLW4DVW/Nolet et al. - 2020 - Bringing UMAP Closer to the Speed of Light with GP.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/QVCNA3RV/2008.html:text/html}
+}
+
+@article{goldstein_comparative_2016,
+	title = {A {Comparative} {Evaluation} of {Unsupervised} {Anomaly} {Detection} {Algorithms} for {Multivariate} {Data}},
+	volume = {11},
+	issn = {1932-6203},
+	url = {https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0152173},
+	doi = {10.1371/journal.pone.0152173},
+	abstract = {Anomaly detection is the process of identifying unexpected items or events in datasets, which differ from the norm. In contrast to standard classification tasks, anomaly detection is often applied on unlabeled data, taking only the internal structure of the dataset into account. This challenge is known as unsupervised anomaly detection and is addressed in many practical applications, for example in network intrusion detection, fraud detection as well as in the life science and medical domain. Dozens of algorithms have been proposed in this area, but unfortunately the research community still lacks a comparative universal evaluation as well as common publicly available datasets. These shortcomings are addressed in this study, where 19 different unsupervised anomaly detection algorithms are evaluated on 10 different datasets from multiple application domains. By publishing the source code and the datasets, this paper aims to be a new well-funded basis for unsupervised anomaly detection research. Additionally, this evaluation reveals the strengths and weaknesses of the different approaches for the first time. Besides the anomaly detection performance, computational effort, the impact of parameter settings as well as the global/local anomaly detection behavior is outlined. As a conclusion, we give an advise on algorithm selection for typical real-world tasks.},
+	language = {en},
+	number = {4},
+	urldate = {2020-09-15},
+	journal = {PLOS ONE},
+	author = {Goldstein, Markus and Uchida, Seiichi},
+	month = apr,
+	year = {2016},
+	note = {Publisher: Public Library of Science},
+	keywords = {Agricultural soil science, Algorithms, Covariance, k means clustering, Machine learning algorithms, Preprocessing, Support vector machines, Thyroid},
+	pages = {e0152173},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/I467SRYU/Goldstein and Uchida - 2016 - A Comparative Evaluation of Unsupervised Anomaly D.pdf:application/pdf;Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/DEGRWV9D/article.html:text/html}
+}
+
+@inproceedings{allaoui_considerably_2020-1,
+	address = {Cham},
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {Considerably {Improving} {Clustering} {Algorithms} {Using} {UMAP} {Dimensionality} {Reduction} {Technique}: {A} {Comparative} {Study}},
+	isbn = {978-3-030-51935-3},
+	shorttitle = {Considerably {Improving} {Clustering} {Algorithms} {Using} {UMAP} {Dimensionality} {Reduction} {Technique}},
+	doi = {10.1007/978-3-030-51935-3_34},
+	abstract = {Dimensionality reduction is widely used in machine learning and big data analytics since it helps to analyze and to visualize large, high-dimensional datasets. In particular, it can considerably help to perform tasks like data clustering and classification. Recently, embedding methods have emerged as a promising direction for improving clustering accuracy. They can preserve the local structure and simultaneously reveal the global structure of data, thereby reasonably improving clustering performance. In this paper, we investigate how to improve the performance of several clustering algorithms using one of the most successful embedding techniques: Uniform Manifold Approximation and Projection or UMAP. This technique has recently been proposed as a manifold learning technique for dimensionality reduction. It is based on Riemannian geometry and algebraic topology. Our main hypothesis is that UMAP would permit to find the best clusterable embedding manifold, and therefore, we applied it as a preprocessing step before performing clustering. We compare the results of many well-known clustering algorithms such ask-means, HDBSCAN, GMM and Agglomerative Hierarchical Clustering when they operate on the low-dimension feature space yielded by UMAP. A series of experiments on several image datasets demonstrate that the proposed method allows each of the clustering algorithms studied to improve its performance on each dataset considered. Based on Accuracy measure, the improvement can reach a remarkable rate of 60\%.},
+	language = {en},
+	booktitle = {Image and {Signal} {Processing}},
+	publisher = {Springer International Publishing},
+	author = {Allaoui, Mebarka and Kherfi, Mohammed Lamine and Cheriet, Abdelhakim},
+	editor = {El Moataz, Abderrahim and Mammass, Driss and Mansouri, Alamin and Nouboud, Fathallah},
+	year = {2020},
+	keywords = {Big data analytics, Clustering, Comparative study, Dimensionality reduction, Embedding manifold, Machine learning, UMAP},
+	pages = {317--325},
+	file = {Springer Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/IGNNGW4Q/Allaoui et al. - 2020 - Considerably Improving Clustering Algorithms Using.pdf:application/pdf}
+}
+
+@article{goldstein_comparative_2016-1,
+	title = {A {Comparative} {Evaluation} of {Unsupervised} {Anomaly} {Detection} {Algorithms} for {Multivariate} {Data}},
+	volume = {11},
+	issn = {1932-6203},
+	url = {https://dx.plos.org/10.1371/journal.pone.0152173},
+	doi = {10.1371/journal.pone.0152173},
+	language = {en},
+	number = {4},
+	urldate = {2020-09-15},
+	journal = {PLOS ONE},
+	author = {Goldstein, Markus and Uchida, Seiichi},
+	editor = {Zhu, Dongxiao},
+	month = apr,
+	year = {2016},
+	pages = {e0152173},
+	file = {Goldstein and Uchida - 2016 - A Comparative Evaluation of Unsupervised Anomaly D.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/6M9H93YQ/Goldstein and Uchida - 2016 - A Comparative Evaluation of Unsupervised Anomaly D.pdf:application/pdf}
+}
+
+@article{mcinnes_umap_2018-1,
+	title = {{UMAP}: {Uniform} {Manifold} {Approximation} and {Projection} for {Dimension} {Reduction}},
+	shorttitle = {{UMAP}},
+	url = {http://arxiv.org/abs/1802.03426},
+	abstract = {UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learning technique for dimension reduction. UMAP is constructed from a theoretical framework based in Riemannian geometry and algebraic topology. e result is a practical scalable algorithm that applies to real world data. e UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance. Furthermore, UMAP has no computational restrictions on embedding dimension, making it viable as a general purpose dimension reduction technique for machine learning.},
+	language = {en},
+	urldate = {2020-09-15},
+	journal = {arXiv:1802.03426 [cs, stat]},
+	author = {McInnes, Leland and Healy, John and Melville, James},
+	month = dec,
+	year = {2018},
+	note = {arXiv: 1802.03426},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Computational Geometry},
+	file = {McInnes et al. - 2018 - UMAP Uniform Manifold Approximation and Projectio.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/XMGZL2LE/McInnes et al. - 2018 - UMAP Uniform Manifold Approximation and Projectio.pdf:application/pdf}
+}
+
+@article{drozdov_supervised_2020,
+	title = {Supervised and unsupervised language modelling in {Chest} {X}-{Ray} radiological reports},
+	volume = {15},
+	issn = {1932-6203},
+	url = {https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229963},
+	doi = {10.1371/journal.pone.0229963},
+	abstract = {Chest radiography (CXR) is the most commonly used imaging modality and deep neural network (DNN) algorithms have shown promise in effective triage of normal and abnormal radiograms. Typically, DNNs require large quantities of expertly labelled training exemplars, which in clinical contexts is a major bottleneck to effective modelling, as both considerable clinical skill and time is required to produce high-quality ground truths. In this work we evaluate thirteen supervised classifiers using two large free-text corpora and demonstrate that bi-directional long short-term memory (BiLSTM) networks with attention mechanism effectively identify Normal, Abnormal, and Unclear CXR reports in internal (n = 965 manually-labelled reports, f1-score = 0.94) and external (n = 465 manually-labelled reports, f1-score = 0.90) testing sets using a relatively small number of expert-labelled training observations (n = 3,856 annotated reports). Furthermore, we introduce a general unsupervised approach that accurately distinguishes Normal and Abnormal CXR reports in a large unlabelled corpus. We anticipate that the results presented in this work can be used to automatically extract standardized clinical information from free-text CXR radiological reports, facilitating the training of clinical decision support systems for CXR triage.},
+	language = {en},
+	number = {3},
+	urldate = {2020-09-21},
+	journal = {PLOS ONE},
+	author = {Drozdov, Ignat and Forbes, Daniel and Szubert, Benjamin and Hall, Mark and Carlin, Chris and Lowe, David J.},
+	month = mar,
+	year = {2020},
+	note = {Publisher: Public Library of Science},
+	keywords = {Machine learning algorithms, Language, Natural language processing, Neural networks, Radiologists, Radiology and imaging, Semantics, Triage},
+	pages = {e0229963},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/AF5TDPUM/Drozdov et al. - 2020 - Supervised and unsupervised language modelling in .pdf:application/pdf;Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/3MLJ2SR9/article.html:text/html}
+}
+
+@article{ezen-can_comparison_2020,
+	title = {A {Comparison} of {LSTM} and {BERT} for {Small} {Corpus}},
+	url = {http://arxiv.org/abs/2009.05451},
+	abstract = {Recent advancements in the NLP field showed that transfer learning helps with achieving state-of-the-art results for new tasks by tuning pre-trained models instead of starting from scratch. Transformers have made a significant improvement in creating new state-of-the-art results for many NLP tasks including but not limited to text classification, text generation, and sequence labeling. Most of these success stories were based on large datasets. In this paper we focus on a real-life scenario that scientists in academia and industry face frequently: given a small dataset, can we use a large pre-trained model like BERT and get better results than simple models? To answer this question, we use a small dataset for intent classification collected for building chatbots and compare the performance of a simple bidirectional LSTM model with a pre-trained BERT model. Our experimental results show that bidirectional LSTM models can achieve significantly higher results than a BERT model for a small dataset and these simple models get trained in much less time than tuning the pre-trained counterparts. We conclude that the performance of a model is dependent on the task and the data, and therefore before making a model choice, these factors should be taken into consideration instead of directly choosing the most popular model.},
+	urldate = {2020-09-21},
+	journal = {arXiv:2009.05451 [cs]},
+	author = {Ezen-Can, Aysu},
+	month = sep,
+	year = {2020},
+	note = {arXiv: 2009.05451},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/4B4PHETE/Ezen-Can - 2020 - A Comparison of LSTM and BERT for Small Corpus.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/R7DJY4TT/2009.html:text/html}
+}
+
+@article{szubert_structure-preserving_2019,
+	title = {Structure-preserving visualisation of high dimensional single-cell datasets},
+	volume = {9},
+	copyright = {2019 The Author(s)},
+	issn = {2045-2322},
+	url = {https://www.nature.com/articles/s41598-019-45301-0},
+	doi = {10.1038/s41598-019-45301-0},
+	abstract = {Single-cell technologies offer an unprecedented opportunity to effectively characterize cellular heterogeneity in health and disease. Nevertheless, visualisation and interpretation of these multi-dimensional datasets remains a challenge. We present a novel framework, ivis, for dimensionality reduction of single-cell expression data. ivis utilizes a siamese neural network architecture that is trained using a novel triplet loss function. Results on simulated and real datasets demonstrate that ivis preserves global data structures in a low-dimensional space, adds new data points to existing embeddings using a parametric mapping function, and scales linearly to hundreds of thousands of cells. ivis is made publicly available through Python and R interfaces on https://github.com/beringresearch/ivis.},
+	language = {en},
+	number = {1},
+	urldate = {2020-09-21},
+	journal = {Scientific Reports},
+	author = {Szubert, Benjamin and Cole, Jennifer E. and Monaco, Claudia and Drozdov, Ignat},
+	month = jun,
+	year = {2019},
+	note = {Number: 1
+Publisher: Nature Publishing Group},
+	pages = {8914},
+	file = {Full Text PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/5KMWKS5Q/Szubert et al. - 2019 - Structure-preserving visualisation of high dimensi.pdf:application/pdf;Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/APLHNI8D/s41598-019-45301-0.html:text/html}
+}
+
+@article{senanayake_self_2020,
+	title = {Self {Organizing} {Nebulous} {Growths} for {Robust} and {Incremental} {Data} {Visualization}},
+	url = {http://arxiv.org/abs/1912.04896},
+	abstract = {Non-parametric dimensionality reduction techniques, such as t-SNE and UMAP, are proficient in providing visualizations for fixed or static datasets, but they cannot incrementally map and insert new data points into existing data visualizations. We present Self-Organizing Nebulous Growths (SONG), a parametric nonlinear dimensionality reduction technique that supports incremental data visualization, i.e., incremental addition of new data while preserving the structure of the existing visualization. In addition, SONG is capable of handling new data increments no matter whether they are similar or heterogeneous to the existing observations in distribution. We test SONG on a variety of real and simulated datasets. The results show that SONG is superior to Parametric t-SNE, t-SNE and UMAP in incremental data visualization. Specifically, for heterogeneous increments, SONG improves over Parametric t-SNE by 14.98 \% on the Fashion MNIST dataset and 49.73\% on the MNIST dataset regarding the cluster quality measured by the Adjusted Mutual Information scores. On similar or homogeneous increments, the improvements are 8.36\% and 42.26\% respectively. Furthermore, even in static cases, SONG performs better or comparable to UMAP, and superior to t-SNE. We also demonstrate that the algorithmic foundations of SONG render it more tolerant to noise compared to UMAP and t-SNE, thus providing greater utility for data with high variance or high mixing of clusters or noise.},
+	urldate = {2020-09-21},
+	journal = {arXiv:1912.04896 [cs]},
+	author = {Senanayake, Damith and Wang, Wei and Naik, Shalin H. and Halgamuge, Saman},
+	month = jun,
+	year = {2020},
+	note = {arXiv: 1912.04896},
+	keywords = {Computer Science - Machine Learning, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Human-Computer Interaction},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/AS8EK777/Senanayake et al. - 2020 - Self Organizing Nebulous Growths for Robust and In.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/X5UVAEWA/1912.html:text/html}
+}
+
+@techreport{becht_evaluation_2018,
+	type = {preprint},
+	title = {Evaluation of {UMAP} as an alternative to t-{SNE} for single-cell data},
+	url = {http://biorxiv.org/lookup/doi/10.1101/298430},
+	abstract = {Abstract
+          Uniform Manifold Approximation and Projection (UMAP) is a recently-published non-linear dimensionality reduction technique. Another such algorithm, t-SNE, has been the default method for such task in the past years. Herein we comment on the usefulness of UMAP high-dimensional cytometry and single-cell RNA sequencing, notably highlighting faster runtime and consistency, meaningful organization of cell clusters and preservation of continuums in UMAP compared to t-SNE.},
+	language = {en},
+	urldate = {2020-09-21},
+	institution = {Bioinformatics},
+	author = {Becht, Etienne and Dutertre, Charles-Antoine and Kwok, Immanuel W. H. and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W.},
+	month = apr,
+	year = {2018},
+	doi = {10.1101/298430},
+	file = {Becht et al. - 2018 - Evaluation of UMAP as an alternative to t-SNE for .pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/QH8RKFHD/Becht et al. - 2018 - Evaluation of UMAP as an alternative to t-SNE for .pdf:application/pdf}
+}
+
+@misc{lin_nlp_2019,
+	title = {[{NLP}] {Performance} of {Different} {Word} {Embeddings} on {Text} {Classification}},
+	url = {https://towardsdatascience.com/nlp-performance-of-different-word-embeddings-on-text-classification-de648c6262b},
+	abstract = {compared among word2vec, TF-IDF weighted, GloVe and doc2vec},
+	language = {en},
+	urldate = {2020-09-22},
+	journal = {Medium},
+	author = {Lin, Tom},
+	month = jul,
+	year = {2019},
+	file = {Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/8VHKPHFW/nlp-performance-of-different-word-embeddings-on-text-classification-de648c6262b.html:text/html}
+}
+
+@article{golan_deep_2018,
+	title = {Deep {Anomaly} {Detection} {Using} {Geometric} {Transformations}},
+	url = {http://arxiv.org/abs/1805.10917},
+	abstract = {We consider the problem of anomaly detection in images, and present a new detection technique. Given a sample of images, all known to belong to a "normal" class (e.g., dogs), we show how to train a deep neural model that can detect out-of-distribution images (i.e., non-dog objects). The main idea behind our scheme is to train a multi-class model to discriminate between dozens of geometric transformations applied on all the given images. The auxiliary expertise learned by the model generates feature detectors that effectively identify, at test time, anomalous images based on the softmax activation statistics of the model when applied on transformed images. We present extensive experiments using the proposed detector, which indicate that our algorithm improves state-of-the-art methods by a wide margin.},
+	urldate = {2020-10-05},
+	journal = {arXiv:1805.10917 [cs, stat]},
+	author = {Golan, Izhak and El-Yaniv, Ran},
+	month = nov,
+	year = {2018},
+	note = {arXiv: 1805.10917},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/9NFNKCVT/Golan and El-Yaniv - 2018 - Deep Anomaly Detection Using Geometric Transformat.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/V7AEVDW5/1805.html:text/html}
+}
+
+@article{hendrycks_using_nodate,
+	title = {Using {Self}-{Supervised} {Learning} {Can} {Improve} {Model} {Robustness} and {Uncertainty}},
+	abstract = {Self-supervision provides effective representations for downstream tasks without requiring labels. However, existing approaches lag behind fully supervised training and are often not thought beneﬁcial beyond obviating or reducing the need for annotations. We ﬁnd that self-supervision can beneﬁt robustness in a variety of ways, including robustness to adversarial examples, label corruption, and common input corruptions. Additionally, self-supervision greatly beneﬁts out-of-distribution detection on difﬁcult, near-distribution outliers, so much so that it exceeds the performance of fully supervised methods. These results demonstrate the promise of self-supervision for improving robustness and uncertainty estimation and establish these tasks as new axes of evaluation for future self-supervised learning research.},
+	language = {en},
+	author = {Hendrycks, Dan and Mazeika, Mantas and Kadavath, Saurav and Song, Dawn},
+	pages = {12},
+	file = {Hendrycks et al. - Using Self-Supervised Learning Can Improve Model R.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/9FWL7CTK/Hendrycks et al. - Using Self-Supervised Learning Can Improve Model R.pdf:application/pdf}
+}
+
+@article{sainburg_parametric_2020,
+	title = {Parametric {UMAP}: learning embeddings with deep neural networks for representation and semi-supervised learning},
+	shorttitle = {Parametric {UMAP}},
+	url = {http://arxiv.org/abs/2009.12981},
+	abstract = {We propose Parametric UMAP, a parametric variation of the UMAP (Uniform Manifold Approximation and Projection) algorithm. UMAP is a non-parametric graph-based dimensionality reduction algorithm using applied Riemannian geometry and algebraic topology to find low-dimensional embeddings of structured data. The UMAP algorithm consists of two steps: (1) Compute a graphical representation of a dataset (fuzzy simplicial complex), and (2) Through stochastic gradient descent, optimize a low-dimensional embedding of the graph. Here, we replace the second step of UMAP with a deep neural network that learns a parametric relationship between data and embedding. We demonstrate that our method performs similarly to its non-parametric counterpart while conferring the benefit of a learned parametric mapping (e.g. fast online embeddings for new data). We then show that UMAP loss can be extended to arbitrary deep learning applications, for example constraining the latent distribution of autoencoders, and improving classifier accuracy for semi-supervised learning by capturing structure in unlabeled data. Our code is available at https://github.com/timsainb/ParametricUMAP\_paper.},
+	urldate = {2020-10-05},
+	journal = {arXiv:2009.12981 [cs, q-bio, stat]},
+	author = {Sainburg, Tim and McInnes, Leland and Gentner, Timothy Q.},
+	month = sep,
+	year = {2020},
+	note = {arXiv: 2009.12981},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Computer Science - Computational Geometry, Quantitative Biology - Quantitative Methods},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/YR6ZDUJM/Sainburg et al. - 2020 - Parametric UMAP learning embeddings with deep neu.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/IFIIXQUV/2009.html:text/html}
+}
+
+@article{sainburg_parametric_2020-1,
+	title = {Parametric {UMAP}: learning embeddings with deep neural networks for representation and semi-supervised learning},
+	shorttitle = {Parametric {UMAP}},
+	url = {http://arxiv.org/abs/2009.12981},
+	abstract = {We propose Parametric UMAP, a parametric variation of the UMAP (Uniform Manifold Approximation and Projection) algorithm. UMAP is a non-parametric graph-based dimensionality reduction algorithm using applied Riemannian geometry and algebraic topology to ﬁnd low-dimensional embeddings of structured data. The UMAP algorithm consists of two steps: (1) Compute a graphical representation of a dataset (fuzzy simplicial complex), and (2) Through stochastic gradient descent, optimize a low-dimensional embedding of the graph. Here, we replace the second step of UMAP with a deep neural network that learns a parametric relationship between data and embedding. We demonstrate that our method performs similarly to its non-parametric counterpart while conferring the beneﬁt of a learned parametric mapping (e.g. fast online embeddings for new data). We then show that UMAP loss can be extended to arbitrary deep learning applications, for example constraining the latent distribution of autoencoders, and improving classiﬁer accuracy for semi-supervised learning by capturing structure in unlabeled data.},
+	language = {en},
+	urldate = {2020-10-05},
+	journal = {arXiv:2009.12981 [cs, q-bio, stat]},
+	author = {Sainburg, Tim and McInnes, Leland and Gentner, Timothy Q.},
+	month = sep,
+	year = {2020},
+	note = {arXiv: 2009.12981},
+	keywords = {Computer Science - Computational Geometry, Computer Science - Machine Learning, Quantitative Biology - Quantitative Methods, Statistics - Machine Learning},
+	file = {Sainburg et al. - 2020 - Parametric UMAP learning embeddings with deep neu.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/D9SQA6PA/Sainburg et al. - 2020 - Parametric UMAP learning embeddings with deep neu.pdf:application/pdf}
+}
+
+@article{huang_attribute_2020,
+	title = {Attribute {Restoration} {Framework} for {Anomaly} {Detection}},
+	url = {http://arxiv.org/abs/1911.10676},
+	abstract = {With the recent advances in deep neural networks, anomaly detection in multimedia has received much attention in the computer vision community. While reconstruction-based methods have recently shown great promise for anomaly detection, the information equivalence among input and supervision for reconstruction tasks can not effectively force the network to learn high-level feature embeddings. We here propose to break this equivalence by erasing selected attributes from the original data and reformulate it as a restoration task, where the normal and the anomalous data are expected to be distinguishable based on restoration errors. Through forcing the network to restore the original image, the high-level feature embeddings related to the erased attributes are learned by the network. During testing phases, because anomalous data are restored with the attribute learned from the normal data, the restoration error is expected to be large. Extensive experiments have demonstrated that the proposed method significantly outperforms several state-of-the-arts on multiple benchmark datasets, especially on ImageNet, increasing the AUROC of the top-performing baseline by 10.1\%. We also evaluate our method on a real-world anomaly detection dataset MVTec AD and a video anomaly detection dataset ShanghaiTech.},
+	urldate = {2020-10-06},
+	journal = {arXiv:1911.10676 [cs]},
+	author = {Huang, Chaoqin and Ye, Fei and Cao, Jinkun and Li, Maosen and Zhang, Ya and Lu, Cewu},
+	month = jun,
+	year = {2020},
+	note = {arXiv: 1911.10676},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/5728ELN2/Huang et al. - 2020 - Attribute Restoration Framework for Anomaly Detect.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/QA2CG4PJ/1911.html:text/html}
+}
+
+@article{le_distributed_2014,
+	title = {Distributed {Representations} of {Sentences} and {Documents}},
+	url = {http://arxiv.org/abs/1405.4053},
+	abstract = {Many machine learning algorithms require the input to be represented as a fixed-length feature vector. When it comes to texts, one of the most common fixed-length features is bag-of-words. Despite their popularity, bag-of-words features have two major weaknesses: they lose the ordering of the words and they also ignore semantics of the words. For example, "powerful," "strong" and "Paris" are equally distant. In this paper, we propose Paragraph Vector, an unsupervised algorithm that learns fixed-length feature representations from variable-length pieces of texts, such as sentences, paragraphs, and documents. Our algorithm represents each document by a dense vector which is trained to predict words in the document. Its construction gives our algorithm the potential to overcome the weaknesses of bag-of-words models. Empirical results show that Paragraph Vectors outperform bag-of-words models as well as other techniques for text representations. Finally, we achieve new state-of-the-art results on several text classification and sentiment analysis tasks.},
+	urldate = {2020-10-06},
+	journal = {arXiv:1405.4053 [cs]},
+	author = {Le, Quoc V. and Mikolov, Tomas},
+	month = may,
+	year = {2014},
+	note = {arXiv: 1405.4053},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
+	file = {arXiv Fulltext PDF:/home/philipp/snap/zotero-snap/common/Zotero/storage/67SFHQZK/Le and Mikolov - 2014 - Distributed Representations of Sentences and Docum.pdf:application/pdf;arXiv.org Snapshot:/home/philipp/snap/zotero-snap/common/Zotero/storage/6LEQHS2Z/1405.html:text/html}
+}
+
+@article{scholkopf_support_nodate,
+	title = {Support {Vector} {Method} for {Novelty} {Detection}},
+	abstract = {Suppose you are given some dataset drawn from an underlying probability distribution P and you want to estimate a "simple" subset S of input space such that the probability that a test point drawn from P lies outside of S equals some a priori specified l/ between 0 and 1.},
+	language = {en},
+	author = {Schölkopf, Bernhard and Williamson, Robert C and Smola, Alex J and Shawe-Taylor, John and Platt, John C},
+	pages = {7},
+	file = {Schölkopf et al. - Support Vector Method for Novelty Detection.pdf:/home/philipp/snap/zotero-snap/common/Zotero/storage/CUXVITBA/Schölkopf et al. - Support Vector Method for Novelty Detection.pdf:application/pdf}
+}
+
+@article{scholkopf_estimating_2001,
+	title = {Estimating the {Support} of a {High}-{Dimensional} {Distribution}},
+	volume = {13},
+	issn = {0899-7667},
+	url = {https://doi.org/10.1162/089976601750264965},
+	doi = {10.1162/089976601750264965},
+	abstract = {Suppose you are given some data set drawn from an underlying probability distribution P and you want to estimate a "simple" subset S of input space such that the probability that a test point drawn from P lies outside of S equals some a priori specified value between 0 and 1. We propose a method to approach this problem by trying to estimate a function f that is positive on S and negative on the complement. The functional form of f is given by a kernel expansion in terms of a potentially small subset of the training data; it is regularized by controlling the length of the weight vector in an associated feature space. The expansion coefficients are found by solving a quadratic programming problem, which we do by carrying out sequential optimization over pairs of input patterns. We also provide a theoretical analysis of the statistical performance of our algorithm. The algorithm is a natural extension of the support vector algorithm to the case of unlabeled data.},
+	number = {7},
+	urldate = {2020-10-06},
+	journal = {Neural Computation},
+	author = {Schölkopf, Bernhard and Platt, John C. and Shawe-Taylor, John C. and Smola, Alex J. and Williamson, Robert C.},
+	month = jul,
+	year = {2001},
+	pages = {1443--1471}
+}

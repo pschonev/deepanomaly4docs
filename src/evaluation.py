@@ -417,7 +417,7 @@ class EvalRun:
     test_datasets: List[TestData]
     dim_reductions: List[DimensionReducer]
     outlier_detectors: List[OutlierDetector]
-    res_folder: str = "/home/philipp/projects/dad4td/reports/clustering/"
+    res_folder: str = "/home/philipp/projects/dad4td/reports/eval_runs/"
     res_path: str = ""
     total_iter: int = 0
     current_iter: int = 1
