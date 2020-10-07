@@ -61,6 +61,10 @@ def get_scores(scores, outlier_labels, outlier_pred):
         outlier_labels, outlier_pred, average='macro')
     scores[f"in_f1"] = f1_score(
         outlier_labels, outlier_pred, pos_label=1)
+    scores[f"in_rec"] = recall_score(
+        outlier_labels, outlier_pred, pos_label=1)
+    scores[f"in_prec"] = precision_score(
+        outlier_labels, outlier_pred, pos_label=1)
     scores[f"out_f1"] = f1_score(
         outlier_labels, outlier_pred, pos_label=-1)
     scores[f"out_rec"] = recall_score(
@@ -74,11 +78,11 @@ def reject_outliers(sr, iq_range=0.5):
     pcnt = (1 - iq_range) / 2
     qlow, median, qhigh = np.quantile(sr, [pcnt, 0.50, 1-pcnt])
     iqr = qhigh - qlow
-    return ((np.abs(sr - median)) >= iqr/2)
+    return ((np.abs(sr - median)) >= iqr/2), median, iqr
 
 
 def sample_data(df, fraction, contamination, seed):
-    X_n = int(df.shape[0] * fraction)
+    X_n = int(df[df.outlier_label==1].shape[0] * fraction)
     y_n = int(X_n * contamination)
 
     df = df.iloc[np.random.RandomState(seed=seed).permutation(len(df))]
@@ -152,6 +156,7 @@ class Doc2VecModel(EmbeddingModel):
         docvecs = X.progress_apply(lambda x: model.infer_vector(x))
         return list(docvecs)
 
+
 @dataclass
 class WordEmbeddingPooling(EmbeddingModel):
     model_type: str = "wordembeddingpool"
@@ -177,9 +182,11 @@ class WordEmbeddingPooling(EmbeddingModel):
 
         # get vectors from BERT
         print(f"Get {self.model_name} embeddings ...")
-        docvecs = sentences.progress_apply(lambda x: self.embed(x, model, model.embedding_flex.out_features))
+        docvecs = sentences.progress_apply(lambda x: self.embed(
+            x, model, model.embedding_flex.out_features))
         docvecs = np.vstack(docvecs)
         return list(docvecs)
+
 
 @dataclass
 class RNNEmbedding(EmbeddingModel):
@@ -199,7 +206,7 @@ class RNNEmbedding(EmbeddingModel):
         print(f"Load {self.model_name} model ...")
         classifier = TextClassifier.load(self.model_path)
         model = classifier.document_embeddings
-        
+
         # convert to Sentence objects
         print("Convert to Sentence objects ...")
         X = X.str.lower()
@@ -207,7 +214,8 @@ class RNNEmbedding(EmbeddingModel):
 
         # get vectors from BERT
         print(f"Get {self.model_name} embeddings ...")
-        docvecs = sentences.progress_apply(lambda x: self.embed(x, model, classifier.document_embeddings.embedding_length))
+        docvecs = sentences.progress_apply(lambda x: self.embed(
+            x, model, classifier.document_embeddings.embedding_length))
         docvecs = np.vstack(docvecs)
         return list(docvecs)
 
@@ -235,14 +243,14 @@ class TransformerModel(EmbeddingModel):
 
 
 class DimensionReducer(ABC):
+    name: str
+
     @abstractmethod
     def reduce_dims(self, docvecs):
         pass
 
 
 class NoReduction(DimensionReducer):
-    dim_reducer: str
-
     def cartesian_params(self):
         return [dict()]
 
@@ -251,37 +259,8 @@ class NoReduction(DimensionReducer):
 
 
 @dataclass
-class UMAPModel(DimensionReducer):
-    set_op_mix_ratio: List[float]
-    metric: List[str]
-    n_components: List[int]
-    dim_reducer: str = "umap"
-
-    def cartesian_params(self):
-        return product_dict(n_components=self.n_components, set_op_mix_ratio=self.set_op_mix_ratio,
-                            metric=self.metric)
-
-    def reduce_dims(self, docvecs, metric, set_op_mix_ratio, n_components):
-        return UMAP(metric=metric, set_op_mix_ratio=set_op_mix_ratio,
-                    n_components=n_components, random_state=42).fit_transform(docvecs)
-
-
-@dataclass
-class PCAReducer(DimensionReducer):
-    n_components: List[int]
-    dim_reducer: str = "PCA"
-
-    def cartesian_params(self):
-        return product_dict(n_components=self.n_components)
-
-    def reduce_dims(self, docvecs, n_components):
-        return PCAR(n_components=n_components).fit_transform(docvecs)
-
-
-@dataclass
 class SklearnReducer(DimensionReducer):
     dim_reducer: Any
-    name: str
     as_numpy: bool
     kwargs: dict = field(default_factory=dict)
 
@@ -292,7 +271,6 @@ class SklearnReducer(DimensionReducer):
         if self.as_numpy:
             docvecs = np.array(docvecs)
         return self.dim_reducer(**kwargs).fit_transform(docvecs)
-
 
 
 @dataclass
@@ -350,7 +328,7 @@ class DimRedOutlierDetector(OutlierDetector):
 
         preds = self.reject_outliers(preds, iq_range=1.0-contamination)
         preds = [-1 if x else 1 for x in preds]
-        
+
         scores = get_scores(scores, outlier_labels, preds)
         scores.update(**kwargs)
         out_f1 = scores["out_f1"]
@@ -359,7 +337,6 @@ class DimRedOutlierDetector(OutlierDetector):
 
     def cartesian_params(self):
         return product_dict(**self.kwargs)
-
 
 
 @dataclass

@@ -77,19 +77,19 @@ class EpochResult(CallbackAny2Vec):
 
 
 # test data
-seeds = [42, 43, 44, 45, 46]
-fraction = 0.15
+seeds = [42, 43]
+fraction = 1.0
 contamination = 0.1
 
 test_data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb.pkl"
 df = pd.read_pickle(test_data_path)
 test_data = [(sample_data(df, fraction, contamination, seed), seed) for seed in seeds]
-test_data = test_data + [(sample_data(df, fraction=1.0, contamination=contamination, seed=1), 1)]
+#test_data = test_data + [(sample_data(df, fraction=1.0, contamination=contamination, seed=1), 1)]
 
 # doc2vec parameters
 vector_size = 300
 window_size = 15
-min_count = 30
+min_count = 20
 sampling_threshold = 1e-5
 negative_size = 5
 train_epoch = 50
@@ -105,7 +105,7 @@ pretrained_emb = "/home/philipp/projects/dad4td/models/en_wiki_w2vec/word2vec.bi
 train_corpus = "/home/philipp/projects/dad4td/data/raw/all-the-news-2_1_05_sf.txt"
 
 # save folder
-save_folder = "/home/philipp/projects/dad4td/models/all_news_05_50_30_big_test"
+save_folder = "/home/philipp/projects/dad4td/models/all_news_05_50_20"
 
 # output model
 save_path = save_folder + "/all_news.bin"
