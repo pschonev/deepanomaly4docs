@@ -28,8 +28,9 @@ class IQROutlier:
         return self
 
 
-    def transform(self, X):
-        preds = ((np.abs(X - self.median)) >= self.iqr/2)
+    def transform(self, X, thresh_factor=1.0):
+        iqr = self.iqr*thresh_factor
+        preds = ((np.abs(X - self.median)) >= iqr/2)
         return [-1 if x else 1 for x in preds]
 
 #%%
@@ -100,6 +101,7 @@ dim_reduced_vecs_test = umap_reducer.transform(list(docvecs_test))
 vecs_ivis_test = ivis_reducer.transform(dim_reduced_vecs_test)
 decision_scores_test = vecs_ivis_test.astype(float)
 
-preds = iqrout.transform(decision_scores_test)
+#%%
+preds = iqrout.transform(decision_scores_test, thresh_factor=1.0)
 scores = get_scores(dict(), df_val["outlier_label"], preds)
 scores
