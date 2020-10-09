@@ -184,4 +184,26 @@ preds = iqrout.transform(df_test["decision_scores"], thresh_factor=0.3)...
  'out_rec': 0.6276595744680851,
  'out_prec': 0.08071135430916553}
 
+umap 1 - iqr (factor 1.0)
+supervised 0.1, oe 10,000
+training data
 
+{'f1_macro': 0.5990147625688369,
+ 'in_f1': 0.9411906193625977,
+ 'in_rec': 0.9114838108548801,
+ 'in_prec': 0.9728990551964197,
+ 'out_f1': 0.256838905775076,
+ 'out_rec': 0.43669250645994834,
+ 'out_prec': 0.18191603875134554}
+
+ umap 1 - iqr (factor 1.0)
+supervised 0.1, oe 10,000
+test data
+
+{'f1_macro': 0.49537139689578713,
+ 'in_f1': 0.8021064301552107,
+ 'in_rec': 0.6739636702375408,
+ 'in_prec': 0.9904175222450377,
+ 'out_f1': 0.18863636363636363,
+ 'out_rec': 0.8556701030927835,
+ 'out_prec': 0.10600255427841634}
