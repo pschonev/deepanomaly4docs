@@ -1,0 +1,187 @@
+umap 256 - ivis 1 - iqr (factor 1.0)
+test data only
+
+{'f1_macro': 0.9703923948222248,
+ 'in_f1': 0.9670243134166748,
+ 'in_rec': 0.9977655900873451,
+ 'in_prec': 0.9381207028265852,
+ 'out_f1': 0.9737604762277748,
+ 'out_rec': 0.9504587155963303,
+ 'out_prec': 0.9982334992773406}
+
+umap 256 - ivis 1 - iqr (factor 0.4 optimized)
+validation data (amazon) +  test data inlier
+
+{'f1_macro': 0.8363709680121751,
+ 'in_f1': 0.7723469837076177,
+ 'in_rec': 0.7125736339630306,
+ 'in_prec': 0.8430665705359288,
+ 'out_f1': 0.9003949523167325,
+ 'out_rec': 0.9347,
+ 'out_prec': 0.8685188626649322}
+
+umap 256 - ivis 1 - iqr (factor 0.5 optimized)
+validation data (amazon) +  test data in- and outlier
+
+
+preds = iqrout.transform(decision_scores_test, thresh_factor=0.5)...
+{'f1_macro': 0.8448590003726861,
+ 'in_f1': 0.7611336032388663,
+ 'in_rec': 0.7637619337802153,
+ 'in_prec': 0.7585233003832963,
+ 'out_f1': 0.9285843975065061,
+ 'out_rec': 0.9276299879081016,
+ 'out_prec': 0.9295407730522234}
+
+umap 256 - ivis 1 - iqr (factor 0.8 optimized)
+validation data (amazon) +  training inlier
+
+ {'f1_macro': 0.852100373987198,
+ 'in_f1': 0.9541860740294527,
+ 'in_rec': 0.9856,
+ 'in_prec': 0.9247127994495757,
+ 'out_f1': 0.7500146739449434,
+ 'out_rec': 0.6389,
+ 'out_prec': 0.9079153048173938}
+
+umap 256 - ivis 1 - iqr (factor 0.1 ??)
+validation data (amazon) only
+
+{'f1_macro': 0.49708308187487427,
+ 'in_f1': 0.0,
+ 'in_rec': 0.0,
+ 'in_prec': 0.0,
+ 'out_f1': 0.9941661637497485,
+ 'out_rec': 0.9884,
+ 'out_prec': 1.0}
+
+ umap 256 - ivis 1 - iqr (factor 0.000001 ??)
+validation data (amazon) only
+
+{'f1_macro': 1.0,
+ 'in_f1': 0.0,
+ 'in_rec': 0.0,
+ 'in_prec': 0.0,
+ 'out_f1': 1.0,
+ 'out_rec': 1.0,
+ 'out_prec': 1.0}
+
+ umap 256 - ivis 1 - iqr (factor 1.0 ??)
+validation data (amazon) only
+
+preds = iqrout.transform(decision_scores_test, thresh_factor=1.0)...
+{'f1_macro': 0.3333333333333333,
+ 'in_f1': 0.0,
+ 'in_rec': 0.0,
+ 'in_prec': 0.0,
+ 'out_f1': 0.6666666666666666,
+ 'out_rec': 0.5,
+ 'out_prec': 1.0}
+
+umap 1 - iqr (factor 0.1 optimized)
+training data only
+
+ {'f1_macro': 0.8543231537682476,
+ 'in_f1': 0.971002950183405,
+ 'in_rec': 0.9618,
+ 'in_prec': 0.9803837180329354,
+ 'out_f1': 0.7376433573530904,
+ 'out_rec': 0.8075555555555556,
+ 'out_prec': 0.6788716607509807}
+
+umap 1 - iqr (factor 0.1 optimized)
+test data only
+
+preds = iqrout.transform(decision_scores_test, thresh_factor=0.9)...
+{'f1_macro': 0.9105637350507396,
+ 'in_f1': 0.9036042001702771,
+ 'in_rec': 0.9701401584399756,
+ 'in_prec': 0.8456090651558074,
+ 'out_f1': 0.917523269931202,
+ 'out_rec': 0.8666666666666667,
+ 'out_prec': 0.9747205503009458}
+
+ umap 1 - iqr (factor 1.0)
+validation data (amazon)
+
+{'f1_macro': 0.3147868987255036,
+ 'in_f1': 0.0,
+ 'in_rec': 0.0,
+ 'in_prec': 0.0,
+ 'out_f1': 0.6295737974510072,
+ 'out_rec': 0.4594,
+ 'out_prec': 1.0}
+
+ umap 1 - iqr (factor 0.0001 ??)
+validation data (amazon)
+
+{'f1_macro': 1.0,
+ 'in_f1': 0.0,
+ 'in_rec': 0.0,
+ 'in_prec': 0.0,
+ 'out_f1': 1.0,
+ 'out_rec': 1.0,
+ 'out_prec': 1.0}
+
+ umap 1 - iqr (factor 0.1 optimized)
+validation data (amazon) + inlier
+
+ {'f1_macro': 0.6511878416485815,
+ 'in_f1': 0.6335403726708075,
+ 'in_rec': 0.9116392443631932,
+ 'in_prec': 0.4854515954570038,
+ 'out_f1': 0.6688353106263554,
+ 'out_rec': 0.5243,
+ 'out_prec': 0.9233885170834801}
+
+umap 1 - iqr (factor 1.0)
+supervised 1.0, oe 10,000
+training data
+
+contamination = df["outlier_label"].value_counts(normalize=True)[-1]...
+{'f1_macro': 0.962388311968144,
+ 'in_f1': 0.9968854674737028,
+ 'in_rec': 0.9981172040480113,
+ 'in_prec': 0.9956567672262002,
+ 'out_f1': 0.9278911564625851,
+ 'out_rec': 0.9021164021164021,
+ 'out_prec': 0.9551820728291317}
+
+ umap 1 - iqr (factor 1.0)
+supervised 1.0, oe 0
+training data
+
+{'f1_macro': 0.889287484429005,
+ 'in_f1': 0.9892231170061582,
+ 'in_rec': 0.9829371616851024,
+ 'in_prec': 0.9955899880810488,
+ 'out_f1': 0.7893518518518517,
+ 'out_rec': 0.9021164021164021,
+ 'out_prec': 0.7016460905349794}
+
+umap 1 - iqr (factor 1.0)
+supervised 1.0, oe 10,000
+test data
+
+{'f1_macro': 0.6044976635514019,
+ 'in_f1': 0.9714953271028037,
+ 'in_rec': 0.977892756349953,
+ 'in_prec': 0.9651810584958217,
+ 'out_f1': 0.23750000000000002,
+ 'out_rec': 0.20212765957446807,
+ 'out_prec': 0.2878787878787879}
+
+umap 1 - iqr (factor 1.0)
+supervised 1.0, oe 0
+test data
+
+preds = iqrout.transform(df_test["decision_scores"], thresh_factor=0.3)...
+{'f1_macro': 0.4737281528982774,
+ 'in_f1': 0.8044260027662518,
+ 'in_rec': 0.6839134524929446,
+ 'in_prec': 0.9764942914707858,
+ 'out_f1': 0.14303030303030304,
+ 'out_rec': 0.6276595744680851,
+ 'out_prec': 0.08071135430916553}
+
+

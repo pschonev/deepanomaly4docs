@@ -39,7 +39,7 @@ class IQROutlier:
 # %%
 seed = 42
 test_size = 0.2
-labled_data = 1
+labled_data = 0.1
 outlier_class = 0
 n_oe = 10000
 use_ivis = True
@@ -47,9 +47,11 @@ use_ivis = True
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_vec.pkl"
 df = pd.read_pickle(data_path)
 df = df[["text", "target", "outlier_label"]]
+df["scorable"] = 1
 df_oe = df.where(df.target == -1).dropna()
 df_oe = df_oe.iloc[np.random.RandomState(seed=seed).permutation(len(df_oe))].head(n_oe)
-df_oe["label"], df_oe["outlier_label"] = 0, -1
+df_oe["label"], df_oe["outlier_label"], df_oe["scorable"] = 0, -1, 0
+
 # get all 20 news data
 df = df.where(df.target != -1).dropna()
 # set everything except one class to inlier
@@ -69,7 +71,7 @@ df, df_test = train_test_split(df,
                                test_size=test_size, random_state=seed,
                                stratify=df["outlier_label"])
 df = df.append(df_oe)
-contamination = df_test["outlier_label"].value_counts(normalize=True)[-1]
+
 print(f"df:\n {df.outlier_label.value_counts()}\ndf_test:\n {df_test.outlier_label.value_counts()}")
 print(f"contamination: {contamination}")
 # %%
@@ -99,10 +101,14 @@ if use_ivis:
     decision_scores = dim_reduced_vecs.astype(float)
 
 #%%
+df["decision_scores"] = decision_scores
+df = df.where(df.scorable == 1).dropna()
+#%%
+contamination = df["outlier_label"].value_counts(normalize=True)[-1]
 iqrout = IQROutlier(contamination=contamination)
-iqrout = iqrout.fit(decision_scores)
+iqrout = iqrout.fit(df["decision_scores"])
 
-preds = iqrout.transform(decision_scores)
+preds = iqrout.transform(df["decision_scores"])
 scores = get_scores(dict(), df["outlier_label"], preds)
 scores
 
@@ -117,8 +123,11 @@ decision_scores_test = dim_reduced_vecs_test.astype(float)
 if use_ivis:
     vecs_ivis_test = ivis_reducer.transform(dim_reduced_vecs_test)
     decision_scores_test = vecs_ivis_test.astype(float)
-
 # %%
-preds = iqrout.transform(decision_scores_test, thresh_factor=1)
+df_test["decision_scores"] = decision_scores_test
+df_test = df_test.where(df_test.scorable == 1).dropna()
+# %%
+
+preds = iqrout.transform(df_test["decision_scores"], thresh_factor=0.3)
 scores = get_scores(dict(), df_test["outlier_label"], preds)
 scores
