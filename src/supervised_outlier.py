@@ -37,18 +37,19 @@ class IQROutlier:
 
 
 # %%
-seed = 42
+seed = 43
 test_size = 0.2
 labled_data = 0.1
 outlier_class = 0
-n_oe = 10000
+n_oe = 0
 use_ivis = True
 
 data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_vec.pkl"
+oe_path = "/home/philipp/projects/dad4td/data/processed/oe_data.pkl"
 df = pd.read_pickle(data_path)
 df = df[["text", "target", "outlier_label"]]
 df["scorable"] = 1
-df_oe = df.where(df.target == -1).dropna()
+df_oe = pd.read_pickle(oe_path)
 df_oe = df_oe.iloc[np.random.RandomState(seed=seed).permutation(len(df_oe))].head(n_oe)
 df_oe["label"], df_oe["outlier_label"], df_oe["scorable"] = 0, -1, 0
 
@@ -73,7 +74,6 @@ df, df_test = train_test_split(df,
 df = df.append(df_oe)
 
 print(f"df:\n {df.outlier_label.value_counts()}\ndf_test:\n {df_test.outlier_label.value_counts()}")
-print(f"contamination: {contamination}")
 # %%
 doc2vec_path = "/home/philipp/projects/dad4td/models/apnews_dbow/doc2vec.bin"
 doc2vec_model = Doc2VecModel("apnews", "apnews", 1.0,
@@ -105,6 +105,7 @@ df["decision_scores"] = decision_scores
 df = df.where(df.scorable == 1).dropna()
 #%%
 contamination = df["outlier_label"].value_counts(normalize=True)[-1]
+print(f"contamination: {contamination}")
 iqrout = IQROutlier(contamination=contamination)
 iqrout = iqrout.fit(df["decision_scores"])
 
