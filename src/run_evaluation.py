@@ -1,6 +1,5 @@
 from timeit import default_timer as timer
 from collections import defaultdict
-from evaluation import next_path
 from tqdm import tqdm
 import pandas as pd
 from evaluation_config import eval_runs

@@ -142,18 +142,20 @@ class Doc2VecModel(EmbeddingModel):
     model_path: str
     model_type: str = "doc2vec"
 
+    def __post_init__(self):
+        # load model
+        print("Load Doc2Vec model...")
+        self.model = Doc2Vec.load(self.model_path)
+
+
     def vectorize(self, X):
         # text lowered and split into list of tokens
         print("Pre-process data...")
         X = X.progress_apply(lambda x: simple_preprocess(x))
 
-        # load model
-        print("Load Doc2Vec model...")
-        model = Doc2Vec.load(self.model_path)
-
         # infer vectors from model
         print("Infer doc vectors...")
-        docvecs = X.progress_apply(lambda x: model.infer_vector(x))
+        docvecs = X.progress_apply(lambda x: self.model.infer_vector(x))
         return list(docvecs)
 
 
