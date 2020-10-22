@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from umap import UMAP
 from ivis import Ivis
-from evaluation import Doc2VecModel
+from evaluation import Doc2VecModel, product_dict
 from tqdm import tqdm
 from evaluation import get_scores, reject_outliers, sample_data
 from pyod.models.ocsvm import OCSVM
@@ -35,7 +35,7 @@ class IQROutlier:
         return [-1 if x else 1 for x in preds]
 
 
-def get_outlier_data(oe_path, n_oe):
+def get_outlier_data(oe_path, n_oe, seed):
     df_oe = pd.read_pickle(oe_path)
     df_oe = df_oe.iloc[np.random.RandomState(
         seed=seed).permutation(len(df_oe))].head(n_oe)
@@ -69,127 +69,159 @@ def label_data(df, seed, labeled_data, outlier_classes):
     return df
 
 
-seeds = [42, 43, 44]
-test_size = 0.2
-labeled_data = 1.0
-outlier_classes = None
-fixed_cont = 0.2
-n_oe = 0
-use_ivis = True
+def prepare_data(df, outliers, inliers, seed, fixed_cont, labeled_data, n_oe, test_size, **kwargs):
+    df = df_full.where(df_full.target.isin(
+        outliers+inliers)).dropna()
+    # label data as inliers and outliers (for scoring) and whether
+    # they have labels or not (semi-supervised)
+    df = label_data(df, seed, labeled_data, outliers)
+
+    if fixed_cont:
+        df = sample_data(df, 1.0, fixed_cont, seed)
+        print("Data after adjusting for fixed contamination:\n")
+        print(df.groupby(['label', 'outlier_label']).size(
+        ).reset_index().rename(columns={0: 'count'}), "\n")
+
+    if n_oe:
+        df_oe = get_outlier_data(oe_path, n_oe, seed)
+        df_oe["vecs"] = doc2vec_model.vectorize(df_oe["text"])
+
+    contamination = df.outlier_label.value_counts(normalize=True)[-1]
+    params["contamination"] = contamination
+    print(f"Contamination: {contamination}\n")
+
+    # split train test
+    df, df_test = train_test_split(df,
+                                   test_size=test_size, random_state=seed,
+                                   stratify=df["outlier_label"])
+    if n_oe:
+        df = df.append(df_oe)
+
+    print(
+        f"Training data:\n {df.outlier_label.value_counts()}\n\nTest data:\n {df_test.outlier_label.value_counts()}")
+
+    return df, df_test
+
+
+def umap_reduce(docvecs, label, umap_model, use_ivis, **kwargs):
+    if not umap_model:
+        print(f"Train UMAP...")
+        umap_n_components = min(256, len(docvecs)-2) if use_ivis else 1
+        umap_model = UMAP(metric="cosine", set_op_mix_ratio=1.0,
+                            n_components=umap_n_components, random_state=42,
+                            verbose=False)
+        umap_model = umap_model.fit(docvecs, y=label)
+    dim_reduced_vecs = umap_model.transform(docvecs)
+    if not use_ivis:
+        dim_reduced_vecs = dim_reduced_vecs.astype(float)
+    return dim_reduced_vecs, umap_model
+
+
+def ivis_reduce(docvecs, label, ivis_model, use_ivis, **kwargs):
+    if use_ivis:
+        if not ivis_model:
+            print(f"Train ivis...")
+            ivis_model = Ivis(embedding_dims=1, k=15, model="maaten",
+                                n_epochs_without_progress=15, verbose=0,
+                                batch_size=min(128, df_test.shape[0]-1))
+            ivis_model = ivis_model.fit(
+                docvecs, Y=label.to_numpy())
+        dim_reduced_vecs = ivis_model.transform(docvecs)
+        decision_scores = dim_reduced_vecs.astype(float)
+        return decision_scores, ivis_model
+    else:
+        return docvecs, None
+
+
+def score_out_preds(docvecs, iqr_model, contamination, **kwargs):
+    if not iqr_model:
+        iqrout = IQROutlier(contamination=contamination)
+        iqrout = iqrout.fit(docvecs)
+    preds = iqrout.transform(docvecs)
+    return preds, iqrout
+
+# %%
+param_combinations = product_dict(**dict(
+    seed=[42, 43, 44],
+    test_size=[0.2],
+    labeled_data=[0.5, 1.0],
+    fixed_cont=[0.1, 0.2],
+    n_oe=[0],
+    use_ivis=[True],
+    pair=list(
+        permutations([[x] for x in range(0, 3)], 2))))
+
+# split the outlier, inlier tuple pairs and print all parameters for run
+for d in param_combinations:
+    d["inliers"], d["outliers"] = d["pair"]
+    d.pop('pair', None)
 
 #data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_vec.pkl"
 data_path = "/home/philipp/projects/dad4td/data/processed/rvl_cdip.pkl"
 oe_path = "/home/philipp/projects/dad4td/data/processed/oe_data.pkl"
 res_path = next_path(
     "/home/philipp/projects/dad4td/reports/sup_combs_rvl_%04d.tsv")
+# %%
 doc2vec_model = Doc2VecModel("apnews", "apnews", 1.0,
                              100, 1,
                              "/home/philipp/projects/dad4td/models/apnews_dbow/doc2vec.bin")
+
+# load data and get the doc2vec vectors for all of the data used
 df_full = pd.read_pickle(data_path)
-# get the doc2vec vectors for all of the data used
 df_full["vecs"] = doc2vec_model.vectorize(df_full["text"])
 df_full["vecs"] = df_full["vecs"].apply(tuple)
 
-pairs = list(permutations(range(0, 16), 2))
-runs = len(pairs)
+# %%
 result_df = pd.DataFrame()
-for i, (inlier, outlier) in enumerate(pairs):
-    for seed in seeds:
-        outlier_classes, inlier_classes = [outlier], [inlier]
-        params = dict(seed=seed, test_size=test_size, labeled_data=labeled_data,
-                    outlier_classes=outlier_classes, inlier_classes=inlier_classes,
-                    n_oe=n_oe, use_ivis=use_ivis)
-        print(f"\n\n---------------------\n\nRun {i+1} out of {runs}\n\n{params}")
+for i, params in enumerate(param_combinations):
+    print(
+        f"\n\n---------------------\n\nRun {i+1} out of {len(param_combinations)}\n\n{params}")
 
-        df = df_full.where(df_full.target.isin(
-            outlier_classes+inlier_classes)).dropna()
-        # label data as inliers and outliers (for scoring) and whether
-        # they have labels or not (semi-supervised)
-        df = label_data(df, seed, labeled_data, outlier_classes)
+    df, df_test = prepare_data(df_full, **params)
 
-        if fixed_cont:
-            df = sample_data(df, 1.0, fixed_cont, seed)
-            print("Data after adjusting for fixed contamination:\n")
-            print(df.groupby(['label', 'outlier_label']).size(
-            ).reset_index().rename(columns={0: 'count'}), "\n")
+    # UMAP Train
+    docvecs, umap_model = umap_reduce(
+        df["vecs"].to_list(), df["label"], None, **params)
 
-        if n_oe:
-            df_oe = get_outlier_data(oe_path, n_oe)
-            df_oe["vecs"] = doc2vec_model.vectorize(df_oe["text"])
+    # Ivis
+    docvecs, ivis_model = ivis_reduce(
+        docvecs, df["label"], None, **params)
 
-        contamination = df.outlier_label.value_counts(normalize=True)[-1]
-        params["contamination"] = contamination
-        print(f"Contamination: {contamination}\n")
+    # remove OE data, so it's not scored as well
+    df["decision_scores"] = docvecs
+    df = df.where(df.scorable == 1).dropna()
 
-        # split train test
-        df, df_test = train_test_split(df,
-                                    test_size=test_size, random_state=seed,
-                                    stratify=df["outlier_label"])
-        if n_oe:                                   
-            df = df.append(df_oe)
+    # find outliers in 1D scores
+    preds, iqr_model = score_out_preds(df["decision_scores"], None, **params)
 
-        print(
-            f"Training data:\n {df.outlier_label.value_counts()}\n\nTest data:\n {df_test.outlier_label.value_counts()}")
+    # score the predictions for outliers
+    scores = get_scores(dict(), df["outlier_label"], preds)
 
-        # %%
-        # UMAP
-        print(f"Train UMAP...")
-        docvecs = df["vecs"].to_list()
-        umap_n_components = min(256, len(docvecs)-2) if use_ivis else 1
-        umap_reducer = UMAP(metric="cosine", set_op_mix_ratio=1.0,
-                            n_components=umap_n_components, random_state=42,
-                            verbose=False)
-        umap_reducer = umap_reducer.fit(docvecs, y=df["label"])
-        dim_reduced_vecs = umap_reducer.transform(docvecs)
-        if not use_ivis:
-            decision_scores = dim_reduced_vecs.astype(float)
+    # write the scores to df and save
+    scores.update(params)
+    scores["data"] = "train"
+    result_df = result_df.append(scores, ignore_index=True)
+    result_df.to_csv(res_path, sep="\t")
+    print(f"\nTraining scores:\n{pd.DataFrame(scores, index=[0])}")
 
-        # %%
-        # Ivis
-        if use_ivis:
-            print(f"Train ivis...")
-            ivis_reducer = Ivis(embedding_dims=1, k=15, model="maaten",
-                                n_epochs_without_progress=15, verbose=0,
-                                batch_size=min(128, df_test.shape[0]-1))
-            ivis_reducer = ivis_reducer.fit(
-                dim_reduced_vecs, Y=df["label"].to_numpy())
-            dim_reduced_vecs = ivis_reducer.transform(dim_reduced_vecs)
-            decision_scores = dim_reduced_vecs.astype(float)
+    # test UMAP and ivis
+    docvecs_test, _ = umap_reduce(df_test["vecs"].to_list(), None, umap_model, **params)
 
-        # %%
-        df["decision_scores"] = decision_scores
-        df = df.where(df.scorable == 1).dropna()
-        # %%
-        iqrout = IQROutlier(contamination=contamination)
-        iqrout = iqrout.fit(df["decision_scores"])
+    docvecs_test, _ = ivis_reduce(docvecs_test, None, ivis_model, **params)
 
-        preds = iqrout.transform(df["decision_scores"])
-        scores = get_scores(dict(), df["outlier_label"], preds)
+    # remove OE data, so it's not scored as well
+    df_test["decision_scores"] = docvecs_test
+    df_test = df_test.where(df_test.scorable == 1).dropna()
 
-        scores.update(params)
-        scores["data"] = "train"
-        result_df = result_df.append(scores, ignore_index=True)
-        result_df.to_csv(res_path, sep="\t")
-        print(f"\nTraining scores:\n{pd.DataFrame(scores, index=[0])}")
+    # find outliers in 1D scores
+    preds = iqr_model.transform(df_test["decision_scores"], thresh_factor=1)
 
-        # %%
-        docvecs_test = df_test["vecs"].to_list()
-        # umap transform validation data
-        dim_reduced_vecs_test = umap_reducer.transform(list(docvecs_test))
-        decision_scores_test = dim_reduced_vecs_test.astype(float)
+    # score the predictions for outliers
+    scores = get_scores(dict(), df_test["outlier_label"], preds)
 
-        if use_ivis:
-            vecs_ivis_test = ivis_reducer.transform(dim_reduced_vecs_test)
-            decision_scores_test = vecs_ivis_test.astype(float)
-        # %%
-        df_test["decision_scores"] = decision_scores_test
-        df_test = df_test.where(df_test.scorable == 1).dropna()
-        # %%
-
-        preds = iqrout.transform(df_test["decision_scores"], thresh_factor=1)
-        scores = get_scores(dict(), df_test["outlier_label"], preds)
-        scores.update(params)
-        scores["data"] = "test"
-        result_df = result_df.append(scores, ignore_index=True)
-        result_df.to_csv(res_path, sep="\t")
-        print(f"\nTest scores:\n{pd.DataFrame(scores, index=[0])}")
+    # write the scores to df and save
+    scores.update(params)
+    scores["data"] = "test"
+    result_df = result_df.append(scores, ignore_index=True)
+    result_df.to_csv(res_path, sep="\t")
+    print(f"\nTest scores:\n{pd.DataFrame(scores, index=[0])}")
