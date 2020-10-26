@@ -108,8 +108,8 @@ def umap_reduce(docvecs, label, umap_model, use_ivis, **kwargs):
         print(f"Train UMAP...")
         umap_n_components = min(256, len(docvecs)-2) if use_ivis else 1
         umap_model = UMAP(metric="cosine", set_op_mix_ratio=1.0,
-                            n_components=umap_n_components, random_state=42,
-                            verbose=False)
+                          n_components=umap_n_components, random_state=42,
+                          verbose=False)
         umap_model = umap_model.fit(docvecs, y=label)
     dim_reduced_vecs = umap_model.transform(docvecs)
     if not use_ivis:
@@ -122,8 +122,8 @@ def ivis_reduce(docvecs, label, ivis_model, use_ivis, **kwargs):
         if not ivis_model:
             print(f"Train ivis...")
             ivis_model = Ivis(embedding_dims=1, k=15, model="maaten",
-                                n_epochs_without_progress=15, verbose=0,
-                                batch_size=min(128, df_test.shape[0]-1))
+                              n_epochs_without_progress=15, verbose=0,
+                              batch_size=min(128, df_test.shape[0]-1))
             ivis_model = ivis_model.fit(
                 docvecs, Y=label.to_numpy())
         dim_reduced_vecs = ivis_model.transform(docvecs)
@@ -140,16 +140,19 @@ def score_out_preds(docvecs, iqr_model, contamination, **kwargs):
     preds = iqrout.transform(docvecs)
     return preds, iqrout
 
+
+standard_split = [([0, 1, 2, 11], [3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15])]
+pairwise_split = list(permutations([[x] for x in range(0, 16)], 2))
 # %%
 param_combinations = product_dict(**dict(
-    seed=[42, 43, 44],
+    seed=[42, 43, 44, 45],
     test_size=[0.2],
-    labeled_data=[0.5, 1.0],
-    fixed_cont=[0.1, 0.2],
+    labeled_data=[0.1, 0.4, 0.7, 1.0],
+    fixed_cont=[0.05, 0.1, 0.2],
     n_oe=[0],
     use_ivis=[True],
-    pair=list(
-        permutations([[x] for x in range(0, 3)], 2))))
+    pair=standard_split
+))
 
 # split the outlier, inlier tuple pairs and print all parameters for run
 for d in param_combinations:
@@ -157,17 +160,25 @@ for d in param_combinations:
     d.pop('pair', None)
 
 #data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_vec.pkl"
-data_path = "/home/philipp/projects/dad4td/data/processed/rvl_cdip.pkl"
+data_path = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/rvl_cdip.pkl"
 oe_path = "/home/philipp/projects/dad4td/data/processed/oe_data.pkl"
 res_path = next_path(
     "/home/philipp/projects/dad4td/reports/sup_combs_rvl_%04d.tsv")
-# %%
+
+# how many samples per class are used for all tests
+n_class = 1000
+
 doc2vec_model = Doc2VecModel("apnews", "apnews", 1.0,
                              100, 1,
                              "/home/philipp/projects/dad4td/models/apnews_dbow/doc2vec.bin")
 
 # load data and get the doc2vec vectors for all of the data used
 df_full = pd.read_pickle(data_path)
+
+# sample only a portion of the data
+df_full = df_full.groupby('target', group_keys=False).apply(lambda df: df.sample(n=n_class, random_state=42))
+
+#%%
 df_full["vecs"] = doc2vec_model.vectorize(df_full["text"])
 df_full["vecs"] = df_full["vecs"].apply(tuple)
 
@@ -197,15 +208,17 @@ for i, params in enumerate(param_combinations):
     # score the predictions for outliers
     scores = get_scores(dict(), df["outlier_label"], preds)
 
-    # write the scores to df and save
+    # %%
+    #  write the scores to df and save
     scores.update(params)
     scores["data"] = "train"
     result_df = result_df.append(scores, ignore_index=True)
     result_df.to_csv(res_path, sep="\t")
-    print(f"\nTraining scores:\n{pd.DataFrame(scores, index=[0])}")
-
+    print(f"\nTraining scores:\n{pd.DataFrame([scores], index=[0])}")
+    # %%
     # test UMAP and ivis
-    docvecs_test, _ = umap_reduce(df_test["vecs"].to_list(), None, umap_model, **params)
+    docvecs_test, _ = umap_reduce(
+        df_test["vecs"].to_list(), None, umap_model, **params)
 
     docvecs_test, _ = ivis_reduce(docvecs_test, None, ivis_model, **params)
 
@@ -224,4 +237,4 @@ for i, params in enumerate(param_combinations):
     scores["data"] = "test"
     result_df = result_df.append(scores, ignore_index=True)
     result_df.to_csv(res_path, sep="\t")
-    print(f"\nTest scores:\n{pd.DataFrame(scores, index=[0])}")
+    print(f"\nTest scores:\n{pd.DataFrame([scores], index=[0])}")

@@ -138,7 +138,6 @@ umap 1 - iqr (factor 1.0)
 supervised 1.0, oe 10,000
 training data
 
-contamination = df["outlier_label"].value_counts(normalize=True)[-1]...
 {'f1_macro': 0.962388311968144,
  'in_f1': 0.9968854674737028,
  'in_rec': 0.9981172040480113,
@@ -175,7 +174,6 @@ umap 1 - iqr (factor 1.0)
 supervised 1.0, oe 0
 test data
 
-preds = iqrout.transform(df_test["decision_scores"], thresh_factor=0.3)...
 {'f1_macro': 0.4737281528982774,
  'in_f1': 0.8044260027662518,
  'in_rec': 0.6839134524929446,
@@ -197,7 +195,7 @@ training data
  'out_prec': 0.18191603875134554}
 
  umap 1 - iqr (factor 1.0)
-supervised 0.1, oe 10,000
+supervised 0.1, oe 0    
 test data
 
 {'f1_macro': 0.49537139689578713,

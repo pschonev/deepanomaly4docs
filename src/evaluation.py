@@ -56,21 +56,21 @@ def product_dict(**kwargs):
     return [dict(zip(kwargs.keys(), x)) for x in product(*kwargs.values())]
 
 
-def get_scores(scores, outlier_labels, outlier_pred):
+def get_scores(scores, outlier_labels, outlier_pred, inlabel=1, outlabel=-1):
     scores[f"f1_macro"] = f1_score(
         outlier_labels, outlier_pred, average='macro')
     scores[f"in_f1"] = f1_score(
-        outlier_labels, outlier_pred, pos_label=1)
+        outlier_labels, outlier_pred, pos_label=inlabel)
     scores[f"in_rec"] = recall_score(
-        outlier_labels, outlier_pred, pos_label=1)
+        outlier_labels, outlier_pred, pos_label=inlabel)
     scores[f"in_prec"] = precision_score(
-        outlier_labels, outlier_pred, pos_label=1)
+        outlier_labels, outlier_pred, pos_label=inlabel)
     scores[f"out_f1"] = f1_score(
-        outlier_labels, outlier_pred, pos_label=-1)
+        outlier_labels, outlier_pred, pos_label=outlabel)
     scores[f"out_rec"] = recall_score(
-        outlier_labels, outlier_pred, pos_label=-1)
+        outlier_labels, outlier_pred, pos_label=outlabel)
     scores[f"out_prec"] = precision_score(
-        outlier_labels, outlier_pred, pos_label=-1)
+        outlier_labels, outlier_pred, pos_label=outlabel)
     return scores
 
 
