@@ -42,6 +42,34 @@ use interquartile range to get outliers (fixed contamination)
 .. image:: semisupervised/pairwise-08-10-diff.png
 
 
+**Split Data into inliers and outliers**:
+
+**Inlier data**: letter, form, email, invoice
+
+**Outlier data**: handwritten, advertisement, scientific report, scientific publication, 
+specification, file folder, news article, budget, presentation, questionnaire, 
+resume, memo
+
+**Table** - Contamination and Labeled data:
+
+===========  ==========  =======  =========  ========  ========  ==========  =========
+..             f1_macro    in_f1    in_prec    in_rec    out_f1    out_prec    out_rec
+===========  ==========  =======  =========  ========  ========  ==========  =========
+(0.05, 0.1)        0.46     0.89       0.95      0.85      0.03        0.02       0.05
+(0.05, 0.4)        0.45     0.9        0.95      0.85      0.01        0.01       0.02
+(0.05, 0.7)        0.46     0.9        0.95      0.86      0.01        0.01       0.02
+(0.05, 1.0)        0.51     0.97       0.95      0.99      0.04        0.34       0.02
+(0.1, 0.1)         0.43     0.85       0.89      0.81      0.02        0.01       0.03
+(0.1, 0.4)         0.45     0.87       0.9       0.85      0.02        0.01       0.02
+(0.1, 0.7)         0.43     0.85       0.89      0.81      0.02        0.01       0.03
+(0.1, 1.0)         0.54     0.95       0.91      0.99      0.13        0.64       0.08
+(0.2, 0.1)         0.43     0.78       0.81      0.75      0.09        0.08       0.11
+(0.2, 0.4)         0.43     0.78       0.81      0.76      0.08        0.06       0.09
+(0.2, 0.7)         0.43     0.78       0.81      0.76      0.07        0.06       0.08
+(0.2, 1.0)     **0.67**     0.92       0.87      0.98  **0.41**        0.76       0.28
+===========  ==========  =======  =========  ========  ========  ==========  =========
+
+
 Supervised
 -----------
 
