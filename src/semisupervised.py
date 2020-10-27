@@ -97,9 +97,17 @@ def prepare_data(df, outliers, inliers, seed, fixed_cont, labeled_data, n_oe, te
     if n_oe:
         df = df.append(df_oe)
 
-    print(
-        f"Training data:\n {df.outlier_label.value_counts()}\n\nTest data:\n {df_test.outlier_label.value_counts()}")
+    if -1 in df.label.unique() and df.label.value_counts()[-1] != df.shape[0]:
+        if df[(df.label == 0) & (df.outlier_label == -1)].shape[0] == 0:
+            print("Adding missing sample for labeled outlier")
+            df.loc[((df.label == -1) & (df.outlier_label == -1)).idxmax(), 'label'] = 0
 
+
+    print("Training data:\n",df.groupby(['label', 'outlier_label']).size(
+    ).reset_index().rename(columns={0: 'count'}), "\n\n")
+    print("Test data:\n",df_test.groupby(['label', 'outlier_label']).size(
+    ).reset_index().rename(columns={0: 'count'}), "\n\n")
+    
     return df, df_test
 
 
@@ -123,9 +131,14 @@ def ivis_reduce(docvecs, label, ivis_model, use_ivis, **kwargs):
             print(f"Train ivis...")
             ivis_model = Ivis(embedding_dims=1, k=15, model="maaten",
                               n_epochs_without_progress=15, verbose=0,
-                              batch_size=min(128, df_test.shape[0]-1))
-            ivis_model = ivis_model.fit(
-                docvecs, Y=label.to_numpy())
+                              batch_size=max(1, min(128, df_test.shape[0]-1)))
+            if -1 in label.unique() and label.value_counts()[-1] == label.shape[0]:
+                print("No labeled data found.")
+                ivis_model = ivis_model.fit(docvecs)
+            else:
+                ivis_model = ivis_model.fit(
+                    docvecs, Y=label.to_numpy())
+
         dim_reduced_vecs = ivis_model.transform(docvecs)
         decision_scores = dim_reduced_vecs.astype(float)
         return decision_scores, ivis_model
@@ -145,14 +158,16 @@ standard_split = [([0, 1, 2, 11], [3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15])]
 pairwise_split = list(permutations([[x] for x in range(0, 16)], 2))
 # %%
 param_combinations = product_dict(**dict(
-    seed=[42, 43, 44, 45],
+    seed=[42, 43, 44],
     test_size=[0.2],
-    labeled_data=[0.1, 0.4, 0.7, 1.0],
-    fixed_cont=[0.05, 0.1, 0.2],
+    labeled_data=[0.1, 0.3,  0.5],
+    fixed_cont=[0.05, 0.1],
     n_oe=[0],
     use_ivis=[True],
-    pair=standard_split
+    pair=pairwise_split
 ))
+# how many samples per class are used for all tests
+n_class = 500
 
 # split the outlier, inlier tuple pairs and print all parameters for run
 for d in param_combinations:
@@ -163,10 +178,7 @@ for d in param_combinations:
 data_path = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/rvl_cdip.pkl"
 oe_path = "/home/philipp/projects/dad4td/data/processed/oe_data.pkl"
 res_path = next_path(
-    "/home/philipp/projects/dad4td/reports/sup_combs_rvl_%04d.tsv")
-
-# how many samples per class are used for all tests
-n_class = 1000
+    "/home/philipp/projects/dad4td/reports/semisupervised/semisup_rvl_pw_%04d.tsv")
 
 doc2vec_model = Doc2VecModel("apnews", "apnews", 1.0,
                              100, 1,
@@ -176,9 +188,10 @@ doc2vec_model = Doc2VecModel("apnews", "apnews", 1.0,
 df_full = pd.read_pickle(data_path)
 
 # sample only a portion of the data
-df_full = df_full.groupby('target', group_keys=False).apply(lambda df: df.sample(n=n_class, random_state=42))
+df_full = df_full.groupby('target', group_keys=False).apply(
+    lambda df: df.sample(n=n_class, random_state=42))
 
-#%%
+# %%
 df_full["vecs"] = doc2vec_model.vectorize(df_full["text"])
 df_full["vecs"] = df_full["vecs"].apply(tuple)
 

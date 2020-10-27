@@ -132,3 +132,42 @@ df_text["text"] = df_text["filename"].map(lambda x: get_text(f"{ocr_path}{x}_ocr
 # %%
 df_text.to_pickle(rvl_cdip_out)
 df_text
+
+# %%
+
+import pandas as pd
+from pathlib import Path
+
+label_file = [("test", "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/text_test.txt"),
+              ("train", "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/text_train.txt"),
+              ("val", "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/text_val.txt")]
+ocr_path = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/"
+
+df = pd.DataFrame(columns=["filename", "target", "split"])
+for split, path in label_file:
+    df_part = pd.read_csv(path, sep=" ", names=["filename", "target"])
+    df_part["split"] = split
+    df = df.append(df_part)
+
+df
+#%%
+label_df = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/labels.tsv"
+df.to_csv(label_df, sep="\t")
+
+#%%
+# extract ocr text from xml to dataframe
+from tqdm import tqdm
+
+tqdm.pandas(desc="progess: ")
+
+test_file = "/home/philipp/projects/dad4td/data/raw/rvl_cdip/data/0000036982_ocr.xml"
+ocr_path = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/"
+
+df_text = df
+df_text["text"] = df_text["filename"].progress_map(lambda x: open(f"{ocr_path}{x}", "r").read())
+df_text
+
+# %%
+rvl_cdip_out = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/rvl_cdip.pkl"
+df_text.to_pickle(rvl_cdip_out)
+df_text

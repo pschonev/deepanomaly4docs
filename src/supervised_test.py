@@ -1,4 +1,7 @@
 # %%
+from keras.utils.vis_utils import plot_model
+import matplotlib.pyplot as plt
+from tabulate import tabulate
 from sklearn.metrics import f1_score
 from keras.utils.np_utils import to_categorical
 from keras.layers import Dense, Dropout
@@ -239,7 +242,7 @@ if classes:
 else:
     label_inputs = df[label].astype(int).reset_index(drop=True)
 docvecs_after_nn, ivis_model = ivis_reduce(
-    docvecs, label_inputs , None, True)
+    docvecs, label_inputs, None, True)
 
 
 np.unique(docvecs_after_nn, return_counts=True)
@@ -249,85 +252,39 @@ docvecs_test, _ = umap_reduce(
     df_test["vecs"].to_list(), None, umap_model, True)
 
 docvecs_test, _ = ivis_reduce(docvecs_test, None, ivis_model, True)
-
+# %%
 if classes:
     print(pd.DataFrame(np.unique(np.argmax(docvecs_test, axis=-1), return_counts=True)))
 else:
     threshold = 0.5
-    print(pd.DataFrame(np.unique(np.where(docvecs_test>threshold, 1, 0), return_counts=True)))
+    out_df = pd.DataFrame(
+        np.unique(np.where(docvecs_test > threshold, 1, 0), return_counts=True))
+    print(tabulate(out_df,
+                   out_df.columns, tablefmt="rst"))
+
 # %%
+df_test["label"].value_counts()
+# %%
+
 if classes:
-    scores = get_scores(dict(), df_test[label].astype(int).values, np.argmax(docvecs_test, axis=-1))
+    scores = get_scores(dict(), df_test[label].astype(
+        int).values, np.argmax(docvecs_test, axis=-1))
 else:
-    scores = get_scores(dict(), df_test[label].astype(int).values, np.where(docvecs_test>threshold, 1, 0), outlabel=0)
-scores
+    threshold = 0.75
+    scores = get_scores(dict(), df_test[label].astype(
+        int).values, np.where(docvecs_test > threshold, 1, 0), outlabel=0)
+out_df = pd.DataFrame(scores, index=[0]).round(3)
+print(tabulate(out_df,
+               out_df.columns, tablefmt="rst"))
+
 # %%
-f1_score(df_test[label].astype(int).values,
-         np.argmax(docvecs_test, axis=-1), average='macro')
+plt.hist(docvecs_test, bins=30)
+fig = plt.figure(1)
+fig.set_facecolor("white")
+# plt.savefig("/home/philipp/projects/dad4td/reports/semisupervised/distribution_output_supervised.png",
+#            facecolor=fig.get_facecolor(), dpi=400)
 # %%
-f1_score(df_test[label].astype(int).values,
-         np.argmax(docvecs_test, axis=-1), pos_label=0)
+plot_model(ivis_model,
+           to_file='/home/philipp/projects/dad4td/reports/semisupervised/model_plot.png',
+           show_shapes=True, show_layer_names=True)
 # %%
-np.unique(np.argmax(docvecs_test, axis=-1), return_counts=True)
-# %%
-result_df = pd.DataFrame()
-for i, params in enumerate(param_combinations):
-    print(
-        f"\n\n---------------------\n\nRun {i+1} out of {len(param_combinations)}\n\n{params}")
-
-    df, df_test = prepare_data(df_full, **params)
-
-    # UMAP Train
-    docvecs, umap_model = umap_reduce(
-        df["vecs"].to_list(), df["outlier_label"], None, **params)
-
-    # %%
-    df["outlier_label"].value_counts()
-    # %%
-    # NN
-    docvecs_after_nn, ivis_model = ivis_reduce(
-        docvecs, df["outlier_label"], None, **params)
-
-    np.unique(docvecs_after_nn, return_counts=True)
-    # %%
-    # remove OE data, so it's not scored as well
-    df["decision_scores"] = docvecs
-    df = df.where(df.scorable == 1).dropna()
-
-    # find outliers in 1D scores
-    preds, iqr_model = score_out_preds(df["decision_scores"], None, **params)
-
-    # score the predictions for outliers
-    scores = get_scores(dict(), df["outlier_label"], preds)
-
-    #  write the scores to df and save
-    scores.update(params)
-    scores["data"] = "train"
-    result_df = result_df.append(scores, ignore_index=True)
-    result_df.to_csv(res_path, sep="\t")
-    print(f"\nTraining scores:\n{pd.DataFrame([scores], index=[0])}")
-
-    # %%
-    # test UMAP and ivis
-    docvecs_test, _ = umap_reduce(
-        df_test["vecs"].to_list(), None, umap_model, **params)
-
-    docvecs_test, _ = ivis_reduce(docvecs_test, None, ivis_model, **params)
-    np.unique(docvecs_test, return_counts=True)
-    # %%
-    # remove OE data, so it's not scored as well
-    df_test["decision_scores"] = docvecs_test
-    df_test = df_test.where(df_test.scorable == 1).dropna()
-
-    # find outliers in 1D scores
-    preds = iqr_model.transform(df_test["decision_scores"], thresh_factor=1)
-
-    # score the predictions for outliers
-    scores = get_scores(dict(), df_test["outlier_label"], preds)
-
-    # write the scores to df and save
-    scores.update(params)
-    scores["data"] = "test"
-    result_df = result_df.append(scores, ignore_index=True)
-    result_df.to_csv(res_path, sep="\t")
-    print(f"\nTest scores:\n{pd.DataFrame([scores], index=[0])}")
