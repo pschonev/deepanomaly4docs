@@ -13,7 +13,7 @@ Doc2Vec (trained on APNews dataset)
 UMAP reduction from 300 -> 256 dimensions
     \|
 
-ivis_ (siamese network) 256 -> 1 dimension (outlier score)
+ivis [#]_ (siamese network) 256 -> 1 dimension (outlier score)
     \|
 
 use interquartile range to get outliers (fixed contamination)
@@ -50,7 +50,7 @@ use interquartile range to get outliers (fixed contamination)
 specification, file folder, news article, budget, presentation, questionnaire, 
 resume, memo
 
-**Table** - Contamination and Labeled data:
+**Table** - Contamination (between 5% and 20%) and Labeled data (between 10% and 100%):
 
 ===========  ==========  =======  =========  ========  ========  ==========  =========
 ..             f1_macro    in_f1    in_prec    in_rec    out_f1    out_prec    out_rec
@@ -119,7 +119,7 @@ resume, memo
 230  2298
 ===  ====
 
-**Outputs**:
+**Outputs** (predicted values of the binary classifier):
 
 
 .. image:: semisupervised/distribution_output_supervised.png
@@ -143,4 +143,53 @@ resume, memo
 ====  ==========  =======  ========  =========  ========  =========  ==========
 
 
-.. _ivis: https://github.com/beringresearch/ivis
+**Outlier Exposure** [#]_
+
+Adding n out-of-distribution samples as outliers had no 
+or negative influence. n = 200 and n = 1000 had a run that with out_f1 = 0 (everything was detected as
+inlier) which suggests that it destabilizes the network's training
+(tested over 3 runs with 2000 samples per class for the aforementioned split):
+
+====  ==========  =======  =========  ========  ========  ==========  =========
+  ..    f1_macro    in_f1    in_prec    in_rec    out_f1    out_prec    out_rec
+====  ==========  =======  =========  ========  ========  ==========  =========
+   0        0.69     0.96       0.93         1      0.41        0.88       0.27
+  50        0.68     0.96       0.93         1      0.41        0.87       0.27
+ 200        0.61     0.96       0.92         1      0.27        0.57       0.17
+1000        0.62     0.96       0.92         1      0.28        0.55       0.19
+====  ==========  =======  =========  ========  ========  ==========  =========
+
+
+| 
+
+**More data** improves performance up to around 5000 samples per class 
+(before accounting for using only 10% of outlier classes and 80% of all data for training)
+
+=====  ==========  =======  =========  ========  ========  ==========  =========
+   ..    f1_macro    in_f1    in_prec    in_rec    out_f1    out_prec    out_rec
+=====  ==========  =======  =========  ========  ========  ==========  =========
+  100        0.49     0.95       0.91      1         0.03        0.33       0.01
+  500        0.56     0.96       0.92      1         0.16        0.88       0.09
+ 1000        0.65     0.96       0.93      1         0.34        0.95       0.2
+ 2000        0.71     0.97       0.93      1         0.45        0.94       0.3
+ 5000        0.74     0.97       0.94      0.99      0.51        0.87       0.36
+10000        0.74     0.97       0.94      0.99      0.52        0.87       0.37
+=====  ==========  =======  =========  ========  ========  ==========  =========
+
+**Different models for vectorization**:
+
+============================  ==========  =======  =========  ========  ========  ==========  =========
+..                              f1_macro    in_f1    in_prec    in_rec    out_f1    out_prec    out_rec
+============================  ==========  =======  =========  ========  ========  ==========  =========
+allenai/longformer-base*            0.75     0.97       0.94      0.99      0.53        0.79       0.4
+Doc2Vec all_news                    0.75     0.97       0.94      0.99      0.53        0.85       0.39
+Doc2Vec apnews                      0.69     0.96       0.93      1         0.41        0.89       0.27
+doc2vec wiki                        0.74     0.97       0.94      0.99      0.51        0.87       0.36
+============================  ==========  =======  =========  ========  ========  ==========  =========
+
+Longformer model had only half the data and didn't use the big version
+
+| 
+
+.. [#] https://github.com/beringresearch/ivis
+.. [#] https://github.com/hendrycks/outlier-exposure
