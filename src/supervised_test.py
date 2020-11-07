@@ -5,8 +5,6 @@ from tabulate import tabulate
 from sklearn.metrics import f1_score
 from keras.utils.np_utils import to_categorical
 from keras.layers import Dense, Dropout
-from keras.wrappers.scikit_learn import KerasClassifier
-from keras.layers import Dense
 from keras.models import Sequential
 from sklearn.base import TransformerMixin, BaseEstimator
 from sklearn.model_selection import train_test_split
@@ -23,131 +21,9 @@ from pyod.models.ocsvm import OCSVM
 from pyod.models.hbos import HBOS
 from pyod.models.pca import PCA
 from itertools import permutations
-
+from semisupervised import IQROutlier, prepare_data, umap_reduce
 
 tqdm.pandas(desc="progess: ")
-
-
-class IQROutlier:
-    def __init__(self, contamination=0.1):
-        self.contamination = contamination
-
-    def fit(self, X, y=None):
-        pcnt = self.contamination / 2
-        qlow, self.median, qhigh = np.quantile(X, [pcnt, 0.50, 1-pcnt])
-        self.iqr = qhigh - qlow
-        return self
-
-    def transform(self, X, thresh_factor=1.0):
-        iqr = self.iqr*thresh_factor
-        preds = ((np.abs(X - self.median)) >= iqr/2)
-        return [-1 if x else 1 for x in preds]
-
-
-def get_outlier_data(oe_path, n_oe, seed):
-    df_oe = pd.read_pickle(oe_path)
-    df_oe = df_oe.iloc[np.random.RandomState(
-        seed=seed).permutation(len(df_oe))].head(n_oe)
-    df_oe["label"], df_oe["outlier_label"], df_oe["scorable"] = 0, -1, 0
-    return df_oe
-
-
-def label_data(df, seed, labeled_data, outlier_classes):
-    df = df[["text", "target", "vecs"]]
-    df["scorable"] = 1
-    # get all 20 news data
-    df = df.where(df.target != -1).dropna()
-    # set everything except one class to inlier
-    df["outlier_label"] = -1
-    df.loc[~df.target.isin(outlier_classes), "outlier_label"] = 1
-    # create labels for UMAP and ivis that
-    # are 0 and 1 (derived from the just created outlier labels)
-    df["label"] = (df["outlier_label"]+1)/2
-    # stratified sample and set unlabeled data based on labeled_data variable
-    df_unlabeled = df[["text", "outlier_label"]].groupby('outlier_label', group_keys=False).apply(
-        lambda x: x.sample(frac=1-labeled_data, random_state=seed)).reset_index(drop=True)
-
-    df = pd.merge(df.reset_index(drop=True), df_unlabeled.reset_index(
-        drop=True), how='outer', indicator=True)
-    df = df.drop_duplicates()
-
-    df.loc[df._merge == "both", "label"] = -1
-    print("Data before split:\n")
-    print(df.groupby(['label', 'outlier_label']).size(
-    ).reset_index().rename(columns={0: 'count'}), "\n")
-    return df
-
-
-def prepare_data(df, outliers, inliers, seed, fixed_cont, labeled_data, n_oe, test_size, **kwargs):
-    df = df_full.where(df_full.target.isin(
-        outliers+inliers)).dropna()
-    # label data as inliers and outliers (for scoring) and whether
-    # they have labels or not (semi-supervised)
-    df = label_data(df, seed, labeled_data, outliers)
-
-    if fixed_cont:
-        df = sample_data(df, 1.0, fixed_cont, seed)
-        print("Data after adjusting for fixed contamination:\n")
-        print(df.groupby(['label', 'outlier_label']).size(
-        ).reset_index().rename(columns={0: 'count'}), "\n")
-
-    if n_oe:
-        df_oe = get_outlier_data(oe_path, n_oe, seed)
-        df_oe["vecs"] = doc2vec_model.vectorize(df_oe["text"])
-
-    contamination = df.outlier_label.value_counts(normalize=True)[-1]
-    print(f"Contamination: {contamination}\n")
-
-    # split train test
-    df, df_test = train_test_split(df,
-                                   test_size=test_size, random_state=seed,
-                                   stratify=df["outlier_label"])
-    if n_oe:
-        df = df.append(df_oe)
-
-    print(
-        f"Training data:\n {df.outlier_label.value_counts()}\n\nTest data:\n {df_test.outlier_label.value_counts()}")
-
-    return df, df_test
-
-
-def umap_reduce(docvecs, label, umap_model, use_ivis, **kwargs):
-    if not umap_model:
-        print(f"Train UMAP...")
-        umap_n_components = min(256, len(docvecs)-2) if use_ivis else 1
-        umap_model = UMAP(metric="cosine", set_op_mix_ratio=1.0,
-                          n_components=umap_n_components, random_state=42,
-                          verbose=False)
-        umap_model = umap_model.fit(docvecs, y=label)
-    dim_reduced_vecs = umap_model.transform(docvecs)
-    if not use_ivis:
-        dim_reduced_vecs = dim_reduced_vecs.astype(float)
-    return dim_reduced_vecs, umap_model
-
-
-def ivis_reduce(docvecs, label, ivis_model, use_ivis, **kwargs):
-    if use_ivis:
-        if not ivis_model:
-            print(f"Train ivis...")
-            ivis_model = Ivis(embedding_dims=1, k=15, model="maaten",
-                              n_epochs_without_progress=15, verbose=0,
-                              batch_size=min(128, df_test.shape[0]-1))
-            ivis_model = ivis_model.fit(
-                docvecs, Y=label.to_numpy())
-        dim_reduced_vecs = ivis_model.transform(docvecs)
-        decision_scores = dim_reduced_vecs.astype(float)
-        return decision_scores, ivis_model
-    else:
-        return docvecs, None
-
-
-def score_out_preds(docvecs, iqr_model, contamination, **kwargs):
-    if not iqr_model:
-        iqrout = IQROutlier(contamination=contamination)
-        iqrout = iqrout.fit(docvecs)
-    preds = iqrout.transform(docvecs)
-    return preds, iqrout
-
 
 standard_split = [([0, 1, 2, 11], [3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15])]
 pairwise_split = list(permutations([[x] for x in range(0, 16)], 2))
@@ -222,7 +98,7 @@ def create_model(n_out=16, loss="categorical_crossentropy", dropout_rate=0.2):
     return model
 
 
-def ivis_reduce(docvecs, label, model, use_ivis, **kwargs):
+def neuralnet(docvecs, label, model, use_ivis, **kwargs):
     if use_ivis:
         if not model:
             print(f"Train NN...")
@@ -241,7 +117,7 @@ if classes:
     label_inputs = to_categorical(df[label].astype(int).reset_index(drop=True))
 else:
     label_inputs = df[label].astype(int).reset_index(drop=True)
-docvecs_after_nn, ivis_model = ivis_reduce(
+docvecs_after_nn, nnet = neuralnet(
     docvecs, label_inputs, None, True)
 
 
@@ -251,7 +127,7 @@ np.unique(docvecs_after_nn, return_counts=True)
 docvecs_test, _ = umap_reduce(
     df_test["vecs"].to_list(), None, umap_model, True)
 
-docvecs_test, _ = ivis_reduce(docvecs_test, None, ivis_model, True)
+docvecs_test, _ = neuralnet(docvecs_test, None, nnet, True)
 # %%
 if classes:
     print(pd.DataFrame(np.unique(np.argmax(docvecs_test, axis=-1), return_counts=True)))
@@ -270,7 +146,6 @@ if classes:
     scores = get_scores(dict(), df_test[label].astype(
         int).values, np.argmax(docvecs_test, axis=-1))
 else:
-    threshold = 0.75
     scores = get_scores(dict(), df_test[label].astype(
         int).values, np.where(docvecs_test > threshold, 1, 0), outlabel=0)
 out_df = pd.DataFrame(scores, index=[0]).round(3)

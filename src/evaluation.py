@@ -59,6 +59,8 @@ def product_dict(**kwargs):
 def get_scores(scores, outlier_labels, outlier_pred, inlabel=1, outlabel=-1):
     scores[f"f1_macro"] = f1_score(
         outlier_labels, outlier_pred, average='macro')
+    scores[f"f1_micro"] = f1_score(
+        outlier_labels, outlier_pred, average='micro')
     scores[f"in_f1"] = f1_score(
         outlier_labels, outlier_pred, pos_label=inlabel)
     scores[f"in_rec"] = recall_score(

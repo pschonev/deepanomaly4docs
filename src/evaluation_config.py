@@ -49,7 +49,10 @@ all_doc2vec = [doc2vecwikiall, doc2vecapnews, doc2vecwiki011030, doc2vecwiki0130
                doc2vecimdb20news101001, doc2vecimdb20news1010001, doc2vecwikiimdb20news011001, doc2vecwikiimdb20news011030, doc2vecwikiimdb20news013030]
 
 longformer_large = TransformerModel(
-    "allenai/longformer-large-4096", "long_documents", 435)
+    "allenai/longformer-large-4096", "long_documents_large", 435)
+
+longformer_base = TransformerModel(
+    "allenai/longformer-base-4096", "long_documents", 149)
 
 glove = WordEmbeddingPooling("glove", "unknown")
 
@@ -541,3 +544,9 @@ eval_runs = {
     "dimred_dimred_longf": dimred_dimred_longf,
     "all_news_test": all_news_test,
     "invis_params": invis_params}
+
+def main():
+    pass
+
+if __name__ == "__main__":
+   main()

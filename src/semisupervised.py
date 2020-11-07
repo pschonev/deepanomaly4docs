@@ -49,22 +49,19 @@ def label_data(df, seed, labeled_data, outlier_classes):
     # get all 20 news data
     df = df.where(df.target != -1).dropna()
     # set everything except one class to inlier
-    print("Create column outlier_label")
+
     df["outlier_label"] = -1
     df.loc[~df.target.isin(outlier_classes), "outlier_label"] = 1
     # create labels for UMAP and ivis that
     # are 0 and 1 (derived from the just created outlier labels)
     df["label"] = (df["outlier_label"]+1)/2
     # stratified sample and set unlabeled data based on labeled_data variable
-    print("Sample labeled data df")
-    df_unlabeled = df[['target']].groupby('target', group_keys=False).apply(
-        lambda x: x.sample(frac=1-labeled_data, random_state=seed))
-    
-    print(df_unlabeled.index)
-    df.loc[df_unlabeled.index, "label"] = -1
-    print("Data before split:\n")
-    print(df.groupby(['label', 'outlier_label']).size(
-    ).reset_index().rename(columns={0: 'count'}), "\n")
+
+    if labeled_data < 1.0:
+        df_unlabeled = df[['target']].groupby('target', group_keys=False).apply(
+            lambda x: x.sample(frac=1-labeled_data, random_state=seed))
+        
+        df.loc[df_unlabeled.index, "label"] = -1
     return df
 
 
@@ -84,10 +81,8 @@ def prepare_data(df, outliers, inliers, seed, fixed_cont,
         ).reset_index().rename(columns={0: 'count'}), "\n")
 
     if n_oe:
-        df_oe = get_outlier_data(oe_path, n_oe, seed)
+        df_oe = get_outlier_data(oe_path, n_oe, seed=42)
         df_oe["vecs"] = doc2vec_model.vectorize(df_oe["text"])
-
-    if n_oe:
         df = df.append(df_oe)
 
     if -1 in df.label.unique() and df.label.value_counts()[-1] != df.shape[0]:
@@ -102,7 +97,10 @@ def prepare_data(df, outliers, inliers, seed, fixed_cont,
     return df
 
 
-def umap_reduce(docvecs, label, umap_model, use_nn, **kwargs):
+def umap_reduce(docvecs, label, umap_model, use_nn, use_umap, **kwargs):
+    if not use_umap:
+        return np.array(docvecs), None
+
     if not umap_model:
         print(f"Train UMAP...")
         umap_n_components = min(256, len(docvecs)-2) if use_nn else 1
