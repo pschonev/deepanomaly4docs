@@ -138,6 +138,9 @@ for doc2vec_model in doc2vec_models:
             if min_len is not False:
                 df = remove_short_texts(df=df_partial, data_name="Train DF", min_len=min_len)
                 df_test = remove_short_texts(df=df_test_full, data_name="Test DF", min_len=min_len)
+            else:
+                df = df_partial
+                df_test = df_test_full
 
             df = prepare_data(
                 df, oe_path=oe_path, doc2vec_model=doc2vec_model, **params)
