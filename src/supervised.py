@@ -19,12 +19,24 @@ from semisupervised import prepare_data, umap_reduce
 
 tqdm.pandas(desc="progess: ")
 
+
+def get_weakly_data(df, weakly_supervised, in_test_not_train_outlier, seed):
+    df = df.where(df.target.isin(in_test_not_train_outlier)).dropna()
+    df = df.groupby(df.target).apply(lambda d: d.sample(
+        n=weakly_supervised, random_state=seed))
+    df["outlier_label"] = -1
+    df["label"] = 0
+    return df
+
+
 def remove_short_texts(df, data_name, min_len):
     bef = df.shape[0]
-    df["text_len"] = df.text.map(lambda x:len(x))
+    df["text_len"] = df.text.map(lambda x: len(x))
     df = df.where(df.text_len > min_len).dropna().reset_index(drop=True)
-    print(f"Removed {bef-df.shape[0]} rows from {data_name} because they were under {min_len} characters long.")
+    print(
+        f"Removed {bef-df.shape[0]} rows from {data_name} because they were under {min_len} characters long.")
     return df
+
 
 def create_model(n_out=16, loss="categorical_crossentropy", dropout_rate=0.2, n_in=256):
     model = Sequential()
@@ -53,39 +65,57 @@ def neuralnet(docvecs, label, model, n_out, loss, use_nn, epochs, **kwargs):
         return docvecs, None
 
 
-standard_split = [([0, 1, 2, 11], [3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15])]
-pairwise_split = list(permutations([[x] for x in range(0, 16)], 2))
+# unused classes 3 handwritten and 8 file folder
+inliers = [0, 1, 2, 11]
+outliers = [4, 5, 6, 7, 9, 10, 12, 13, 14, 15]
+unused_classes = [3, 8]
+
+standard_split = [(inliers, outliers, inliers, outliers)]
+# test pairwise inlier/outlier for each combination of classes
+pairwise_split = [(x[0], x[1], x[0], x[1]) for x in list(
+    permutations([[x] for x in range(0, 16) if x not in unused_classes], 2))]
+# normal train/test split but one unseen outlier
+one_new_outlier = [(inliers, [j for j in outliers if j != i], [], [
+                    j for j in outliers if j == i]) for i in outliers]
+
+one_to_many = [(inliers, [j for j in outliers if j == i], [], [
+                j for j in outliers if j != i]) for i in outliers]
 
 # how many samples per class are used for all tests
-n_classes = [7500, 20000]
+n_classes = [4000, 8000, 20000]
 test_size = 8000
-min_len=False
 
 # %%
 param_combinations = product_dict(**dict(
     seed=range(3),
     labeled_data=[1.0],
     fixed_cont=[0.1],
-    n_oe=[False],
+    n_oe=[False, 50, 250, 1000],
     use_nn=[True],
     use_umap=[False],
-    min_len=[False, 50, 200],
+    min_len=[200],
     epochs=[15],
-    pair=standard_split
+    class_split=one_new_outlier,
+    weakly_supervised=[False, 3, 5, 10]
 ))
 
 # split the outlier, inlier tuple pairs and print all parameters for run
 for d in param_combinations:
-    d["inliers"], d["outliers"] = d["pair"]
+    d["inliers"], d["outliers"], d["test_inliers"], d["test_outliers"] = d["class_split"]
     d.pop('pair', None)
+    d["in_test_not_train_outlier"] = [
+        x for x in d["test_outliers"] if x not in d["outliers"]]
+print(param_combinations)
 
 #data_path = "/home/philipp/projects/dad4td/data/processed/20_news_imdb_vec.pkl"
 data_path = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/rvl_cdip.pkl"
 oe_path = "/home/philipp/projects/dad4td/data/processed/oe_data.pkl"
 res_path = next_path(
-    "/home/philipp/projects/dad4td/reports/supervised/sup_split_%04d.tsv")
+    "/home/philipp/projects/dad4td/reports/supervised/one_new_outlier_weakly%04d.tsv")
+
+save_best = False
 best_pred_path = next_path(
-    "/home/philipp/projects/dad4td/reports/supervised/best_pred_sup_split_%04d.tsv")
+    "/home/philipp/projects/dad4td/reports/supervised/best_one_to_many_%04d.tsv")
 
 
 ####
@@ -95,10 +125,13 @@ best_pred_path = next_path(
 # load data and get the doc2vec vectors for all of the data used
 df_full = pd.read_pickle(data_path)
 
+# remove unused classes
+df_full = df_full[~df_full.target.isin(unused_classes)]
+
 
 # split train test
 df_full, df_test_full = train_test_split(df_full, test_size=test_size, random_state=42,
-                                    stratify=df_full["target"])
+                                         stratify=df_full["target"])
 
 
 # only take as many samples as needed at most
@@ -106,6 +139,8 @@ df_full = df_full.groupby('target', group_keys=False).apply(
     lambda df: df.sample(n=min(df.shape[0], max(n_classes)), random_state=42))
 
 # vectorization model
+longformer_base = TransformerModel(
+    "allenai/longformer-base-4096", "long_documents", 149)
 doc2vecwikiall = Doc2VecModel("doc2vec_wiki_all", "wiki_EN", 1.0,
                               100, 1, "/home/philipp/projects/dad4td/models/enwiki_dbow/doc2vec.bin")
 
@@ -135,24 +170,37 @@ for doc2vec_model in doc2vec_models:
             print(f"n_class: {n_class}")
 
             # remove short strings
-            if min_len is not False:
-                df = remove_short_texts(df=df_partial, data_name="Train DF", min_len=min_len)
-                df_test = remove_short_texts(df=df_test_full, data_name="Test DF", min_len=min_len)
+            if params["min_len"] is not False:
+                df = remove_short_texts(
+                    df=df_partial, data_name="Train DF", min_len=params["min_len"])
+                df_test = remove_short_texts(
+                    df=df_test_full, data_name="Test DF", min_len=params["min_len"])
             else:
                 df = df_partial
                 df_test = df_test_full
 
+            # weakly supervised classes
+            if params["weakly_supervised"]:
+                df_weakly = get_weakly_data(df, **params)
+            # label the trainign data
             df = prepare_data(
                 df, oe_path=oe_path, doc2vec_model=doc2vec_model, **params)
+            # combine
+            if params["weakly_supervised"]:
+                df = df.append(df_weakly).reset_index(drop=True)
+
+            # label test set
             df_test["label"] = 0
-            df_test.loc[~df_test.target.isin(params["outliers"]), "label"] = 1
-
-            # test sampling the df_test set
+            df_test.loc[~df_test.target.isin(
+                params["test_outliers"]), "label"] = 1
             df_test["outlier_label"] = -1
-            df_test.loc[~df_test.target.isin(params["outliers"]), "outlier_label"] = 1
+            df_test.loc[~df_test.target.isin(
+                params["test_outliers"]), "outlier_label"] = 1
+            # sampling the df_test set
             df_test = sample_data(df_test, 1.0, 1.0, 42)
+            df_test = df_test[df_test.target.isin(
+                params["test_outliers"]+params["test_inliers"])]
 
-            
             print("df_train")
             print(df.label.value_counts())
             print(df.target.value_counts())
@@ -196,13 +244,12 @@ for doc2vec_model in doc2vec_models:
             scores["n_class"] = n_class
             scores["data"] = "test"
             scores["threshold"] = threshold
-            scores["min_len"] = min_len
             scores["doc2vec_model"] = doc2vec_model.model_name
             result_df = result_df.append(scores, ignore_index=True)
             result_df.to_csv(res_path, sep="\t")
             print(f"\nTest scores:\n{pd.DataFrame([scores], index=[0])}")
 
-            if scores["f1_macro"] > best_f1:
+            if scores["f1_macro"] > best_f1 and save_best:
                 best_f1 = scores["f1_macro"]
                 df_best_pred = df_test
                 df_best_pred["pred"] = docvecs_test
