@@ -3,14 +3,13 @@ from keras.models import Sequential
 from sklearn.base import TransformerMixin, BaseEstimator
 from sklearn.model_selection import train_test_split
 from timeit import default_timer as timer
-from evaluation import next_path
+from utils import next_path, product_dict, get_scores, reject_outliers, sample_data, remove_short_texts
 import pandas as pd
 import numpy as np
 from umap import UMAP
 from ivis import Ivis
-from evaluation import Doc2VecModel, TransformerModel, product_dict
+from evaluation import Doc2VecModel, TransformerModel
 from tqdm import tqdm
-from evaluation import get_scores, reject_outliers, sample_data
 from pyod.models.ocsvm import OCSVM
 from pyod.models.hbos import HBOS
 from pyod.models.pca import PCA
@@ -20,21 +19,12 @@ from semisupervised import prepare_data, umap_reduce
 tqdm.pandas(desc="progess: ")
 
 
-def get_weakly_data(df, weakly_supervised, in_test_not_train_outlier, seed):
+def get_weakly_data(df, weakly_supervised, in_test_not_train_outlier, seed, **kwargs):
     df = df.where(df.target.isin(in_test_not_train_outlier)).dropna()
     df = df.groupby(df.target).apply(lambda d: d.sample(
         n=weakly_supervised, random_state=seed))
     df["outlier_label"] = -1
     df["label"] = 0
-    return df
-
-
-def remove_short_texts(df, data_name, min_len):
-    bef = df.shape[0]
-    df["text_len"] = df.text.map(lambda x: len(x))
-    df = df.where(df.text_len > min_len).dropna().reset_index(drop=True)
-    print(
-        f"Removed {bef-df.shape[0]} rows from {data_name} because they were under {min_len} characters long.")
     return df
 
 
@@ -77,12 +67,14 @@ pairwise_split = [(x[0], x[1], x[0], x[1]) for x in list(
 # normal train/test split but one unseen outlier
 one_new_outlier = [(inliers, [j for j in outliers if j != i], [], [
                     j for j in outliers if j == i]) for i in outliers]
+one_new_outlier_w_inlier = [(inliers, [j for j in outliers if j != i], inliers, [
+                    j for j in outliers if j == i]) for i in outliers]
 
 one_to_many = [(inliers, [j for j in outliers if j == i], [], [
                 j for j in outliers if j != i]) for i in outliers]
 
 # how many samples per class are used for all tests
-n_classes = [4000, 8000, 20000]
+n_classes = [8000]
 test_size = 8000
 
 # %%
@@ -90,13 +82,13 @@ param_combinations = product_dict(**dict(
     seed=range(3),
     labeled_data=[1.0],
     fixed_cont=[0.1],
-    n_oe=[False, 50, 250, 1000],
+    n_oe=[False, 50, 250],
     use_nn=[True],
     use_umap=[False],
     min_len=[200],
     epochs=[15],
-    class_split=one_new_outlier,
-    weakly_supervised=[False, 3, 5, 10]
+    class_split=standard_split,
+    weakly_supervised=[False]
 ))
 
 # split the outlier, inlier tuple pairs and print all parameters for run
@@ -111,7 +103,7 @@ print(param_combinations)
 data_path = "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/rvl_cdip.pkl"
 oe_path = "/home/philipp/projects/dad4td/data/processed/oe_data.pkl"
 res_path = next_path(
-    "/home/philipp/projects/dad4td/reports/supervised/one_new_outlier_weakly%04d.tsv")
+    "/home/philipp/projects/dad4td/reports/supervised/standard_sup%04d.tsv")
 
 save_best = False
 best_pred_path = next_path(
@@ -197,7 +189,7 @@ for doc2vec_model in doc2vec_models:
             df_test.loc[~df_test.target.isin(
                 params["test_outliers"]), "outlier_label"] = 1
             # sampling the df_test set
-            df_test = sample_data(df_test, 1.0, 1.0, 42)
+            df_test = sample_data(df_test, 1.0, 0.1, 42)
             df_test = df_test[df_test.target.isin(
                 params["test_outliers"]+params["test_inliers"])]
 

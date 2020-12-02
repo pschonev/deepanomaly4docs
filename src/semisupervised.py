@@ -2,18 +2,18 @@
 from sklearn.base import TransformerMixin, BaseEstimator
 from sklearn.model_selection import train_test_split
 from timeit import default_timer as timer
-from evaluation import next_path
 import pandas as pd
 import numpy as np
 from umap import UMAP
 from ivis import Ivis
-from evaluation import Doc2VecModel, product_dict
+from evaluation import Doc2VecModel
 from tqdm import tqdm
-from evaluation import get_scores, reject_outliers, sample_data
 from pyod.models.ocsvm import OCSVM
 from pyod.models.hbos import HBOS
 from pyod.models.pca import PCA
 from itertools import permutations
+from utils import next_path, product_dict, get_scores, reject_outliers, sample_data, remove_short_texts
+
 
 
 tqdm.pandas(desc="progess: ")
