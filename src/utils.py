@@ -1,7 +1,9 @@
 from pathlib import Path
 from itertools import product
-from sklearn.metrics import roc_auc_score, homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score, accuracy_score
+from sklearn.metrics import roc_auc_score, homogeneity_score, completeness_score, v_measure_score, f1_score, recall_score, precision_score, accuracy_score, average_precision_score
 import numpy as np
+from umap import UMAP
+
 
 def remove_short_texts(df, data_name, min_len):
     bef = df.shape[0]
@@ -41,10 +43,15 @@ def product_dict(**kwargs):
     return [dict(zip(kwargs.keys(), x)) for x in product(*kwargs.values())]
 
 
-def get_scores(scores, outlier_labels, decision_scores, inlabel=1, outlabel=-1, threshold=0.5):
+def get_scores(outlier_labels, decision_scores, inlabel=1, outlabel=-1,
+               threshold=0.5, scores=None, scores_over_thresholds=True):
+    if not scores:
+        scores = dict()
+    try:
+        outlier_pred = np.where(decision_scores > threshold, inlabel, outlabel)
+    except TypeError:
+        outlier_pred = decision_scores
 
-    print(decision_scores)
-    outlier_pred = np.where(decision_scores > threshold, 1, 0)
     scores[f"f1"] = f1_score(
         outlier_labels, outlier_pred)
     scores[f"f1_macro"] = f1_score(
@@ -63,8 +70,30 @@ def get_scores(scores, outlier_labels, decision_scores, inlabel=1, outlabel=-1, 
         outlier_labels, outlier_pred, pos_label=outlabel)
     scores[f"accuracy"] = accuracy_score(
         outlier_labels, outlier_pred)
-    scores[f"auroc"] = roc_auc_score(
-        decision_scores, outlier_pred)
+
+    try:
+        scores[f"roc_auc"] = roc_auc_score(
+            outlier_labels, decision_scores)
+        scores["pr_auc"] = average_precision_score(
+            outlier_labels, decision_scores)
+    except Exception:
+        print("AUROC/AUPRC not possible")
+
+    if scores_over_thresholds:
+        scores[f"F1"], scores[f"F1 Macro"], scores[f"Acc-In"], scores[f"Acc-Out"] = [], [], [], []
+
+        for i in range(101):
+            outlier_pred = np.where(decision_scores > i/100, inlabel, outlabel)
+
+            scores[f"F1"].append(f1_score(
+                outlier_labels, outlier_pred))
+            scores[f"F1 Macro"].append(f1_score(
+                outlier_labels, outlier_pred, average='macro'))
+            scores[f"Acc-In"].append(recall_score(
+                outlier_labels, outlier_pred, pos_label=inlabel))
+            scores[f"Acc-Out"].append(recall_score(
+                outlier_labels, outlier_pred, pos_label=outlabel))
+
     return scores
 
 
@@ -84,3 +113,20 @@ def sample_data(df, fraction, contamination, seed):
         df[df["outlier_label"] == -1].head(y_n))
     df = df.reset_index(drop=True)
     return df
+
+def umap_reduce(docvecs, use_umap, umap_model=None, label=None, logstr="unknown"):
+    if not use_umap:
+        return np.array(docvecs), None
+
+    if not umap_model:
+        print(f"Train UMAP for {logstr}...")
+        umap_n_components = min(256, len(docvecs)-2)
+        umap_model = UMAP(metric="cosine", set_op_mix_ratio=1.0,
+                          n_components=umap_n_components, random_state=42,
+                          verbose=False)
+        if label is not None:
+            umap_model = umap_model.fit(docvecs, y=label)
+        else:
+            umap_model = umap_model.fit(docvecs)
+    dim_reduced_vecs = umap_model.transform(docvecs)
+    return dim_reduced_vecs, umap_model

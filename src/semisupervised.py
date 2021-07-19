@@ -37,8 +37,10 @@ class IQROutlier:
 
 def get_outlier_data(oe_path, n_oe, seed):
     df_oe = pd.read_pickle(oe_path)
-    df_oe = df_oe.iloc[np.random.RandomState(
-        seed=seed).permutation(len(df_oe))].head(n_oe)
+    try:
+        df_oe = df_oe.sample(n=n_oe).dropna(how="all")
+    except ValueError:
+        print(f"Got {df_oe.shape[0]} OE samples!")
     df_oe["label"], df_oe["outlier_label"], df_oe["scorable"] = 0, -1, 0
     return df_oe
 
@@ -65,8 +67,8 @@ def label_data(df, seed, labeled_data, outlier_classes):
     return df
 
 
-def prepare_data(df, outliers, inliers, seed, fixed_cont,
-                 labeled_data, n_oe, oe_path, doc2vec_model, **kwargs):
+def prepare_data(df, outliers, inliers, seed, fixed_cont, n_oe,
+                 labeled_data, doc2vec_model, df_oe=None, **kwargs):
     print("Only use classes that are in inliers or outliers")
     df = df.where(df.target.isin(
         outliers+inliers)).dropna()
@@ -81,8 +83,10 @@ def prepare_data(df, outliers, inliers, seed, fixed_cont,
         ).reset_index().rename(columns={0: 'count'}), "\n")
 
     if n_oe:
-        df_oe = get_outlier_data(oe_path, n_oe, seed=42)
-        df_oe["vecs"] = doc2vec_model.vectorize(df_oe["text"])
+        try:
+            df_oe = df_oe.sample(n=n_oe).dropna(how="all")
+        except ValueError:
+            print(f"Got {df_oe.shape[0]} OE samples!")
         df = df.append(df_oe)
 
     if -1 in df.label.unique() and df.label.value_counts()[-1] != df.shape[0]:

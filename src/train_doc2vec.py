@@ -98,8 +98,8 @@ worker_count = 4  # number of parallel processes
 
 # pretrained word embeddings
 # None if use without pretrained embeddings
-pretrained_emb = "/home/philipp/projects/dad4td/models/en_wiki_w2vec/word2vec.bin"
-# pretrained_emb = None
+# pretrained_emb = "/home/philipp/projects/dad4td/models/en_wiki_w2vec/word2vec.bin"
+pretrained_emb = None
 
 # input corpus
 train_corpus = "/home/philipp/projects/dad4td/data/raw/all-the-news-2_1_05_sf.txt"

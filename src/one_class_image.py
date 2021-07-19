@@ -1,10 +1,7 @@
 # %%
-import seaborn as sns
-from umap import UMAP
-from keras import Model
 from sklearn.metrics import confusion_matrix
 from dotmap import DotMap
-from sklearn.svm import SVC, OneClassSVM
+from sklearn.svm import SVC
 from pyod.models.ocsvm import OCSVM
 from sklearn.preprocessing import MinMaxScaler
 from sklearn import metrics
@@ -30,8 +27,9 @@ tqdm.pandas(desc="progess: ")
 
 
 # %%
-df = pd.read_pickle(
-    "/home/philipp/projects/dad4td/data/raw/QS-OCR-Large/rvl_cdip.pkl")
+rvl_cdip_img_embs = "/media/philipp/Fotos/rvl-cdip/rvl_cdip_vgg.pkl"
+df = pd.read_pickle(rvl_cdip_img_embs)
+
 inliers = [0, 1, 2, 11]
 outliers = [4, 5, 6, 7, 9, 10, 12, 13, 14, 15]
 unused_classes = [3, 8]
@@ -43,11 +41,13 @@ ref_data = "same"
 df = df.where(~df.target.isin(unused_classes))
 df["label"] = 0
 df.loc[df.target.isin(inliers), "label"] = 1
+vec_col = "vecs"
+df = df.rename(columns={vec_col: "vecs"})
+df.vecs = df.vecs.map(lambda x: x.flatten())
+
+df
 # %%
 df = df.dropna()
-df = remove_short_texts(
-    df=df, data_name="Full DF", min_len=250)
-# %%
 # get only n samples
 df = df.groupby('target', group_keys=False).apply(
     lambda df: df.sample(n=min(df.shape[0], n_class), random_state=42))
@@ -56,11 +56,7 @@ df.target.value_counts()
 
 # %%
 # shuffle
-df = df.sample(frac=1, random_state=42)
-# split data into train_target, train_reference and test
-df, df_test = train_test_split(df, test_size=int(df.shape[0]*0.1), random_state=42,
-                               stratify=df["target"])
-
+df = df.sample(frac=1)
 # apply contamination factor
 x_n = df[df.label == 1].shape[0]
 df = df[df["label"] == 1].head(x_n).append(
@@ -68,8 +64,11 @@ df = df[df["label"] == 1].head(x_n).append(
 
 df = df.reset_index(drop=True)
 df.target.value_counts()
-# %%
 
+# %%
+# split data into train_target, train_reference and test
+df, df_test = train_test_split(df, test_size=int(df.shape[0]*0.1), random_state=42,
+                               stratify=df["target"])
 df_t = df.where(df.label == 1).dropna()
 if ref_data == "same":
     df_r = df.where(df.label == 0).dropna()
@@ -94,17 +93,6 @@ df_r.target.value_counts()
 print("df_t\n", df_t.target.value_counts())
 print("df_r\n", df_r.target.value_counts())
 print("df_test\n", df_test.target.value_counts())
-# %%
-
-doc2vecwikiall = Doc2VecModel("doc2vec_wiki_all", "wiki_EN", 1.0,
-                              100, 1, "/home/philipp/projects/dad4td/models/enwiki_dbow/doc2vec.bin")
-print("get train target vecs")
-df_t["vecs"] = doc2vecwikiall.vectorize(df_t["text"])
-print("get train reference vecs")
-df_r["vecs"] = doc2vecwikiall.vectorize(df_r["text"])
-print("get test vecs")
-df_test["vecs"] = doc2vecwikiall.vectorize(df_test["text"])
-
 # %%
 # one class
 
@@ -166,36 +154,42 @@ def prep_data(chosen_class, df_t, df_r, df_test, c, random_state=42, ref_data="s
             n=n, random_state=random_state)
         df_test = df_test_out.append(df_test_in).dropna(how="all")
     else:
-        df_test = df_test.where(df_test.target.isin(
-            chosen_class+inliers)).dropna()
+        df_test_out = df_test.where(df_test.target.isin(chosen_class)).dropna()
+        df_test_in = df_test.where(df_test.target.isin(inliers)).dropna(
+                                            ).sample(n=df_test_out.shape[0]*4, random_state=random_state)
+        df_test = pd.concat([df_test_in, df_test_out])
     print(f"df test:\n{df_test.target.value_counts()}")
 
     return df_t, df_r, df_test
 
 
 def train_test(result_df, df_t, df_r, df_test, res_path, c):
-    print(df_test.label.value_counts())
 
     # data
     y_ref = np.array(df_r.target.to_list())
     x_target = np.array(df_t.vecs.to_list())
-    x_target, img_umap_model = umap_reduce(x_target, c.use_umap, logstr="x_target image")
+    x_target, img_umap_model = umap_reduce(
+        x_target, c.use_umap, logstr="x_target image")
     x_ref = np.array(df_r.vecs.to_list())
-    x_ref, _ = umap_reduce(x_ref, c.use_umap, umap_model=img_umap_model, logstr="x_ref image")
+    x_ref, _ = umap_reduce(
+        x_ref, c.use_umap, umap_model=img_umap_model, logstr="x_ref image")
     y_ref = to_categorical(y_ref)
 
     test_vecs = np.array(df_test.vecs.to_list())
-    test_vecs, _ = umap_reduce(test_vecs, c.use_umap, umap_model=img_umap_model, logstr="test_vecs image")
+    test_vecs, _ = umap_reduce(
+        test_vecs, c.use_umap, umap_model=img_umap_model, logstr="test_vecs image")
 
     if c.pred_mode == "ocsvm":
         x_tr = np.array(df_t.head(c.n_sup).vecs.to_list())
-        x_tr, _ = umap_reduce(x_tr, c.use_umap, umap_model=img_umap_model, logstr="x_tr image")
+        x_tr, _ = umap_reduce(
+            x_tr, c.use_umap, umap_model=img_umap_model, logstr="x_tr image")
     else:
         df_r_temp = df_r.groupby('target', group_keys=False).apply(
             lambda df: df.sample(n=min(df.shape[0], c.n_per_targ), random_state=c.random_state))
         df_r_temp["label"] = 0
         x_tr = np.array(df_t.head(c.n_sup).append(df_r_temp).vecs.to_list())
-        x_tr, _ = umap_reduce(x_tr, c.use_umap, umap_model=img_umap_model, logstr="x_tr image")
+        x_tr, _ = umap_reduce(
+            x_tr, c.use_umap, umap_model=img_umap_model, logstr="x_tr image")
         y_tr = np.array(df_t.head(c.n_sup).append(df_r_temp).label.to_list())
 
     classes = df_r.target.unique().shape[0]
@@ -267,13 +261,19 @@ def train_test(result_df, df_t, df_r, df_test, res_path, c):
             print(
                 f"-----\n\nepoch : {epochnumber+1} ,Descriptive loss : {loss[-1]}, Compact loss : {loss_c[-1]}")
 
-            model_t.save_weights(
-                '/home/philipp/projects/dad4td/models/one_class/model_t_smd_{}.h5'.format(epochnumber))
-            model_r.save_weights(
-                '/home/philipp/projects/dad4td/models/one_class/model_r_smd_{}.h5'.format(epochnumber))
+            #test_b = model_t.predict(test_vecs)
+
+            #od = OCSVM()
+            # od.fit(test_b)
+
+            #decision_scores = od.labels_
+
+            # decision_scores = decision_scores.astype(float)
 
             labels = df_test["label"].astype(int).values
 
+            # threshold = 0.5
+            # scores = get_scores(dict(),labels, np.where(decision_scores > threshold, 0, 1), outlabel=0)
             if c.pred_mode == "svm":
                 x_tr_pred = model_t.predict(x_tr)
                 clf = SVC(probability=True)
@@ -313,22 +313,17 @@ def train_test(result_df, df_t, df_r, df_test, res_path, c):
             else:
                 raise Exception(f"{c.pred_mode} must be one of svm, nn, ocsvm")
 
-            scores = get_scores(labels, decision_scores, outlabel=0, threshold=c.threshold,
-                                scores_over_thresholds=True)
+            scores = get_scores(labels, decision_scores,
+                                outlabel=0, threshold=c.threshold)
             print(f"\n\nTest scores:\n{pd.DataFrame([scores], index=[0])}")
             if scores["f1_macro"] > best_acc and epochnumber != 0:
                 best_acc = scores["f1_macro"]
                 best_scores = scores
-                #scores["fpr"], scores["tpr"], _= metrics.roc_curve(labels, decision_scores)
-                #scores["precision"], scores["recall"], _ = metrics.precision_recall_curve(labels, decision_scores)
                 print(f"best_acc updated to: {best_acc}")
-            # normalize="true"
-            #print(f"{confusion_matrix(labels, np.where(decision_scores > c.threshold, 1, 0), normalize=normalize)}")
 
     result_df = result_df.append(dict(cclass=list(
         df_test.target.unique()), **best_scores, **c), ignore_index=True)
     result_df.to_csv(res_path, sep="\t")
-    result_df.to_pickle(res_path[:-3]+"pkl")
 
     # cleanup models
     del model_r
@@ -339,20 +334,22 @@ def train_test(result_df, df_t, df_r, df_test, res_path, c):
     return result_df
 
 
+# %%
+
 # config
 mode = "one_out"
 c = DotMap()
-c.weakly = [False]
+c.weakly = [None]
 c.batchsize = [128]
 c.epoch_num = [12]
 c.epoch_report = [4]
 c.sup_epochs = [15]
 c.feature_out = [64]
 c.pred_mode = ["nn"]
-c.threshold = [0.5]
+c.threshold = [0.55]
 c.n_sup = [10000]  # samples per inlier class for final fcnn
 c.n_per_targ = [1000]  # samples per outlier class (reference data) for fcnn
-c.random_state = range(1, 2)
+c.random_state = range(1, 6)
 c.balanced = [False]
 c.use_umap = [False]
 
@@ -362,7 +359,7 @@ i = 0
 result_df = pd.DataFrame()
 if mode == "one_out":
     res_path = next_path(
-        "/home/philipp/projects/dad4td/reports/one_class/one_out_oc_%04d_nn_text_umap.tsv")
+        "/home/philipp/projects/dad4td/reports/one_class/one_out_oc_%04d_nn_image.tsv")
     for i in outliers:
         print(f"class in test: {i}")
         for params in c:
@@ -388,44 +385,5 @@ elif mode == "single_one_out":
         print(params)
         result_df = train_test(result_df, *prep_data([i], df_t, df_r, df_test, c=params, ref_data=ref_data),
                                res_path=res_path, c=params)
-# %%
 
-df_t_sample, _, df_test_i = prep_data(
-    [i], df_t, df_r, df_test, weakly=params.weakly, ref_data=ref_data)
-df_t_sample = df_t.sample(n=2000)
-df_visual = df_t_sample.append(df_test_i.where(df_test_i.target == i))
-df_visual = df_t_sample.append(df_r.sample(n=2000))
-test_vecs = df_visual["vecs"].to_list()
-test_vecs = np.array(test_vecs).astype(float)
-feature_vec = model_t.predict(test_vecs)
-
-features = Model(inputs=clf.input, outputs=clf.layers[-2].output)
-
-feature_vec = features.predict(feature_vec)
-df_visual.target.value_counts()
-
-# %%
-umap_model = UMAP(metric="cosine", set_op_mix_ratio=1.0,
-                  n_components=2, random_state=42,
-                  verbose=False)
-
-feature_vec_2d = umap_model.fit_transform(feature_vec)
-
-# %%
-
-
-def load_coords_to_df(df, coords_2d):
-    df["X"] = coords_2d[:, 0]
-    df["Y"] = coords_2d[:, 1]
-
-    return df
-
-
-df_visual = load_coords_to_df(df_visual, feature_vec_2d)
-
-sns.scatterplot('X', 'Y', data=df_visual, hue="label")
-plt.title('One Class')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.show()
 # %%

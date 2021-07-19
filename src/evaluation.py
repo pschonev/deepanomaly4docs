@@ -22,7 +22,7 @@ from sklearn.decomposition import PCA as PCAR
 from sklearn.manifold import TSNE
 from flair.data import Sentence
 from umap import UMAP
-from utils import next_path, product_dict, get_scores
+from utils import next_path, product_dict, get_scores, sample_data
 
 @dataclass
 class TestData:
@@ -75,11 +75,16 @@ class Doc2VecModel(EmbeddingModel):
     model_type: str = "doc2vec"
 
     def __post_init__(self):
-        # load model
-        print("Load Doc2Vec model...")
-        self.model = Doc2Vec.load(self.model_path)
+        pass
+        ## load model
+        #print(f"Load Doc2Vec model - {self.model_name}...")
+        #self.model = Doc2Vec.load(self.model_path)
 
     def vectorize(self, X):
+        # load model
+        print(f"Load Doc2Vec model - {self.model_name}...")
+        self.model = Doc2Vec.load(self.model_path)
+        
         # text lowered and split into list of tokens
         print("Pre-process data...")
         X = X.progress_apply(lambda x: simple_preprocess(x))
@@ -176,14 +181,13 @@ class TransformerModel(EmbeddingModel):
 
 
 class DimensionReducer(ABC):
-    name: str
-
     @abstractmethod
     def reduce_dims(self, docvecs):
         pass
 
 
 class NoReduction(DimensionReducer):
+    dim_red_name: str = "NoRed"
     def cartesian_params(self):
         return [dict()]
 
@@ -193,6 +197,7 @@ class NoReduction(DimensionReducer):
 
 @dataclass
 class SklearnReducer(DimensionReducer):
+    dim_red_name: str
     dim_reducer: Any
     as_numpy: bool
     kwargs: dict = field(default_factory=dict)
@@ -228,7 +233,7 @@ class PyodDetector(OutlierDetector):
         out_pred[out_pred == 1] = -1
         out_pred[out_pred == 0] = 1
 
-        scores = get_scores(scores, outlier_labels, out_pred)
+        scores = get_scores(outlier_labels, out_pred, scores=scores)
         scores.update(**kwargs)
         out_f1 = scores["out_f1"]
         print(f"{kwargs}\nOut_f1: {out_f1}\n\n")
@@ -262,7 +267,7 @@ class DimRedOutlierDetector(OutlierDetector):
         preds = self.reject_outliers(preds, iq_range=1.0-contamination)
         preds = [-1 if x else 1 for x in preds]
 
-        scores = get_scores(scores, outlier_labels, preds)
+        scores = get_scores(outlier_labels, preds, scores=scores)
         scores.update(**kwargs)
         out_f1 = scores["out_f1"]
         print(f"{kwargs}\nOut_f1: {out_f1}\n\n")
@@ -309,7 +314,7 @@ class HDBSCAN_GLOSH(OutlierDetector):
             outlier_labels, cluster_pred)
         scores["v_measure"] = v_measure_score(outlier_labels, cluster_pred)
 
-        scores = get_scores(scores, outlier_labels, outlier_pred)
+        scores = get_scores(outlier_labels, outlier_pred, scores=scores)
 
         print(f"Homogeneity - {homogeneity_score(outlier_labels, cluster_pred)*100:.1f}  \
                 cluster_n - {len(np.unique(clusterer.labels_))}")

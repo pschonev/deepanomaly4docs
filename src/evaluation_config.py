@@ -7,6 +7,7 @@ from pyod.models.pca import PCA
 from pyod.models.cblof import CBLOF
 from pyod.models.auto_encoder import AutoEncoder
 from pyod.models.vae import VAE
+from pyod.models.knn import KNN
 from sklearn.decomposition import PCA as PCAR
 from sklearn.manifold import TSNE
 from ivis import Ivis
@@ -515,6 +516,89 @@ all_new_mono = EvalRun("all_new_mono",
                            hidden_neurons=[[1]], epochs=[1]))
                         ])
 
+
+KNN_and_ivis = EvalRun("KNN_and_ivis",
+                       [doc2vecwikiall, doc2vecapnews,
+                        doc2vecwikiimdb20news011001, longformer_large],
+                       [imdb_20news_3splits],
+                       [SklearnReducer("UMAP", UMAP, False, dict(
+                           n_components=[3, 6, 15, 50, 100, 200, 300],
+                           set_op_mix_ratio=[1.0], metric=["cosine"])), NoReduction()],
+                       [PyodDetector(KNN, "KNN"),
+                        DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[5],
+                                                                       n_epochs_without_progress=[
+                                                                           5],
+                                                                       model=["maaten"], distance=["pn"])),
+                        ])
+
+KNN_and_ivis_longformer = EvalRun("KNN_and_ivis_longformer",
+                                  [longformer_base],
+                                  [imdb_20news_3splits],
+                                  [SklearnReducer("UMAP", UMAP, False, dict(
+                                      n_components=[
+                                          3, 6, 15, 50, 100, 200, 300],
+                                      set_op_mix_ratio=[1.0], metric=["cosine"])), NoReduction()],
+                                  [PyodDetector(KNN, "KNN"),
+                                      DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[5],
+                                                                                     n_epochs_without_progress=[
+                                                                                         5],
+                                                                                     model=["maaten"], distance=["pn"])),
+                                   ])
+
+all_news_all = EvalRun("all_news_all",
+                       [allnews_05_15_30],
+                       [imdb_20news_3splits],
+                       [SklearnReducer("UMAP", UMAP, False, dict(
+                           n_components=[3, 6, 15, 50, 100, 200, 300],
+                           set_op_mix_ratio=[1.0], metric=["cosine"])), NoReduction()],
+                       [PyodDetector(KNN, "KNN"), PyodDetector(HBOS, "HBOS"), PyodDetector(IForest, "iForest"),
+                        PyodDetector(LOF, "LOF"), PyodDetector(
+                           OCSVM, "OCSVM"), PyodDetector(PCA, "PCA"),
+                        DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[5],
+                                                                       n_epochs_without_progress=[
+                                                                           5],
+                                                                       model=["maaten"], distance=["pn"])),
+                        ])
+
+AE_all = EvalRun("AE_all",
+                       [doc2vecwikiall, doc2vecapnews,
+                        doc2vecwikiimdb20news011001, allnews_05_15_30, longformer_large],
+                       [imdb_20news_3splits],
+                       [SklearnReducer("UMAP", UMAP, False, dict(
+                           n_components=[3, 6, 15, 50, 100, 200, 300],
+                           set_op_mix_ratio=[1.0], metric=["cosine"])), NoReduction()],
+                       [PyodDetector(AutoEncoder, "AE", dict(
+                            hidden_neurons=[[2, 1, 2]], epochs=[3]))
+                        ])
+
+WEP_RNNs = EvalRun("WEP_RNNs",
+                       [glove, glove_trec_6, glove_amazon, fasttext_amazon],
+                       [imdb_20news_3splits],
+                       [SklearnReducer("UMAP", UMAP, False, dict(
+                           n_components=[3, 6, 15, 50, 100, 200, 300],
+                           set_op_mix_ratio=[1.0], metric=["cosine"])), NoReduction()],
+                       [PyodDetector(KNN, "KNN"), PyodDetector(HBOS, "HBOS"), PyodDetector(IForest, "iForest"),
+                        PyodDetector(LOF, "LOF"), PyodDetector(
+                           OCSVM, "OCSVM"), PyodDetector(PCA, "PCA"),
+                        DimRedOutlierDetector(Ivis, "ivis", True, dict(embedding_dims=[1], k=[5],
+                                                                       n_epochs_without_progress=[
+                                                                           5],
+                                                                       model=["maaten"], distance=["pn"])),
+                        PyodDetector(AutoEncoder, "AE", dict(
+                            hidden_neurons=[[2, 1, 2]], epochs=[3]))
+                        ])
+
+AE_longformer = EvalRun("AE_longformer",
+                       [longformer_base],
+                       [imdb_20news_3splits],
+                       [SklearnReducer("UMAP", UMAP, False, dict(
+                           n_components=[3, 6, 15, 50, 100, 200, 300],
+                           set_op_mix_ratio=[1.0], metric=["cosine"])), NoReduction()],
+                       [PyodDetector(AutoEncoder, "AE", dict(
+                            hidden_neurons=[[2, 1, 2]], epochs=[3]))
+                        ])            
+
+
 # dictionary containing all the settings
 eval_runs = {
     "pyod_test_umap": pyod_test_umap,
@@ -543,10 +627,19 @@ eval_runs = {
     "dimred_dimred_big_2": dimred_dimred_big_2,
     "dimred_dimred_longf": dimred_dimred_longf,
     "all_news_test": all_news_test,
-    "invis_params": invis_params}
+    "invis_params": invis_params,
+    "KNN_and_ivis": KNN_and_ivis,
+    "KNN_and_ivis_longformer": KNN_and_ivis_longformer,
+    "all_news_all": all_news_all,
+    "AE_all": AE_all,
+    "WEP_RNNs": WEP_RNNs,
+    "AE_longformer": AE_longformer
+    }
+
 
 def main():
     pass
 
+
 if __name__ == "__main__":
-   main()
+    main()
