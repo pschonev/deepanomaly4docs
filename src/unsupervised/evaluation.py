@@ -28,6 +28,7 @@ from pydantic import BaseModel, Field
 
 
 class TestData(BaseModel):
+    """Loads from path, samples and holds outlier dataset."""
     path: str
     name: str
     fraction: List[float]
@@ -57,6 +58,7 @@ class TestData(BaseModel):
 
 # model for conversion from text to vectors
 class EmbeddingModel(BaseModel, ABC):
+    """Abstract class to vectorize text."""
     # doc2vec, or huggingface transformer specifier (e.g. bert-uncased)
     model_name: str
     model_train_data: str
@@ -67,6 +69,7 @@ class EmbeddingModel(BaseModel, ABC):
 
 
 class Doc2VecModel(EmbeddingModel):
+    """Loads Doc2Vec model from path and provides vectorization function."""
     model_name: str
     model_train_data: str
     doc2vec_data_frac: float
@@ -101,6 +104,8 @@ class Doc2VecModel(EmbeddingModel):
 
 
 class WordEmbeddingPooling(EmbeddingModel):
+    """Holds word embedding pool model from flair and provides vectorizaiton function."""
+
     model_type: str = "wordembeddingpool"
 
     @staticmethod
@@ -132,6 +137,7 @@ class WordEmbeddingPooling(EmbeddingModel):
 
 
 class RNNEmbedding(EmbeddingModel):
+    """Holds RNN model from flair and provides vectorizaiton function."""
     model_path: str
     model_type: str = "grnn"
 
@@ -164,6 +170,7 @@ class RNNEmbedding(EmbeddingModel):
 
 
 class TransformerModel(EmbeddingModel):
+    """Holds Transformer model from flair (Huggingface) and provides vectorizaiton function."""
     model_size_params: int
     model_type: str = "transformer"
 
@@ -185,12 +192,14 @@ class TransformerModel(EmbeddingModel):
 
 
 class DimensionReducer(BaseModel, ABC):
+    """Abstract class to reduce dimensions of document vectors."""
     @abstractmethod
     def reduce_dims(self, docvecs):
         pass
 
 
 class NoReduction(DimensionReducer):
+    """No reduction on document vectors."""
     dim_red_name: str = "NoRed"
     def cartesian_params(self):
         return [dict()]
@@ -201,6 +210,7 @@ class NoReduction(DimensionReducer):
 
 
 class SklearnReducer(DimensionReducer):
+    """Holds dimensionality reduction model that complies to scikit-learn syntax."""
     dim_red_name: str
     dim_reducer: str
     as_numpy: bool
@@ -223,6 +233,7 @@ class SklearnReducer(DimensionReducer):
 
 
 class OutlierDetector(BaseModel, ABC):
+    """Abstract class to detect outliers."""
     @abstractmethod
     def predict(self, dim_reduced_vecs, outlier_labels, scores, contamination, **kwargs):
         pass
@@ -230,6 +241,7 @@ class OutlierDetector(BaseModel, ABC):
 
 
 class PyodDetector(OutlierDetector):
+    """Holds outlier detector model from PyOD library and provides outlier detection function."""
     pyod_model: str
     outlier_detector: str
     kwargs: dict = Field(default_factory=dict)
@@ -262,6 +274,7 @@ class PyodDetector(OutlierDetector):
 
 
 class DimRedOutlierDetector(OutlierDetector):
+    """Holds dimensionality reduction algorithm and provides function to threshold a range to detect outliers on one-dimensional output."""
     dem_red_outlier_model: Any
     outlier_detector: str
     as_numpy: bool
@@ -296,6 +309,7 @@ class DimRedOutlierDetector(OutlierDetector):
 
 
 class HDBSCAN_GLOSH(OutlierDetector):
+    """Provides function to detect outliers with HDBSCAN's GLOSH."""
     min_cluster_size: List[int]
     allow_noise: List[bool]
     outlier_detector: str = "HDBSCAN_GLOSH"
@@ -344,6 +358,7 @@ class HDBSCAN_GLOSH(OutlierDetector):
 
 
 class EvalRun(BaseModel):
+    """Holds objects for data, embedding model, dimensionality reduction and outlier detection. Also handles result path and iteration counting."""
     name: str
     emb_model: Dict[str, EmbeddingModel]
     data: Dict[str, TestData]
