@@ -1,0 +1,9 @@
+wiki:
+  _target_: src.unsupervised.evaluation.Doc2VecModel
+  model_path: ${model_dir}/enwiki_dbow/doc2vec.bin
+  model_name: Doc2Vec_Wiki
+  model_train_data: Wikipedia
+  doc2vec_data_frac: 1.0
+  doc2vec_epochs: 100
+  doc2vec_min_count: 1
+  model_type: doc2vec

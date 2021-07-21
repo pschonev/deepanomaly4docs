@@ -1,0 +1,9 @@
+umap_base:
+  _target_: src.unsupervised.evaluation.SklearnReducer
+  dim_red_name: "UMAP_all"
+  as_numpy: True
+  dim_reducer: UMAP
+  kwargs:
+    n_components: [2, 4, 8, 16, 64, 256]
+    set_op_mix_ratio: [0.5, 1.0]
+    metric: ["cosine"]
