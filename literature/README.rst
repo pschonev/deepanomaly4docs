@@ -49,6 +49,18 @@ UMAP
 - Allaoui, Mebarka, et al. **“Considerably Improving Clustering Algorithms Using UMAP Dimensionality Reduction Technique: A Comparative Study.”** Image and Signal Processing, edited by Abderrahim El Moataz et al., Springer International Publishing, 2020, pp. 317–25. Springer Link, doi:10.1007/978-3-030-51935-3_34.
 - Sainburg, Tim, et al. **“Parametric UMAP: Learning Embeddings with Deep Neural Networks for Representation and Semi-Supervised Learning.”** ArXiv:2009.12981 [Cs, q-Bio, Stat], Sept. 2020. arXiv.org, http://arxiv.org/abs/2009.12981.
 
+
+New
+^^^^^
+Asim, Muhammad Nabeel, et al. **“Two Stream Deep Network for Document Image Classification.”** 2019 International Conference on Document Analysis and Recognition (ICDAR), IEEE, 2019, pp. 1410–16. DOI.org (Crossref), doi:10.1109/ICDAR.2019.00227.
+Bakkali, Souhail, et al. **“Visual and Textual Deep Feature Fusion for Document Image Classification.”** 2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), IEEE, 2020, pp. 2394–403. DOI.org (Crossref), doi:10.1109/CVPRW50498.2020.00289.
+
+
+Perera, Pramuditha, and Vishal M. Patel. **“Learning Deep Features for One-Class Classification.”** IEEE Transactions on Image Processing, vol. 28, no. 11, Nov. 2019, pp. 5450–63. arXiv.org, doi:10.1109/TIP.2019.2917862.
+Khosla, Prannay, et al. **“Supervised Contrastive Learning.”** ArXiv:2004.11362 [Cs, Stat], Nov. 2020. arXiv.org, http://arxiv.org/abs/2004.11362.
+
+
+
 Code
 -----
 

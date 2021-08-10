@@ -1,7 +1,0 @@
-imdb_20_standard:
-  _target_: src.unsupervised.evaluation.TestData
-  path: ${data_dir}/processed/20_news_imdb.pkl
-  name: IMDB-20News-3-Splits
-  fraction: [0.15]
-  contamination: [0.1]
-  seed: [42, 43, 44]

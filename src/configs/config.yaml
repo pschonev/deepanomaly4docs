@@ -1,8 +1,0 @@
-# @package _global_
-
-# specify here default training configuration
-defaults:
-  - data: minimal.yaml
-  - emb_model: mnist_model.yaml
-  - dim_red: mnist_datamodule.yaml
-  - od_det: od_dect.yaml

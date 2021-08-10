@@ -1,8 +1,0 @@
-ae_10_micro:
-  _target_: src.unsupervised.evaluation.PyodDetector
-  pyod_model: Autoencoder
-  outlier_detector: AE_10_micro
-  kwargs:
-    hidden_neurons: [[4, 2, 2, 4]]
-    epochs: [10]
-    verbose: [1]
