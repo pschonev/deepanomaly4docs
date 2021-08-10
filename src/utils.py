@@ -44,8 +44,8 @@ def product_dict(**kwargs):
 
 
 def get_scores(outlier_labels, decision_scores, inlabel=1, outlabel=-1,
-               threshold=0.5, scores=None, scores_over_thresholds=True):
-    if not scores:
+               threshold=0.5, scores=None, scores_over_thresholds=False):
+    if scores is None:
         scores = dict()
     try:
         outlier_pred = np.where(decision_scores > threshold, inlabel, outlabel)
