@@ -2,7 +2,7 @@ from flair.data import Label
 from scipy.sparse import data
 from abc import ABC, abstractmethod
 from pydantic import BaseModel, Field
-from enum import Enum
+from enum import Enum, auto
 from typing import Any, TypeVar, List
 from types import SimpleNamespace
 import pandas as pd
@@ -21,21 +21,25 @@ PandasDataFrame = TypeVar('pandas.core.frame.DataFrame')
 NumpyArray = TypeVar('np.ndarray')
 
 
-class RefType(Enum):
-    SAME = "same"
-    OTHER = "other"
-    BOTH = "both"
+class AutoName(Enum):
+    def _generate_next_value_(name, start, count, last_values):
+        return name
+
+class RefType(AutoName):
+    SAME = auto()
+    OTHER = auto()
+    BOTH = auto()
 
 
-class InputMode(Enum):
-    TEXT = "text"
-    IMAGE = "image"
-    BOTH = "both" 
+class InputMode(AutoName):
+    TEXT = auto()
+    IMAGE = auto()
+    BOTH = auto() 
 
 
-class EvalMode(Enum):
-    ALL = "all"
-    ONEOUT = "one_out"
+class EvalMode(AutoName):
+    ALL = auto()
+    ONEOUT = auto()
 
 
 class Input(BaseModel):
@@ -123,11 +127,11 @@ class DataPrep(BaseModel):
         df_t = df.where(df.label == 1).dropna()
 
         # reference_data
-        if mode == InputMode.TEXT:
-            if txt.ref_data == RefType.OTHER:
+        if InputMode(mode) == InputMode.TEXT:
+            if RefType(txt.ref_data) == RefType.OTHER:
                 df_r = pd.read_pickle(self.ref_data.path)
                 df_r = df_r.where(df_r.target != -1).dropna()
-            elif txt.ref_data == RefType.BOTH:
+            elif RefType(txt.ref_data) == RefType.BOTH:
                 df_r = df.where(df.label == 0).dropna()
                 df_other = pd.read_pickle(
                     txt.ref_data_path)
@@ -137,7 +141,7 @@ class DataPrep(BaseModel):
             else:
                 df_r = df.where(df.label == 0).dropna()
         else:
-            if txt.ref_data == RefType.SAME or mode != InputMode.TEXT:
+            if RefType(txt.ref_data) == RefType.SAME or RefType(mode) != InputMode.TEXT:
                 df_r = df.where(df.label == 0).dropna()
 
         return df_r, df_t
@@ -175,9 +179,9 @@ class Database(BaseModel):
 
 
     def vectorize_data(self, txt: TextInput, img: ImageInput, mode: InputMode) -> None:
-        if mode == InputMode.TEXT or mode == InputMode.BOTH:
+        if InputMode(mode) == InputMode.TEXT or InputMode(mode) == InputMode.BOTH:
             self.vectorize(txt)
-        if mode == InputMode.TEXT or mode == InputMode.BOTH:
+        if InputMode(mode) == InputMode.TEXT or InputMode(mode) == InputMode.BOTH:
             self.vectorize(img)
 
 
@@ -209,7 +213,7 @@ class DataHandler(BaseModel):
         df_t = self.database.df_t
         target = labels.targets
 
-        if c.chosen_class is not None and txt_vecs.ref_data == RefType.SAME:
+        if c.chosen_class is not None and RefType(txt_vecs.ref_data) == RefType.SAME:
             if c.weakly:
                 chosen_samples = self.database.df_r.where(self.database.df_r[target].isin(
                     c.chosen_class)).dropna().sample(n=c.weakly, random_state=c.random_state)
@@ -272,11 +276,11 @@ class DataHandler(BaseModel):
         labels.train = np.array(df_t.head(c.n_sup).append(df_r_temp).label.to_list())
 
     def get_train_test_vecs(self):
-        if  self.mode == InputMode.BOTH:
+        if  InputMode(self.mode) == InputMode.BOTH:
             train, test = [self.img_vecs.train, self.txt_vecs.train], [self.img_vecs.test, self.txt_vecs.test]
-        elif  self.mode == InputMode.TEXT:
+        elif  InputMode(self.mode) == InputMode.TEXT:
             train, test = [self.txt_vecs.train], [self.txt_vecs.test]
-        elif  self.mode == InputMode.IMAGE:
+        elif  InputMode(self.mode) == InputMode.IMAGE:
             train, test = [self.img_vecs.train], [self.img_vecs.test]
 
         y_tr = self.labels.train.astype(int)
@@ -309,21 +313,21 @@ class FCNN(BaseModel):
     layers: List[int]
 
     def create_partial_model(self, data:DataHandler, create_out=False, dropout_rate:float=0.3):
-        if data.mode == InputMode.TEXT or data.mode == InputMode.BOTH:
+        if InputMode(data.mode) == InputMode.TEXT or InputMode(data.mode) == InputMode.BOTH:
             text_input = keras.layers.Input(shape=(data.txt_vecs.target[0].shape[0],), name='text_input')
             text = keras.layers.Dropout(dropout_rate)(text_input)
             text_output = keras.layers.Dense(300, activation='relu')(text)
-        if data.mode == InputMode.TEXT:
+        if InputMode(data.mode) == InputMode.TEXT:
             x = text_output
 
-        if data.mode == InputMode.IMAGE or data.mode == InputMode.BOTH:
+        if InputMode(data.mode) == InputMode.IMAGE or InputMode(data.mode) == InputMode.BOTH:
             img_input = keras.layers.Input(shape=(data.img_vecs.target[0].shape[0],), name='img_input')
             img = keras.layers.Dropout(dropout_rate)(img_input)
             img_output = keras.layers.Dense(300, activation='relu')(img)
-        if data.mode == InputMode.IMAGE:
+        if InputMode(data.mode) == InputMode.IMAGE:
             x = img_output
 
-        if data.mode == InputMode.BOTH:
+        if InputMode(data.mode) == InputMode.BOTH:
             x = keras.layers.concatenate([img_output, text_output], name='Concatenate')
 
 
@@ -335,11 +339,11 @@ class FCNN(BaseModel):
         if create_out:
             x = keras.layers.Dense(1, activation='sigmoid')(x)
 
-        if data.mode == InputMode.TEXT:
+        if InputMode(data.mode) == InputMode.TEXT:
             inputs = text_input
-        elif data.mode == InputMode.IMAGE:
+        elif InputMode(data.mode) == InputMode.IMAGE:
             inputs = img_input
-        elif data.mode == InputMode.BOTH:
+        elif InputMode(data.mode) == InputMode.BOTH:
             inputs = [img_input, text_input]
         
 
@@ -422,14 +426,14 @@ class OneClassTransformer(EmbeddingTransformer, FCNN):
     def train_step(self, data: DataHandler, c:dict):
         x_r, x_t_r, y_r, lc, ld = [], [], [], [], []
 
-        if data.mode == InputMode.IMAGE:
+        if InputMode(data.mode) == InputMode.IMAGE:
             ref_samples = np.arange(data.img_vecs.ref.shape[0])
         else:
             ref_samples = np.arange(data.txt_vecs.ref.shape[0])
 
         np.random.seed(self.epoch)
 
-        if data.mode == InputMode.BOTH:
+        if InputMode(data.mode) == InputMode.BOTH:
             np.random.shuffle(data.img_vecs.target)
             np.random.shuffle(data.txt_vecs.target)
 
@@ -457,12 +461,12 @@ class OneClassTransformer(EmbeddingTransformer, FCNN):
                 ld.append(self.model_r.train_on_batch(
                     [batch_ref, batch_text_ref], batch_y))
 
-        if  data.mode == InputMode.TEXT:
+        if  InputMode(data.mode) == InputMode.TEXT:
             x_target, x_ref, y_ref = data.txt_vecs.target, data.txt_vecs.ref, data.labels.ref
-        if  data.mode == InputMode.IMAGE:
+        if  InputMode(data.mode) == InputMode.IMAGE:
             x_target, x_ref, y_ref = data.img_vecs.target, data.img_vecs.ref, data.labels.ref
 
-        if data.mode != InputMode.BOTH:
+        if InputMode(data.mode) != InputMode.BOTH:
             np.random.shuffle(x_target)
 
             np.random.shuffle(ref_samples)
@@ -512,7 +516,7 @@ class SupOutlierDetector(BaseModel, ABC):
         pass
 
 def unpack_train_test(train, test, data):
-    if data.mode == InputMode.BOTH:
+    if InputMode(data.mode) == InputMode.BOTH:
         train, test = np.concatenate((train[0], train[1]), axis=1),  np.concatenate((test[0], test[1]), axis=1)
     else:
         train, test = train[0], test[0]
@@ -597,9 +601,9 @@ class GridsearchParams(BaseModel):
         if isinstance(transformer, PassThroughTransformer):
             self.epoch_num = [1]
 
-        if eval_mode == EvalMode.ALL:
+        if EvalMode(eval_mode) == EvalMode.ALL:
             self.chosen_class = [None]
-        elif eval_mode == EvalMode.ONEOUT:
+        elif EvalMode(eval_mode) == EvalMode.ONEOUT:
             self.chosen_class = [[x] for x in outliers]
 
         return [SimpleNamespace(**x) for x in product_dict(**self.__dict__)]
