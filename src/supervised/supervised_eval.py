@@ -61,5 +61,8 @@ def grid_search(eval_run: SupEvalRun) -> None:
     data.database.vectorize_data(data.txt_vecs, data.img_vecs, data.mode)
 
     result_df = pd.DataFrame()
-    for c in eval_run.parameters.param_combinations(eval_mode=eval_run.eval_mode, outliers=data.data_prep.outliers, transformer=eval_run.transformer):
+    param_combs = list(eval_run.parameters.param_combinations(eval_mode=eval_run.eval_mode, outliers=data.data_prep.outliers, transformer=eval_run.transformer))
+    for i, c in enumerate(param_combs):
+        chosen_class_log = f"Chosen class: {c.chosen_class}" if c.chosen_class else ""
+        print(f"\n--------\nRun {i+1} out of {len(param_combs)}. {chosen_class_log}\nParams: {c}\n")
         result_df = eval_sup(eval_run, result_df, c)
