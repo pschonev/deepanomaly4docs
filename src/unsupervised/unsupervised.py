@@ -19,15 +19,16 @@ from sklearn.manifold import TSNE
 from umap import UMAP
 from src.utils import next_path, product_dict, get_scores, sample_data
 from pydantic import BaseModel, Field
+from src.embedders import EmbeddingModel
 
 
 class TestData(BaseModel):
     """Loads from path, samples and holds outlier dataset."""
     path: str
     name: str
-    fraction: List[float]
-    contamination: List[float]
-    seed: List[int]
+    fraction: list #List[float]
+    contamination: list #List[float]
+    seed: list #List[int]
     min_len: int = 5
     df: Any
 
