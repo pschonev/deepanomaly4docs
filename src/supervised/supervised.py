@@ -46,8 +46,7 @@ class Input(BaseModel):
     name: str
     data_col: str
     vec_col: str
-
-    embedder: EmbeddingModel
+    embedder: Any
 
     target: NumpyArray = None
     ref: NumpyArray = None
@@ -64,7 +63,6 @@ class TextInput(Input):
 
 class ImageInput(Input):
     pass
-
 
 class Labels(BaseModel):
     targets: str = "target"
@@ -289,26 +287,6 @@ class DataHandler(BaseModel):
         return train, test, y_tr, test_labels
 
 
-
-
-class EmbeddingTransformer(BaseModel, ABC):
-
-    @abstractmethod
-    def create_model(self, data:DataHandler, c:dict, dropout_rate:float=0.3) -> None:
-        pass
-
-    @abstractmethod
-    def train_step(self, data: DataHandler, c:dict) -> None:
-        pass
-
-    @abstractmethod
-    def transform(self, X):
-        pass
-
-    @abstractmethod
-    def cleanup(self) -> None:
-        pass
-
 class FCNN(BaseModel):
     layers: List[int]
 
@@ -353,6 +331,26 @@ class FCNN(BaseModel):
             optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
         return model
+
+
+
+class EmbeddingTransformer(BaseModel, ABC):
+
+    @abstractmethod
+    def create_model(self, data:DataHandler, c:dict, dropout_rate:float=0.3) -> None:
+        pass
+
+    @abstractmethod
+    def train_step(self, data: DataHandler, c:dict) -> None:
+        pass
+
+    @abstractmethod
+    def transform(self, X):
+        pass
+
+    @abstractmethod
+    def cleanup(self) -> None:
+        pass
 
 
 class PassThroughTransformer(EmbeddingTransformer):
@@ -589,7 +587,7 @@ class GridsearchParams(BaseModel):
     epoch_report: List[int] = [4]
     sup_epochs: List[int] = [15]
     feature_out: List[int] = [64]
-    threshold: List[float] = [0.55]
+    threshold: List[float] = [0.5]
     n_sup: List[int] = [10000] # samples per inlier class for final fcnn
     n_per_targ: List[int] = [1000] # samples per outlier class (reference data) for fcnn
     random_state: List[int] = list(range(1,5))

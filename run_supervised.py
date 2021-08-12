@@ -1,19 +1,15 @@
 from omegaconf import DictConfig
-from src.supervised.supervised import *
-from src.embedders import Doc2VecModel, PreComputed
 from src.supervised.supervised_eval import grid_search
+from src.supervised.supervised import *
+from src.embedders import PreComputed, Doc2VecModel
 import hydra
 from tqdm import tqdm
 
 tqdm.pandas(desc="progess: ")
 
-def eval_supervised(eval_run: SupEvalRun) -> None:
-    grid_search(eval_run)
-
-
 if __name__ == "__main__":
     eval_run = SupEvalRun(
-        eval_mode=EvalMode.ALL,
+        eval_mode=EvalMode.ONEOUT,
         data=DataHandler(
             database=Database(
                 path="/media/philipp/Fotos/rvl-cdip/rvl_cdip_vgg_doc2vec.pkl"),
@@ -47,9 +43,9 @@ if __name__ == "__main__":
             mode=InputMode.BOTH
         ),
         transformer=PassThroughTransformer(),
-        od_predictor=SVM_OD(),
+        od_predictor=FCNN_OD(),
         parameters=GridsearchParams(),
         name="test_class_TEXT",
         res_folder="reports/one_class/"
     )
-    eval_supervised(eval_run)
+    grid_search(eval_run)
