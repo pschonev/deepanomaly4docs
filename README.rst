@@ -1,49 +1,9 @@
 Deep Anomaly Detection for Text Documents
 =========================================
 
-Plan
-=====
-- using test data (IMDB / 20 Newsgroup)
-- ☑ TF-IDF Embeddings with UMAP and LOF
-- ☑ Visualization
-- ☑ enstop topic modelling
-- ☑ HDBSCAN cluster analysis and outlier detection (GLOSH) https://hdbscan.readthedocs.io/en/latest/outlier_detection.html
-- ☑ outlier detection algorithms from PyOD (LOF, HBOS, PCA, IForest) https://github.com/yzhao062/pyod
+This repository contains the implementation for my Master thesis "Deep Anomaly Detection for Text Documents", written in 2021 at the University of Potsdam.
 
-- ☑ test flair https://github.com/flairNLP/flair
-- ☑ Transformer embeddings
-- ☑ word embedding pooling - word2vec, glove, fasttext
-- ☑ word embedding RNN/LSTM
-- ☐ Autoencoder embeddings
-
-|
-
-- ☑ Autoencoder loss (with progress on outlier f1)
-- ☑ Siamese Network (ivis)
-- ☐ other new DL approaches
-
-|
-
-- ☐ Everything on real data
- 
-|
-
-- ☐ unsupervised vs weakly supervised
-- ☐ ensembles
-- ☐ Compare with computer vision approach
-
-|
-
-- ☑ monitoring progress on doc2vec training
-- ☑ test if ivis unstable over runs 
-
-Currently: 
-
-|
-
-- ☐ try if current pipeline can predict new datapoints from data used for fitting but also from different data
-- ☐ try the current pipeline but semi-supervised (both UMAP and ivis support this)
-- ☐ try other deep learning approaches, see the work by Ruff et. al. (including Outlier Exposure ideas)
+Included is code to run experiment for unsupervised as well as supervised anomaly detection for text documents from various datasets. Raw results are in the reports folder, processed results in the Jupyer notebooks and the thesis itself will be added shortly.
 
 
 
