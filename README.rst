@@ -3,8 +3,7 @@ Deep Anomaly Detection for Text Documents
 
 This repository contains the implementation for my Master thesis "Deep Anomaly Detection for Text Documents", written in 2021 at the University of Potsdam.
 
-Included is code to run experiment for unsupervised as well as supervised anomaly detection for text documents from various datasets. Raw results are in the reports folder, processed results in the Jupyer notebooks and the thesis itself will be added shortly.
-
+Included is code to run experiment for unsupervised as well as supervised anomaly detection for text documents from various datasets. The thesis can be found here in the repository: `Thesis PDF <https://github.com/pschonev/deepanomaly4docs/blob/master/Master_Thesis_Deep_Anomaly_Detection_for_Text_Documents.pdf>`_.
 
 
 Ressources
