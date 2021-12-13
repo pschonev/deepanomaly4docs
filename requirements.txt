@@ -75,7 +75,7 @@ langcodes==2.0.0
 langdetect==1.0.8
 lazy-object-proxy==1.4.3
 llvmlite==0.34.0
-lxml==4.6.3
+lxml==4.6.5
 marisa-trie==0.7.5
 Markdown==3.2.2
 MarkupSafe==1.1.1
