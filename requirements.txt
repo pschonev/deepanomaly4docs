@@ -46,7 +46,7 @@ h5py==2.10.0
 hdbscan==0.8.26
 hydra-core==1.1.0
 hyperopt==0.2.4
-idna==2.9
+idna==3.7
 img2vec-pytorch==0.2.5
 importlib-metadata==1.6.1
 importlib-resources==5.2.0
