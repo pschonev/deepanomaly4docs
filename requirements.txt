@@ -41,7 +41,7 @@ google-auth==1.21.1
 google-auth-oauthlib==0.4.1
 google-pasta==0.2.0
 graphviz==0.14.2
-grpcio==1.32.0
+grpcio==1.53.2
 h5py==2.10.0
 hdbscan==0.8.26
 hydra-core==1.1.0
