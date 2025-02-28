@@ -174,7 +174,7 @@ transformers==4.48.0
 typed-ast==1.4.1
 typing-extensions==3.10.0.0
 umap-learn==0.4.4
-urllib3==1.26.5
+urllib3==1.26.19
 wcwidth==0.2.4
 webencodings==0.5.1
 Werkzeug==1.0.1
