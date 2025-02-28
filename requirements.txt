@@ -177,7 +177,7 @@ umap-learn==0.4.4
 urllib3==1.26.5
 wcwidth==0.2.4
 webencodings==0.5.1
-Werkzeug==1.0.1
+Werkzeug==3.0.6
 widgetsnbextension==3.5.1
 wikiextractor==0.1
 wordfreq==2.3.2
