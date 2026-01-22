@@ -145,7 +145,7 @@ scipy==1.4.1
 seaborn==0.11.0
 segtok==1.5.10
 Send2Trash==1.5.0
-sentencepiece==0.1.91
+sentencepiece==0.2.1
 six==1.15.0
 smart-open==2.0.0
 sqlitedict==1.6.0
