@@ -92,7 +92,7 @@ networkx==2.4
 notebook==6.4.12
 numba==0.51.2
 numpy==1.22.0
-oauthlib==3.1.0
+oauthlib==4.0.0
 omegaconf==2.1.0
 opt-einsum==3.3.0
 overrides==3.0.0
